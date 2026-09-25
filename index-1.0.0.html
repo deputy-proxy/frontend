@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Avoora inspired creative digital studio theme rebuilt as a static frontend experiment." />
+    <title>Avoora® Studio | Creative Digital Studio</title>
+  </head>
+  <body class="bg-paper text-ink antialiased">
+    <div x-data="mobileMenu">
+      <header class="relative z-50 border-b border-black/10 bg-paper/90 backdrop-blur">
+        <div class="container-wide flex min-h-20 items-center justify-between gap-6">
+          <a href="#top" class="display text-3xl font-black tracking-[-.08em]">Avoora<span class="align-top text-[.42em]">®</span></a>
+
+          <nav class="hidden items-center gap-8 text-[.72rem] font-bold uppercase tracking-[.08em] md:flex" aria-label="Primary navigation">
+            <a class="transition-opacity hover:opacity-50" href="#studio">Studio</a>
+            <a class="transition-opacity hover:opacity-50" href="#services">Services</a>
+            <a class="transition-opacity hover:opacity-50" href="#work">Work</a>
+            <a class="transition-opacity hover:opacity-50" href="#pricing">Pricing</a>
+            <a class="transition-opacity hover:opacity-50" href="#contact">Contact</a>
+          </nav>
+
+          <div class="hidden items-center gap-3 md:flex">
+            <span class="rounded-full border border-black/15 px-3 py-1 text-[.65rem] font-bold uppercase tracking-[.08em]">NYC · 2026</span>
+            <a href="#contact" class="rounded-full bg-black px-5 py-3 text-[.68rem] font-bold uppercase tracking-[.08em] text-white transition-transform hover:-translate-y-0.5">Let's talk</a>
+          </div>
+
+          <button
+            type="button"
+            class="flex h-11 w-11 items-center justify-center rounded-full border border-black/15 md:hidden"
+            @click="toggle()"
+            :aria-expanded="open"
+            aria-controls="mobile-navigation"
+            aria-label="Toggle navigation"
+          >
+            <span class="text-lg" x-text="open ? '×' : '☰'"></span>
+          </button>
+        </div>
+
+        <div
+          id="mobile-navigation"
+          x-cloak
+          x-show="open"
+          x-transition.opacity.duration.200ms
+          class="absolute inset-x-0 top-full border-b border-black/10 bg-paper px-4 py-5 shadow-xl md:hidden"
+        >
+          <nav class="container-wide grid gap-2" aria-label="Mobile navigation">
+            <a @click="close()" href="#studio" class="border-b border-black/10 py-4 text-2xl font-semibold">Studio</a>
+            <a @click="close()" href="#services" class="border-b border-black/10 py-4 text-2xl font-semibold">Services</a>
+            <a @click="close()" href="#work" class="border-b border-black/10 py-4 text-2xl font-semibold">Work</a>
+            <a @click="close()" href="#pricing" class="border-b border-black/10 py-4 text-2xl font-semibold">Pricing</a>
+            <a @click="close()" href="#contact" class="py-4 text-2xl font-semibold">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="container-wide pt-6 md:pt-10">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-black/10 pb-4 text-[.65rem] font-bold uppercase tracking-[.1em]">
+            <span>Creative studio based in NY</span>
+            <span>Est. 2026</span>
+            <span class="flex items-center gap-2"><i class="h-2 w-2 rounded-full bg-lime"></i> Accepting projects</span>
+          </div>
+
+          <div class="relative mt-5 overflow-hidden rounded-[1.75rem] bg-[#101010] p-5 text-white shadow-[0_30px_80px_rgba(0,0,0,.15)] sm:p-7 md:mt-8 md:p-10 lg:p-12">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(49,187,255,.75),transparent_34%),radial-gradient(circle_at_72%_18%,rgba(255,108,174,.7),transparent_28%),radial-gradient(circle_at_88%_90%,rgba(255,195,72,.72),transparent_38%)]"></div>
+            <div class="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,.25)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.25)_1px,transparent_1px)] [background-size:42px_42px]"></div>
+
+            <div class="relative z-10 grid gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
+              <div>
+                <div class="hero-reveal mb-8 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-[.62rem] font-bold uppercase tracking-[.12em] backdrop-blur">
+                  <span class="h-1.5 w-1.5 rounded-full bg-lime"></span>
+                  Avoora® Studio
+                </div>
+                <h1 class="display hero-reveal max-w-4xl text-[clamp(3.8rem,14vw,10rem)] font-black">
+                  We build <span class="text-[#d7ff52]">digital</span> experiences.
+                </h1>
+                <p class="hero-reveal mt-7 max-w-xl text-base leading-7 text-white/75 md:text-lg">
+                  Award-winning creative direction, design and development for ambitious brands that want their digital presence to feel impossible to ignore.
+                </p>
+                <div class="hero-reveal mt-8 flex flex-wrap gap-3">
+                  <a href="#work" class="rounded-full bg-white px-5 py-3 text-sm font-bold text-black transition-transform hover:-translate-y-1">Explore work ↗</a>
+                  <a href="#contact" class="rounded-full border border-white/30 px-5 py-3 text-sm font-bold transition-colors hover:bg-white hover:text-black">Start a project</a>
+                </div>
+              </div>
+
+              <div class="hero-art relative min-h-72 overflow-hidden rounded-[1.35rem] border border-white/20 bg-[#f4c6bb] sm:min-h-80">
+                <div class="absolute inset-0 bg-[linear-gradient(140deg,#ef6e56_0%,#ffb07c_35%,#9de7d8_70%,#79b8ff_100%)]"></div>
+                <div class="absolute left-1/2 top-1/2 h-56 w-44 -translate-x-1/2 -translate-y-1/2 rotate-[-7deg] rounded-[45%_45%_42%_42%] bg-[#f8d1a6] shadow-2xl">
+                  <div class="absolute left-1/2 top-12 h-20 w-20 -translate-x-1/2 rounded-full bg-[#c77850]"></div>
+                  <div class="absolute -left-6 top-28 h-28 w-20 -rotate-12 rounded-full bg-[#f3c44e]"></div>
+                  <div class="absolute -right-9 top-28 h-36 w-24 rotate-12 rounded-full bg-[#63c9e7]"></div>
+                  <div class="absolute left-4 top-7 h-7 w-28 rotate-[-8deg] rounded-full bg-[#ed5271]"></div>
+                  <div class="absolute left-9 top-14 h-2 w-12 rotate-[-8deg] rounded-full bg-[#111]"></div>
+                </div>
+                <div class="absolute bottom-4 left-4 rounded-full bg-white/85 px-3 py-1.5 text-[.62rem] font-bold uppercase tracking-[.1em] text-black backdrop-blur">Founder / CEO</div>
+              </div>
+            </div>
+
+            <div class="relative z-10 mt-10 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+              <template x-for="(service, index) in ['UI UX Design','Web Development','Brand Identity','Growth Ops','Content Strategy']" :key="service">
+                <a href="#services" class="group rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur transition hover:bg-white/20">
+                  <div class="mb-7 flex items-center justify-between text-[.62rem] font-bold uppercase tracking-[.1em]">
+                    <span>(0<span x-text="index + 1"></span>)</span>
+                    <span class="opacity-50 transition group-hover:translate-x-1">↗</span>
+                  </div>
+                  <div class="text-sm font-semibold" x-text="service"></div>
+                </a>
+              </template>
+            </div>
+          </div>
+        </section>
+
+        <section id="studio" class="container-wide py-20 md:py-32">
+          <div data-reveal class="grid gap-10 md:grid-cols-[.7fr_1.3fr] md:items-end">
+            <p class="eyebrow">01 / About us</p>
+            <div>
+              <h2 class="display text-5xl font-black sm:text-6xl md:text-8xl">We collaborate with forward-thinking brands.</h2>
+              <p class="mt-7 max-w-2xl text-lg leading-8 text-black/60">The result? Creative impact that lasts. We combine strategy, sharp visual systems and technically rigorous builds to make digital products people remember.</p>
+            </div>
+          </div>
+
+          <div class="mt-12 grid gap-4 md:grid-cols-2">
+            <div data-reveal class="art art-grid min-h-[28rem] rounded-[1.5rem] bg-[#d7ff52] p-5">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_25%,#ff6d61,transparent_23%),radial-gradient(circle_at_70%_75%,#67d6f5,transparent_35%)] opacity-90"></div>
+              <div data-parallax class="glass absolute left-[15%] top-[20%] h-52 w-40 rotate-[-12deg] rounded-[2rem]">
+                <div class="absolute inset-8 rounded-[1.4rem] bg-gradient-to-br from-[#f76b57] to-[#9de9d5]"></div>
+              </div>
+              <div class="absolute bottom-5 left-5 max-w-xs rounded-xl bg-black px-4 py-3 text-sm font-semibold text-white">Strategy, design, development and a healthy disrespect for boring websites.</div>
+            </div>
+            <div data-reveal class="art min-h-[28rem] rounded-[1.5rem] bg-[#c5b3ff] p-5">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_65%_25%,#fef08a,transparent_22%),radial-gradient(circle_at_25%_75%,#6ee7d8,transparent_34%)]"></div>
+              <div data-parallax class="absolute right-[12%] top-[17%] h-64 w-52 rotate-[9deg] rounded-[45%] bg-[#111] shadow-2xl">
+                <div class="absolute inset-5 rounded-[40%] bg-gradient-to-b from-[#fff1d0] via-[#d7ff52] to-[#ff6b56]"></div>
+              </div>
+              <div class="absolute bottom-5 right-5 rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-sm font-semibold backdrop-blur">Built for screens, people and measurable outcomes.</div>
+            </div>
+          </div>
+
+          <div class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-black/10 bg-black/10 md:grid-cols-4">
+            <div class="bg-paper p-6 md:p-8"><div class="display text-5xl font-black md:text-6xl" data-counter="74" data-prefix="$" data-suffix="M">$0M</div><p class="mt-2 text-xs font-bold uppercase tracking-[.1em] text-black/45">Driving growth</p></div>
+            <div class="bg-paper p-6 md:p-8"><div class="display text-5xl font-black md:text-6xl" data-counter="95" data-suffix="%">0%</div><p class="mt-2 text-xs font-bold uppercase tracking-[.1em] text-black/45">Trusted partnerships</p></div>
+            <div class="bg-paper p-6 md:p-8"><div class="display text-5xl font-black md:text-6xl" data-counter="225" data-prefix="+">+0</div><p class="mt-2 text-xs font-bold uppercase tracking-[.1em] text-black/45">Projects delivered</p></div>
+            <div class="bg-paper p-6 md:p-8"><div class="display text-5xl font-black md:text-6xl" data-counter="92" data-suffix="%">0%</div><p class="mt-2 text-xs font-bold uppercase tracking-[.1em] text-black/45">Traffic growth</p></div>
+          </div>
+        </section>
+
+        <section id="services" class="border-y border-black/10 bg-white">
+          <div class="container-wide py-20 md:py-32">
+            <div data-reveal class="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+              <div>
+                <p class="eyebrow">02 / Services</p>
+                <h2 class="display mt-3 text-6xl font-black md:text-8xl">Our expertise.</h2>
+              </div>
+              <p class="max-w-sm text-sm leading-6 text-black/55">Five disciplines. One connected system. Every service is designed to make the next one work harder.</p>
+            </div>
+
+            <div class="divide-y divide-black/10 border-y border-black/10">
+              <article data-reveal class="group grid gap-6 py-8 md:grid-cols-[4rem_1fr_1.2fr] md:items-center">
+                <span class="text-sm font-bold text-black/35">(01)</span>
+                <h3 class="text-3xl font-bold transition-transform group-hover:translate-x-2 md:text-5xl">UI UX Design</h3>
+                <div class="grid gap-2 text-sm text-black/55 sm:grid-cols-2"><span>User Research</span><span>UX Flows</span><span>Usability Testing</span><span>Interface Design</span></div>
+              </article>
+              <article data-reveal class="group grid gap-6 py-8 md:grid-cols-[4rem_1fr_1.2fr] md:items-center">
+                <span class="text-sm font-bold text-black/35">(02)</span>
+                <h3 class="text-3xl font-bold transition-transform group-hover:translate-x-2 md:text-5xl">Web Development</h3>
+                <div class="grid gap-2 text-sm text-black/55 sm:grid-cols-2"><span>Frontend Builds</span><span>CMS Integration</span><span>Performance</span><span>Responsive Layouts</span></div>
+              </article>
+              <article data-reveal class="group grid gap-6 py-8 md:grid-cols-[4rem_1fr_1.2fr] md:items-center">
+                <span class="text-sm font-bold text-black/35">(03)</span>
+                <h3 class="text-3xl font-bold transition-transform group-hover:translate-x-2 md:text-5xl">Brand Identity</h3>
+                <div class="grid gap-2 text-sm text-black/55 sm:grid-cols-2"><span>Logo Design</span><span>Visual Identity</span><span>Brand Guidelines</span><span>Typography</span></div>
+              </article>
+              <article data-reveal class="group grid gap-6 py-8 md:grid-cols-[4rem_1fr_1.2fr] md:items-center">
+                <span class="text-sm font-bold text-black/35">(04)</span>
+                <h3 class="text-3xl font-bold transition-transform group-hover:translate-x-2 md:text-5xl">Growth Ops</h3>
+                <div class="grid gap-2 text-sm text-black/55 sm:grid-cols-2"><span>Technical SEO</span><span>Core Web Vitals</span><span>CRO Audits</span><span>Analytics Setup</span></div>
+              </article>
+              <article data-reveal class="group grid gap-6 py-8 md:grid-cols-[4rem_1fr_1.2fr] md:items-center">
+                <span class="text-sm font-bold text-black/35">(05)</span>
+                <h3 class="text-3xl font-bold transition-transform group-hover:translate-x-2 md:text-5xl">Content Strategy</h3>
+                <div class="grid gap-2 text-sm text-black/55 sm:grid-cols-2"><span>Messaging</span><span>Content Planning</span><span>UX Writing</span><span>Conversion Copy</span></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="work" class="container-wide py-20 md:py-32">
+          <div data-reveal class="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <div><p class="eyebrow">03 / Work portfolio</p><h2 class="display mt-3 text-6xl font-black md:text-8xl">Featured work.</h2></div>
+            <a href="#" class="rounded-full border border-black/15 px-5 py-3 text-xs font-bold uppercase tracking-[.08em] transition hover:bg-black hover:text-white">View all work ↗</a>
+          </div>
+
+          <div class="mt-12 grid gap-4 md:grid-cols-2">
+            <article data-reveal class="group overflow-hidden rounded-[1.5rem] bg-[#c5b3ff] p-4">
+              <div class="art aspect-[1.25] rounded-[1.1rem] bg-[#141414]">
+                <div class="absolute inset-8 rotate-[-7deg] rounded-2xl bg-gradient-to-br from-[#ff6d57] via-[#f7d55b] to-[#73d7f4] transition duration-500 group-hover:rotate-0 group-hover:scale-105"></div>
+                <div class="absolute bottom-6 left-6 rounded-full bg-white px-3 py-1.5 text-[.62rem] font-bold uppercase tracking-[.1em]">Astra Co / Corporate</div>
+              </div>
+              <div class="flex items-end justify-between gap-4 px-1 pb-1 pt-5"><h3 class="text-2xl font-bold">Astra Co</h3><span class="text-sm text-black/45">(01)</span></div>
+            </article>
+            <article data-reveal class="group overflow-hidden rounded-[1.5rem] bg-[#d7ff52] p-4 md:translate-y-16">
+              <div class="art aspect-[1.25] rounded-[1.1rem] bg-[#8fd8ea]">
+                <div class="absolute left-[18%] top-[17%] h-[66%] w-[64%] rounded-[42%] bg-gradient-to-br from-[#f9d49a] via-[#ff6b6b] to-[#9a7cff] shadow-2xl transition duration-500 group-hover:scale-105"></div>
+                <div class="absolute bottom-6 left-6 rounded-full bg-black px-3 py-1.5 text-[.62rem] font-bold uppercase tracking-[.1em] text-white">Pixel Forge / Branding</div>
+              </div>
+              <div class="flex items-end justify-between gap-4 px-1 pb-1 pt-5"><h3 class="text-2xl font-bold">Pixel Forge</h3><span class="text-sm text-black/45">(02)</span></div>
+            </article>
+            <article data-reveal class="group overflow-hidden rounded-[1.5rem] bg-[#ff725e] p-4">
+              <div class="art aspect-[1.25] rounded-[1.1rem] bg-[#e9f2ed]">
+                <div class="absolute inset-[14%] rounded-[2rem] bg-[radial-gradient(circle_at_30%_30%,#fff,transparent_18%),linear-gradient(135deg,#7ee3d2,#c6aaff,#ff8a76)] shadow-xl transition duration-500 group-hover:rotate-2"></div>
+                <div class="absolute bottom-6 left-6 rounded-full bg-white px-3 py-1.5 text-[.62rem] font-bold uppercase tracking-[.1em]">Echo Spark / SaaS</div>
+              </div>
+              <div class="flex items-end justify-between gap-4 px-1 pb-1 pt-5"><h3 class="text-2xl font-bold">Echo Spark</h3><span class="text-sm text-black/45">(03)</span></div>
+            </article>
+            <article data-reveal class="group overflow-hidden rounded-[1.5rem] bg-[#7bd8ff] p-4 md:translate-y-16">
+              <div class="art aspect-[1.25] rounded-[1.1rem] bg-[#1b1b1b]">
+                <div class="absolute left-[13%] top-[18%] h-[55%] w-[74%] rounded-[1.5rem] bg-gradient-to-r from-[#ff7b64] via-[#f9d765] to-[#7ad6ff] transition duration-500 group-hover:scale-105"></div>
+                <div class="absolute bottom-6 left-6 rounded-full bg-white px-3 py-1.5 text-[.62rem] font-bold uppercase tracking-[.1em]">Nova Shift / Startup</div>
+              </div>
+              <div class="flex items-end justify-between gap-4 px-1 pb-1 pt-5"><h3 class="text-2xl font-bold">Nova Shift</h3><span class="text-sm text-black/45">(04)</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="pricing" class="bg-black py-20 text-white md:py-32">
+          <div class="container-wide">
+            <div data-reveal class="grid gap-8 md:grid-cols-[.7fr_1.3fr]">
+              <div><p class="eyebrow text-white/45">04 / Pricing</p><h2 class="display mt-3 text-6xl font-black md:text-8xl">Membership plan.</h2></div>
+              <p class="max-w-lg text-lg leading-8 text-white/55">Simple monthly access to a senior creative team. Pick the level of velocity your business actually needs.</p>
+            </div>
+
+            <div class="mt-12 grid gap-4 lg:grid-cols-3">
+              <template x-for="plan in [
+                {name:'Starter', price:'$1,499', time:'96hrs', commitment:'1 month', tone:'bg-white text-black'},
+                {name:'Growth', price:'$2,999', time:'48hrs', commitment:'3 months', tone:'bg-[#d7ff52] text-black'},
+                {name:'Scale', price:'$5,499', time:'24hrs', commitment:'6 months', tone:'bg-[#b9a4ff] text-black'}
+              ]" :key="plan.name">
+                <article data-reveal :class="plan.tone" class="rounded-[1.5rem] p-6 md:p-8">
+                  <div class="flex items-center justify-between"><h3 class="text-2xl font-bold" x-text="plan.name + ' Plan'"></h3><span x-show="plan.name === 'Growth'" class="rounded-full bg-black px-3 py-1 text-[.6rem] font-bold uppercase tracking-[.1em] text-white">Popular</span></div>
+                  <div class="mt-14 border-t border-black/15 pt-5"><p class="eyebrow opacity-50">First mockup in</p><p class="display mt-2 text-6xl font-black" x-text="plan.time"></p></div>
+                  <ul class="mt-8 space-y-3 text-sm text-black/65">
+                    <li>✓ Dedicated project queue</li><li>✓ Design iterations</li><li>✓ Senior creative support</li><li>✓ Performance-minded delivery</li>
+                  </ul>
+                  <div class="mt-12 border-t border-black/15 pt-6"><p class="display text-5xl font-black" x-text="plan.price"></p><p class="mt-1 text-xs opacity-50">/Monthly · minimum <span x-text="plan.commitment"></span></p></div>
+                  <a href="#contact" class="mt-6 block rounded-full bg-black px-5 py-3 text-center text-xs font-bold uppercase tracking-[.08em] text-white">Select plan ↗</a>
+                </article>
+              </template>
+            </div>
+          </div>
+        </section>
+
+        <section class="container-wide py-20 md:py-32">
+          <div data-reveal class="flex items-end justify-between gap-6"><div><p class="eyebrow">05 / Testimonials</p><h2 class="display mt-3 text-6xl font-black md:text-8xl">Client stories.</h2></div><span class="hidden text-sm text-black/40 md:block">Swipe for more →</span></div>
+          <div class="mt-12 flex snap-x gap-4 overflow-x-auto pb-5">
+            <template x-for="quote in [
+              ['Sarah Mitchell','Marketing Director','AVOORA delivered a clean website improving usability, brand clarity and conversions worldwide.'],
+              ['Daniel Ross','Startup Founder','Clear communication and fast delivery helped our team launch confidently with a scalable website.'],
+              ['Emily Carter','Product Manager','They transformed ideas into a modern website users love, trust and use daily.'],
+              ['Jason Lee','Operations Lead','Thoughtful design and development made collaboration efficient, enjoyable and stress free.']
+            ]" :key="quote[0]">
+              <article class="min-w-[86vw] snap-start rounded-[1.5rem] bg-[#e7e3da] p-7 sm:min-w-[27rem] md:p-9">
+                <div class="mb-16 flex gap-1" aria-label="5 out of 5 stars"><span x-for="i in 5">★</span></div>
+                <blockquote class="text-2xl font-semibold leading-9" x-text="'“' + quote[2] + '”'"></blockquote>
+                <footer class="mt-8 border-t border-black/10 pt-5"><p class="font-bold" x-text="quote[0]"></p><p class="mt-1 text-xs uppercase tracking-[.1em] text-black/45" x-text="quote[1]"></p></footer>
+              </article>
+            </template>
+          </div>
+        </section>
+
+        <section class="border-y border-black/10 bg-white">
+          <div class="container-wide py-20 md:py-32">
+            <div data-reveal class="grid gap-8 md:grid-cols-[.7fr_1.3fr]"><div><p class="eyebrow">06 / Process</p><h2 class="display text-6xl font-black md:text-8xl">How we work.</h2></div><p class="max-w-xl text-lg leading-8 text-black/55">A clear four-step process keeps strategy, creative direction and execution moving together without the ceremony.</p></div>
+            <div class="mt-14 grid gap-px overflow-hidden rounded-2xl border border-black/10 bg-black/10 sm:grid-cols-2">
+              <template x-for="step in [
+                ['01','Discover goals','We research business needs, users, competitors and scope thoroughly.'],
+                ['02','Plan strategy','We define structure, timelines, priorities and requirements clearly together.'],
+                ['03','Design solutions','We craft intuitive interfaces focused on clarity, usability and consistency.'],
+                ['04','Build website','We develop responsive, fast websites using scalable tools.']
+              ]" :key="step[0]">
+                <article data-reveal class="bg-paper p-7 md:p-10">
+                  <div class="flex items-center justify-between"><span class="eyebrow text-black/40" x-text="'Step — ' + step[0]"></span><span class="text-xl">↗</span></div>
+                  <h3 class="mt-16 text-3xl font-bold md:text-4xl" x-text="step[1]"></h3>
+                  <p class="mt-4 max-w-md text-sm leading-6 text-black/55" x-text="step[2]"></p>
+                </article>
+              </template>
+            </div>
+          </div>
+        </section>
+
+        <section class="container-wide py-20 md:py-32">
+          <div data-reveal class="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p class="eyebrow">07 / FAQ</p><h2 class="display text-6xl font-black md:text-8xl">Have a question?</h2></div><p class="max-w-sm text-sm leading-6 text-black/55">The questions everyone asks before they hire a creative team.</p></div>
+          <div x-data="faq" class="mt-12 divide-y divide-black/10 border-y border-black/10">
+            <template x-for="(item, index) in [
+              ['What services does your agency provide?','UI/UX design, frontend development, branding, content strategy and ongoing optimization support.'],
+              ['How does your pricing model work?','Three monthly plans are available, tailored to different project volumes and delivery expectations.'],
+              ['How quickly will we receive our first design?','Depending on the plan, the first mockup is targeted within 24 to 96 hours.'],
+              ['How many revisions are included?','The plans include structured iteration cycles, with expanded support at higher tiers.'],
+              ['Do you handle design and development together?','Yes. Strategy, design and frontend implementation can be handled end to end.'],
+              ['Can clients pause or cancel?','Plans can be paused or cancelled after the applicable minimum commitment period.']
+            ]" :key="index">
+              <div class="py-6">
+                <button type="button" class="flex w-full items-center justify-between gap-6 text-left" @click="toggle(index)" :aria-expanded="active === index">
+                  <span class="text-lg font-semibold md:text-xl" x-text="item[0]"></span>
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black/15 text-xl" x-text="active === index ? '−' : '+'"></span>
+                </button>
+                <div x-show="active === index" x-collapse class="max-w-2xl pr-12 pt-4 text-sm leading-7 text-black/55"><p x-text="item[1]"></p></div>
+              </div>
+            </template>
+          </div>
+        </section>
+
+        <section id="contact" class="bg-[#d7ff52]">
+          <div class="container-wide py-20 md:py-32">
+            <div data-reveal class="grid gap-10 md:grid-cols-[1fr_1fr] md:items-end">
+              <div>
+                <p class="eyebrow">08 / Let's talk</p>
+                <h2 class="display mt-4 text-7xl font-black sm:text-8xl md:text-[9rem]">Make something <span class="text-[#ff6954]">good.</span></h2>
+              </div>
+              <form class="rounded-[1.5rem] bg-black p-6 text-white md:p-8" @submit.prevent>
+                <p class="mb-8 text-sm leading-6 text-white/55">Got a question, challenge or idea? Fill out the form and we'll get back to you shortly.</p>
+                <label class="block border-b border-white/20 py-4"><span class="sr-only">Full name</span><input required class="w-full bg-transparent text-lg outline-none placeholder:text-white/30" placeholder="Full name" /></label>
+                <label class="block border-b border-white/20 py-4"><span class="sr-only">Email</span><input required type="email" class="w-full bg-transparent text-lg outline-none placeholder:text-white/30" placeholder="E-mail" /></label>
+                <label class="block border-b border-white/20 py-4"><span class="sr-only">Company name</span><input class="w-full bg-transparent text-lg outline-none placeholder:text-white/30" placeholder="Company name" /></label>
+                <button class="mt-8 rounded-full bg-white px-6 py-3 text-sm font-bold text-black transition-transform hover:-translate-y-1">Send inquiry ↗</button>
+              </form>
+            </div>
+
+            <div class="mt-20 grid gap-10 border-t border-black/15 pt-8 sm:grid-cols-3">
+              <div><p class="eyebrow opacity-50">What we offer</p><ul class="mt-5 space-y-2 text-sm"><li>UI UX Design</li><li>Web Development</li><li>Brand Identity</li><li>Growth Ops</li><li>Content Strategy</li></ul></div>
+              <div><p class="eyebrow opacity-50">E-mail</p><a href="mailto:info.avoora@agency.com" class="mt-5 block text-sm underline underline-offset-4">info.avoora@agency.com</a></div>
+              <div><p class="eyebrow opacity-50">Office</p><p class="mt-5 text-sm leading-6">452 Riverside Dr,<br />Apt 1C, New York, NY 10027</p></div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="bg-black py-6 text-white">
+        <div class="container-wide flex flex-col justify-between gap-3 text-[.65rem] font-bold uppercase tracking-[.1em] sm:flex-row">
+          <span>Avoora® Studio</span>
+          <span>Rebuilt as frontend playground · index-1.0.0</span>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="./src/js/app.js"></script>
+  </body>
+</html>
