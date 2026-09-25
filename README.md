@@ -4,7 +4,7 @@ Frontend theme playground using production Tailwind CSS, GSAP, and Alpine.js. St
 
 
 Index 1.0.0
-Source: [https://avoora.webflow.io/](url)
-Outcome: [https://deputy-proxy.github.io/frontend/index-1.0.0.html](url)
+Source: [https://avoora.webflow.io/]([url](https://avoora.webflow.io/))
+Outcome: [https://deputy-proxy.github.io/frontend/index-1.0.0.html]([url](https://deputy-proxy.github.io/frontend/index-1.0.0.html))
 
 
