@@ -11,6 +11,7 @@ export default defineConfig({
         root: resolve(__dirname, 'index.html'),
         'index-1.0.0': resolve(__dirname, 'index-1.0.0.html'),
         'index-2.0.0': resolve(__dirname, 'index-2.0.0.html'),
+        'index-3.0.0': resolve(__dirname, 'index-3.0.0.html'),
       },
     },
   },

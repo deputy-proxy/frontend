@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Neurex business finance automation homepage reconstruction.">
+  <title>Neurex — Home 01</title>
+</head>
+<body>
+<div x-data="neurexPage" class="min-h-screen bg-white text-[#101b38]">
+  <header class="absolute inset-x-0 top-0 z-50">
+    <div class="nx-shell flex h-[82px] items-center justify-between">
+      <a href="#top" class="flex items-center gap-2 text-white" aria-label="Neurex home">
+        <span class="nx-logo">N</span><span class="text-lg font-semibold tracking-[-.04em]">neurex</span>
+      </a>
+      <nav class="hidden items-center gap-8 text-[12px] font-medium text-white/80 lg:flex" aria-label="Primary">
+        <a href="#solutions" class="hover:text-white">Solutions</a>
+        <a href="#impact" class="hover:text-white">Why Neurex</a>
+        <a href="#security" class="hover:text-white">Security</a>
+        <a href="#insights" class="hover:text-white">Resources</a>
+      </nav>
+      <div class="hidden items-center gap-5 lg:flex">
+        <a href="#login" class="text-[12px] text-white/75 hover:text-white">Log in</a>
+        <a href="#contact" class="nx-nav-cta">Get started</a>
+      </div>
+      <button class="grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-white/10 text-white lg:hidden" @click="menu=!menu" :aria-expanded="menu" aria-label="Open menu">
+        <span x-text="menu ? '×' : '☰'"></span>
+      </button>
+    </div>
+    <div x-cloak x-show="menu" x-transition class="border-y border-white/10 bg-[#09183c] px-5 py-5 text-white lg:hidden">
+      <nav class="grid gap-1 text-sm">
+        <a @click="menu=false" href="#solutions" class="rounded-xl px-4 py-3 hover:bg-white/10">Solutions</a>
+        <a @click="menu=false" href="#impact" class="rounded-xl px-4 py-3 hover:bg-white/10">Why Neurex</a>
+        <a @click="menu=false" href="#security" class="rounded-xl px-4 py-3 hover:bg-white/10">Security</a>
+        <a @click="menu=false" href="#insights" class="rounded-xl px-4 py-3 hover:bg-white/10">Resources</a>
+        <a @click="menu=false" href="#contact" class="mt-2 rounded-xl bg-white px-4 py-3 font-semibold text-[#132b6f]">Get started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="nx-hero relative overflow-hidden text-white">
+      <div class="nx-hero-glow absolute inset-0"></div>
+      <div class="nx-grid absolute inset-0"></div>
+      <div class="nx-shell relative pt-[118px] pb-10 sm:pt-[140px] lg:pt-[166px]">
+        <div class="grid gap-12 lg:grid-cols-[.92fr_1.08fr] lg:items-center">
+          <div class="nx-hero-copy">
+            <p class="nx-eyebrow mb-7 text-white/65">The modern business operating system</p>
+            <h1 class="max-w-[680px] text-[clamp(3.35rem,7vw,6.55rem)] font-semibold leading-[.93] tracking-[-.065em]">Unlock your new business growth with Neurex.</h1>
+            <p class="mt-7 max-w-xl text-[15px] leading-7 text-white/65">Built-in controls and automation to all business spend, helping finance lead with confidence while employees spend every pound wisely.</p>
+            <div class="mt-8 flex flex-wrap items-center gap-5">
+              <a href="#contact" class="nx-primary">Get Started <span>↗</span></a>
+              <div class="flex items-center gap-3 text-[11px] text-white/65">
+                <div class="flex -space-x-2">
+                  <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68e4bcdeb3106ba758d5d456_pexels-mikhail-nilov-6592361%201.avif" class="h-8 w-8 rounded-full border-2 border-[#173d98] object-cover" alt="">
+                  <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68e4bcf094d35979ebb96819_Rectangle%2034626791.avif" class="h-8 w-8 rounded-full border-2 border-[#173d98] object-cover" alt="">
+                  <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68e4dc0042b11adbc9e7b76b_Group%202087333094.avif" class="h-8 w-8 rounded-full border-2 border-[#173d98] object-cover" alt="">
+                </div>
+                <span><strong class="text-white">4.5/5</strong> · 2,000+ reviews</span>
+              </div>
+            </div>
+          </div>
+          <div class="nx-hero-visual relative">
+            <div class="nx-orb -right-10 top-0"></div>
+            <div class="relative mx-auto max-w-[680px]">
+              <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68e4c7f2159a18730265af5e_Group%202087331345.avif" class="nx-hero-image" alt="Neurex business finance dashboard">
+              <div data-float class="nx-floating-card nx-floating-left">
+                <p>Annual savings</p><strong>£60,570</strong><span>Last 15 days</span>
+              </div>
+              <div data-float class="nx-floating-card nx-floating-right">
+                <p>Company balance</p><strong>£190,875</strong><span class="text-emerald-500">+25%</span>
+                <div class="mt-3 space-y-1.5 text-[9px] text-slate-500"><div class="flex justify-between"><span>Marketing</span><b>£24,875</b></div><div class="flex justify-between"><span>Operations</span><b>£54,325</b></div><div class="flex justify-between"><span>Payroll</span><b>£71,675</b></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-16 border-t border-white/10 pt-7">
+          <p class="nx-eyebrow mb-6 text-white/35">Trusted by 100+ companies worldwide</p>
+          <div class="nx-logo-row">
+            <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75a7f89eedbe6867b18_Logo%2017.svg" alt="Unicell">
+            <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75b07892edafc505b40_Logo%2014.svg" alt="Walter">
+            <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75ad2d425d6ea348e98_Logo%2015.svg" alt="Monosen">
+            <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75af0f9371047fdfeee_Logo%2016.svg" alt="Overcut">
+            <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75aee53b19b82a68aaf_Logo%2013.svg" alt="Primex">
+            <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75aaa022f8bba17f005_Logo%2019.svg" alt="Boomers">
+            <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75b07892edafc505b3b_Logo%2018.svg" alt="Reverse">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact" class="nx-shell py-20 sm:py-28 lg:py-32">
+      <div data-reveal class="mx-auto max-w-2xl text-center">
+        <p class="nx-eyebrow text-[#174de2]">The impact we’ve created</p>
+        <h2 class="nx-h2 mt-4">The impact we’ve created for businesses</h2>
+      </div>
+      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <article data-reveal class="nx-metric-card"><strong><span data-count="99">0</span>%</strong><p>Annual efficiency savings that drive results</p></article>
+        <article data-reveal class="nx-metric-card"><strong><span data-count="90">0</span>M</strong><p>Yearly efficiency gains that truly matter</p></article>
+        <article data-reveal class="nx-metric-card"><strong><span data-count="100">0</span>%</strong><p>Goal completion rate on initial execution</p></article>
+        <article data-reveal class="nx-metric-card"><strong><span data-count="12">0</span>+</strong><p>Key yearly efficiency savings that count</p></article>
+      </div>
+      <blockquote data-reveal class="mx-auto mt-14 max-w-3xl text-center text-lg leading-8 text-slate-500">“Neurex's a super interesting way of marrying old ways (sheets) with new ways (AI) to get a magical tool.”<footer class="mt-4 text-sm font-semibold text-[#101b38]">Courtney, Founder at Overcut</footer></blockquote>
+    </section>
+
+    <section id="solutions" class="bg-[#f5f7fb] py-20 sm:py-28 lg:py-32">
+      <div class="nx-shell">
+        <div data-reveal class="grid gap-8 lg:grid-cols-[.72fr_1.28fr] lg:items-end">
+          <div><p class="nx-eyebrow text-[#174de2]">Business intelligence</p><h2 class="nx-h2 mt-4">Build a stronger future with smarter tools</h2></div>
+          <a href="#contact" class="nx-outline w-fit">Get Started ↗</a>
+        </div>
+        <div class="mt-14 grid gap-6 lg:grid-cols-3">
+          <article data-reveal class="nx-feature-card"><img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68e4bcf094d35979ebb96819_Rectangle%2034626791.avif" alt="Team member" class="nx-feature-image"><div class="p-7"><p class="nx-eyebrow text-[#174de2]">Manage</p><h3>Manage your business smartly and securely</h3><p class="mt-4 text-sm leading-6 text-slate-500">Empowering you to make financial decisions with accurate information powerful tools.</p><ul class="mt-5 space-y-2 text-xs text-slate-500"><li>3000+ US and UAE stocks</li><li>Shares, fractional shares or Exchange</li><li>Priority access to upcoming Initial</li></ul><a href="#contact" class="mt-6 inline-block text-xs font-bold text-[#174de2]">Learn more ↗</a></div></article>
+          <article data-reveal class="nx-feature-card"><img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68e4bcf0d8ad23eef2a3b96f_Rectangle%2034626790.avif" alt="Client review" class="nx-feature-image"><div class="p-7"><p class="nx-eyebrow text-[#174de2]">Optimise</p><h3>Optimise performance with clear financial data</h3><p class="mt-4 text-sm leading-6 text-slate-500">Turn everyday spend into a system your finance team can understand and control.</p><ul class="mt-5 space-y-2 text-xs text-slate-500"><li>Automated expense control</li><li>Real-time financial insights</li><li>Smarter operational decisions</li></ul><a href="#contact" class="mt-6 inline-block text-xs font-bold text-[#174de2]">Learn more ↗</a></div></article>
+          <article data-reveal class="nx-feature-card"><img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68e4bcf094d35979ebb96819_Rectangle%2034626791.avif" alt="Team" class="nx-feature-image object-[70%_center]"><div class="p-7"><p class="nx-eyebrow text-[#174de2]">Performance</p><h3>Make every workflow work harder</h3><p class="mt-4 text-sm leading-6 text-slate-500">Connect people, policies and automation so the business keeps moving.</p><ul class="mt-5 space-y-2 text-xs text-slate-500"><li>One connected finance stack</li><li>Secure approvals</li><li>Actionable reporting</li></ul><a href="#contact" class="mt-6 inline-block text-xs font-bold text-[#174de2]">Learn more ↗</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="nx-shell py-20 sm:py-28 lg:py-32">
+      <div data-reveal class="flex flex-col gap-5 border-b border-slate-200 pb-10 lg:flex-row lg:items-end lg:justify-between">
+        <div><p class="nx-eyebrow text-[#174de2]">Everything connected</p><h2 class="nx-h2 mt-4">The impact we’ve created for businesses</h2></div>
+        <p class="max-w-md text-sm leading-6 text-slate-500">A complete operating layer for the financial workflows that keep modern companies moving.</p>
+      </div>
+      <div class="grid divide-y divide-slate-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-3">
+        <template x-for="item in features" :key="item">
+          <article data-reveal class="px-0 py-8 sm:px-7 lg:px-8"><div class="nx-icon">↗</div><h3 class="mt-5 text-xl font-semibold" x-text="item"></h3><p class="mt-3 text-sm leading-6 text-slate-500">Save time and reduce errors with smart automated accounting.</p></article>
+        </template>
+      </div>
+    </section>
+
+    <section class="bg-[#f5f7fb] py-20 sm:py-28 lg:py-32">
+      <div class="nx-shell">
+        <div data-reveal class="grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-center">
+          <div><p class="nx-eyebrow text-[#174de2]">Three ways we save you both time and money</p><h2 class="nx-h2 mt-4">Simple controls. Immediate visibility. Less manual work.</h2><a href="#contact" class="nx-primary mt-8 inline-flex">Get Started ↗</a></div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <article class="nx-dark-card"><h3>Card control</h3><p>Instantly block transactions and merchants, or pause your card.</p></article>
+            <article class="nx-dark-card"><h3>Instant notifications</h3><p>Stay up-to-date with your account with helpful notifications.</p></article>
+            <article class="nx-dark-card"><h3>Industry leading security</h3><p>Stay secure with Face ID, fingerprint lock, and passkeys.</p></article>
+            <div class="overflow-hidden rounded-3xl"><img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68e6253f096261ae58b70853_Rectangle%2034626618.avif" class="h-full min-h-52 w-full object-cover" alt="Office"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="security" class="nx-shell py-20 sm:py-28 lg:py-32">
+      <div data-reveal class="mx-auto max-w-2xl text-center"><p class="nx-eyebrow text-[#174de2]">Client experiences</p><h2 class="nx-h2 mt-4">Client experiences that drive confidence</h2></div>
+      <div class="mt-12 flex flex-wrap justify-center gap-8 opacity-55 grayscale">
+        <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75a7f89eedbe6867b18_Logo%2017.svg" alt="Unicell" class="h-8 w-auto">
+        <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75b07892edafc505b40_Logo%2014.svg" alt="Walter" class="h-8 w-auto">
+        <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75ad2d425d6ea348e98_Logo%2015.svg" alt="Monosen" class="h-8 w-auto">
+        <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75af0f9371047fdfeee_Logo%2016.svg" alt="Overcut" class="h-8 w-auto">
+        <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75aee53b19b82a68aaf_Logo%2013.svg" alt="Primex" class="h-8 w-auto">
+        <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75aaa022f8bba17f005_Logo%2019.svg" alt="Boomers" class="h-8 w-auto">
+        <img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eff75b07892edafc505b3b_Logo%2018.svg" alt="Reverse" class="h-8 w-auto">
+      </div>
+      <div class="mt-14 grid gap-6 lg:grid-cols-[1.1fr_.9fr]">
+        <article data-reveal class="nx-quote-card"><img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68eedc4d2e3c2497a700864b_image.avif" alt="Client" class="h-14 w-14 rounded-full object-cover"><blockquote class="mt-8 text-2xl font-semibold leading-9">“Partnering with Neurex has been one of the best business decisions we've made. Their solutions have given us control over our finances, and their expertise and tools have optimized our workflows.”</blockquote><p class="mt-8 text-sm font-semibold">Courtney, Founder at Overcut</p></article>
+        <article data-reveal class="nx-quote-card bg-[#174de2] text-white"><p class="nx-eyebrow text-white/55">Built for modern teams</p><blockquote class="mt-8 text-2xl font-semibold leading-9">“Neurex's a super interesting way of marrying old ways (sheets) with new ways (AI) to get a magical tool.”</blockquote><div class="mt-10 flex items-center gap-3"><img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68e625bc6237b1d14e389a98_Rectangle%2034626634.avif" alt="Client" class="h-10 w-10 rounded-full object-cover"><span class="text-sm">Courtney · Overcut</span></div></article>
+      </div>
+    </section>
+
+    <section id="insights" class="bg-[#f5f7fb] py-20 sm:py-28 lg:py-32">
+      <div class="nx-shell">
+        <div data-reveal class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between"><div><p class="nx-eyebrow text-[#174de2]">Resources</p><h2 class="nx-h2 mt-4">Insights from business industry leaders</h2></div><a href="#contact" class="nx-outline w-fit">View more blogs ↗</a></div>
+        <div class="mt-12 grid gap-5 md:grid-cols-3">
+          <article data-reveal class="nx-blog-card"><img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68e64f326c0a70fabbd5e45b_Frame.svg" alt="" class="nx-blog-art"><p class="mt-6 text-[10px] font-bold uppercase tracking-[.14em] text-[#174de2]">Business · Corporate</p><h3 class="mt-3 text-xl font-semibold">Lack of visibility makes budget control difficult.</h3><p class="mt-4 text-xs text-slate-500">Darlene Robertson · Marketing Coordinator · 10 min read</p></article>
+          <article data-reveal class="nx-blog-card"><img src="https://cdn.prod.website-files.com/68d00020514c84ecf2846fef/68e64f3d557c2a08bea2ee41_Frame%20%281%29.svg" alt="" class="nx-blog-art"><p class="mt-6 text-[10px] font-bold uppercase tracking-[.14em] text-[#174de2]">Corporate · Customer</p><h3 class="mt-3 text-xl font-semibold">Customer Deal Acceleration Tactics to Shorten Your Sales Cycle</h3><p class="mt-4 text-xs text-slate-500">Darlene Robertson · Marketing Coordinator · 10 min read</p></article>
+          <article data-reveal class="nx-blog-card"><div class="nx-blog-placeholder">NEWS</div><p class="mt-6 text-[10px] font-bold uppercase tracking-[.14em] text-[#174de2]">Customer · News</p><h3 class="mt-3 text-xl font-semibold">Every sales team wants to close deals faster.</h3><p class="mt-4 text-xs text-slate-500">Darlene Robertson · Marketing Coordinator · 10 min read</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="nx-cta">
+      <div class="nx-shell py-20 sm:py-28 lg:py-32">
+        <div data-reveal class="mx-auto max-w-4xl text-center"><p class="nx-eyebrow text-white/50">Get started</p><h2 class="mt-5 text-[clamp(3.2rem,7vw,6.7rem)] font-semibold leading-[.94] tracking-[-.065em] text-white">Achieve more with simplicity and smart solutions</h2><p class="mx-auto mt-6 max-w-2xl text-sm leading-7 text-white/60">Whether you’re a startup or scaling enterprise, our platform empowers you to make better decisions and unlock new opportunities.</p><a href="#" class="nx-primary mt-8 inline-flex">Get started ↗</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#071126] text-white">
+    <div class="nx-shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5">
+      <div><a href="#top" class="flex items-center gap-2 text-lg font-semibold"><span class="nx-logo">N</span>neurex</a></div>
+      <div><p class="nx-footer-title">Overview</p><a href="#top">Home 01</a><a href="#">Home 02</a><a href="#">Home 03</a><a href="#">About</a></div>
+      <div><p class="nx-footer-title">Company</p><a href="#">Pricing 01</a><a href="#">Career</a><a href="#">Contact</a></div>
+      <div><p class="nx-footer-title">Resources</p><a href="#insights">Blog 01</a><a href="#">Blog 02</a><a href="#">Blog Single</a></div>
+      <div><p class="nx-footer-title">Utilities</p><a href="#login">Log in</a><a href="#">Sign Up</a><a href="#">Style guide</a></div>
+    </div>
+    <div class="border-t border-white/10"><div class="nx-shell flex flex-col gap-2 py-5 text-[10px] text-white/35 sm:flex-row sm:justify-between"><span>© All rights reserved.</span><span>Designed by Basecom · Powered by Webflow</span></div></div>
+  </footer>
+</div>
+<script type="module" src="./src/js/neurex-3.0.0.js"></script>
+</body>
+</html>
