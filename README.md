@@ -10,7 +10,9 @@ Outcome:
 ------------------------
 
 Source: https://neurex.webflow.io/home-01
+
 Outcome: 
-1. https://deputy-proxy.github.io/frontend/index-2.0.0.html
+1. https://deputy-proxy.github.io/frontend/index-2.0.1.html
+2. https://deputy-proxy.github.io/frontend/index-2.0.2.html
 
 
