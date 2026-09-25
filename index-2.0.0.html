@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Neurex-inspired business finance automation homepage reconstruction.">
+  <title>Neurex — Business growth automation</title>
+</head>
+<body>
+  <div x-data="neurexMenu" class="min-h-screen bg-white">
+    <header class="absolute inset-x-0 top-0 z-50 text-white">
+      <div class="neurex-shell flex h-[76px] items-center justify-between">
+        <a href="#top" class="flex items-center gap-2 text-sm font-semibold tracking-[-.03em]" aria-label="Neurex home">
+          <span class="grid h-7 w-7 place-items-center rounded-md bg-white text-[10px] font-black text-[#10225a]">N</span>
+          <span>Neurex</span>
+        </a>
+
+        <nav class="hidden items-center gap-7 text-[11px] font-medium text-white/75 lg:flex" aria-label="Primary navigation">
+          <a href="#solutions" class="transition hover:text-white">Solutions</a>
+          <a href="#impact" class="transition hover:text-white">Why Neurex</a>
+          <a href="#security" class="transition hover:text-white">Security</a>
+          <a href="#resources" class="transition hover:text-white">Resources</a>
+        </nav>
+
+        <div class="hidden items-center gap-4 lg:flex">
+          <a href="#login" class="text-[11px] font-medium text-white/80 hover:text-white">Log in</a>
+          <a href="#contact" class="rounded-full border border-white/20 bg-white/10 px-4 py-2.5 text-[11px] font-semibold backdrop-blur transition hover:bg-white hover:text-[#10225a]">Contact us</a>
+        </div>
+
+        <button type="button" class="grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-white/10 lg:hidden" @click="toggle()" :aria-expanded="open" aria-controls="neurex-mobile-nav" aria-label="Toggle navigation">
+          <span x-text="open ? '×' : '☰'"></span>
+        </button>
+      </div>
+
+      <div id="neurex-mobile-nav" x-cloak x-show="open" x-transition.opacity class="border-y border-white/10 bg-[#081633] px-5 py-5 lg:hidden">
+        <nav class="grid gap-1 text-sm" aria-label="Mobile navigation">
+          <a @click="close()" href="#solutions" class="rounded-xl px-4 py-3 hover:bg-white/10">Solutions</a>
+          <a @click="close()" href="#impact" class="rounded-xl px-4 py-3 hover:bg-white/10">Why Neurex</a>
+          <a @click="close()" href="#security" class="rounded-xl px-4 py-3 hover:bg-white/10">Security</a>
+          <a @click="close()" href="#resources" class="rounded-xl px-4 py-3 hover:bg-white/10">Resources</a>
+          <a @click="close()" href="#contact" class="mt-2 rounded-xl bg-white px-4 py-3 font-semibold text-[#10225a]">Contact us</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="neurex-hero relative overflow-hidden text-white">
+        <div class="neurex-grid absolute inset-0 opacity-40"></div>
+        <div class="neurex-orb left-[8%] top-32 h-24 w-24 bg-cyan-300/20 blur-2xl"></div>
+        <div class="neurex-orb right-[7%] top-24 h-44 w-44 bg-blue-300/20 blur-3xl"></div>
+
+        <div class="neurex-shell relative pt-28 pb-10 sm:pt-32 md:pt-36 lg:pt-40">
+          <div class="neurex-hero-copy grid gap-12 lg:grid-cols-[1fr_.86fr] lg:items-center">
+            <div>
+              <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[10px] font-medium text-white/70 backdrop-blur">
+                <span class="h-1.5 w-1.5 rounded-full bg-[#a7f3ff]"></span>
+                Finance automation for modern businesses
+              </div>
+              <h1 class="max-w-2xl text-[clamp(3.3rem,8vw,6.5rem)] font-semibold leading-[.94] tracking-[-.065em]">
+                Unlock your new business growth with Neurex.
+              </h1>
+              <p class="mt-7 max-w-lg text-sm leading-6 text-white/62 sm:text-base">
+                Built-in control and automation to all business spend, helping finance lead with confidence while employees spend every dollar wisely.
+              </p>
+              <div class="mt-8 flex flex-wrap items-center gap-4">
+                <a href="#contact" class="rounded-full bg-[#b7f35a] px-6 py-3 text-xs font-bold text-[#122044] shadow-lg shadow-blue-950/20 transition hover:-translate-y-0.5">Get Started</a>
+                <div class="flex items-center gap-3 text-[11px] text-white/70">
+                  <div class="flex -space-x-2">
+                    <span class="h-7 w-7 rounded-full border-2 border-[#1647b8] bg-[#f0c5a9]"></span>
+                    <span class="h-7 w-7 rounded-full border-2 border-[#1647b8] bg-[#6ca9d8]"></span>
+                    <span class="h-7 w-7 rounded-full border-2 border-[#1647b8] bg-[#e8b5cf]"></span>
+                  </div>
+                  <span><strong class="text-white">4.8/5</strong> · 2,000+ reviews</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="neurex-hero-visual relative">
+              <div class="neurex-glow absolute -inset-10"></div>
+              <div class="relative mx-auto max-w-xl rounded-[28px] border border-white/15 bg-white/10 p-2 shadow-2xl shadow-[#07102d]/50 backdrop-blur-sm">
+                <img class="neurex-photo h-[360px] w-full rounded-[22px] sm:h-[430px]" src="https://cdn.prod.website-files.com/5e593fb060cf877cf875dd1f/69193fc0d86ad3993dfb227d_2c7431be-5f55-4c5a-aa21-e91fce194bf5.webp" alt="Person using a smartphone and payment card">
+                <div data-float class="neurex-metric absolute -left-3 bottom-7 w-44 rounded-2xl p-4 text-[#0a1834] sm:-left-7">
+                  <div class="flex items-center justify-between text-[9px] font-medium text-slate-400"><span>Campaign Data</span><span>Details</span></div>
+                  <div class="mt-3 text-xl font-semibold">$60,570 <span class="text-[9px] font-medium text-emerald-500">Last 15 days</span></div>
+                  <div class="mt-3 grid grid-cols-2 gap-3 border-t border-slate-100 pt-3 text-[9px]"><span>Sales <b class="block text-sm text-slate-800">28k</b></span><span>Revenue <b class="block text-sm text-slate-800">50k</b></span></div>
+                </div>
+                <div data-float class="neurex-metric absolute -right-3 top-7 w-48 rounded-2xl p-4 text-[#0a1834] sm:-right-8">
+                  <div class="text-[9px] font-medium text-slate-400">Company Balance</div>
+                  <div class="mt-1 text-[9px] text-slate-400">Quarterly report</div>
+                  <div class="mt-2 text-xl font-semibold">$190,875 <span class="text-[9px] text-emerald-500">+25%</span></div>
+                  <div class="mt-3 space-y-2 text-[9px]"><div class="flex justify-between"><span>Marketing</span><b>$24,875</b></div><div class="flex justify-between"><span>Operations</span><b>$54,325</b></div><div class="flex justify-between"><span>Payroll</span><b>$71,675</b></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-14 border-t border-white/10 pt-7">
+            <p class="mb-5 text-[9px] uppercase tracking-[.16em] text-white/40">Trusted by 100+ companies worldwide</p>
+            <div class="neurex-logos grid grid-cols-2 gap-5 text-sm font-semibold text-white sm:grid-cols-3 lg:grid-cols-6">
+              <span>Walter</span><span>monosen</span><span>Overcut</span><span>Primex</span><span>Boomers</span><span>Finlet</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="impact" class="neurex-shell py-20 sm:py-28 lg:py-36">
+        <div class="neurex-reveal mx-auto max-w-2xl text-center">
+          <p class="text-[10px] font-bold uppercase tracking-[.16em] text-blue-600">The impact we've created</p>
+          <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-[-.05em] sm:text-5xl">The impact we’ve created for businesses</h2>
+          <p class="mx-auto mt-5 max-w-xl text-sm leading-6 text-slate-500">A connected finance stack gives teams more control, fewer manual tasks and a clearer view of every dollar.</p>
+        </div>
+
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="neurex-reveal neurex-card rounded-2xl bg-[#f5f8fc] p-6"><div class="text-4xl font-semibold tracking-[-.05em]"><span data-count="99">0</span>%</div><p class="mt-2 text-xs font-medium text-slate-500">Annual efficiency savings</p></article>
+          <article class="neurex-reveal neurex-card rounded-2xl bg-[#f5f8fc] p-6"><div class="text-4xl font-semibold tracking-[-.05em]"><span data-count="90">0</span>M</div><p class="mt-2 text-xs font-medium text-slate-500">Yearly efficiency gains</p></article>
+          <article class="neurex-reveal neurex-card rounded-2xl bg-[#f5f8fc] p-6"><div class="text-4xl font-semibold tracking-[-.05em]"><span data-count="100">0</span>%</div><p class="mt-2 text-xs font-medium text-slate-500">Goal completion rate</p></article>
+          <article class="neurex-reveal neurex-card rounded-2xl bg-[#f5f8fc] p-6"><div class="text-4xl font-semibold tracking-[-.05em]"><span data-count="12">0</span>+</div><p class="mt-2 text-xs font-medium text-slate-500">Key yearly savings</p></article>
+        </div>
+      </section>
+
+      <section id="solutions" class="bg-[#f6f8fc] py-20 sm:py-28">
+        <div class="neurex-shell">
+          <div class="neurex-reveal max-w-2xl">
+            <p class="text-[10px] font-bold uppercase tracking-[.16em] text-blue-600">Everything in one place</p>
+            <h2 class="mt-4 text-4xl font-semibold tracking-[-.05em] sm:text-5xl">One platform for all your business spending.</h2>
+            <p class="mt-5 text-sm leading-6 text-slate-500">Automate repetitive finance work while giving your team the controls and visibility they need.</p>
+          </div>
+
+          <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <article class="neurex-reveal neurex-card rounded-2xl bg-white p-7"><div class="neurex-icon">↗</div><h3 class="mt-8 text-lg font-semibold">Accounts Payable</h3><p class="mt-3 text-sm leading-6 text-slate-500">Automate invoice collection, approvals and payments without chasing paperwork.</p><a href="#contact" class="mt-6 inline-block text-xs font-semibold text-blue-600">Learn more →</a></article>
+            <article class="neurex-reveal neurex-card rounded-2xl bg-white p-7"><div class="neurex-icon">⌁</div><h3 class="mt-8 text-lg font-semibold">Procurement</h3><p class="mt-3 text-sm leading-6 text-slate-500">Give every purchase a clear owner, policy and approval path from request to receipt.</p><a href="#contact" class="mt-6 inline-block text-xs font-semibold text-blue-600">Learn more →</a></article>
+            <article class="neurex-reveal neurex-card rounded-2xl bg-white p-7"><div class="neurex-icon">$</div><h3 class="mt-8 text-lg font-semibold">Expense Management</h3><p class="mt-3 text-sm leading-6 text-slate-500">Capture receipts and reimburse employees while keeping finance in control.</p><a href="#contact" class="mt-6 inline-block text-xs font-semibold text-blue-600">Learn more →</a></article>
+            <article class="neurex-reveal neurex-card rounded-2xl bg-white p-7"><div class="neurex-icon">▣</div><h3 class="mt-8 text-lg font-semibold">Corporate Cards</h3><p class="mt-3 text-sm leading-6 text-slate-500">Issue flexible cards with spending limits, merchant controls and instant visibility.</p><a href="#contact" class="mt-6 inline-block text-xs font-semibold text-blue-600">Learn more →</a></article>
+            <article class="neurex-reveal neurex-card rounded-2xl bg-white p-7"><div class="neurex-icon">◎</div><h3 class="mt-8 text-lg font-semibold">Accounting Automation</h3><p class="mt-3 text-sm leading-6 text-slate-500">Keep financial data organized with workflows designed around your accounting stack.</p><a href="#contact" class="mt-6 inline-block text-xs font-semibold text-blue-600">Learn more →</a></article>
+            <article class="neurex-reveal neurex-card rounded-2xl bg-white p-7"><div class="neurex-icon">✦</div><h3 class="mt-8 text-lg font-semibold">Neurex Intelligence</h3><p class="mt-3 text-sm leading-6 text-slate-500">Turn transaction data into practical signals that help finance teams act sooner.</p><a href="#contact" class="mt-6 inline-block text-xs font-semibold text-blue-600">Learn more →</a></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="neurex-shell py-20 sm:py-28 lg:py-36">
+        <div class="neurex-reveal grid gap-10 lg:grid-cols-[.82fr_1.18fr] lg:items-center">
+          <div>
+            <p class="text-[10px] font-bold uppercase tracking-[.16em] text-blue-600">Smarter control</p>
+            <h2 class="mt-4 text-4xl font-semibold leading-tight tracking-[-.05em] sm:text-5xl">Three ways we save you both time and money.</h2>
+            <p class="mt-5 max-w-md text-sm leading-6 text-slate-500">Spend less time checking transactions and more time making decisions that move the business forward.</p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-3">
+            <article class="neurex-dark-card rounded-2xl p-6 text-white"><div class="text-2xl">⌁</div><h3 class="mt-14 font-semibold">Card control</h3><p class="mt-3 text-xs leading-5 text-white/55">Set limits and rules before spend happens.</p></article>
+            <article class="rounded-2xl bg-[#eaf1ff] p-6"><div class="text-2xl text-blue-600">◌</div><h3 class="mt-14 font-semibold">Instant notifications</h3><p class="mt-3 text-xs leading-5 text-slate-500">Know when important transactions happen.</p></article>
+            <article class="rounded-2xl bg-[#dff8f0] p-6"><div class="text-2xl text-emerald-600">⌾</div><h3 class="mt-14 font-semibold">Built-in security</h3><p class="mt-3 text-xs leading-5 text-slate-500">Protect access with passkeys and biometrics.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="security" class="neurex-shell pb-20 sm:pb-28">
+        <div class="neurex-dark-card neurex-reveal relative overflow-hidden rounded-[30px] px-6 py-12 text-white sm:px-10 lg:px-16 lg:py-16">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(66,129,255,.42),transparent_34%)]"></div>
+          <div class="relative grid gap-12 lg:grid-cols-[1fr_.8fr] lg:items-center">
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-[.16em] text-[#86b5ff]">Security first</p>
+              <h2 class="mt-4 max-w-2xl text-4xl font-semibold tracking-[-.05em] sm:text-5xl">Industry-leading security for every transaction.</h2>
+              <p class="mt-5 max-w-xl text-sm leading-6 text-white/55">Keep sensitive financial information protected with layered controls, secure authentication and clear access policies.</p>
+              <div class="mt-8 grid gap-3 sm:grid-cols-2">
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4"><strong class="text-sm">Face ID & passkeys</strong><p class="mt-1 text-xs text-white/45">Fast, secure account access.</p></div>
+                <div class="rounded-xl border border-white/10 bg-white/5 p-4"><strong class="text-sm">Role-based controls</strong><p class="mt-1 text-xs text-white/45">The right access for every team.</p></div>
+              </div>
+            </div>
+            <div class="mx-auto w-full max-w-sm rounded-[26px] border border-white/10 bg-[#0e2b68] p-4 shadow-2xl">
+              <div class="rounded-[20px] bg-white p-5 text-[#0a1834]">
+                <div class="flex items-center justify-between"><span class="text-xs font-semibold">Security center</span><span class="h-2 w-2 rounded-full bg-emerald-500"></span></div>
+                <div class="mt-8 rounded-2xl bg-[#f2f6fb] p-5 text-center"><div class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-blue-600 text-2xl text-white">⌾</div><p class="mt-4 text-sm font-semibold">Protected</p><p class="mt-1 text-[10px] text-slate-400">All systems operational</p></div>
+                <div class="mt-5 space-y-3 text-[10px]"><div class="flex justify-between"><span>Authentication</span><b class="text-emerald-600">Secure</b></div><div class="flex justify-between"><span>Transactions</span><b class="text-emerald-600">Monitored</b></div><div class="flex justify-between"><span>Permissions</span><b class="text-emerald-600">Enforced</b></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resources" class="bg-[#f6f8fc] py-20 sm:py-28">
+        <div class="neurex-shell">
+          <div class="neurex-reveal flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <div><p class="text-[10px] font-bold uppercase tracking-[.16em] text-blue-600">Resources</p><h2 class="mt-4 text-4xl font-semibold tracking-[-.05em] sm:text-5xl">Built for the way finance works now.</h2></div>
+            <a href="#contact" class="text-xs font-semibold text-blue-600">Explore resources →</a>
+          </div>
+          <div class="mt-12 grid gap-4 md:grid-cols-3">
+            <article class="neurex-reveal overflow-hidden rounded-2xl bg-white"><div class="h-44 bg-[linear-gradient(135deg,#d7e9ff,#557de7)]"></div><div class="p-6"><p class="text-[9px] font-bold uppercase tracking-[.14em] text-blue-600">Guide</p><h3 class="mt-3 text-lg font-semibold">The modern finance team's playbook</h3><p class="mt-2 text-xs leading-5 text-slate-500">Build stronger spend controls without slowing your people down.</p></div></article>
+            <article class="neurex-reveal overflow-hidden rounded-2xl bg-white"><div class="h-44 bg-[linear-gradient(135deg,#c8f3df,#4bb89a)]"></div><div class="p-6"><p class="text-[9px] font-bold uppercase tracking-[.14em] text-blue-600">Insights</p><h3 class="mt-3 text-lg font-semibold">Where automation creates leverage</h3><p class="mt-2 text-xs leading-5 text-slate-500">A practical look at the finance workflows worth automating first.</p></div></article>
+            <article class="neurex-reveal overflow-hidden rounded-2xl bg-white"><div class="h-44 bg-[linear-gradient(135deg,#efe0ff,#8c6de7)]"></div><div class="p-6"><p class="text-[9px] font-bold uppercase tracking-[.14em] text-blue-600">Case study</p><h3 class="mt-3 text-lg font-semibold">From fragmented spend to one clear view</h3><p class="mt-2 text-xs leading-5 text-slate-500">See how connected controls help growing teams move faster.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="neurex-shell py-20 sm:py-28 lg:py-36">
+        <div class="neurex-hero relative overflow-hidden rounded-[30px] px-6 py-14 text-white sm:px-10 lg:px-16 lg:py-20">
+          <div class="neurex-grid absolute inset-0 opacity-25"></div>
+          <div class="relative grid gap-10 lg:grid-cols-[1fr_.7fr] lg:items-end">
+            <div class="neurex-reveal">
+              <p class="text-[10px] font-bold uppercase tracking-[.16em] text-white/50">Ready when you are</p>
+              <h2 class="mt-4 max-w-3xl text-5xl font-semibold leading-[.98] tracking-[-.06em] sm:text-6xl">Take control of your business spend.</h2>
+            </div>
+            <form class="neurex-reveal rounded-2xl bg-white p-5 text-[#071126] sm:p-6" @submit.prevent>
+              <label class="block border-b border-slate-200 py-3"><span class="sr-only">Work email</span><input required type="email" class="w-full bg-transparent text-sm outline-none placeholder:text-slate-400" placeholder="Work email"></label>
+              <label class="block border-b border-slate-200 py-3"><span class="sr-only">Company</span><input class="w-full bg-transparent text-sm outline-none placeholder:text-slate-400" placeholder="Company"></label>
+              <button class="mt-5 w-full rounded-full bg-[#123fc5] px-5 py-3 text-xs font-bold text-white transition hover:bg-[#0b329f]">Get Started</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white">
+      <div class="neurex-shell flex flex-col gap-8 py-10 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-2 text-sm font-semibold"><span class="grid h-7 w-7 place-items-center rounded-md bg-[#10225a] text-[10px] font-black text-white">N</span> Neurex</div>
+        <div class="flex flex-wrap gap-x-7 gap-y-3 text-[11px] text-slate-500"><a href="#solutions">Solutions</a><a href="#impact">Why Neurex</a><a href="#security">Security</a><a href="#resources">Resources</a><a href="#contact">Contact</a></div>
+        <p class="text-[10px] text-slate-400">© 2026 Neurex · index-2.0.0</p>
+      </div>
+    </footer>
+  </div>
+  <script type="module" src="./src/js/neurex-2.0.0.js"></script>
+</body>
+</html>
