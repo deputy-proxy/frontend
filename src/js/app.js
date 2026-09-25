@@ -1,4 +1,4 @@
-import './src/css/app.css'
+import '../css/app.css'
 import Alpine from 'alpinejs'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
