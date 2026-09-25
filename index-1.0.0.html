@@ -260,7 +260,7 @@
               ['Jason Lee','Operations Lead','Thoughtful design and development made collaboration efficient, enjoyable and stress free.']
             ]" :key="quote[0]">
               <article class="min-w-[86vw] snap-start rounded-[1.5rem] bg-[#e7e3da] p-7 sm:min-w-[27rem] md:p-9">
-                <div class="mb-16 flex gap-1" aria-label="5 out of 5 stars"><span x-for="i in 5">★</span></div>
+                <div class="mb-16 flex gap-1" aria-label="5 out of 5 stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                 <blockquote class="text-2xl font-semibold leading-9" x-text="'“' + quote[2] + '”'"></blockquote>
                 <footer class="mt-8 border-t border-black/10 pt-5"><p class="font-bold" x-text="quote[0]"></p><p class="mt-1 text-xs uppercase tracking-[.1em] text-black/45" x-text="quote[1]"></p></footer>
               </article>
@@ -304,7 +304,7 @@
                   <span class="text-lg font-semibold md:text-xl" x-text="item[0]"></span>
                   <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black/15 text-xl" x-text="active === index ? '−' : '+'"></span>
                 </button>
-                <div x-show="active === index" x-collapse class="max-w-2xl pr-12 pt-4 text-sm leading-7 text-black/55"><p x-text="item[1]"></p></div>
+                <div x-show="active === index" x-transition.opacity.duration.200ms class="max-w-2xl pr-12 pt-4 text-sm leading-7 text-black/55"><p x-text="item[1]"></p></div>
               </div>
             </template>
           </div>
