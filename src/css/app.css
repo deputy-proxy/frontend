@@ -12,7 +12,7 @@
   --color-sky: #79d8ff;
 }
 
-:root {
+[x-cloak] { display: none !important; }\n\n:root {
   color-scheme: light;
   font-family: var(--font-body);
   background: var(--color-paper);
