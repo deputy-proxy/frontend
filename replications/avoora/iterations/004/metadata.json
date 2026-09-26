@@ -1,0 +1,21 @@
+{
+  "replication_id": "avoora",
+  "kind": "iteration",
+  "iteration": 4,
+  "url": "https://deputy-proxy.github.io/frontend/avoora.html",
+  "captured_at": "2026-09-26T09:28:01.789Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 18944
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/avoora/iterations/004/screenshot.png"
+  }
+}
