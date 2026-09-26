@@ -6806,12 +6806,19 @@ figure {
   font-size: var(--_font-sizes---paragraphs--default);
   line-height: var(--line-height--regular);
   text-decoration: none;
-  transition-property: none;
   position: relative;
+  display: block;
+  overflow: hidden;
 }
 
 .link-animation-wrapper:hover {
   color: var(--font--colors--paragraph-dark);
+}
+
+.link-animation-text,
+.link-animation-text-absolute {
+  display: block;
+  transition: transform .3s cubic-bezier(.22, 1, .36, 1);
 }
 
 .link-animation-text-absolute {
@@ -6819,6 +6826,16 @@ figure {
   color: var(--font--colors--accent-color);
   position: absolute;
   inset: 0;
+  transform: translateY(100%);
+  visibility: visible;
+}
+
+.link-animation-wrapper:hover .link-animation-text {
+  transform: translateY(-100%);
+}
+
+.link-animation-wrapper:hover .link-animation-text-absolute {
+  transform: translateY(0);
 }
 
 .children-perspective-1000px {
@@ -9846,9 +9863,6 @@ figure {
   }
 }
 
-/* Screenshot-stable settled state: the reference capture represents completed reveal animations. */
-[data-w-id] { opacity: 1 !important; transform: none !important; filter: none !important; }
-
 /* Source slider: Webflow presents four portfolio cards at desktop in the initial slide. */
 .slider-mask {
   display: grid !important;
@@ -9881,9 +9895,6 @@ figure {
 }
 
 /* Webflow's initialized state hides the duplicate absolute link labels until hover. */
-.link-animation-wrapper .link-animation-text-absolute {
-  visibility: hidden !important;
-}
 
 /* Alpine-controlled mobile navigation state. */
 @media (max-width: 991px) {
