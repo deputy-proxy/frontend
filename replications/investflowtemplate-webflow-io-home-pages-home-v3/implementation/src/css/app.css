@@ -9878,3 +9878,8 @@ figure {
     display: none !important;
   }
 }
+
+/* Webflow's initialized state hides the duplicate absolute link labels until hover. */
+.link-animation-wrapper .link-animation-text-absolute {
+  visibility: hidden !important;
+}
