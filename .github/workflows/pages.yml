@@ -36,6 +36,7 @@ jobs:
           mkdir -p dist/replications
           cp -R replications/verdentix dist/replications/
           cp -R replications/investflowtemplate-webflow-io-home-pages-home-v3 dist/replications/
+          cp -R replications/neurex dist/replications/
           # Vite owns the built Kora implementation. Copy only non-build artifacts so
           # the processed HTML keeps its generated CSS/JS asset references.
           mkdir -p dist/replications/kora
