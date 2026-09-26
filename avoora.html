@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Avoora creative digital studio">
+  <title>Avoora® | Creative Digital Studio</title>
+</head>
+<body>
+  <div x-data="site">
+    <header class="site-header" :class="{ scrolled: scrolled }">
+      <div class="container nav">
+        <a class="brand" href="#top">Avoora<span>®</span></a>
+        <nav class="desktop-nav">
+          <a href="#studio">Studio</a><a href="#work">Work</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-meta"><span>NYC · EST. 2026</span><a class="nav-cta" href="#contact">Let's talk ↗</a></div>
+        <button class="menu-btn" @click="menu=!menu" :aria-expanded="menu" aria-label="Open navigation"><span></span><span></span></button>
+      </div>
+      <div x-cloak x-show="menu" x-transition class="mobile-nav">
+        <a @click="menu=false" href="#studio">Studio</a><a @click="menu=false" href="#work">Work</a><a @click="menu=false" href="#services">Services</a><a @click="menu=false" href="#pricing">Pricing</a><a @click="menu=false" href="#contact">Contact</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero container">
+        <div class="hero-top"><span>Creative studio based in NY</span><span>Est. 2026</span><span class="availability"><i></i> Accepting Projects</span></div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Award-winning creative digital studio</p>
+            <h1>We make digital <em>matter.</em></h1>
+            <p class="hero-lead">Strategy, design and development for ambitious brands that want to move people, build trust and create measurable growth.</p>
+            <a class="circle-link" href="#work">Explore<br>our work <b>↘</b></a>
+          </div>
+          <div class="hero-image">
+            <img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69c2c8febe5ed42eae483183_Hero%201%20Profile.webp" alt="Avoora founder">
+            <div class="hero-caption"><span>Mitchel Jonson</span><small>Founder &amp; CEO</small></div>
+          </div>
+        </div>
+        <div class="hero-services">
+          <div><span>(01)</span><b>UI UX Design</b></div><div><span>(02)</span><b>Web Development</b></div><div><span>(03)</span><b>Brand Identity</b></div><div><span>(04)</span><b>Growth Ops</b></div><div><span>(05)</span><b>Content Strategy</b></div>
+        </div>
+      </section>
+
+      <section id="studio" class="section studio">
+        <div class="container">
+          <div class="section-head split"><p class="eyebrow">About us</p><div><h2>We collaborate with forward-thinking brands.<br><span>The result — creative impact that lasts.</span></h2><p>We combine strategic thinking, sharp visual systems and technically rigorous builds to create digital experiences that feel as good as they perform.</p></div></div>
+          <div class="studio-images">
+            <figure><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69c613ffb60be7503e4d5329_About%2001.webp" alt=""><figcaption>Strategy meets culture.</figcaption></figure>
+            <figure><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69c61401fe1af5d6a6ace000_About%2002.webp" alt=""><figcaption>Designed for attention.</figcaption></figure>
+          </div>
+          <div class="stats">
+            <div><strong>$<span data-counter="74">0</span>M</strong><small>Driving growth with strategy.</small></div>
+            <div><strong><span data-counter="95">0</span>%</strong><small>Building trusted partnerships.</small></div>
+            <div><strong>+<span data-counter="225">0</span></strong><small>Delivering industry success.</small></div>
+            <div><strong><span data-counter="92">0</span>%</strong><small>Turning traffic into growth.</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="section work">
+        <div class="container">
+          <div class="section-head"><p class="eyebrow">Work portfolio</p><h2>Featured Work</h2><a href="#" class="text-link">View all work ↗</a></div>
+          <div class="work-list">
+            <article class="work-card"><div class="work-media"><div class="abstract astra"></div><span>(01)</span></div><div><h3>Astra Co</h3><p>Corporate</p></div></article>
+            <article class="work-card"><div class="work-media"><div class="abstract pixel"></div><span>(02)</span></div><div><h3>Pixel Forge</h3><p>Branding</p></div></article>
+            <article class="work-card"><div class="work-media"><div class="abstract echo"></div><span>(03)</span></div><div><h3>Echo Spark</h3><p>SaaS</p></div></article>
+            <article class="work-card"><div class="work-media"><div class="abstract nova"></div><span>(04)</span></div><div><h3>Nova Shift</h3><p>Startup</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section services">
+        <div class="container">
+          <div class="section-head split"><p class="eyebrow">Our expertise</p><div><h2>Service that<br><span>moves business.</span></h2><p>Five connected disciplines built around clarity, performance and the details people remember.</p></div></div>
+          <div class="service-grid">
+            <article><span>(01)</span><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69cb75713696164fd92134d2_Service%201.webp" alt=""><h3>UI UX Design</h3><p>We design intuitive interfaces that improve usability, guide users and increase engagement.</p><ul><li>User Research</li><li>UX Flows</li><li>Usability Testing</li><li>Interface Design</li></ul></article>
+            <article><span>(02)</span><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69cb7571119eb75f88c94957_Service%202.webp" alt=""><h3>Web Development</h3><p>Fast responsive websites ensuring scalability, performance and great experiences across devices.</p><ul><li>Webflow Builds</li><li>CMS Integration</li><li>Performance</li><li>Design Language</li></ul></article>
+            <article><span>(03)</span><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69cb7571c06b2da6e09c0b7e_Service%203.webp" alt=""><h3>Brand Identity</h3><p>Brand systems that communicate values, build trust and give businesses a recognizable point of view.</p><ul><li>Logo Design</li><li>Visual Identity</li><li>Brand Guidelines</li><li>Design Language</li></ul></article>
+            <article><span>(04)</span><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69cb7571993b487b77d65301_Service%204.webp" alt=""><h3>Growth Ops</h3><p>We optimize websites through testing, insights and improvements across conversion, accessibility and speed.</p><ul><li>Speed Optimization</li><li>Technical SEO</li><li>Core Web Vitals</li><li>SEO Structure</li></ul></article>
+            <article><span>(05)</span><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69cb7570637acb66a41a328b_Service%205.webp" alt=""><h3>Content Strategy</h3><p>Content structures that improve engagement, consistency and long-term brand communication.</p><ul><li>Content Strategy</li><li>Pixel Perfect Structure</li><li>Content Planning</li><li>Messaging</li></ul></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="section pricing">
+        <div class="container">
+          <div class="section-head split"><p class="eyebrow">Pricing</p><div><h2>Membership Plan</h2><p>Simple monthly access to a senior creative team. Choose the velocity your business needs.</p></div></div>
+          <div class="pricing-grid">
+            <article><span class="plan-label">Starter Plan</span><h3>$1,499<span>/Monthly</span></h3><p>First Mockup in 96hrs</p><ul><li>Single Project Queue</li><li>Basic Design Iterations</li><li>Assigned Designer</li><li>Ideal for landing pages and early-stage ideas.</li></ul><small>*Minimum commitment — 1 month</small><a href="#contact">Select plan ↗</a></article>
+            <article class="featured"><span class="badge">Popular</span><span class="plan-label">Growth Plan</span><h3>$2,999<span>/Monthly</span></h3><p>First Mockup in 48hrs</p><ul><li>Dual Project Queue</li><li>Advanced Design Iterations</li><li>Senior Designer Access</li><li>Ideal for growing brands and launches.</li></ul><small>*Minimum commitment — 3 month</small><a href="#contact">Select plan ↗</a></article>
+            <article><span class="plan-label">Scale Plan</span><h3>$5,499<span>/Monthly</span></h3><p>First Mockup in 24hrs</p><ul><li>Unlimited Project Queue</li><li>Unlimited Design Iterations</li><li>Dedicated Design Team</li><li>Ideal for enterprises and high-volume workloads.</li></ul><small>*Minimum commitment — 6 months</small><a href="#contact">Select plan ↗</a></article>
+          </div>
+          <div class="pricing-image"><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69a2c41c8af5b0153365c09a_Home%201%20Pricing%20Image.webp" alt=""><span>Pause or cancel whenever you wish.</span></div>
+        </div>
+      </section>
+
+      <section class="section testimonials">
+        <div class="container">
+          <div class="section-head"><p class="eyebrow">Testimonial</p><h2>Client Stories</h2><span class="swipe">Swipe for more →</span></div>
+          <div class="testimonial-track">
+            <article><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69a2c80b31afe1de228046d3_Testimonial%2001.webp" alt=""><div><p>“AVOORA delivered a clean website improving usability, brand clarity and conversions worldwide.”</p><b>Sarah Mitchell</b><small>Marketing Director</small></div></article>
+            <article><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69a2c80b0df1b09890afd720_Testimonial%2002.webp" alt=""><div><p>“Clear communication and fast delivery helped our team launch confidently with a scalable website.”</p><b>Daniel Ross</b><small>Startup Founder</small></div></article>
+            <article><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69a2c80bdeb7dd03eb9e01fe_Testimonial%2003.webp" alt=""><div><p>“They transformed ideas into a modern website users love, trust and use daily.”</p><b>Emily Carter</b><small>Product Manager</small></div></article>
+            <article><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69a2c80bc3c6f67024959d7c_Testimonial%2004.webp" alt=""><div><p>“Thoughtful design and development made collaboration efficient, enjoyable and stress free.”</p><b>Jason Lee</b><small>Operations Lead</small></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section awards">
+        <div class="container">
+          <div class="section-head split"><p class="eyebrow">Awards</p><div><h2>Awards Achievement</h2><p>Recognition for thoughtful strategy, visual systems and digital experiences.</p></div></div>
+          <div class="award-list">
+            <article><span>01</span><div><b>Flowframe Showcase — Agency Website</b><small>Featured Project</small></div><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69a302fe2066c4c753aee8e8_Award%201.webp" alt=""><strong>12×</strong></article>
+            <article><span>02</span><div><b>PixelCraft Design — Digital Experience</b><small>Honourable Mention</small></div><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69a302fe6550c5905e7a8a91_Award%202.webp" alt=""><strong>09×</strong></article>
+            <article><span>03</span><div><b>WebHonors — Creative Studio</b><small>Site of the Day</small></div><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69a302fe70335d2e535381c8_Award%203.webp" alt=""><strong>04×</strong></article>
+            <article><span>04</span><div><b>Creatix Portfolio — UI/UX Case Study</b><small>Featured Gallery</small></div><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69a302fefaa8e07108b166b0_Award%204.webp" alt=""><strong>16×</strong></article>
+            <article><span>05</span><div><b>AgencyRank — Design Agency</b><small>Top Creative Agency</small></div><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69a302fe92d38e0f9f69232b_Award%205.webp" alt=""><strong>3×</strong></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section process">
+        <div class="container">
+          <div class="section-head split"><p class="eyebrow">Working process</p><div><h2>How We Work</h2><p>Four focused steps keep strategy, creative direction and execution moving together.</p></div></div>
+          <div class="process-grid">
+            <article><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69c7b241960b525c3ded9b1a_1%20Step%2001.webp" alt=""><span>(STEP - 01)</span><h3>Discover goals</h3><p>We research business needs, users, competitors and scope thoroughly.</p></article>
+            <article><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69c7b24106d9a793f9b3f60a_1%20Step%2002.webp" alt=""><span>(STEP - 02)</span><h3>Plan strategy</h3><p>We define structure, timelines, priorities and requirements clearly together.</p></article>
+            <article><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69c7b2419a45cdc736bf52ee_1%20Step%2003.webp" alt=""><span>(STEP - 03)</span><h3>Design solutions</h3><p>We craft intuitive interfaces focused on clarity, usability and consistency.</p></article>
+            <article><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69c7b2425336d64a45850714_1%20Step%2004.webp" alt=""><span>(STEP - 04)</span><h3>Build website</h3><p>We develop responsive, fast websites using scalable tools.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cases">
+        <div class="container">
+          <div class="section-head"><p class="eyebrow">Performance</p><h2>Case Studies</h2></div>
+          <div class="case-list">
+            <article><span>CASE(01)</span><div><h3>Conversion-Led Digital Optimization</h3><strong>Increased user engagement by 62% within eight weeks</strong><p>We redesigned a fintech startup’s digital identity, improving clarity, trust and usability across platforms for scalable growth.</p><a href="#">Learn More ↗</a></div><b>62%</b></article>
+            <article><span>CASE(02)</span><div><h3>Performance-Driven Reinvention</h3><strong>Achieved 48% lower bounce rate across all key pages</strong><p>We rebuilt a SaaS marketing site in Webflow, optimizing performance, structure and conversion-focused layouts.</p><a href="#">Learn More ↗</a></div><b>48%</b></article>
+            <article><span>CASE(03)</span><div><h3>Experience-Led Digital Acceleration</h3><strong>Core Web scores improved by 71% in weeks</strong><p>We crafted high-impact landing pages aligned with user psychology, brand storytelling and strategic messaging.</p><a href="#">Learn More ↗</a></div><b>71%</b></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq">
+        <div class="container">
+          <div class="section-head split"><p class="eyebrow">FAQ'S</p><div><h2>Have Question</h2><p>The questions everyone asks before they hire a creative team.</p></div></div>
+          <div class="faq-layout"><div class="faq-image"><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69a2e041df0ae901702974ec_Home%201%20FAQ%20Image.webp" alt=""><span>Still have any Question?</span></div><div class="faq-list">
+            <template x-for="(item,i) in faqs" :key="i"><div class="faq-item"><button @click="faq=i===faq?null:i" :aria-expanded="faq===i"><span><small>Q-0<span x-text="i+1"></span></small><b x-text="item[0]"></b></span><i x-text="faq===i?'−':'+'"></i></button><div x-show="faq===i" x-transition><p x-text="item[1]"></p></div></div></template>
+          </div></div>
+        </div>
+      </section>
+
+      <section class="section blog">
+        <div class="container">
+          <div class="section-head"><p class="eyebrow">Blog</p><h2>Latest Article</h2></div>
+          <div class="blog-grid">
+            <article><div class="blog-art b1"></div><small>Webflow · 10 Feb 26 · 5 min read</small><h3>Building Scalable Websites Using Webflow</h3><p>Jake Miller · Webflow Developer</p><a href="#">Learn More ↗</a></article>
+            <article><div class="blog-art b2"></div><small>Branding · 10 Feb 26 · 5 min read</small><h3>Modern Branding Essentials</h3><p>Digital Products</p><a href="#">Learn More ↗</a></article>
+            <article><div class="blog-art b3"></div><small>Systems · 10 Feb 26 · 7 min read</small><h3>Design Systems That Scale Super Effectively</h3><p>Digital Products</p><a href="#">Learn More ↗</a></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="container">
+          <div class="contact-grid">
+            <div><p class="eyebrow">Let's Talk</p><h2>Let's make<br><em>something</em><br>great.</h2><img src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69ce260749d7110937223c7f_CTA%20Picture.webp" alt=""></div>
+            <div class="contact-form"><p>Got a question, challenge, or idea? Fill out the form — we’ll get back to you shortly.</p><form @submit.prevent><input required placeholder="Full Name"><input required type="email" placeholder="E-Mail"><input placeholder="Company name"><textarea placeholder="Tell us about your project"></textarea><button>Send inquiry ↗</button></form></div>
+          </div>
+          <div class="contact-meta"><div><small>What we offer</small><p>UI UX Design<br>Web Development<br>Brand Identity<br>Growth Ops<br>Content Strategy</p></div><div><small>E-Mail</small><p>info.avoora@agency.com</p></div><div><small>Office</small><p>452 Riverside Dr,<br>Apt 1C, New York, NY 10027</p></div></div>
+        </div>
+      </section>
+    </main>
+
+    <footer><div class="container footer-main"><div class="footer-brand">Avoora®</div><div class="footer-note">Creative digital studio</div><div>© 2026 AVOORA</div></div><div class="footer-marquee"><span>DESIGN · DEVELOPMENT · BRANDING · STRATEGY · DESIGN · DEVELOPMENT · BRANDING · STRATEGY ·</span></div></footer>
+  </div>
+  <script type="module" src="./src/js/avoora.js"></script>
+</body>
+</html>
