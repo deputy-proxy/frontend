@@ -1,0 +1,21 @@
+{
+  "replication_id": "stripe",
+  "kind": "iteration",
+  "iteration": 3,
+  "url": "https://deputy-proxy.github.io/frontend/replications/stripe/implementation/index.html",
+  "captured_at": "2026-09-26T21:51:31.121Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 1080
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/stripe/iterations/003/screenshot.png"
+  }
+}
