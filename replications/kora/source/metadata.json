@@ -1,0 +1,21 @@
+{
+  "replication_id": "kora",
+  "kind": "source",
+  "iteration": 0,
+  "url": "https://kora.framer.media/",
+  "captured_at": "2026-09-26T20:29:51.944Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 25946
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/kora/source/screenshot.png"
+  }
+}
