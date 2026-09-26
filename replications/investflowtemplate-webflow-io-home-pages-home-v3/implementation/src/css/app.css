@@ -9847,3 +9847,34 @@ figure {
 
 /* Screenshot-stable settled state: the reference capture represents completed reveal animations. */
 [data-w-id] { opacity: 1 !important; transform: none !important; filter: none !important; }
+
+/* Source slider: Webflow presents four portfolio cards at desktop in the initial slide. */
+.slider-mask {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+  overflow: visible !important;
+}
+.slider-mask ._4-items-slide {
+  width: auto !important;
+  min-width: 0 !important;
+}
+.slider-mask ._4-items-slide:nth-child(n+5) {
+  display: none !important;
+}
+@media (max-width: 991px) {
+  .slider-mask {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .slider-mask ._4-items-slide:nth-child(n+3) {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .slider-mask {
+    grid-template-columns: 1fr !important;
+  }
+  .slider-mask ._4-items-slide:nth-child(n+2) {
+    display: none !important;
+  }
+}
