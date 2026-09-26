@@ -9844,3 +9844,6 @@ figure {
     grid-column: span 1 / span 1;
   }
 }
+
+/* Screenshot-stable settled state: the reference capture represents completed reveal animations. */
+[data-w-id] { opacity: 1 !important; transform: none !important; filter: none !important; }
