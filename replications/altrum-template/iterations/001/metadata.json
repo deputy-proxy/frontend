@@ -1,0 +1,21 @@
+{
+  "replication_id": "altrum-template",
+  "kind": "iteration",
+  "iteration": 1,
+  "url": "https://deputy-proxy.github.io/frontend/replications/altrum-template/implementation/",
+  "captured_at": "2026-09-26T15:07:09.953Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 12270
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/altrum-template/iterations/001/screenshot.png"
+  }
+}
