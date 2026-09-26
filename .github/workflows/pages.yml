@@ -41,10 +41,6 @@ jobs:
           cp -R replications/kora/source dist/replications/kora/
           cp -R replications/kora/iterations dist/replications/kora/
           cp replications/kora/README.md dist/replications/kora/
-          mkdir -p dist/replications/organiccare
-          cp -R replications/organiccare/source dist/replications/organiccare/
-          cp -R replications/organiccare/iterations dist/replications/organiccare/
-          cp replications/organiccare/README.md dist/replications/organiccare/
           mkdir -p dist/replications/stripe
           cp -R replications/stripe/source dist/replications/stripe/
           cp -R replications/stripe/iterations dist/replications/stripe/
