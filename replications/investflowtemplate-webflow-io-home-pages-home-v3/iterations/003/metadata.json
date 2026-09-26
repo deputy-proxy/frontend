@@ -17,5 +17,15 @@
     "fullPage": true,
     "captureBeyondViewport": true,
     "path": "replications/investflowtemplate-webflow-io-home-pages-home-v3/iterations/003/screenshot.png"
-  }
+  },
+  "visual_verification": {
+    "reference": "../../source/screenshot.png",
+    "result": "FAIL",
+    "deviations": [
+      "Portfolio slider initial state was corrected to four cards.",
+      "Inter Tight 500/600 fonts were still failing to load, causing typography metric differences.",
+      "Page height remained 7504px versus 7390px."
+    ]
+  },
+  "implementation_status": "superseded"
 }
