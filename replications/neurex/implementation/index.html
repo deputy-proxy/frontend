@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Neurex Home 01 high-fidelity reconstruction.">
   <title>Neurex — Home 01 · Index 4.0.1</title>
+  <link rel="stylesheet" href="./src/css/neurex-4.0.1.css">
 </head>
 <body>
 <div x-data="neurexPage" class="nx-page">
@@ -169,13 +170,13 @@
           <p>A complete operating layer for the financial workflows that keep modern companies moving.</p>
         </div>
         <div class="nx-cap-grid">
-          <template x-for="(item, index) in features" :key="item">
-            <article class="nx-capability" data-reveal>
-              <span class="nx-cap-icon" x-text="['↗','⌁','◌','▣','＋','✦'][index]"></span>
-              <h3 x-text="item"></h3>
-              <p>Save time and reduce errors with smart automated accounting</p>
-            </article>
-          </template>
+          
+          <article class="nx-capability" data-reveal><span class="nx-cap-icon">↗</span><h3>Accounts Payable</h3><p>Save time and reduce errors with smart automated accounting</p></article>
+          <article class="nx-capability" data-reveal><span class="nx-cap-icon">⌁</span><h3>Procurement</h3><p>Save time and reduce errors with smart automated accounting</p></article>
+          <article class="nx-capability" data-reveal><span class="nx-cap-icon">◌</span><h3>Expense Management</h3><p>Save time and reduce errors with smart automated accounting</p></article>
+          <article class="nx-capability" data-reveal><span class="nx-cap-icon">▣</span><h3>Corporate Cards</h3><p>Save time and reduce errors with smart automated accounting</p></article>
+          <article class="nx-capability" data-reveal><span class="nx-cap-icon">＋</span><h3>Accounting Automation</h3><p>Save time and reduce errors with smart automated accounting</p></article>
+          <article class="nx-capability" data-reveal><span class="nx-cap-icon">✦</span><h3>Ramp Intelligence</h3><p>Save time and reduce errors with smart automated accounting</p></article>
         </div>
       </div>
     </section>
@@ -272,6 +273,6 @@
     <div class="nx-footer-bottom"><div class="nx-container"><span>© All rights reserved.</span><span>Designed by Basecom · Powered by Webflow</span></div></div>
   </footer>
 </div>
-<script type="module" src="./src/js/neurex-4.0.1.js"></script>
+
 </body>
 </html>
