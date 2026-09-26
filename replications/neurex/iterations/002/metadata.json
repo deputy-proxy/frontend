@@ -1,0 +1,21 @@
+{
+  "replication_id": "neurex",
+  "kind": "iteration",
+  "iteration": 2,
+  "url": "https://deputy-proxy.github.io/frontend/index-4.0.1.html",
+  "captured_at": "2026-09-26T09:54:15.059Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 7630
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/neurex/iterations/002/screenshot.png"
+  }
+}
