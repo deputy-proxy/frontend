@@ -39,6 +39,7 @@ jobs:
           cp -R replications/altrum-template dist/replications/
           cp -R replications/investflowtemplate-webflow-io-home-pages-home-v3 dist/replications/
           cp -R replications/kora dist/replications/
+          cp -R replications/obsolete dist/replications/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
