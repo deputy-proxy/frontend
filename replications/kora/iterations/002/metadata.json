@@ -4,18 +4,20 @@
   "iteration": 2,
   "url": "https://deputy-proxy.github.io/frontend/replications/kora/implementation/index.html",
   "captured_at": "2026-09-26T20:43:44.401Z",
-  "viewport": {
-    "width": 1920,
-    "height": 1080,
-    "deviceScaleFactor": 1
-  },
-  "document": {
-    "width": 1920,
-    "height": 25769
-  },
-  "screenshot": {
-    "fullPage": true,
-    "captureBeyondViewport": true,
-    "path": "replications/kora/iterations/002/screenshot.png"
+  "viewport": {"width": 1920, "height": 1080, "deviceScaleFactor": 1},
+  "document": {"width": 1920, "height": 25769},
+  "screenshot": {"fullPage": true, "captureBeyondViewport": true, "path": "replications/kora/iterations/002/screenshot.png"},
+  "visual_verification": {
+    "result": "FAIL",
+    "source_dimensions": [1920, 25946],
+    "iteration_dimensions": [1920, 25769],
+    "normalized_mae": 0.35547,
+    "height_ratio": 0.99318,
+    "ssim": 0.52851,
+    "deviations": [
+      "SSIM 0.52851 below 0.95 threshold",
+      "Normalized pixel error 0.35547 above 0.08 threshold",
+      "Global geometry is close, but section-level visual composition remains materially different"
+    ]
   }
 }
