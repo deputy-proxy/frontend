@@ -36,7 +36,6 @@ jobs:
           mkdir -p dist/replications
           cp -R replications/verdentix dist/replications/
           cp -R replications/synexsystem dist/replications/
-          cp -R replications/altrum-template dist/replications/
           cp -R replications/investflowtemplate-webflow-io-home-pages-home-v3 dist/replications/
           cp -R replications/kora dist/replications/
           cp -R replications/obsolete dist/replications/
