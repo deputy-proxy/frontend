@@ -107,4 +107,8 @@ The final implementation screenshot uses the exact final implementation URL and 
 
 ## Final visual verification
 
-The source document height is 9,451px and the final implementation document height is 8,422px at the same 1920 × 1080 viewport. This is a measurable 1,029px difference and is documented rather than hidden. The final render contains the complete replicated section structure and uses the reference page's exposed imagery, but pixel-perfect equivalence has not been claimed because the available tooling does not provide an image-diff report.
+The current implementation was updated after iteration 007 to replace generic media with reference-exposed Verdentix posters, solution imagery, company logos and avatar assets. The latest GitHub Pages build/deployment passed, but a new Screenshot workflow capture could not be produced: the Screenshot service rejected both the source and implementation requests with `INVALID_ARGUMENT: Your request is invalid or could not be processed by the service`.
+
+Therefore iteration 007 is retained as the last valid capture, but it is NOT treated as evidence for the current implementation. The current implementation screenshot and metadata remain stale relative to the latest code until a new capture can be generated.
+
+Completion is blocked by the capture service, not declared as visually verified.
