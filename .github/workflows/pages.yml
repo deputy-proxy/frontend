@@ -35,7 +35,6 @@ jobs:
         run: |
           mkdir -p dist/replications
           cp -R replications/verdentix dist/replications/
-          cp -R replications/synexsystem dist/replications/
           cp -R replications/investflowtemplate-webflow-io-home-pages-home-v3 dist/replications/
           # Vite owns the built Kora implementation. Copy only non-build artifacts so
           # the processed HTML keeps its generated CSS/JS asset references.
@@ -43,7 +42,6 @@ jobs:
           cp -R replications/kora/source dist/replications/kora/
           cp -R replications/kora/iterations dist/replications/kora/
           cp replications/kora/README.md dist/replications/kora/
-          cp -R replications/obsolete dist/replications/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
