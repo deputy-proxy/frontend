@@ -1,0 +1,21 @@
+{
+  "replication_id": "kora",
+  "kind": "iteration",
+  "iteration": 2,
+  "url": "https://deputy-proxy.github.io/frontend/replications/kora/implementation/index.html",
+  "captured_at": "2026-09-26T20:43:44.401Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 25769
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/kora/iterations/002/screenshot.png"
+  }
+}
