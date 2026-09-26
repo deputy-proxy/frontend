@@ -8,11 +8,11 @@ These files are preserved for historical reference only. New replication work sh
 
 | Implementation | Source URL | Deployment URL |
 |---|---|---|
-| `index-1.0.1.html` | https://avoora.webflow.io/ | https://deputy-proxy.github.io/frontend/index-1.0.1.html |
-| `index-2.0.1.html` | https://neurex.webflow.io/home-01 | https://deputy-proxy.github.io/frontend/index-2.0.1.html |
-| `index-2.0.2.html` | https://neurex.webflow.io/home-01 | https://deputy-proxy.github.io/frontend/index-2.0.2.html |
-| `index-3.0.0.html` | https://neurex.webflow.io/home-01 | https://deputy-proxy.github.io/frontend/index-3.0.0.html |
-| `index-4.0.1.html` | https://neurex.webflow.io/home-01 | https://deputy-proxy.github.io/frontend/index-4.0.1.html |
+| `index-1.0.1.html` | https://avoora.webflow.io/ | https://deputy-proxy.github.io/frontend/replications/obsolete/index-1.0.1.html |
+| `index-2.0.1.html` | https://neurex.webflow.io/home-01 | https://deputy-proxy.github.io/frontend/replications/obsolete/index-2.0.1.html |
+| `index-2.0.2.html` | https://deputy-proxy.github.io/frontend/replications/obsolete/index-2.0.2.html |
+| `index-3.0.0.html` | https://neurex.webflow.io/home-01 | https://deputy-proxy.github.io/frontend/replications/obsolete/index-3.0.0.html |
+| `index-4.0.1.html` | https://neurex.webflow.io/home-01 | https://deputy-proxy.github.io/frontend/replications/obsolete/index-4.0.1.html |
 
 ## Other moved root HTML
 
