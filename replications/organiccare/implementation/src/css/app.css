@@ -1,5 +1,0 @@
-@import "tailwindcss";
-@font-face{font-family:"PP Mori";src:url("https://framerusercontent.com/assets/AE9QGl3EikgcPbta4IZVlvWEZZo.woff2") format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"PP Mori";src:url("https://framerusercontent.com/assets/T93398VnrgrUA71qcf61Yy5qrc.woff2") format("woff2");font-weight:600;font-display:swap}
-@font-face{font-family:"PP Editorial";src:url("https://framerusercontent.com/assets/vlcgXHhjPOw3oP9tEp2XLY0L7i0.woff2") format("woff2");font-style:italic;font-weight:400;font-display:swap}
-html{scroll-behavior:smooth}body{margin:0;overflow-x:hidden;font-family:Inter,ui-sans-serif,system-ui,sans-serif}.font-mori{font-family:"PP Mori",Inter,sans-serif}.font-editorial{font-family:"PP Editorial",Georgia,serif}.nav{position:relative;font-size:.875rem}.nav:after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s}.nav:hover:after{transform:scaleX(1)}.eyebrow{font-size:.7rem;text-transform:uppercase;letter-spacing:.22em;font-weight:600}.hero{transform:scale(1.03)}
