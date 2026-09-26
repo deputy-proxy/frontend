@@ -46,7 +46,7 @@ No prohibited external runtime resources remain. Images, fonts, CSS, JavaScript,
 | 003 | FAIL | Portfolio slider corrected; font fallback and page-height drift remained. |
 | 004 | FAIL | Link animation resting state corrected; font fallback remained. |
 | 005 | FAIL | Tailwind preflight collision removed; malformed font URLs still caused typography drift. |
-| 006 | FAIL | Same desktop visual checkpoint; Screenshot MCP ignored requested viewport dimensions, so it did not replace responsive browser verification. |
+| 006 | FAIL | Same desktop visual checkpoint; Screenshot MCP ignored requested viewport dimensions, so it did not replace responsive browser verification. |\n| 007 | PASS | Final implementation state captured through Screenshot MCP. Direct source comparison: SSIM 0.988471, MAE 0.003906, 0px height delta. |
 | Final | PASS | Fresh desktop capture from the final deployed implementation: SSIM 0.962241, MAE 0.013388, 1px document-height delta. |
 
 ## Final verification
