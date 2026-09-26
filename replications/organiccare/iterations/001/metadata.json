@@ -1,0 +1,7 @@
+{
+  "iteration": "001",
+  "source_reference": "replications/organiccare/source/screenshot.png",
+  "capture_status": "pending",
+  "visual_verification": "pending",
+  "deviations": ["Initial implementation; screenshot capture pending deployment."]
+}
