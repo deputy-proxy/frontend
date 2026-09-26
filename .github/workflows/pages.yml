@@ -33,6 +33,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Compile Altrum Tailwind CSS
+        run: |
+          npx vite build --config replications/altrum-template/implementation/vite.config.js
+          cp replications/altrum-template/.tailwind-build/tailwind.compiled.css replications/altrum-template/implementation/src/css/tailwind.compiled.css
+
       - name: Build
         run: npm run build
 
@@ -41,6 +46,7 @@ jobs:
           mkdir -p dist/replications
           cp -R replications/verdentix dist/replications/
           cp -R replications/synexsystem dist/replications/
+          cp -R replications/altrum-template dist/replications/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
