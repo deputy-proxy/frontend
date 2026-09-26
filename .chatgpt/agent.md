@@ -1709,6 +1709,7 @@ The following rules MUST NEVER be violated:
 5. The canonical visual reference is the validated source screenshot.
 6. The reference website is the primary source for replication decisions.
 7. The source website MUST be inspected before implementation.
+8. Quantitative source geometry baselines MUST be established for major regions where accessible.
 8. A detailed source reconstruction specification MUST be completed before implementation.
 9. Source reconnaissance MUST include, where accessible:
 
@@ -1759,7 +1760,8 @@ The following rules MUST NEVER be violated:
 38. JavaScript MUST be local and functional.
 39. Prohibited external runtime dependencies MUST NOT remain.
 40. The final screenshot MUST correspond to the final code.
-41. Responsive behavior MUST be verified.
+41. Responsive behavior MUST be verified against source responsive baselines.
+42. Rendering conditions MUST be recorded for source and implementation comparisons.
 42. README MUST document actual verification results.
 43. Never claim PASS without evidence.
 44. Never treat the screenshot as the sole or primary source of implementation knowledge.
