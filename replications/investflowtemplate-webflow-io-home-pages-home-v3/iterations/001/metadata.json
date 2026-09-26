@@ -17,5 +17,15 @@
     "fullPage": true,
     "captureBeyondViewport": true,
     "path": "replications/investflowtemplate-webflow-io-home-pages-home-v3/iterations/001/screenshot.png"
-  }
+  },
+  "visual_verification": {
+    "reference": "../../source/screenshot.png",
+    "result": "FAIL",
+    "deviations": [
+      "Hero and scroll-reveal elements were captured mid-animation, producing visible blur/opacity differences.",
+      "Portfolio slider state was not yet constrained to the source's initial four-card view.",
+      "Page height was 7504px versus the 7390px source capture."
+    ]
+  },
+  "implementation_status": "superseded"
 }
