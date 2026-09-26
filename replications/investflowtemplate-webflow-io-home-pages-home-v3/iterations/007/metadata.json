@@ -17,5 +17,16 @@
     "fullPage": true,
     "captureBeyondViewport": true,
     "path": "replications/investflowtemplate-webflow-io-home-pages-home-v3/iterations/007/screenshot.png"
-  }
+  },
+  "visual_verification": {
+    "reference": "../../source/screenshot.png",
+    "result": "PASS",
+    "deviations": [],
+    "metrics": {
+      "ssim": 0.988471,
+      "mae": 0.003906,
+      "height_delta_px": 0
+    }
+  },
+  "implementation_status": "PASS"
 }
