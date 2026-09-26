@@ -625,6 +625,12 @@ The screenshot remains necessary for visual validation, but MUST NOT be used to 
 
 ---
 
+# 7B. QUANTITATIVE SOURCE BASELINES
+
+For every major page region, record measurable source baselines at the canonical viewport: bounding boxes, container widths, section positions, spacing, columns, gaps, important element dimensions, image dimensions/aspect ratios, typography metrics, and fixed/sticky offsets where accessible. Distinguish measured, computed, CSS-specified, and inferred values. Store major-region measurements in source/evidence.json.
+
+---
+
 # 8. BROWSERLESS / SCREENSHOT PREFLIGHT
 
 Before every Screenshot MCP operation, determine whether Browserless may be asleep or unavailable.
@@ -733,6 +739,12 @@ source/screenshot.png
 If repeated attempts remain incomplete, report source capture as blocked.
 
 Implementation MUST NOT begin against an unvalidated source screenshot.
+
+---
+
+# 10A. MULTI-VIEWPORT SOURCE BASELINES
+
+Establish source baselines for every materially different responsive layout, including desktop, tablet/intermediate, and mobile where applicable. Record viewport dimensions, section geometry, navigation state, typography changes, grid/stacking, visibility, image behavior, spacing, and component substitutions. Use actual source breakpoints rather than framework defaults.
 
 ---
 
@@ -1141,6 +1153,20 @@ before changing the implementation.
 
 ---
 
+# 17D. QUANTITATIVE VISUAL COMPARISON
+
+Where image-analysis tooling is available, every iteration MUST include quantitative comparison: dimensions, page-height difference, regional geometry differences, perceptual/pixel similarity, and normalized image error where available. Record metrics in iteration metadata. Metrics support judgment but never override a major structural mismatch.
+
+# 17E. REGIONAL COMPARISON
+
+Compare corresponding regions independently for structure, geometry, typography, assets, color/background, spacing, and responsive/state behavior. Identify the largest remaining deviations.
+
+# 17F. FIDELITY SCORE
+
+Calculate a final evidence-backed fidelity score weighted: structure/section presence 25%, geometry/layout 25%, typography 15%, assets/media 15%, color/background/styling 10%, interaction/animation/state 5%, responsive fidelity 5%. The score is an audit metric, not a PASS/FAIL substitute. Record regional scores, weighting, unresolved discrepancies, and confidence.
+
+---
+
 # 18. VISUAL FAILURE
 
 The following MUST be treated as visual failures:
@@ -1232,6 +1258,12 @@ When diagnosing a discrepancy, determine whether it is caused by:
 If the discrepancy indicates incomplete source understanding, return to the reference website.
 
 Do not solve a source-understanding problem by guessing from the screenshot when the source can still be inspected.
+
+---
+
+# 20A. ANIMATION AND STATE BASELINES
+
+For animated or stateful interfaces, document materially relevant initial, post-load, scrolled, sticky, hover/focus, expanded/collapsed, menu, carousel/slider, modal, and scroll-triggered states. For continuous animations, record trigger, direction, duration/easing where observable, resting state, and key visual properties. Do not claim exact animation fidelity when behavior is only approximate.
 
 ---
 
@@ -1350,6 +1382,12 @@ The implementation MUST load without blocking errors.
 
 ---
 
+# 25A. RENDERING ENVIRONMENT CONTROL
+
+Record viewport, device pixel ratio where available, browser/rendering engine, zoom, font loading, reduced-motion setting where relevant, color scheme, scroll/state, and capture timing. Source and implementation SHOULD use equivalent conditions. Record environmental differences and do not automatically attribute renderer-specific differences to implementation. Required source-font loading failures are implementation failures.
+
+---
+
 # 26. RESPONSIVE VERIFICATION
 
 Verify the implementation at:
@@ -1443,6 +1481,12 @@ Before declaring completion, verify all of the following:
 30. Deployment URL is verified.
 31. Final screenshot corresponds to the actual final implementation.
 32. No final implementation changes occurred after final screenshot capture.
+
+---
+
+# 28A. EVIDENCE CONFIDENCE AUDIT
+
+Classify every major region HIGH, MEDIUM, or LOW confidence. HIGH means direct source evidence; MEDIUM means source-supported with limited inference; LOW means material inference or inaccessible source behavior. LOW-confidence regions materially affecting fidelity MUST prevent an unconditional PASS unless the limitation is documented as constrained.
 
 ---
 
