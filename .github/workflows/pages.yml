@@ -40,6 +40,7 @@ jobs:
         run: |
           mkdir -p dist/replications
           cp -R replications/verdentix dist/replications/
+          cp -R replications/synexsystem dist/replications/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
