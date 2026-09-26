@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         'replications/kora/implementation/index': resolve(__dirname, 'replications/kora/implementation/index.html'),
         'replications/organiccare/implementation/index': resolve(__dirname, 'replications/organiccare/implementation/index.html'),
+        'replications/stripe/implementation/index': resolve(__dirname, 'replications/stripe/implementation/index.html'),
       },
     },
   },
