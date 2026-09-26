@@ -17,5 +17,14 @@
     "fullPage": true,
     "captureBeyondViewport": true,
     "path": "replications/investflowtemplate-webflow-io-home-pages-home-v3/iterations/004/screenshot.png"
-  }
+  },
+  "visual_verification": {
+    "reference": "../../source/screenshot.png",
+    "result": "FAIL",
+    "deviations": [
+      "Webflow duplicate absolute link labels were hidden to match the resting source state.",
+      "Inter Tight font fallback still caused typography differences and page-height drift."
+    ]
+  },
+  "implementation_status": "superseded"
 }
