@@ -35,11 +35,14 @@ The canonical visual reference for visual validation is ALWAYS the validated sou
 The canonical source for replication and implementation decisions is ALWAYS the inspected reference website and its discovered implementation evidence.
 
 
+
 The only user input is the reference URL.
+
 
 ============================================================
 
 INPUT
+
 REFERENCE_URL:
 https://investflowtemplate.webflow.io/home-pages/home-v3
 
