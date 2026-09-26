@@ -1,0 +1,11 @@
+{
+  "replication_id":"synexsystem",
+  "kind":"implementation",
+  "url":"https://deputy-proxy.github.io/frontend/replications/synexsystem/implementation/",
+  "source_url":"https://synexsystem.webflow.io/",
+  "capture_scope":"full-page",
+  "viewport":{"width":1920,"height":1080,"deviceScaleFactor":1},
+  "implementation_entry":"replications/synexsystem/implementation/index.html",
+  "external_resource_policy":{"allowed":["image","font"],"external_javascript":false,"external_application_css":false,"external_api":false,"external_embed":false},
+  "status":"pending-final-capture"
+}
