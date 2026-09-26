@@ -1,4 +1,5 @@
-@import "tailwindcss";
+@import "tailwindcss/theme.css";
+@import "tailwindcss/utilities.css";
 
 @font-face{font-family:"Inter Tight";font-style:normal;font-weight:400;src:url("https://fonts.gstatic.com/s/intertight/v9/NGSnv5HMAFg6IuGlBNMjxJEL2VmU3NS7Z2mjDw-qXA.ttf") format("truetype");font-display:swap;}
 @font-face{font-family:"Inter Tight";font-style:normal;font-weight:500;src:url("https://fonts.gstatic.com/s/intertight/v9/NGSnv5HMAFg6IuGlBNMjPQ-qXA.ttf") format("truetype");font-display:swap;}
