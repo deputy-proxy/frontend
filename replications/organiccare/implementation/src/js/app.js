@@ -1,1 +1,0 @@
-import '../css/app.css';import Alpine from 'alpinejs';import {gsap} from 'gsap';window.Alpine=Alpine;Alpine.start();window.addEventListener('load',()=>{const hero=document.querySelector('.hero');if(hero)gsap.to(hero,{scale:1,duration:1.8,ease:'power3.out'});});
