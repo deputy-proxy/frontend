@@ -17,5 +17,15 @@
     "fullPage": true,
     "captureBeyondViewport": true,
     "path": "replications/investflowtemplate-webflow-io-home-pages-home-v3/iterations/005/screenshot.png"
-  }
+  },
+  "visual_verification": {
+    "reference": "../../source/screenshot.png",
+    "result": "FAIL",
+    "deviations": [
+      "Tailwind preflight collision was removed, leaving the Webflow reset authoritative.",
+      "Font URLs were still incorrect, so the browser continued to use fallback weights.",
+      "Page height remained 7504px versus 7390px."
+    ]
+  },
+  "implementation_status": "superseded"
 }
