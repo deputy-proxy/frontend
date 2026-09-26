@@ -15,6 +15,7 @@ export default defineConfig({
         'index-3.0.0': resolve(__dirname, 'index-3.0.0.html'),
         'index-4.0.1': resolve(__dirname, 'index-4.0.1.html'),
         avoora: resolve(__dirname, 'avoora.html'),
+        'neurex-replication': resolve(__dirname, 'replications/neurex/implementation/index.html'),
       },
     },
   },
