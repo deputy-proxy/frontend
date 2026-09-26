@@ -21,21 +21,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-
       - name: Setup Node
         uses: actions/setup-node@v7
         with:
           node-version: 24
-
       - name: Setup Pages
         uses: actions/configure-pages@v6
-
       - name: Install dependencies
         run: npm install
-
       - name: Build
         run: npm run build
-
       - name: Include replication artifacts
         run: |
           mkdir -p dist/replications
@@ -43,7 +38,7 @@ jobs:
           cp -R replications/synexsystem dist/replications/
           cp -R replications/altrum-template dist/replications/
           cp -R replications/investflowtemplate-webflow-io-home-pages-home-v3 dist/replications/
-
+          cp -R replications/kora dist/replications/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
