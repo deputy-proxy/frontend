@@ -1,0 +1,84 @@
+name: Verify Altrum visual replication
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'replications/altrum-template/source/screenshot.png'
+      - 'replications/altrum-template/iterations/**/screenshot.png'
+      - 'replications/altrum-template/implementation/screenshot.png'
+      - '.github/workflows/altrum-visual-verify.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install image analysis dependencies
+        run: python -m pip install --disable-pip-version-check pillow numpy scikit-image
+
+      - name: Compare source with latest iteration
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          from PIL import Image, ImageChops
+          import numpy as np
+          from skimage.metrics import structural_similarity
+
+          root = pathlib.Path("replications/altrum-template")
+          source = Image.open(root/"source/screenshot.png").convert("RGB")
+          iterations = sorted((root/"iterations").glob("*/screenshot.png"))
+          if not iterations:
+              raise SystemExit("No iteration screenshot found")
+          current = iterations[-1]
+          target = Image.open(current).convert("RGB")
+
+          def fit(im, width=768):
+              h = round(im.height * width / im.width)
+              return im.resize((width, h), Image.Resampling.LANCZOS)
+
+          a, b = fit(source), fit(target)
+          height = min(a.height, b.height)
+          a, b = a.crop((0,0,a.width,height)), b.crop((0,0,b.width,height))
+          aa, bb = np.asarray(a), np.asarray(b)
+          mae = float(np.mean(np.abs(aa.astype(np.float32)-bb.astype(np.float32)))/255)
+          gray_a = np.asarray(a.convert("L"), dtype=np.float32)/255
+          gray_b = np.asarray(b.convert("L"), dtype=np.float32)/255
+          ssim = float(structural_similarity(gray_a, gray_b, data_range=1.0))
+          height_ratio = min(source.height,target.height)/max(source.height,target.height)
+          result = "PASS" if ssim >= 0.95 and mae <= 0.08 and height_ratio >= 0.98 else "FAIL"
+
+          report = {
+            "reference": "../../source/screenshot.png",
+            "result": result,
+            "source_dimensions": [source.width, source.height],
+            "iteration_dimensions": [target.width, target.height],
+            "ssim": round(ssim, 5),
+            "normalized_mae": round(mae, 5),
+            "height_ratio": round(height_ratio, 5),
+            "deviations": [] if result == "PASS" else [
+              f"Global structural similarity SSIM={ssim:.5f}, threshold 0.95",
+              f"Normalized pixel error={mae:.5f}, threshold 0.08",
+              f"Page height ratio={height_ratio:.5f}, threshold 0.98"
+            ]
+          }
+          out = root/"iterations"/current.parent.name/"metadata.json"
+          data = json.loads(out.read_text())
+          data.setdefault("visual_verification", {})
+          data["visual_verification"] = report
+          out.write_text(json.dumps(data, indent=2)+"\n")
+          print(json.dumps(report, indent=2))
+          PY
+
+      - name: Commit visual verification metadata
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add replications/altrum-template/iterations/*/metadata.json
+          git diff --cached --quiet || git commit -m "Record Altrum visual verification"
+          git push
