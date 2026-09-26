@@ -68,7 +68,15 @@ jobs:
             ]
           }
           out = root/"iterations"/current.parent.name/"metadata.json"
-          data = json.loads(out.read_text())
+          if out.exists():
+              data = json.loads(out.read_text())
+          else:
+              data = {
+                "replication_id": "altrum-template",
+                "kind": "iteration",
+                "iteration": int(current.parent.name),
+                "screenshot": {"path": str(current)}
+              }
           data.setdefault("visual_verification", {})
           data["visual_verification"] = report
           out.write_text(json.dumps(data, indent=2)+"\n")
