@@ -41,10 +41,35 @@ No prohibited external runtime resources remain. Images, fonts, CSS, JavaScript,
 ## Iterations
 | Iteration | Visual Verification | Main Findings |
 |---|---|---|
-| 001 | PENDING | First implementation capture after verified deployment. |
+| 001 | FAIL | Reveal animations were captured mid-transition; portfolio slider state differed; page height was 7504px vs 7390px. |
+| 002 | FAIL | Reveal state fixed, but Inter Tight 500/600 font URLs were malformed and the slider state still differed. |
+| 003 | FAIL | Portfolio slider corrected; font fallback and page-height drift remained. |
+| 004 | FAIL | Link animation resting state corrected; font fallback remained. |
+| 005 | FAIL | Tailwind preflight collision removed; malformed font URLs still caused typography drift. |
+| 006 | FAIL | Same desktop visual checkpoint; Screenshot MCP ignored requested viewport dimensions, so it did not replace responsive browser verification. |
+| Final | PASS | Fresh desktop capture from the final deployed implementation: SSIM 0.962241, MAE 0.013388, 1px document-height delta. |
 
 ## Final verification
-Pending the implementation capture and direct source-to-iteration comparison.
+- Source → final visual verification: **PASS**
+- Source dimensions: 1920 × 7390
+- Final implementation dimensions: 1920 × 7389
+- SSIM: 0.962241
+- Mean absolute pixel error: 0.013388
+- Build verification: **PASS**
+- Tailwind compilation: **PASS**
+- Tailwind application: **PASS**
+- CSS: **PASS**
+- JS: **PASS**
+- Runtime/network audit: **PASS**, with no failed requests after the Inter Tight font URL correction
+- External resource audit: **PASS**. Only source images and fonts remain remote; no external JS/CSS/API/iframe/embed dependencies.
+- Responsive verification: **PASS** using browser capture at 1920×1080, 1024×768, and 390×844. No horizontal overflow. Mobile navigation opens through Alpine state.
+- Repository audit: **PASS**
+- Canonical implementation: `implementation/index.html`
+- Fresh final screenshot: `implementation/screenshot.png`
+- Final metadata: `implementation/metadata.json`
 
 ## Deployment
-Deployment URL will be recorded only after GitHub Pages serves the final implementation and the exact implementation URL has been verified.
+Verified deployment:
+https://frontend-production-4f1b.up.railway.app/replications/investflowtemplate-webflow-io-home-pages-home-v3/implementation/
+
+The deployment serves the final implementation and returned HTTP 200 during verification.
