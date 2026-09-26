@@ -1,0 +1,11 @@
+{
+  "replication_id":"thornhill",
+  "kind":"iteration",
+  "iteration":1,
+  "source_reference":"../source/screenshot.png",
+  "screenshot":"screenshot.png",
+  "visual_verification":"PENDING",
+  "implementation_status":"captured after deployment",
+  "deviations":[],
+  "note":"Iteration 001 is the first implementation checkpoint. PASS/FAIL is assigned only after direct source-to-implementation comparison."
+}

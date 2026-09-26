@@ -1,0 +1,16 @@
+{
+  "replication_id":"thornhill",
+  "reference_url":"https://thornhill.framer.website/",
+  "source":{"viewport":[1920,1080],"document":[1920,6759],"full_page":true,"capture_status":"complete"},
+  "provenance":{
+    "hero":["SOURCE_DOM","SOURCE_CSS","SOURCE_ASSET","SOURCE_RUNTIME"],
+    "navigation":["SOURCE_DOM","SOURCE_CSS"],
+    "practice_areas":["SOURCE_DOM","SOURCE_CSS","SOURCE_ASSET"],
+    "typography":["SOURCE_CSS","SOURCE_NETWORK"],
+    "featured_insight":["SOURCE_DOM","SOURCE_CSS","SOURCE_ASSET"],
+    "insights":["SOURCE_DOM","SOURCE_CSS","SOURCE_ASSET"],
+    "footer":["SOURCE_DOM","SOURCE_CSS","SOURCE_ASSET"],
+    "animation_timing":["SOURCE_RUNTIME"]
+  },
+  "confidence":{"hero":"HIGH","navigation":"HIGH","practice_areas":"HIGH","typography":"HIGH","featured_insight":"HIGH","insights":"HIGH","footer":"HIGH","animation_timing":"LOW","numbers":"MEDIUM"}
+}

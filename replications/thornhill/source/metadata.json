@@ -1,21 +1,13 @@
 {
-  "replication_id": "thornhill",
-  "kind": "source",
-  "iteration": 0,
-  "url": "https://thornhill.framer.website/",
-  "captured_at": "2026-09-26T22:07:41.209Z",
-  "viewport": {
-    "width": 1920,
-    "height": 1080,
-    "deviceScaleFactor": 1
-  },
-  "document": {
-    "width": 1920,
-    "height": 6759
-  },
-  "screenshot": {
-    "fullPage": true,
-    "captureBeyondViewport": true,
-    "path": "replications/thornhill/source/screenshot.png"
-  }
+  "replication_id":"thornhill",
+  "kind":"source",
+  "iteration":0,
+  "url":"https://thornhill.framer.website/",
+  "captured_at":"2026-09-26T22:07:41.209Z",
+  "viewport":{"width":1920,"height":1080,"deviceScaleFactor":1},
+  "document":{"width":1920,"height":6759},
+  "screenshot":{"fullPage":true,"path":"replications/thornhill/source/screenshot.png"},
+  "capture_status":"complete",
+  "validation":{"complete_page":true,"lazy_content_loaded":true,"bottom_reached":true},
+  "reconnaissance":{"completed":true,"dom_analyzed":true,"styles_analyzed":true,"assets_analyzed":true,"javascript_analyzed":true,"responsive_behavior_analyzed":true}
 }

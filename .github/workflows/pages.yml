@@ -49,6 +49,11 @@ jobs:
           cp -R replications/stripe/source dist/replications/stripe/
           cp -R replications/stripe/iterations dist/replications/stripe/
           cp replications/stripe/README.md dist/replications/stripe/
+          mkdir -p dist/replications/thornhill
+          cp -R replications/thornhill/source dist/replications/thornhill/
+          cp -R replications/thornhill/iterations dist/replications/thornhill/
+          cp -R replications/thornhill/implementation dist/replications/thornhill/
+          cp replications/thornhill/README.md dist/replications/thornhill/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
