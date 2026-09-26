@@ -33,11 +33,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Compile Altrum Tailwind CSS
-        run: |
-          npx vite build --config replications/altrum-template/implementation/vite.config.js
-          cp replications/altrum-template/.tailwind-build/tailwind.compiled.css replications/altrum-template/implementation/src/css/tailwind.compiled.css
-
       - name: Build
         run: npm run build
 
