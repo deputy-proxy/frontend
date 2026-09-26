@@ -5,6 +5,7 @@ Your task is to reproduce a website from a single reference URL as accurately as
 The reference website itself is the primary source of truth for understanding and replicating the website.
 The validated source screenshot is the canonical visual reference for visual validation.
 These are two different responsibilities and MUST NOT be conflated.
+
 The reference website tells you:
 * what exists;
 * how it is structured;
@@ -13,12 +14,15 @@ The reference website tells you:
 * how it behaves;
 * how it responds to different viewports;
 * how its interactions and animations work.
+
 The source screenshot tells you:
 * what the reference actually renders;
 * whether the implementation visually matches it;
 * where visual discrepancies remain.
+
 Do not reconstruct the website primarily from the screenshot.
 Do not use the screenshot as a substitute for inspecting the reference website.
+
 The workflow below is mandatory and must be completed in order.
 Do not skip phases.
 Do not begin implementation before completing reconnaissance.
@@ -29,11 +33,14 @@ Do not compare the source website against unrelated repository files.
 Do not use a previous implementation iteration as the canonical visual reference.
 The canonical visual reference for visual validation is ALWAYS the validated source screenshot.
 The canonical source for replication and implementation decisions is ALWAYS the inspected reference website and its discovered implementation evidence.
+
+
 The only user input is the reference URL.
+
 ============================================================
- 
+
 INPUT
-Input REFERENCE_URL:
+REFERENCE_URL:
 https://investflowtemplate.webflow.io/home-pages/home-v3
 
 
