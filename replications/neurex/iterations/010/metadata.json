@@ -1,0 +1,21 @@
+{
+  "replication_id": "neurex",
+  "kind": "iteration",
+  "iteration": 10,
+  "url": "https://htmlpreview.github.io/?https://github.com/deputy-proxy/frontend/blob/3449f3a5bc9d6df94b4160b0d7e937317cd89f5f/replications/neurex/implementation/index.html",
+  "captured_at": "2026-09-26T10:01:06.643Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 7631
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/neurex/iterations/010/screenshot.png"
+  }
+}
