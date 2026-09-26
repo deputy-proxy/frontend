@@ -1,0 +1,74 @@
+{
+  "kind": "implementation-final",
+  "implementation": "implementation/index.html",
+  "url": "https://frontend-production-4f1b.up.railway.app/replications/investflowtemplate-webflow-io-home-pages-home-v3/implementation/",
+  "captured_at": "2026-09-26T16:00:00+03:00",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 7389
+  },
+  "screenshot": {
+    "path": "implementation/screenshot.png",
+    "fullPage": true
+  },
+  "source_comparison": {
+    "reference": "source/screenshot.png",
+    "result": "PASS",
+    "ssim": 0.962241,
+    "mae": 0.013388,
+    "height_delta_px": 1,
+    "significant_deviations": []
+  },
+  "verification": {
+    "build": "PASS",
+    "tailwind_compilation": "PASS",
+    "tailwind_application": "PASS",
+    "css": "PASS",
+    "js": "PASS",
+    "runtime": "PASS",
+    "external_resource_audit": "PASS",
+    "responsive": "PASS",
+    "repository": "PASS"
+  },
+  "responsive": {
+    "desktop": {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "horizontal_overflow": false,
+      "scroll_height": 7389
+    },
+    "tablet": {
+      "viewport": [
+        1024,
+        768
+      ],
+      "horizontal_overflow": false,
+      "scroll_height": 7298
+    },
+    "mobile": {
+      "viewport": [
+        390,
+        844
+      ],
+      "horizontal_overflow": false,
+      "scroll_height": 10247,
+      "mobile_menu": "PASS"
+    }
+  },
+  "external_resources": {
+    "images": "allowed remote source assets",
+    "fonts": "allowed remote source fonts",
+    "javascript": "none",
+    "css": "none",
+    "apis": "none",
+    "iframes": "none",
+    "embeds": "none"
+  }
+}
