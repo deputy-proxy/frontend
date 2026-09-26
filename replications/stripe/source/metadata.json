@@ -1,0 +1,21 @@
+{
+  "replication_id": "stripe",
+  "kind": "source",
+  "iteration": 0,
+  "url": "https://stripe.com/",
+  "captured_at": "2026-09-26T21:48:42.651Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 14747
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/stripe/source/screenshot.png"
+  }
+}
