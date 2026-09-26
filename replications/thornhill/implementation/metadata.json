@@ -1,0 +1,22 @@
+{
+  "replication_id":"thornhill",
+  "kind":"implementation",
+  "path":"replications/thornhill/implementation/index.html",
+  "screenshot":"screenshot.png",
+  "screenshot_status":"BLOCKED",
+  "final_source_comparison":"FAIL",
+  "verification":{
+    "build":"PASS",
+    "tailwind":"PASS",
+    "css":"PASS",
+    "js":"PASS",
+    "external_resources":"PASS",
+    "responsive":"BLOCKED",
+    "visual":"FAIL"
+  },
+  "deployment":{
+    "url":"https://deputy-proxy.github.io/frontend/replications/thornhill/implementation/index.html",
+    "verified_http_status":200
+  },
+  "blocking_reason":"Screenshot MCP refused the required implementation screenshot capture, so the canonical source-to-final visual comparison could not be performed."
+}
