@@ -1,4 +1,4 @@
-import '../css/app.css'
+import '../css/avoora.css'
 import Alpine from 'alpinejs'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
