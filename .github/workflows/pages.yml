@@ -36,6 +36,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Include replication artifacts
+        run: |
+          mkdir -p dist/replications
+          cp -R replications/verdentix dist/replications/
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
