@@ -9884,3 +9884,10 @@ figure {
 .link-animation-wrapper .link-animation-text-absolute {
   visibility: hidden !important;
 }
+
+/* Alpine-controlled mobile navigation state. */
+@media (max-width: 991px) {
+  .nav-menu.is-open {
+    display: block !important;
+  }
+}
