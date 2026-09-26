@@ -2,9 +2,9 @@
 @import "tailwindcss/utilities.css";
 
 @font-face{font-family:"Inter Tight";font-style:normal;font-weight:400;src:url("https://fonts.gstatic.com/s/intertight/v9/NGSnv5HMAFg6IuGlBNMjxJEL2VmU3NS7Z2mjDw-qXA.ttf") format("truetype");font-display:swap;}
-@font-face{font-family:"Inter Tight";font-style:normal;font-weight:500;src:url("https://fonts.gstatic.com/s/intertight/v9/NGSnv5HMAFg6IuGlBNMjPQ-qXA.ttf") format("truetype");font-display:swap;}
-@font-face{font-family:"Inter Tight";font-style:normal;font-weight:600;src:url("https://fonts.gstatic.com/s/intertight/v9/NGSnv5HMAFg6IuGlBNMj0QiqXA.ttf") format("truetype");font-display:swap;}
-@font-face{font-family:"Inter Tight";font-style:normal;font-weight:700;src:url("https://fonts.gstatic.com/s/intertight/v9/NGSnv5HMAFg6IuGlBNMj6AiqXA.ttf") format("truetype");font-display:swap;}
+@font-face{font-family:"Inter Tight";font-style:normal;font-weight:500;src:url("https://fonts.gstatic.com/s/intertight/v9/NGSnv5HMAFg6IuGlBNMjxJEL2VmU3NS7Z2mjPQ-qXA.ttf") format("truetype");font-display:swap;}
+@font-face{font-family:"Inter Tight";font-style:normal;font-weight:600;src:url("https://fonts.gstatic.com/s/intertight/v9/NGSnv5HMAFg6IuGlBNMjxJEL2VmU3NS7Z2mj0QiqXA.ttf") format("truetype");font-display:swap;}
+@font-face{font-family:"Inter Tight";font-style:normal;font-weight:700;src:url("https://fonts.gstatic.com/s/intertight/v9/NGSnv5HMAFg6IuGlBNMjxJEL2VmU3NS7Z2mj6AiqXA.ttf") format("truetype");font-display:swap;}
 
 /* Tailwind utility layer: structural guarantees for the replication. */
 @layer components {
