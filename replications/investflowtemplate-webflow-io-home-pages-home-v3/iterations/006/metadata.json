@@ -17,5 +17,15 @@
     "fullPage": true,
     "captureBeyondViewport": true,
     "path": "replications/investflowtemplate-webflow-io-home-pages-home-v3/iterations/006/screenshot.png"
-  }
+  },
+  "visual_verification": {
+    "reference": "../../source/screenshot.png",
+    "result": "FAIL",
+    "deviations": [
+      "Desktop capture remained visually close but still used fallback Inter Tight weights.",
+      "Viewport arguments to Screenshot MCP were ignored, so this iteration could not serve as tablet/mobile evidence.",
+      "Final browser audit later found the font URL defect."
+    ]
+  },
+  "implementation_status": "superseded"
 }
