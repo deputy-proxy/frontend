@@ -1,0 +1,21 @@
+{
+  "replication_id": "verdentix",
+  "kind": "iteration",
+  "iteration": 8,
+  "url": "https://deputy-proxy.github.io/frontend/replications/verdentix/implementation/index.html",
+  "captured_at": "2026-09-26T13:46:38.712Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 8422
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/verdentix/iterations/008/screenshot.png"
+  }
+}
