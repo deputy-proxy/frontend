@@ -1,0 +1,9 @@
+{
+  "replication_id":"verdentix",
+  "kind":"implementation",
+  "url":"https://deputy-proxy.github.io/frontend/replications/verdentix/implementation/",
+  "viewport":{"width":1920,"height":1080,"deviceScaleFactor":1},
+  "screenshot":{"fullPage":true,"captureBeyondViewport":true,"path":"replications/verdentix/implementation/screenshot.png"},
+  "source":"replications/verdentix/source/screenshot.png",
+  "status":"pending-final-capture"
+}
