@@ -1,0 +1,24 @@
+{
+  "replication_id":"stripe",
+  "implementation_path":"replications/stripe/implementation/index.html",
+  "screenshot_status":"NOT_CAPTURED",
+  "final_candidate_iteration":10,
+  "final_candidate_screenshot":"../iterations/010/screenshot.png",
+  "source_dimensions":[1920,14747],
+  "candidate_dimensions":[1920,14537],
+  "height_ratio":0.98576,
+  "source_to_candidate":"FAIL",
+  "verification":{
+    "build":"PASS",
+    "tailwind":"PASS",
+    "css":"PASS",
+    "javascript":"PASS",
+    "external_resource_audit":"PASS",
+    "deployment":"PASS",
+    "responsive":"NOT_VERIFIED",
+    "final_screenshot":"BLOCKED_BY_SCREENSHOT_TOOL",
+    "pixel_similarity":"NOT_AVAILABLE"
+  },
+  "deployment_url":"https://deputy-proxy.github.io/frontend/replications/stripe/implementation/index.html",
+  "failure_reason":"The available screenshot workflow accepts only source or iteration captures and rejects the required final capture kind. The latest implementation iteration is fresh from implementation/index.html, but the workflow does not provide a supported operation to create implementation/screenshot.png without copying an iteration, which the replication specification forbids."
+}
