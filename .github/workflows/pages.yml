@@ -45,10 +45,6 @@ jobs:
           cp -R replications/kora/source dist/replications/kora/
           cp -R replications/kora/iterations dist/replications/kora/
           cp replications/kora/README.md dist/replications/kora/
-          mkdir -p dist/replications/stripe
-          cp -R replications/stripe/source dist/replications/stripe/
-          cp -R replications/stripe/iterations dist/replications/stripe/
-          cp replications/stripe/README.md dist/replications/stripe/
           mkdir -p dist/replications/thornhill
           cp -R replications/thornhill/source dist/replications/thornhill/
           cp -R replications/thornhill/iterations dist/replications/thornhill/
