@@ -17,5 +17,15 @@
     "fullPage": true,
     "captureBeyondViewport": true,
     "path": "replications/investflowtemplate-webflow-io-home-pages-home-v3/iterations/002/screenshot.png"
-  }
+  },
+  "visual_verification": {
+    "reference": "../../source/screenshot.png",
+    "result": "FAIL",
+    "deviations": [
+      "Reveal state was stabilized, but Inter Tight 500/600 font URLs were malformed and fell back, changing text metrics.",
+      "Portfolio slider still exposed the wrong source state.",
+      "Page height remained 7504px versus 7390px."
+    ]
+  },
+  "implementation_status": "superseded"
 }
