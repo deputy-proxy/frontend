@@ -1,0 +1,21 @@
+{
+  "replication_id": "investflowtemplate-webflow-io-home-pages-home-v3",
+  "kind": "iteration",
+  "iteration": 7,
+  "url": "https://frontend-production-4f1b.up.railway.app/replications/investflowtemplate-webflow-io-home-pages-home-v3/implementation/",
+  "captured_at": "2026-09-26T16:03:29.511Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 7390
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/investflowtemplate-webflow-io-home-pages-home-v3/iterations/007/screenshot.png"
+  }
+}
