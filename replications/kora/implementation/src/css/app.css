@@ -4,7 +4,7 @@
 @font-face{font-family:ManropeKora;src:url("https://framerusercontent.com/third-party-assets/fontshare/wf/6KNUAYMK3PTPQA22366IWF5JUVT35NZ3/E4CLT6PE4W64IV56BHAWFRZFLHPZIXFF/DEPNXL2T77QGX4DXZAN3G53TXHO2JEFP.woff2") format("woff2");font-weight:400 800;font-style:normal;font-display:swap}
 :root{font-family:InterKora,Inter,Arial,sans-serif;background:#fcfcfa;color:#242424}
 html{scroll-behavior:smooth}
-body{margin:0;background:#fcfcfa}
+html,body{max-width:100%;overflow-x:hidden}body{margin:0;background:#fcfcfa}body>div{zoom:.8;width:125%}
 ::selection{background:#5dc39b;color:#10211b}
 a,button{transition:opacity .2s ease,background-color .2s ease,border-color .2s ease,color .2s ease,transform .2s ease}
 button{cursor:pointer}
