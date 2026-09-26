@@ -189,7 +189,7 @@ Before touching the implementation:
 2. Identify the existing project structure.
 3. Identify the build system.
 4. Identify the deployment system.
-5. Identify available browser/screenshot tooling.
+5. Identify available browser/screenshot tooling (@replication-screenshot).
 6. Identify available GitHub tooling.
 7. Identify existing replication infrastructure.
 8. Identify CSS/JavaScript conventions.
