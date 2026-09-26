@@ -1,9 +1,0 @@
-{
-  "kind":"implementation-final",
-  "implementation_path":"replications/altrum-template/implementation/index.html",
-  "status":"pending",
-  "verification":{
-    "source_comparison":"PENDING",
-    "tailwind":"PENDING","css":"PENDING","js":"PENDING","external_resources":"PENDING","responsive":"PENDING","deployment":"PENDING"
-  }
-}
