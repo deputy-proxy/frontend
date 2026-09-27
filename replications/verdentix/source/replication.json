@@ -1,1 +1,0 @@
-{"kind":"source","replication_id":"verdentix","url":"https://verdentix.webflow.io/","capture_status":"blocked","error":"@replicator-mcp failed on the initial capture and two retries.","prior_same_url_capture":{"captured_at":"2026-09-26T13:33:29.938Z","viewport":{"width":1920,"height":1080,"deviceScaleFactor":1},"document":{"width":1920,"height":9451},"historical_only":true}}
