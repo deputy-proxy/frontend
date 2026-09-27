@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Valid.guide helps you investigate whether online information, claims, products, services, and sources are trustworthy, current, and supported by evidence.">
+  <meta name="theme-color" content="#f5f4ef">
+  <title>Valid.guide — Check what you found.</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-paper: #f5f4ef;
+      --color-ink: #12130f;
+      --color-muted: #666861;
+      --color-line: #d8d8d0;
+      --color-panel: #ecece5;
+      --color-accent: #d8ff3e;
+      --color-accent-dark: #1f3000;
+      --color-signal: #2255e8;
+    }
+
+    @layer base {
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--color-paper);
+        color: var(--color-ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      h1, h2, h3, .display {
+        font-family: Georgia, "Times New Roman", serif;
+        letter-spacing: -.035em;
+      }
+      ::selection { background: #d8ff3e; color: #12130f; }
+    }
+
+    @layer utilities {
+      .text-balance { text-wrap: balance; }
+      .hairline { border-color: var(--color-line); }
+      .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+      .grid-paper {
+        background-image:
+          linear-gradient(rgba(18,19,15,.065) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(18,19,15,.065) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: linear-gradient(to bottom, black 0%, transparent 78%);
+      }
+      .scanline {
+        background-image: linear-gradient(to bottom, transparent 0%, rgba(34,85,232,.14) 50%, transparent 100%);
+      }
+      .source-dot { box-shadow: 0 0 0 5px rgba(216,255,62,.22); }
+      .result-ring { box-shadow: 0 0 0 1px #12130f, 0 0 0 8px rgba(216,255,62,.18); }
+      .focus-ring:focus-visible { outline: 2px solid #2255e8; outline-offset: 3px; }
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden antialiased" x-data="validGuide()">
+  <div class="fixed inset-0 -z-10 grid-paper pointer-events-none"></div>
+
+  <header class="fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto max-w-7xl px-5 pt-4 sm:px-8">
+      <nav class="border border-black/10 bg-[rgba(245,244,239,.9)] px-4 py-3 backdrop-blur-md sm:px-5" aria-label="Primary navigation">
+        <div class="flex items-center justify-between">
+          <a href="#" class="flex items-center gap-3 focus-ring" aria-label="Valid.guide home">
+            <span class="grid size-8 place-items-center border border-black bg-[var(--color-accent)]">
+              <span class="size-2 rounded-full bg-black"></span>
+            </span>
+            <span class="text-sm font-bold tracking-[.2em]">VALID.GUIDE</span>
+          </a>
+
+          <div class="hidden items-center gap-7 md:flex">
+            <a href="#method" class="text-sm text-[var(--color-muted)] transition hover:text-black focus-ring">Method</a>
+            <a href="#examples" class="text-sm text-[var(--color-muted)] transition hover:text-black focus-ring">Examples</a>
+            <a href="#faq" class="text-sm text-[var(--color-muted)] transition hover:text-black focus-ring">FAQ</a>
+            <a href="#check" class="border border-black bg-black px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-signal)] focus-ring">Check something ↗</a>
+          </div>
+
+          <button @click="mobileOpen=!mobileOpen" :aria-expanded="mobileOpen" aria-label="Toggle navigation" class="grid size-10 place-items-center border border-black/10 md:hidden focus-ring">
+            <span class="mono text-lg" x-text="mobileOpen ? '×' : '//'"></span>
+          </button>
+        </div>
+
+        <div x-show="mobileOpen" x-transition class="mt-3 border-t border-black/10 pt-3 md:hidden">
+          <a @click="mobileOpen=false" href="#method" class="block border-b border-black/10 py-3 text-sm">Method</a>
+          <a @click="mobileOpen=false" href="#examples" class="block border-b border-black/10 py-3 text-sm">Examples</a>
+          <a @click="mobileOpen=false" href="#faq" class="block py-3 text-sm">FAQ</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative min-h-screen border-b border-black/10 pt-32 sm:pt-40">
+      <div class="mx-auto max-w-7xl px-5 pb-16 sm:px-8 sm:pb-24">
+        <div class="mb-12 flex items-start justify-between gap-8">
+          <div class="hero-kicker mono flex items-center gap-3 text-[10px] uppercase tracking-[.24em] text-[var(--color-muted)] sm:text-xs">
+            <span class="size-2 bg-[var(--color-accent)] source-dot"></span>
+            Open verification index / 01
+          </div>
+          <div class="hidden text-right md:block">
+            <p class="mono text-[10px] uppercase tracking-[.2em] text-[var(--color-muted)]">Status</p>
+            <p class="mono mt-1 text-xs">SYSTEM / READY</p>
+          </div>
+        </div>
+
+        <div class="grid items-end gap-14 lg:grid-cols-[1.08fr_.92fr]">
+          <div class="hero-copy">
+            <h1 class="text-balance max-w-5xl text-[clamp(4rem,9vw,8.6rem)] font-normal leading-[.82]">
+              Check what<br><span class="relative inline-block">you found<span class="absolute -bottom-2 left-0 h-2 w-full bg-[var(--color-accent)] sm:-bottom-3 sm:h-3"></span></span>.
+            </h1>
+            <p class="mt-9 max-w-xl text-base leading-7 text-[var(--color-muted)] sm:text-lg">
+              Valid.guide helps you investigate claims, sources, products, companies, and websites before you trust, share, or buy.
+            </p>
+          </div>
+
+          <div id="check" class="verify-console border border-black bg-[#11120f] p-4 text-white sm:p-5">
+            <div class="flex items-center justify-between border-b border-white/15 pb-3">
+              <span class="mono text-[10px] uppercase tracking-[.2em] text-white/50">VERIFY / INPUT</span>
+              <span class="mono flex items-center gap-2 text-[10px] text-[#d8ff3e]"><span class="size-1.5 rounded-full bg-[#d8ff3e]"></span>ONLINE</span>
+            </div>
+
+            <form @submit.prevent="runCheck" class="pt-5">
+              <label for="verify-input" class="sr-only">URL, claim, product, or source to verify</label>
+              <textarea id="verify-input" x-model="query" rows="3" class="focus-ring w-full resize-none border-0 bg-transparent p-0 text-xl leading-7 text-white placeholder:text-white/25 outline-none sm:text-2xl" placeholder="Paste a URL or type a claim to investigate..."></textarea>
+              <div class="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-white/15 pt-4">
+                <div class="flex gap-2">
+                  <span class="mono border border-white/15 px-2 py-1 text-[9px] uppercase tracking-[.14em] text-white/50">URL</span>
+                  <span class="mono border border-white/15 px-2 py-1 text-[9px] uppercase tracking-[.14em] text-white/50">CLAIM</span>
+                  <span class="mono border border-white/15 px-2 py-1 text-[9px] uppercase tracking-[.14em] text-white/50">PRODUCT</span>
+                </div>
+                <button type="submit" class="group flex items-center gap-3 bg-[var(--color-accent)] px-4 py-2.5 text-sm font-bold text-black transition hover:bg-white focus-ring">
+                  <span x-text="checking ? 'Investigating…' : 'Start check'"></span>
+                  <span class="transition group-hover:translate-x-1">↗</span>
+                </button>
+              </div>
+            </form>
+
+            <div x-show="checking" x-transition class="mt-4 overflow-hidden border border-white/10 bg-white/[.03] p-3">
+              <div class="scanline h-8"></div>
+              <p class="mono mt-2 text-[10px] uppercase tracking-[.12em] text-white/45">Comparing available evidence…</p>
+            </div>
+
+            <div x-show="checked" x-transition class="mt-4 border border-[#d8ff3e]/40 bg-[#d8ff3e]/[.06] p-4">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="mono text-[9px] uppercase tracking-[.18em] text-[#d8ff3e]">Example analysis ready</p>
+                  <p class="mt-2 text-sm leading-6 text-white/75">A real verification should show its evidence, source quality, freshness, and uncertainty rather than hiding everything behind one number.</p>
+                </div>
+                <span class="mono text-xs text-[#d8ff3e]">01</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-20 grid border-y border-black/10 py-4 sm:grid-cols-3">
+          <div class="mono border-b border-black/10 pb-3 text-[10px] uppercase tracking-[.18em] text-[var(--color-muted)] sm:border-b-0 sm:border-r sm:pb-0">01 / Find the claim</div>
+          <div class="mono border-b border-black/10 py-3 text-[10px] uppercase tracking-[.18em] text-[var(--color-muted)] sm:border-b-0 sm:px-6 sm:py-0 sm:border-r">02 / Inspect the evidence</div>
+          <div class="mono pt-3 text-[10px] uppercase tracking-[.18em] text-[var(--color-muted)] sm:pl-6 sm:pt-0">03 / Understand the context</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="border-b border-black/10 bg-[#11120f] text-white">
+      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+        <div class="grid gap-14 lg:grid-cols-[.7fr_1.3fr]">
+          <div>
+            <p class="mono text-[10px] uppercase tracking-[.22em] text-white/40">Method / 02</p>
+            <h2 class="mt-5 max-w-md text-4xl font-normal leading-[.98] sm:text-6xl">Evidence before certainty.</h2>
+            <p class="mt-6 max-w-sm text-sm leading-6 text-white/50">Verification is not a magic truth button. It is a structured way to inspect what supports a claim and what does not.</p>
+          </div>
+
+          <div class="divide-y divide-white/10 border-y border-white/10">
+            <article class="method-row grid gap-6 py-7 sm:grid-cols-[80px_1fr_180px] sm:items-start">
+              <span class="mono text-xs text-[#d8ff3e]">01</span>
+              <div><h3 class="text-2xl font-normal">Identify the claim</h3><p class="mt-2 max-w-xl text-sm leading-6 text-white/45">Separate the actual statement being made from headlines, opinions, marketing language, and surrounding noise.</p></div>
+              <span class="mono text-[10px] uppercase tracking-[.15em] text-white/30 sm:text-right">Claim / scope</span>
+            </article>
+            <article class="method-row grid gap-6 py-7 sm:grid-cols-[80px_1fr_180px] sm:items-start">
+              <span class="mono text-xs text-[#d8ff3e]">02</span>
+              <div><h3 class="text-2xl font-normal">Trace the evidence</h3><p class="mt-2 max-w-xl text-sm leading-6 text-white/45">Surface supporting and contradicting sources, with source type and context instead of a mysterious confidence score.</p></div>
+              <span class="mono text-[10px] uppercase tracking-[.15em] text-white/30 sm:text-right">Sources / support</span>
+            </article>
+            <article class="method-row grid gap-6 py-7 sm:grid-cols-[80px_1fr_180px] sm:items-start">
+              <span class="mono text-xs text-[#d8ff3e]">03</span>
+              <div><h3 class="text-2xl font-normal">Check freshness</h3><p class="mt-2 max-w-xl text-sm leading-6 text-white/45">A source can be reputable and still be too old to answer a current question. Time belongs in the evidence.</p></div>
+              <span class="mono text-[10px] uppercase tracking-[.15em] text-white/30 sm:text-right">Date / relevance</span>
+            </article>
+            <article class="method-row grid gap-6 py-7 sm:grid-cols-[80px_1fr_180px] sm:items-start">
+              <span class="mono text-xs text-[#d8ff3e]">04</span>
+              <div><h3 class="text-2xl font-normal">Show uncertainty</h3><p class="mt-2 max-w-xl text-sm leading-6 text-white/45">When evidence is incomplete, conflicting, or ambiguous, the interface should make that visible.</p></div>
+              <span class="mono text-[10px] uppercase tracking-[.15em] text-white/30 sm:text-right">Context / limits</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples" class="border-b border-black/10">
+      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+        <div class="flex flex-col justify-between gap-6 border-b border-black/10 pb-8 sm:flex-row sm:items-end">
+          <div>
+            <p class="mono text-[10px] uppercase tracking-[.22em] text-[var(--color-muted)]">Example output / 03</p>
+            <h2 class="mt-4 max-w-2xl text-4xl font-normal leading-[.98] sm:text-6xl">A result you can inspect.</h2>
+          </div>
+          <p class="max-w-xs text-sm leading-6 text-[var(--color-muted)]">No black-box verdicts. The useful part is the evidence trail.</p>
+        </div>
+
+        <div class="mt-10 grid gap-4 lg:grid-cols-[1.25fr_.75fr]">
+          <article class="border border-black bg-white p-5 sm:p-7">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-black/10 pb-5">
+              <div>
+                <p class="mono text-[9px] uppercase tracking-[.18em] text-[var(--color-muted)]">Claim under review</p>
+                <h3 class="mt-2 max-w-2xl text-2xl font-normal">“This product is independently certified.”</h3>
+              </div>
+              <span class="mono border border-[#b9cc00] bg-[#d8ff3e]/35 px-3 py-1.5 text-[10px] font-bold uppercase">Needs context</span>
+            </div>
+
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <div class="border border-black/10 bg-[var(--color-paper)] p-4">
+                <div class="flex justify-between"><span class="mono text-[9px] uppercase text-[var(--color-muted)]">Supporting</span><span class="mono text-[9px] text-[#1e7a36]">2 sources</span></div>
+                <p class="mt-3 text-sm leading-6">The manufacturer cites a named certification body and publishes a certificate reference.</p>
+              </div>
+              <div class="border border-black/10 bg-[var(--color-paper)] p-4">
+                <div class="flex justify-between"><span class="mono text-[9px] uppercase text-[var(--color-muted)]">Missing</span><span class="mono text-[9px] text-[#a34b22]">1 check</span></div>
+                <p class="mt-3 text-sm leading-6">The certificate could not be independently matched to a public registry entry in the example.</p>
+              </div>
+            </div>
+
+            <div class="mt-5 border-t border-black/10 pt-5">
+              <div class="flex items-center justify-between"><span class="mono text-[9px] uppercase tracking-[.16em] text-[var(--color-muted)]">Evidence trail</span><span class="mono text-[9px] text-[var(--color-muted)]">Updated 12 min ago</span></div>
+              <div class="mt-4 space-y-3">
+                <div class="flex items-center gap-3 text-sm"><span class="size-2 rounded-full bg-[#1e7a36]"></span><span class="font-medium">Certification body</span><span class="ml-auto text-xs text-[var(--color-muted)]">Primary source</span></div>
+                <div class="flex items-center gap-3 text-sm"><span class="size-2 rounded-full bg-[#1e7a36]"></span><span class="font-medium">Manufacturer documentation</span><span class="ml-auto text-xs text-[var(--color-muted)]">Claim source</span></div>
+                <div class="flex items-center gap-3 text-sm"><span class="size-2 rounded-full bg-[#d18a21]"></span><span class="font-medium">Public registry</span><span class="ml-auto text-xs text-[var(--color-muted)]">Not matched</span></div>
+              </div>
+            </div>
+          </article>
+
+          <aside class="border border-black bg-[#d8ff3e] p-5 sm:p-7">
+            <div class="flex items-center justify-between">
+              <span class="mono text-[9px] uppercase tracking-[.18em]">Source profile</span>
+              <span class="mono text-[9px]">03 / 03</span>
+            </div>
+            <div class="mt-10 flex items-center gap-4">
+              <div class="grid size-12 place-items-center border border-black bg-black text-[#d8ff3e] mono text-sm">VB</div>
+              <div><p class="font-semibold">Verification body</p><p class="mono mt-1 text-[9px] uppercase tracking-[.12em]">Institutional source</p></div>
+            </div>
+            <div class="mt-8 space-y-5 border-t border-black/15 pt-6">
+              <div><p class="mono text-[9px] uppercase tracking-[.15em]">Source quality</p><p class="mt-1 text-xl">High</p></div>
+              <div><p class="mono text-[9px] uppercase tracking-[.15em]">Freshness</p><p class="mt-1 text-xl">Current</p></div>
+              <div><p class="mono text-[9px] uppercase tracking-[.15em]">Independent match</p><p class="mt-1 text-xl">Pending</p></div>
+            </div>
+            <p class="mt-10 border-t border-black/15 pt-5 text-sm leading-6">Context matters. Valid.guide should show why a source matters, not just assign it a score.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-black/10 bg-[#e7e6df]">
+      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
+        <div class="grid gap-12 lg:grid-cols-[.7fr_1.3fr]">
+          <div>
+            <p class="mono text-[10px] uppercase tracking-[.22em] text-[var(--color-muted)]">Use cases / 04</p>
+            <h2 class="mt-4 max-w-sm text-4xl font-normal leading-[.98] sm:text-5xl">Different questions. Same discipline.</h2>
+          </div>
+          <div class="grid border-l border-black/10 sm:grid-cols-2">
+            <div class="usecase border-b border-black/10 p-6 sm:border-r"><span class="mono text-[10px] text-[var(--color-signal)]">01</span><h3 class="mt-8 text-xl">Websites</h3><p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">Inspect ownership, source quality, recency, and claims before trusting a page.</p></div>
+            <div class="usecase border-b border-black/10 p-6"><span class="mono text-[10px] text-[var(--color-signal)]">02</span><h3 class="mt-8 text-xl">Claims</h3><p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">Break broad statements into checkable pieces and inspect the evidence behind them.</p></div>
+            <div class="usecase border-b border-black/10 p-6 sm:border-r"><span class="mono text-[10px] text-[var(--color-signal)]">03</span><h3 class="mt-8 text-xl">Products</h3><p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">Understand certifications, specifications, reviews, and the provenance of product claims.</p></div>
+            <div class="usecase border-b border-black/10 p-6"><span class="mono text-[10px] text-[var(--color-signal)]">04</span><h3 class="mt-8 text-xl">Companies</h3><p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">Review public claims, credentials, dates, and supporting documentation.</p></div>
+            <div class="usecase p-6 sm:border-r"><span class="mono text-[10px] text-[var(--color-signal)]">05</span><h3 class="mt-8 text-xl">Sources</h3><p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">See who published something, when, and what kind of evidence they provide.</p></div>
+            <div class="usecase p-6"><span class="mono text-[10px] text-[var(--color-signal)]">06</span><h3 class="mt-8 text-xl">Online information</h3><p class="mt-2 text-sm leading-6 text-[var(--color-muted)]">Turn “I saw this online” into a traceable research question.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-black/10">
+      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+        <div class="grid gap-12 lg:grid-cols-2">
+          <div>
+            <p class="mono text-[10px] uppercase tracking-[.22em] text-[var(--color-muted)]">Why it matters / 05</p>
+            <h2 class="mt-5 max-w-xl text-4xl font-normal leading-[.95] sm:text-6xl">The internet is very good at making confidence look like evidence.</h2>
+          </div>
+          <div class="lg:pt-16">
+            <p class="max-w-xl text-lg leading-8 text-[var(--color-muted)]">A polished page can be wrong. A screenshot can be old. A source can be real and still be irrelevant to the claim being made. Valid.guide is designed around that awkward fact.</p>
+            <div class="mt-10 border-y border-black/10 py-6">
+              <div class="flex items-center gap-4"><span class="mono text-[10px] text-[var(--color-signal)]">NOTE</span><p class="text-sm">A verification result should explain the reasoning a person needs to make their own judgment.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="border-b border-black/10">
+      <div class="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
+        <div class="mb-10">
+          <p class="mono text-[10px] uppercase tracking-[.22em] text-[var(--color-muted)]">Questions / 06</p>
+          <h2 class="mt-4 text-4xl font-normal sm:text-6xl">What should you know first?</h2>
+        </div>
+        <div class="divide-y border-y border-black/10" x-data="{openFaq:null}">
+          <template x-for="(item,i) in faqs" :key="i">
+            <div>
+              <button @click="openFaq=openFaq===i?null:i" class="focus-ring flex w-full items-center justify-between gap-8 py-6 text-left">
+                <span class="text-lg sm:text-xl" x-text="item.q"></span>
+                <span class="mono text-lg" x-text="openFaq===i?'−':'+'"></span>
+              </button>
+              <div x-show="openFaq===i" x-collapse class="max-w-3xl pb-6 pr-10 text-sm leading-7 text-[var(--color-muted)]" x-text="item.a"></div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[#11120f] text-white" id="start">
+      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+        <div class="grid items-end gap-12 lg:grid-cols-[1fr_.75fr]">
+          <div>
+            <p class="mono text-[10px] uppercase tracking-[.22em] text-white/40">Begin / 07</p>
+            <h2 class="mt-5 max-w-3xl text-5xl font-normal leading-[.9] sm:text-7xl">Before you trust it,<br><span class="text-[#d8ff3e]">check it.</span></h2>
+          </div>
+          <div>
+            <p class="max-w-md text-sm leading-7 text-white/50">Bring a URL, claim, product, company, or source. The interface should show the evidence trail, not ask you to take its word for it.</p>
+            <a href="#check" class="mt-7 inline-flex items-center gap-3 bg-[#d8ff3e] px-5 py-3 text-sm font-bold text-black transition hover:bg-white focus-ring">Start a verification <span>↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#11120f] text-white">
+    <div class="mx-auto max-w-7xl px-5 pb-8 sm:px-8">
+      <div class="border-t border-white/10 pt-6">
+        <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+          <div class="flex items-center gap-3"><span class="grid size-7 place-items-center border border-white/30 bg-[#d8ff3e]"><span class="size-1.5 rounded-full bg-black"></span></span><span class="text-xs font-bold tracking-[.18em]">VALID.GUIDE</span></div>
+          <p class="mono text-[9px] uppercase tracking-[.15em] text-white/30">Evidence / context / uncertainty</p>
+          <p class="mono text-[9px] uppercase tracking-[.15em] text-white/30">© 2026 Valid.guide</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function validGuide() {
+      return {
+        mobileOpen: false,
+        query: '',
+        checking: false,
+        checked: false,
+        faqs: [
+          { q: 'Does Valid.guide give a simple true or false answer?', a: 'Not by default. A useful verification should expose the claim, supporting and contradicting evidence, source quality, freshness, and relevant uncertainty. Some questions have incomplete or conflicting evidence.' },
+          { q: 'How should I interpret a verification result?', a: 'Treat it as structured research assistance, not as a replacement for judgment. The important part is the evidence trail and the context around each source.' },
+          { q: 'Can a reputable source still be wrong or irrelevant?', a: 'Yes. Source reputation is only one part of verification. A source can be authentic but outdated, outside its area of expertise, or unrelated to the precise claim being investigated.' },
+          { q: 'What information can I check?', a: 'The interface is designed around URLs, claims, products, companies, sources, and other pieces of online information that can be investigated against available evidence.' },
+          { q: 'What about privacy?', a: 'A production implementation should clearly explain what is collected, how submitted material is processed, how long it is retained, and whether it is shared. Those policies should be visible before a user submits sensitive information.' },
+          { q: 'What can Valid.guide not verify?', a: 'Some questions cannot be resolved from public evidence alone. The product should surface missing evidence and uncertainty rather than manufacturing certainty.' }
+        ],
+        runCheck() {
+          if (!this.query.trim()) return;
+          this.checked = false;
+          this.checking = true;
+          setTimeout(() => { this.checking = false; this.checked = true; }, 1100);
+        }
+      };
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!window.gsap) return;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) return;
+
+      gsap.from('.hero-kicker', { y: 14, opacity: 0, duration: .7, ease: 'power2.out' });
+      gsap.from('.hero-copy h1', { y: 40, opacity: 0, duration: 1, delay: .08, ease: 'power3.out' });
+      gsap.from('.hero-copy p', { y: 20, opacity: 0, duration: .7, delay: .35, ease: 'power2.out' });
+      gsap.from('.verify-console', { y: 34, opacity: 0, duration: .9, delay: .2, ease: 'power3.out' });
+
+      gsap.utils.toArray('.method-row, .usecase').forEach((el) => {
+        gsap.from(el, {
+          y: 22,
+          opacity: 0,
+          duration: .65,
+          ease: 'power2.out',
+          scrollTrigger: undefined,
+          delay: 0
+        });
+      });
+
+      if (window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('.method-row, .usecase').forEach((el) => {
+          gsap.fromTo(el, { y: 20, opacity: .25 }, {
+            y: 0, opacity: 1, duration: .7, ease: 'power2.out',
+            scrollTrigger: { trigger: el, start: 'top 86%', once: true }
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
