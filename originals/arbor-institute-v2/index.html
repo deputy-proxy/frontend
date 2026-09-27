@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Arbor Institute advances practical environmental research through field evidence, systems thinking, and public education.">
+  <meta name="theme-color" content="#101310">
+  <title>Arbor Institute / Field Notes</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-ink: #101310;
+      --color-paper: #e9e5d8;
+      --color-acid: #d7ff54;
+      --color-rust: #b65c3a;
+      --color-dim: #777b72;
+      --color-line: rgba(233,229,216,.18);
+    }
+
+    @layer base {
+      html { scroll-behavior: smooth; }
+      body {
+        background: #101310;
+        color: #e9e5d8;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      }
+      ::selection { background: #d7ff54; color: #101310; }
+    }
+
+    @layer utilities {
+      .display { font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; }
+      .rule { border-color: rgba(233,229,216,.18); }
+      .scanlines {
+        background-image: linear-gradient(rgba(233,229,216,.035) 1px, transparent 1px);
+        background-size: 100% 5px;
+      }
+      .crosshair::before, .crosshair::after {
+        content: "";
+        position: absolute;
+        background: rgba(215,255,84,.7);
+      }
+      .crosshair::before { width: 1px; height: 20px; left: 50%; top: -10px; }
+      .crosshair::after { width: 20px; height: 1px; left: calc(50% - 10px); top: 0; }
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden antialiased" x-data="{ open: false }">
+  <header class="sticky top-0 z-50 border-b rule bg-ink/95 backdrop-blur">
+    <div class="mx-auto flex min-h-16 max-w-[1600px] items-center justify-between px-5 sm:px-8">
+      <a href="#" class="flex items-center gap-4" aria-label="Arbor Institute home">
+        <span class="display text-2xl tracking-[-.04em] text-acid">ARBOR</span>
+        <span class="hidden border-l rule pl-4 text-[10px] uppercase tracking-[.2em] text-dim sm:block">Institute / Research unit</span>
+      </a>
+
+      <nav class="hidden items-center gap-7 text-[11px] uppercase tracking-[.16em] md:flex" aria-label="Primary">
+        <a href="#field" class="transition hover:text-acid focus:outline-none focus-visible:text-acid">Field notes</a>
+        <a href="#systems" class="transition hover:text-acid focus:outline-none focus-visible:text-acid">Systems</a>
+        <a href="#library" class="transition hover:text-acid focus:outline-none focus-visible:text-acid">Library</a>
+        <a href="#about" class="transition hover:text-acid focus:outline-none focus-visible:text-acid">About</a>
+      </nav>
+
+      <button @click="open=!open" class="border rule px-3 py-2 text-[10px] uppercase tracking-[.16em] md:hidden" :aria-expanded="open" aria-controls="mobile-nav">Menu</button>
+    </div>
+    <div id="mobile-nav" x-show="open" x-transition class="border-t rule md:hidden">
+      <div class="grid gap-px bg-white/5">
+        <a @click="open=false" href="#field" class="bg-ink px-5 py-4 text-[11px] uppercase tracking-[.16em]">Field notes</a>
+        <a @click="open=false" href="#systems" class="bg-ink px-5 py-4 text-[11px] uppercase tracking-[.16em]">Systems</a>
+        <a @click="open=false" href="#library" class="bg-ink px-5 py-4 text-[11px] uppercase tracking-[.16em]">Library</a>
+        <a @click="open=false" href="#about" class="bg-ink px-5 py-4 text-[11px] uppercase tracking-[.16em]">About</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative min-h-[calc(100vh-64px)] overflow-hidden border-b rule scanlines">
+      <div class="pointer-events-none absolute inset-0 opacity-30" aria-hidden="true">
+        <div class="absolute left-[12%] top-[18%] h-px w-[72%] bg-acid"></div>
+        <div class="absolute left-[12%] top-[18%] h-[62%] w-px bg-acid"></div>
+      </div>
+
+      <div class="mx-auto grid max-w-[1600px] lg:grid-cols-[72px_1fr]">
+        <div class="hidden border-r rule lg:flex lg:flex-col lg:items-center lg:justify-between lg:py-8">
+          <span class="rotate-180 text-[9px] uppercase tracking-[.3em] text-dim [writing-mode:vertical-rl]">Environmental research / 2026</span>
+          <span class="text-[10px] text-acid">01—04</span>
+        </div>
+
+        <div class="grid min-h-[calc(100vh-64px)] items-end px-5 py-10 sm:px-8 lg:grid-cols-[1.2fr_.8fr] lg:gap-16 lg:px-12 lg:py-14">
+          <div class="hero-copy self-center max-w-5xl">
+            <div class="mb-8 flex items-center gap-3 text-[10px] uppercase tracking-[.2em] text-acid">
+              <span class="h-2 w-2 bg-acid"></span>
+              Independent research & education
+            </div>
+            <h1 class="display max-w-5xl text-[19vw] leading-[.72] tracking-[-.055em] text-paper sm:text-[8rem] lg:text-[10.5rem]">
+              FIELD<br><span class="text-acid">/</span> FUTURES
+            </h1>
+            <div class="mt-10 grid max-w-3xl gap-8 border-t rule pt-7 sm:grid-cols-[1fr_auto]">
+              <p class="max-w-xl text-sm leading-7 text-paper/65 sm:text-base">
+                Arbor Institute studies the systems that shape resilient landscapes and communities, then carries evidence into the places where decisions are made.
+              </p>
+              <a href="#field" class="group inline-flex h-12 items-center justify-center gap-3 border border-acid bg-acid px-5 text-[11px] font-bold uppercase tracking-[.14em] text-ink transition hover:bg-paper hover:border-paper focus:outline-none focus-visible:ring-2 focus-visible:ring-acid">
+                Enter the field <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="relative mt-10 lg:mt-0 lg:self-end">
+            <div class="relative overflow-hidden border rule bg-black">
+              <img src="https://images.pexels.com/photos/6636340/pexels-photo-6636340.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Researcher measuring a tree trunk in a forest" fetchpriority="high" class="aspect-[4/5] w-full object-cover grayscale contrast-125 brightness-75">
+              <div class="absolute inset-0 bg-[linear-gradient(135deg,transparent_48%,rgba(215,255,84,.25)_49%,transparent_50%)] bg-[length:18px_18px] opacity-40" aria-hidden="true"></div>
+              <div class="absolute bottom-0 left-0 right-0 flex justify-between border-t rule bg-ink/90 px-4 py-3 text-[9px] uppercase tracking-[.15em]">
+                <span>Field sample / 6636340</span><span class="text-acid">Live evidence</span>
+              </div>
+            </div>
+            <span class="absolute -right-2 -top-2 size-5 border-r border-t border-acid" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-5 right-5 hidden text-right text-[9px] uppercase tracking-[.2em] text-dim lg:block">
+        <span>40.7128° N</span><br>
+        <span>74.0060° W</span>
+      </div>
+    </section>
+
+    <section id="field" class="scroll-mt-16 border-b rule">
+      <div class="mx-auto max-w-[1600px] lg:grid lg:grid-cols-[72px_1fr]">
+        <div class="hidden border-r rule lg:block"></div>
+        <div class="grid lg:grid-cols-[.7fr_1.3fr]">
+          <div class="border-b rule px-5 py-8 sm:px-8 lg:border-b-0 lg:border-r lg:px-12 lg:py-12">
+            <p class="text-[10px] uppercase tracking-[.2em] text-acid">01 / Field notes</p>
+            <p class="mt-24 max-w-xs text-xs leading-6 text-paper/45">Research begins with observation. We work across climate resilience, sustainable communities, and responsible land management.</p>
+          </div>
+          <div class="grid sm:grid-cols-2">
+            <article class="research-card border-b rule p-7 sm:border-r sm:p-10">
+              <span class="text-[10px] text-acid">01.01</span>
+              <h2 class="display mt-20 text-5xl uppercase leading-[.82] tracking-[-.03em]">Climate<br>adaptation</h2>
+              <p class="mt-7 text-xs leading-6 text-paper/55">How communities, institutions, and landscapes can prepare for a changing climate and respond with practical measures.</p>
+            </article>
+            <article class="research-card border-b rule p-7 sm:p-10">
+              <span class="text-[10px] text-acid">01.02</span>
+              <h2 class="display mt-20 text-5xl uppercase leading-[.82] tracking-[-.03em]">Sustainable<br>communities</h2>
+              <p class="mt-7 text-xs leading-6 text-paper/55">The choices, systems, and institutions that shape durable and adaptable communities.</p>
+            </article>
+            <article class="research-card p-7 sm:border-r sm:p-10">
+              <span class="text-[10px] text-acid">01.03</span>
+              <h2 class="display mt-20 text-5xl uppercase leading-[.82] tracking-[-.03em]">Responsible<br>land</h2>
+              <p class="mt-7 text-xs leading-6 text-paper/55">Land stewardship, natural systems, and the trade-offs behind decisions about land and resources.</p>
+            </article>
+            <article class="bg-acid p-7 text-ink sm:p-10">
+              <span class="text-[10px]">01.04</span>
+              <h2 class="display mt-20 text-5xl uppercase leading-[.82] tracking-[-.03em]">Evidence<br>to action</h2>
+              <p class="mt-7 text-xs leading-6 text-ink/65">Research is useful when it can survive outside the report. We work with practitioners to carry evidence into application.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="systems" class="scroll-mt-16 border-b rule">
+      <div class="mx-auto max-w-[1600px] lg:grid lg:grid-cols-[72px_1fr]">
+        <div class="hidden border-r rule lg:block"></div>
+        <div class="grid lg:grid-cols-[1fr_1fr]">
+          <div class="relative min-h-[540px] overflow-hidden border-b rule lg:border-b-0 lg:border-r">
+            <img src="https://images.pexels.com/photos/8754407/pexels-photo-8754407.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Aerial view of green agricultural fields" loading="lazy" class="absolute inset-0 h-full w-full object-cover grayscale brightness-50">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0,rgba(16,19,16,.75)_72%)]"></div>
+            <div class="absolute left-6 top-6 text-[9px] uppercase tracking-[.2em] text-acid">Systems map / 02</div>
+            <div class="crosshair absolute left-1/2 top-1/2 size-px"></div>
+            <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+              <p class="max-w-xs text-xs leading-5 text-paper/65">Landscape-scale thinking connects ecological conditions to human decisions.</p>
+              <span class="display text-6xl text-paper/20">02</span>
+            </div>
+          </div>
+          <div class="p-7 sm:p-10 lg:p-16">
+            <p class="text-[10px] uppercase tracking-[.2em] text-acid">02 / Systems</p>
+            <h2 class="display mt-12 max-w-xl text-6xl uppercase leading-[.78] tracking-[-.035em] sm:text-8xl">Read the<br><span class="text-acid">whole</span><br>system.</h2>
+            <p class="mt-10 max-w-lg text-sm leading-7 text-paper/55">Environmental questions rarely fit inside one discipline. Arbor connects field evidence, public knowledge, and practical questions to understand the relationships that matter.</p>
+            <div class="mt-12 grid border-t rule sm:grid-cols-3">
+              <div class="border-b rule py-5 sm:border-b-0 sm:border-r sm:pr-5"><span class="text-[9px] text-dim">METHOD</span><p class="mt-3 text-xs">Field evidence</p></div>
+              <div class="border-b rule py-5 sm:border-b-0 sm:border-r sm:px-5"><span class="text-[9px] text-dim">LENS</span><p class="mt-3 text-xs">Systems thinking</p></div>
+              <div class="py-5 sm:pl-5"><span class="text-[9px] text-dim">OUTPUT</span><p class="mt-3 text-xs">Practical action</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="library" class="scroll-mt-16 border-b rule bg-paper text-ink">
+      <div class="mx-auto max-w-[1600px] lg:grid lg:grid-cols-[72px_1fr]">
+        <div class="hidden border-r border-black/15 lg:block"></div>
+        <div class="p-5 sm:p-8 lg:p-12">
+          <div class="flex flex-col justify-between gap-8 border-b border-black/15 pb-8 sm:flex-row sm:items-end">
+            <div>
+              <p class="text-[10px] uppercase tracking-[.2em] text-rust">03 / Library</p>
+              <h2 class="display mt-5 text-6xl uppercase leading-[.78] tracking-[-.04em] sm:text-8xl">Work that<br>travels.</h2>
+            </div>
+            <p class="max-w-sm text-xs leading-6 text-black/55">Research, education, and practical environmental questions brought into the same conversation.</p>
+          </div>
+
+          <div class="divide-y divide-black/15">
+            <a href="#about" class="library-row grid gap-4 py-7 transition hover:bg-black/[.035] sm:grid-cols-[100px_1fr_auto] sm:items-center">
+              <span class="font-mono text-[10px] text-rust">PUB / 001</span>
+              <span class="display text-3xl uppercase">Climate adaptation</span>
+              <span class="text-[10px] uppercase tracking-[.15em]">Read ↗</span>
+            </a>
+            <a href="#about" class="library-row grid gap-4 py-7 transition hover:bg-black/[.035] sm:grid-cols-[100px_1fr_auto] sm:items-center">
+              <span class="font-mono text-[10px] text-rust">PUB / 002</span>
+              <span class="display text-3xl uppercase">Sustainable communities</span>
+              <span class="text-[10px] uppercase tracking-[.15em]">Read ↗</span>
+            </a>
+            <a href="#about" class="library-row grid gap-4 py-7 transition hover:bg-black/[.035] sm:grid-cols-[100px_1fr_auto] sm:items-center">
+              <span class="font-mono text-[10px] text-rust">PUB / 003</span>
+              <span class="display text-3xl uppercase">Responsible land management</span>
+              <span class="text-[10px] uppercase tracking-[.15em]">Read ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="scroll-mt-16 border-b rule">
+      <div class="mx-auto max-w-[1600px] lg:grid lg:grid-cols-[72px_1fr]">
+        <div class="hidden border-r rule lg:block"></div>
+        <div class="grid lg:grid-cols-[1fr_1fr]">
+          <div class="border-b rule p-7 sm:p-10 lg:border-b-0 lg:border-r lg:p-16">
+            <p class="text-[10px] uppercase tracking-[.2em] text-acid">04 / About</p>
+            <h2 class="display mt-12 text-6xl uppercase leading-[.78] tracking-[-.035em] sm:text-8xl">Useful<br>knowledge.</h2>
+          </div>
+          <div class="p-7 sm:p-10 lg:p-16">
+            <p class="max-w-xl text-base leading-8 text-paper/65">Arbor Institute is an independent research and education organization focused on climate resilience, sustainable land use, and practical environmental policy.</p>
+            <a href="#field" class="mt-12 inline-flex border-b border-acid pb-2 text-[11px] font-bold uppercase tracking-[.15em] text-acid">Explore the research index ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mx-auto max-w-[1600px] px-5 py-8 sm:px-8 lg:px-12">
+    <div class="flex flex-col justify-between gap-5 text-[9px] uppercase tracking-[.17em] text-dim sm:flex-row">
+      <span>Arbor Institute / Independent research & education</span>
+      <span>Field / Evidence / Application</span>
+    </div>
+  </footer>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion && window.gsap) {
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .from('.hero-copy > *', { y: 32, opacity: 0, duration: .8, stagger: .1 })
+        .from('.hero-media', { clipPath: 'inset(0 0 100% 0)', duration: 1.1 }, '-=.65');
+      gsap.utils.toArray('.research-card, .library-row').forEach((el) => {
+        gsap.from(el, {
+          y: 24,
+          opacity: 0,
+          duration: .7,
+          scrollTrigger: undefined,
+          immediateRender: false
+        });
+      });
+    }
+  </script>
+</body>
+</html>
