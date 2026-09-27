@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="JUCO este un jurnal digital pentru copii și o comunitate pentru părinți. Păstrează momentele care contează și descoperă povești de la alți părinți.">
+  <meta name="theme-color" content="#f6f0e6">
+  <title>JUCO — Păstrează povestea copilăriei</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-cream: #f6f0e6;
+      --color-paper: #fffaf2;
+      --color-ink: #27302b;
+      --color-sage: #a8bda8;
+      --color-terracotta: #d8785f;
+      --color-yellow: #f3c968;
+      --color-lilac: #b9abd2;
+      --color-muted: #6d756f;
+      --color-line: rgba(39,48,43,.16);
+    }
+    @layer base {
+      html { scroll-behavior: smooth; }
+      body { background: #f6f0e6; color:#27302b; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      ::selection { background:#f3c968; color:#27302b; }
+    }
+    @layer utilities {
+      .display { font-family: Georgia, "Times New Roman", serif; }
+      .hand { font-family: "Comic Sans MS", "Bradley Hand", cursive; }
+      .paper-grid {
+        background-image: linear-gradient(rgba(39,48,43,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(39,48,43,.045) 1px, transparent 1px);
+        background-size: 28px 28px;
+      }
+      .paper-dots {
+        background-image: radial-gradient(rgba(39,48,43,.13) .8px, transparent .8px);
+        background-size: 14px 14px;
+      }
+      .tape {
+        background: rgba(243,201,104,.72);
+        transform: rotate(-2deg);
+      }
+      .photo-shadow { box-shadow: 10px 12px 0 rgba(39,48,43,.08); }
+      .soft-shadow { box-shadow: 0 20px 50px rgba(39,48,43,.08); }
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden antialiased" x-data="{menu:false}">
+  <header class="relative z-50 border-b border-black/10 bg-cream/90 backdrop-blur-md">
+    <nav class="mx-auto flex max-w-[1380px] items-center justify-between px-5 py-4 sm:px-8 lg:px-10" aria-label="Navigație principală">
+      <a href="#" class="flex items-center gap-2.5" aria-label="JUCO acasă">
+        <span class="grid size-9 rotate-[-4deg] place-items-center rounded-[13px] bg-terracotta text-lg font-bold text-white">J</span>
+        <span class="display text-2xl tracking-[-.04em]">juco</span>
+      </a>
+
+      <div class="hidden items-center gap-7 text-sm font-medium md:flex">
+        <a href="#jurnal" class="transition hover:text-terracotta focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50">Jurnalul</a>
+        <a href="#comunitate" class="transition hover:text-terracotta focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50">Comunitatea</a>
+        <a href="#povesti" class="transition hover:text-terracotta focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50">Povești</a>
+        <a href="#despre" class="transition hover:text-terracotta focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50">Despre JUCO</a>
+        <a href="#start" class="inline-flex min-h-10 items-center rounded-full bg-ink px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-terracotta focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50">Creează jurnalul</a>
+      </div>
+
+      <button @click="menu=!menu" :aria-expanded="menu" aria-controls="mobile-nav" aria-label="Deschide meniul" class="rounded-full border border-black/15 px-3.5 py-2 text-xs font-semibold md:hidden">
+        <span x-text="menu ? 'Închide' : 'Meniu'"></span>
+      </button>
+    </nav>
+
+    <div id="mobile-nav" x-show="menu" x-transition class="border-t border-black/10 bg-paper md:hidden">
+      <div class="grid divide-y divide-black/10">
+        <a @click="menu=false" href="#jurnal" class="px-5 py-4">Jurnalul</a>
+        <a @click="menu=false" href="#comunitate" class="px-5 py-4">Comunitatea</a>
+        <a @click="menu=false" href="#povesti" class="px-5 py-4">Povești</a>
+        <a @click="menu=false" href="#despre" class="px-5 py-4">Despre JUCO</a>
+        <a @click="menu=false" href="#start" class="m-4 rounded-full bg-ink px-5 py-3 text-center font-semibold text-white">Creează jurnalul</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative overflow-hidden border-b border-black/10">
+      <div class="absolute inset-0 paper-grid opacity-70" aria-hidden="true"></div>
+      <div class="absolute -right-20 top-12 size-72 rounded-full bg-yellow/40 sm:size-96" aria-hidden="true"></div>
+      <div class="absolute bottom-[-70px] left-[-50px] size-64 rounded-full bg-lilac/30" aria-hidden="true"></div>
+
+      <div class="relative mx-auto grid max-w-[1380px] gap-14 px-5 pb-16 pt-16 sm:px-8 sm:pb-24 sm:pt-20 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:px-10 lg:pb-28 lg:pt-24">
+        <div class="hero-copy relative z-10 max-w-2xl">
+          <div class="hero-item mb-7 flex items-center gap-3 text-xs font-semibold uppercase tracking-[.14em] text-terracotta">
+            <span class="h-px w-9 bg-terracotta"></span>
+            Jurnal pentru copilărie. Comunitate pentru părinți.
+          </div>
+          <h1 class="hero-item display text-[3.7rem] leading-[.92] tracking-[-.055em] sm:text-6xl lg:text-[6.3rem]">
+            Unele zile merită <span class="relative inline-block italic text-terracotta">păstrate.</span>
+          </h1>
+          <p class="hero-item mt-7 max-w-xl text-base leading-7 text-muted sm:text-lg">
+            JUCO te ajută să aduni într-un singur loc primele cuvinte, fotografiile, întrebările, micile victorii și toate poveștile pe care nu vrei să le uiți.
+          </p>
+          <div class="hero-item mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="#start" class="inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-ink px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-terracotta focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/50">
+              Creează jurnalul copilului <span aria-hidden="true">↗</span>
+            </a>
+            <a href="#comunitate" class="inline-flex min-h-12 items-center justify-center px-4 text-sm font-semibold text-ink underline decoration-ink/20 underline-offset-4 transition hover:decoration-terracotta">
+              Descoperă comunitatea
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-art relative mx-auto w-full max-w-[620px] lg:ml-auto">
+          <div class="absolute -left-4 top-12 z-20 hidden w-36 rotate-[-7deg] rounded-sm bg-yellow px-4 py-3 text-center text-sm leading-5 shadow-md sm:block">
+            <span class="hand">prima zi de grădiniță</span>
+          </div>
+          <div class="absolute -right-2 bottom-12 z-20 w-36 rotate-[5deg] rounded-sm bg-white px-4 py-3 text-center text-xs leading-5 shadow-lg sm:w-40">
+            <span class="hand text-base">„a zis mama”</span><br>
+            <span class="text-black/45">3 ani, 2 luni</span>
+          </div>
+
+          <div class="relative rotate-[1.5deg] rounded-[28px] bg-white p-3 photo-shadow sm:p-4">
+            <div class="relative overflow-hidden rounded-[20px]">
+              <img
+                src="https://images.pexels.com/photos/1648377/pexels-photo-1648377.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                alt="Copil zâmbind într-un moment spontan de familie"
+                fetchpriority="high"
+                class="aspect-[4/4.5] w-full object-cover">
+              <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/45 to-transparent p-5 pt-20 text-white">
+                <p class="hand text-xl">Duminică, 14 mai</p>
+                <p class="mt-1 text-xs text-white/75">o zi obișnuită care a devenit amintire</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute -bottom-8 left-1/2 h-14 w-32 -translate-x-1/2 rotate-[-3deg] tape" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="jurnal" class="scroll-mt-8 border-b border-black/10 bg-paper">
+      <div class="mx-auto max-w-[1380px] px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
+        <div class="grid gap-12 lg:grid-cols-[.55fr_1.45fr]">
+          <div class="reveal">
+            <p class="text-xs font-semibold uppercase tracking-[.16em] text-terracotta">01 / Jurnalul</p>
+            <h2 class="display mt-5 max-w-md text-4xl leading-[1] tracking-[-.04em] sm:text-5xl">Copilăria, în propriile voastre cuvinte.</h2>
+            <p class="mt-6 max-w-sm text-sm leading-7 text-muted">Fiecare copil are un ritm și o poveste diferită. JUCO face loc pentru ambele.</p>
+          </div>
+
+          <div class="relative">
+            <div class="absolute -left-3 -top-4 hidden size-20 rounded-full bg-sage/40 sm:block" aria-hidden="true"></div>
+            <div class="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <article class="reveal rotate-[-2deg] border border-black/10 bg-cream p-6 soft-shadow">
+                <div class="flex items-center justify-between text-xs text-muted"><span>12.06.2026</span><span>♡</span></div>
+                <h3 class="display mt-20 text-2xl">Primii pași</h3>
+                <p class="mt-3 text-sm leading-6 text-muted">„A mers singur de la canapea până la noi.”</p>
+                <div class="mt-8 h-1 w-12 rounded-full bg-terracotta"></div>
+              </article>
+              <article class="reveal translate-y-4 border border-black/10 bg-yellow/35 p-6 soft-shadow sm:translate-y-8">
+                <div class="flex items-center justify-between text-xs text-muted"><span>03.07.2026</span><span>♡</span></div>
+                <h3 class="display mt-20 text-2xl">O întrebare mare</h3>
+                <p class="mt-3 text-sm leading-6 text-muted">„De ce luna vine cu noi când mergem cu mașina?”</p>
+                <div class="mt-8 h-1 w-12 rounded-full bg-ink"></div>
+              </article>
+              <article class="reveal rotate-[2deg] border border-black/10 bg-sage/30 p-6 soft-shadow">
+                <div class="flex items-center justify-between text-xs text-muted"><span>19.08.2026</span><span>♡</span></div>
+                <h3 class="display mt-20 text-2xl">Lucruri mici</h3>
+                <p class="mt-3 text-sm leading-6 text-muted">O fotografie, o frunză în buzunar, o poveste inventată.</p>
+                <div class="mt-8 h-1 w-12 rounded-full bg-lilac"></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="comunitate" class="scroll-mt-8 border-b border-black/10 bg-sage/25">
+      <div class="mx-auto grid max-w-[1380px] gap-14 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1.1fr_.9fr] lg:items-center lg:px-10">
+        <div class="relative order-2 lg:order-1">
+          <div class="absolute -top-7 right-8 z-10 rounded-full bg-terracotta px-5 py-3 text-sm font-semibold text-white shadow-md">
+            Părinți pentru părinți
+          </div>
+          <div class="grid grid-cols-12 items-end gap-3 sm:gap-5">
+            <div class="reveal col-span-7 -rotate-[3deg] overflow-hidden rounded-[18px] bg-white p-2 photo-shadow">
+              <img src="https://images.pexels.com/photos/1556704/pexels-photo-1556704.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Părinte și copil într-un moment de apropiere" loading="lazy" class="aspect-[4/5] w-full rounded-[12px] object-cover">
+            </div>
+            <div class="reveal col-span-5 rotate-[4deg] overflow-hidden rounded-[18px] bg-white p-2 photo-shadow">
+              <img src="https://images.pexels.com/photos/8535214/pexels-photo-8535214.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Familie petrecând timp împreună" loading="lazy" class="aspect-[4/5] w-full rounded-[12px] object-cover">
+            </div>
+            <div class="reveal col-span-6 translate-y-2 border border-black/10 bg-paper p-5 sm:p-6">
+              <span class="hand text-xl text-terracotta">„Nu ești singur.”</span>
+              <p class="mt-3 text-xs leading-5 text-muted">Experiențele de zi cu zi devin mai ușor de navigat când le poți împărtăși.</p>
+            </div>
+            <div class="reveal col-span-6 translate-y-6 border border-black/10 bg-yellow/45 p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-[.14em]">Discuții</span>
+              <p class="display mt-8 text-2xl leading-tight">Somn. Grădiniță. Joc. Limite. Bucurii.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal order-1 lg:order-2">
+          <p class="text-xs font-semibold uppercase tracking-[.16em] text-terracotta">02 / Comunitatea</p>
+          <h2 class="display mt-5 max-w-xl text-4xl leading-[.98] tracking-[-.04em] sm:text-6xl">Loc pentru întrebări, povești și „și la voi e la fel?”</h2>
+          <p class="mt-7 max-w-lg text-base leading-7 text-muted">
+            Comunitatea JUCO aduce părinții mai aproape prin experiențe reale, conversații și lucruri utile. Fără competiție pentru părintele perfect. Doar oameni care cresc copii, fiecare în felul lui.
+          </p>
+          <a href="#povesti" class="mt-8 inline-flex items-center gap-3 rounded-full border border-ink/20 bg-paper px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-terracotta hover:text-terracotta">
+            Vezi conversațiile <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="povesti" class="scroll-mt-8 border-b border-black/10 bg-cream">
+      <div class="mx-auto max-w-[1380px] px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
+        <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[.16em] text-terracotta">03 / Povești</p>
+            <h2 class="display mt-4 max-w-3xl text-4xl leading-[.98] tracking-[-.04em] sm:text-6xl">Povești mici. Perspective care rămân.</h2>
+          </div>
+          <a href="#start" class="text-sm font-semibold underline decoration-black/20 underline-offset-4 hover:decoration-terracotta">Intră în JUCO ↗</a>
+        </div>
+
+        <div class="mt-12 grid gap-4 lg:grid-cols-[1.15fr_.85fr_.85fr]">
+          <article class="group relative overflow-hidden rounded-[22px] bg-ink text-white lg:row-span-2">
+            <img src="https://images.pexels.com/photos/3662667/pexels-photo-3662667.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Copil explorând natura" loading="lazy" class="absolute inset-0 h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent"></div>
+            <div class="relative flex min-h-[520px] flex-col justify-end p-7 sm:p-9">
+              <span class="text-xs font-semibold uppercase tracking-[.14em] text-yellow">Jurnal de familie</span>
+              <h3 class="display mt-3 max-w-lg text-4xl leading-tight">Cum înveți să observi copilăria înainte să treacă.</h3>
+              <p class="mt-4 max-w-md text-sm leading-6 text-white/70">Despre fotografii, întrebări și ritualul de a nota lucrurile aparent mici.</p>
+            </div>
+          </article>
+
+          <article class="rounded-[22px] border border-black/10 bg-paper p-6 sm:p-7">
+            <span class="text-xs font-semibold uppercase tracking-[.14em] text-terracotta">01 / Părinte</span>
+            <h3 class="display mt-16 text-3xl leading-tight">Nu trebuie să documentezi tot.</h3>
+            <p class="mt-3 text-sm leading-6 text-muted">Uneori o propoziție spune mai mult decât cincizeci de fotografii.</p>
+          </article>
+
+          <article class="rounded-[22px] border border-black/10 bg-yellow/45 p-6 sm:p-7">
+            <span class="text-xs font-semibold uppercase tracking-[.14em]">02 / Copilărie</span>
+            <h3 class="display mt-16 text-3xl leading-tight">Întrebările copiilor nu au calendar.</h3>
+            <p class="mt-3 text-sm leading-6 text-muted">Păstrează-le cât încă ți le mai amintești.</p>
+          </article>
+
+          <article class="rounded-[22px] border border-black/10 bg-lilac/30 p-6 sm:p-7">
+            <span class="text-xs font-semibold uppercase tracking-[.14em]">03 / Comunitate</span>
+            <h3 class="display mt-16 text-3xl leading-tight">O experiență împărtășită poate schimba o zi.</h3>
+            <p class="mt-3 text-sm leading-6 text-muted">Conversații sincere, fără concurs pentru perfecțiune.</p>
+          </article>
+
+          <article class="rounded-[22px] border border-black/10 bg-sage/35 p-6 sm:p-7">
+            <span class="text-xs font-semibold uppercase tracking-[.14em]">04 / Ritual</span>
+            <h3 class="display mt-16 text-3xl leading-tight">Cinici minute. O amintire pentru mai târziu.</h3>
+            <p class="mt-3 text-sm leading-6 text-muted">Un jurnal bun nu cere să fii scriitor.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="despre" class="scroll-mt-8 border-b border-black/10 bg-paper">
+      <div class="mx-auto grid max-w-[1380px] gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[.7fr_1.3fr] lg:px-10">
+        <div class="reveal">
+          <p class="text-xs font-semibold uppercase tracking-[.16em] text-terracotta">04 / De ce JUCO</p>
+          <p class="hand mt-7 max-w-xs text-2xl leading-tight text-terracotta">Pentru că „îți amintești când...” începe cu ceva ce ai ales să păstrezi.</p>
+        </div>
+        <div>
+          <p class="reveal max-w-4xl text-3xl leading-tight tracking-[-.03em] sm:text-5xl">
+            JUCO combină liniștea unui jurnal personal cu energia unei comunități de părinți.
+          </p>
+          <div class="mt-12 grid gap-8 border-t border-black/10 pt-8 sm:grid-cols-3">
+            <div class="reveal"><span class="text-2xl">01</span><h3 class="mt-3 font-semibold">Personal</h3><p class="mt-2 text-sm leading-6 text-muted">Momentele copilului tău rămân în centrul experienței.</p></div>
+            <div class="reveal"><span class="text-2xl">02</span><h3 class="mt-3 font-semibold">Human</h3><p class="mt-2 text-sm leading-6 text-muted">Poveștile reale contează mai mult decât imaginea părintelui perfect.</p></div>
+            <div class="reveal"><span class="text-2xl">03</span><h3 class="mt-3 font-semibold">Simplu</h3><p class="mt-2 text-sm leading-6 text-muted">Documentezi un moment fără să transformi copilăria într-o sarcină.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="start" class="scroll-mt-8 overflow-hidden bg-terracotta text-white">
+      <div class="relative mx-auto max-w-[1380px] px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
+        <div class="absolute right-[-80px] top-[-100px] size-72 rounded-full border-[35px] border-white/10" aria-hidden="true"></div>
+        <div class="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div class="reveal max-w-4xl">
+            <p class="text-xs font-semibold uppercase tracking-[.16em] text-white/65">Începe cu o pagină goală</p>
+            <h2 class="display mt-5 text-5xl leading-[.94] tracking-[-.05em] sm:text-7xl lg:text-[7rem]">Păstrează ce nu vrei să uiți.</h2>
+            <p class="mt-7 max-w-xl text-base leading-7 text-white/80">Creează jurnalul copilului tău și începe cu un singur moment. Restul poveștii se adună în timp.</p>
+          </div>
+          <a href="#" class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:bg-yellow focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+            Creează jurnalul copilului <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-ink text-white">
+    <div class="mx-auto flex max-w-[1380px] flex-col gap-7 px-5 py-8 text-sm sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-10">
+      <div class="flex items-center gap-2.5">
+        <span class="grid size-8 rotate-[-4deg] place-items-center rounded-[11px] bg-terracotta text-sm font-bold">J</span>
+        <span class="display text-xl">juco</span>
+      </div>
+      <p class="max-w-md text-white/50">Un jurnal pentru copii. O comunitate pentru părinți. O colecție de momente care merită păstrate.</p>
+      <div class="flex gap-5 text-white/65">
+        <a href="#jurnal" class="hover:text-yellow">Jurnalul</a>
+        <a href="#comunitate" class="hover:text-yellow">Comunitatea</a>
+        <a href="#start" class="hover:text-yellow">Începe</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduceMotion && window.gsap) {
+      gsap.set('.hero-item', { opacity: 0, y: 24 });
+      gsap.set('.hero-art', { opacity: 0, y: 30, rotate: 0 });
+
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .to('.hero-item', { opacity: 1, y: 0, duration: .72, stagger: .09 })
+        .to('.hero-art', { opacity: 1, y: 0, rotate: 1.5, duration: .9 }, '-=.45');
+
+      const revealItems = gsap.utils.toArray('.reveal');
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          gsap.fromTo(entry.target, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: .65, ease: 'power2.out' });
+          obs.unobserve(entry.target);
+        });
+      }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+
+      revealItems.forEach(item => observer.observe(item));
+    }
+  </script>
+</body>
+</html>
