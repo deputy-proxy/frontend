@@ -1,28 +1,45 @@
 {
   "replication_id": "juristiq-wcopilot-webflow-io",
   "implementation_path": "replications/juristiq-wcopilot-webflow-io/implementation/index.html",
-  "latest_capture": "replications/juristiq-wcopilot-webflow-io/iterations/014/screenshot.png",
-  "capture_viewport": {
-    "width": 1920,
-    "height": 1080,
-    "deviceScaleFactor": 1
-  },
-  "latest_capture_document": {
-    "width": 1920,
-    "height": 7269
-  },
+  "screenshot_path": "replications/juristiq-wcopilot-webflow-io/implementation/screenshot.png",
+  "screenshot_source": "Fresh capture of deployed implementation, captured as iteration 014 before being placed at the canonical final path.",
   "source_reference": "replications/juristiq-wcopilot-webflow-io/source/screenshot.png",
-  "source_document": {
+  "source_dimensions": {
     "width": 1920,
     "height": 7309
   },
-  "build_verification": "PASS",
-  "tailwind_verification": "PASS",
-  "css_verification": "PASS",
-  "js_verification": "PASS",
-  "external_resource_audit": "PASS_WITH_EXTERNAL_IMAGES_DISABLED_FOR_TOP_SOURCE_DERIVED_ASSETS",
-  "responsive_verification": "PENDING_DESKTOP_BASELINE_VERIFIED",
-  "final_visual_comparison": "SOURCE_HEIGHT_MATCH_WITHIN_10PX; SECTION-LEVEL PIXEL COMPARISON LIMITED_BY_UNEXPOSED_DOM/ASSET_SOURCE",
-  "latest_visual_status": "LATEST_CAPTURED",
-  "final_candidate": true
+  "implementation_dimensions": {
+    "width": 1920,
+    "height": 7269
+  },
+  "image_comparison": {
+    "grayscale_ssim": 0.6707,
+    "mean_absolute_error": 0.17886,
+    "rmse": 0.32205,
+    "regional_ssim": [
+      0.6655,
+      0.7366,
+      0.6496,
+      0.635
+    ]
+  },
+  "verification": {
+    "build": "PASS",
+    "tailwind": "PASS",
+    "css": "PASS",
+    "javascript": "PASS",
+    "external_resource_audit": "PASS",
+    "deployment": "PASS",
+    "source_capture": "PASS",
+    "source_completeness": "PASS",
+    "responsive": "FAIL_NOT_CAPTURED_AGAINST_SOURCE_BREAKPOINT_BASELINES",
+    "dom_reconnaissance": "FAIL_DIRECT_WEBFLOW_DOM_UNAVAILABLE",
+    "final_visual_comparison": "FAIL_SIGNIFICANT_PIXEL_LEVEL_DIFFERENCES_REMAIN"
+  },
+  "final_status": "FAIL",
+  "failure_reasons": [
+    "Direct Webflow DOM/computed-style/runtime inspection was unavailable, so exact source implementation evidence remains incomplete.",
+    "Responsive source baselines were not captured for tablet/mobile.",
+    "Regional SSIM remains below a level that would justify claiming no significant visual deviations."
+  ]
 }
