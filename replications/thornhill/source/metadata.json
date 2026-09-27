@@ -1,0 +1,21 @@
+{
+  "replication_id": "thornhill",
+  "kind": "source",
+  "iteration": 0,
+  "url": "https://thornhill.framer.website/",
+  "captured_at": "2026-09-27T12:02:03.222Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 800,
+    "height": 10094
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/thornhill/source/screenshot.png"
+  }
+}
