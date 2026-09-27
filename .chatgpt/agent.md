@@ -1664,12 +1664,41 @@ implementation/index.html
 
 ---
 
+# 22A. IMPLEMENTATION CAPTURE VIA REPLICATOR MCP
+
+For every visual-validation iteration and for the final implementation:
+
+1. Use @replicator-mcp against the actual implementation.
+2. Capture the same desktop, tablet and mobile viewport classes used for the source.
+3. Preserve the structured implementation capture.
+4. Compare structured implementation evidence against structured source evidence.
+5. Compare corresponding screenshots visually.
+6. Record discrepancies by section and viewport.
+
+At minimum compare:
+
+* document dimensions;
+* major-region geometry;
+* section positions;
+* component dimensions;
+* typography;
+* visibility;
+* image dimensions and object positioning;
+* backgrounds;
+* borders, radii and shadows;
+* responsive substitutions;
+* interactive-element geometry.
+
+Do not reduce validation to a subjective screenshot judgment.
+
+---
+
 # 23. FINAL SCREENSHOT
 
 After all final implementation changes are complete:
 
-1. Perform Browserless preflight if required.
-2. Capture the exact final implementation.
+1. Capture the exact final implementation with @replicator-mcp.
+2. Preserve the structured replication manifest.
 3. Save:
 
 ```text
@@ -2042,10 +2071,16 @@ replications/
     │
     ├── iterations/
     │   ├── 001/
-    │   │   ├── screenshot.png
+    │   │   ├── replication.json
+    │   │   ├── desktop.png
+    │   │   ├── tablet.png
+    │   │   ├── mobile.png
     │   │   └── metadata.json
     │   ├── 002/
-    │   │   ├── screenshot.png
+    │   │   ├── replication.json
+    │   │   ├── desktop.png
+    │   │   ├── tablet.png
+    │   │   ├── mobile.png
     │   │   └── metadata.json
     │   └── ...
     │
