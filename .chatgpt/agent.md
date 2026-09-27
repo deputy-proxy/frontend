@@ -430,39 +430,418 @@ Implementation MUST be based on the completed reconnaissance model.
 
 If a visual discrepancy later reveals that source understanding was incomplete or incorrect, return to source reconnaissance instead of guessing from the screenshot.
 
+
 ---
+
+# 7A. SOURCE RECONSTRUCTION SPECIFICATION GATE
+
+The reconnaissance phase MUST produce a concrete reconstruction specification before implementation begins.
+
+A list of observations is NOT sufficient.
+
+The reconstruction specification MUST be detailed enough that another engineer could implement the page without relying on the source screenshot to discover missing design information.
+
+Create and maintain:
+
+```text
+source/reconnaissance.md
+source/evidence.json
+```
+
+## 7A.1 Required reconstruction coverage
+
+The reconstruction specification MUST document, where accessible:
+
+### Page geometry
+
+* viewport assumptions;
+* page width;
+* content/container widths;
+* section heights;
+* section spacing;
+* horizontal alignment;
+* vertical alignment;
+* grids;
+* columns;
+* gaps;
+* positioning;
+* fixed/sticky elements;
+* major whitespace regions.
+
+### Component geometry
+
+For every major component:
+
+* dimensions or sizing rules;
+* internal spacing;
+* alignment;
+* layout model;
+* repeated instances;
+* responsive changes;
+* visual states.
+
+### Typography
+
+For every meaningful text level:
+
+* font family;
+* actual font source;
+* weight;
+* size;
+* line height;
+* letter spacing;
+* text transform;
+* color;
+* maximum width;
+* wrapping behavior.
+
+### Visual system
+
+* backgrounds;
+* gradients;
+* overlays;
+* borders;
+* radii;
+* shadows;
+* opacity;
+* masks;
+* decorative layers;
+* z-index/layering relationships.
+
+### Asset mapping
+
+For every important visual asset:
+
+* exact source URL/path;
+* local destination if downloaded;
+* dimensions;
+* aspect ratio;
+* rendering mode;
+* crop/object-position behavior;
+* responsive behavior;
+* loading behavior.
+
+### Content mapping
+
+Record the actual source content and its structural relationship:
+
+* headings;
+* paragraphs;
+* labels;
+* buttons;
+* navigation;
+* cards;
+* links;
+* lists;
+* media;
+* repeated content.
+
+### Behavior mapping
+
+Document observable behavior:
+
+* initial state;
+* hover/focus state;
+* click behavior;
+* scroll behavior;
+* sticky behavior;
+* animation;
+* transitions;
+* lazy loading;
+* dynamic rendering;
+* menus;
+* sliders;
+* tabs;
+* accordions;
+* modals.
+
+### Responsive mapping
+
+Record the observed behavior at relevant viewport classes:
+
+* desktop;
+* tablet;
+* mobile.
+
+Document actual layout transitions, not generic responsive assumptions.
+
+## 7A.2 Evidence provenance
+
+Every material implementation decision MUST be traceable to one of:
+
+```text
+SOURCE_DOM
+SOURCE_CSS
+SOURCE_COMPUTED_STYLE
+SOURCE_ASSET
+SOURCE_RUNTIME
+SOURCE_NETWORK
+SOURCE_SCREENSHOT
+INFERENCE
+```
+
+Use the highest-confidence available evidence.
+
+If a fact can be obtained from the source DOM, CSS, computed style, asset, or runtime, do NOT classify it as screenshot-derived or inferred.
+
+Inference is permitted only when direct source evidence cannot expose the required information.
+
+Inferred values MUST be explicitly marked:
+
+```text
+INFERRED / REQUIRES VALIDATION
+```
+
+Do not silently convert estimates into source facts.
+
+## 7A.3 Reconstruction completeness gate
+
+Before implementation, verify:
+
+* every major page section is mapped;
+* every major component is mapped;
+* important assets are mapped;
+* typography is mapped;
+* major geometry is mapped;
+* responsive behavior is mapped;
+* observable interactions are mapped;
+* dynamic/lazy content is mapped;
+* unresolved questions are explicitly listed.
+
+If material information remains unknown, return to the reference website and investigate it.
+
+Do not begin implementation merely because the page has been described at a high level.
+
+## 7A.4 Screenshot independence test
+
+Before implementation begins, the agent MUST be able to answer:
+
+> Could another engineer reproduce the page's structure, styling, assets, typography, content, and responsive behavior from the reconstruction specification without using the source screenshot as a design specification?
+
+If the answer is NO, source reconnaissance is incomplete.
+
+The screenshot remains necessary for visual validation, but MUST NOT be used to fill gaps that should have been resolved through source inspection.
+
+
+---
+
+# 7B. QUANTITATIVE SOURCE BASELINES
+
+For every major page region, record measurable source baselines at the canonical viewport: bounding boxes, container widths, section positions, spacing, columns, gaps, important element dimensions, image dimensions/aspect ratios, typography metrics, and fixed/sticky offsets where accessible. Distinguish measured, computed, CSS-specified, and inferred values. Store major-region measurements in source/evidence.json.
+
+---
+
+
+# 7C. SOURCE TRACEABILITY AND NO-ORPHAN-ELEMENT GATE
+
+The reconstruction model MUST be a closed representation of the source, not an open-ended design brief.
+
+## 7C.1 Element-level traceability
+
+Every visible implementation element MUST be traceable to a source counterpart or to an implementation mechanism required to reproduce an observed source behavior.
+
+For every major implementation element, the agent MUST be able to identify:
+
+* the corresponding source DOM element, source structure, source asset, source content, source runtime behavior, or validated source visual region;
+* the evidence type;
+* the source location or selector where practical;
+* whether the relationship is direct or inferred.
+
+A major implementation element includes, at minimum:
+
+* page sections;
+* section headings;
+* content blocks;
+* cards;
+* statistics;
+* navigation items;
+* buttons and CTAs;
+* images;
+* logos;
+* icons;
+* decorative visual elements;
+* repeated component groups;
+* forms;
+* interactive controls;
+* overlays;
+* animations that materially affect the rendered result.
+
+The agent MUST NOT create an implementation element merely because it is conventional, visually plausible, aesthetically useful, or expected for the type of website.
+
+## 7C.2 No-orphan-elements rule
+
+A visible implementation element with no identifiable source counterpart is an ORPHAN ELEMENT.
+
+Orphan elements are prohibited.
+
+If an element cannot be traced to source evidence, the agent MUST:
+
+1. return to source reconnaissance;
+2. determine whether the element actually exists in the reference;
+3. either establish evidence for it or remove it;
+4. never preserve it merely because it improves the design.
+
+The following are specifically prohibited unless supported by source evidence:
+
+* new sections;
+* extra cards;
+* invented statistics;
+* additional navigation items;
+* additional CTAs;
+* replacement or supplemental copy;
+* invented article/news items;
+* generic feature blocks;
+* decorative shapes;
+* additional images;
+* additional icons;
+* inferred interactions;
+* inferred animations;
+* inferred page hierarchy.
+
+## 7C.3 No-design-creativity rule
+
+Replication is a transcription and reconstruction task, not a design task.
+
+The agent MUST NOT:
+
+* improve the source;
+* modernize the source;
+* redesign the source;
+* embellish the source;
+* fill perceived whitespace;
+* add conventional sections;
+* add content that would make the page feel more complete;
+* substitute semantically similar content;
+* reorganize source content for perceived usability;
+* add components because they are common for the site's industry;
+* invent content because the source appears incomplete.
+
+A coherent or aesthetically pleasing addition is still incorrect if it is not supported by source evidence.
+
+## 7C.4 Closed reconstruction model
+
+The reconstruction model MUST define both:
+
+* what exists; and
+* what has been verified not to exist between major mapped regions where that distinction matters.
+
+For every major page region, record:
+
+* source counterpart;
+* position in page order;
+* repeated instances;
+* child components;
+* content instances;
+* known omissions/absence where relevant;
+* evidence provenance.
+
+The model MUST NOT leave major page structure open to implementation-time invention.
+
+## 7C.5 Hard inference boundary
+
+Inference MAY be used only for implementation details that are necessary to reproduce an observed source result and cannot be directly exposed by source evidence.
+
+Permitted inference includes, for example:
+
+* choosing an equivalent local CSS implementation;
+* deriving an intermediate breakpoint from observed responsive states;
+* deriving a reusable component boundary from repeated source structures;
+* calculating an implementation value from measured source values;
+* selecting an equivalent animation technique when the source behavior is observable but the original implementation is inaccessible.
+
+Inference MUST NOT be used to invent:
+
+* content;
+* sections;
+* components;
+* statistics;
+* links;
+* images;
+* navigation items;
+* CTAs;
+* page hierarchy;
+* behaviors;
+* animations;
+* responsive states
+
+when their existence is not supported by source evidence.
+
+If a required value is unknown and cannot be established from source evidence, record it as UNKNOWN / REQUIRES VALIDATION rather than fabricating a plausible value.
+
+## 7C.6 Source-to-implementation trace audit
+
+Before implementation is considered ready for visual validation, perform an explicit trace audit:
+
+```
+SOURCE EVIDENCE
+      ↓
+RECONSTRUCTION CLAIM
+      ↓
+IMPLEMENTATION ELEMENT
+```
+
+Every major implementation element MUST have a complete trace.
+
+Any unresolved orphan element is a reconstruction failure and MUST prevent the iteration from being accepted.
+
 
 # 8. BROWSERLESS / SCREENSHOT PREFLIGHT
 
-Before every Screenshot MCP operation, determine whether Browserless may be asleep or unavailable.
+Browserless is treated as potentially sleeping between operations.
 
-Before the first source screenshot:
+Before **every single Screenshot MCP call**, immediately perform the supported Browserless ping/wake-up request and wait for a successful response. Do not rely on an earlier ping, preflight, screenshot, or other Browserless interaction.
 
-1. Perform the supported Browserless wake-up/preflight.
-2. Wait for successful response.
-3. Only then perform the source screenshot operation.
+The required sequence is always:
 
-The wake-up request is NOT screenshot evidence.
+1. Ping/wake Browserless.
+2. Wait for a successful response.
+3. Immediately call Screenshot MCP.
+4. Preserve the screenshot as evidence.
 
-If more than five minutes have elapsed since the last Browserless interaction, or Browserless appears asleep/unavailable:
+The ping/wake request is NOT screenshot evidence.
 
-1. Perform Browserless wake-up/preflight.
-2. Wait for successful response.
-3. Immediately perform the required screenshot operation.
+If a Screenshot MCP call fails:
 
-If a screenshot fails in a manner consistent with Browserless cold-start/sleep:
+1. Ping/wake Browserless again immediately.
+2. Wait for a successful response.
+3. Retry the Screenshot MCP call.
+4. If the retry fails, ping/wake Browserless again immediately.
+5. Wait for a successful response.
+6. Retry the Screenshot MCP call a second time.
+7. If that second retry fails, record the screenshot failure and stop treating the capture as successful.
 
-1. Do not immediately classify the request as invalid.
-2. Perform Browserless wake-up.
-3. Retry the screenshot once.
-4. If it fails again, record the failure.
+This permits **up to two retries after the initial Screenshot MCP failure**.
 
-If Browserless cannot be successfully awakened:
+If Browserless cannot be successfully awakened, stop the dependent screenshot operation and record the failure. Do not create false or incomplete screenshot evidence.
 
-* stop source capture;
-* do not create a false or incomplete canonical source screenshot;
-* record the blocker;
-* report the replication as blocked/incomplete.
+All screenshot operations MUST:
+
+* use the required Screenshot MCP;
+* be preceded immediately by a successful Browserless ping/wake;
+* capture the requested viewport;
+* preserve the screenshot as evidence.
+
+---
+
+# 8A. RAILWAY SANDBOX PROHIBITION
+
+The Railway Sandbox MUST NOT be used anywhere in this website replication workflow.
+
+This prohibition applies to:
+
+* source reconnaissance;
+* Browserless or screenshot preparation;
+* implementation;
+* local serving;
+* visual validation;
+* iteration capture;
+* final capture;
+* build verification;
+* deployment verification;
+* debugging;
+* temporary files or intermediate artifacts.
+
+Do not use Railway Sandbox as a substitute for repository tooling, browser tooling, Screenshot MCP, GitHub tooling, or any other required workflow tool.
 
 ---
 
@@ -484,7 +863,11 @@ Save:
 ```text
 source/screenshot.png
 source/metadata.json
+source/reconnaissance.md
+source/evidence.json
 ```
+
+The source screenshot MUST NOT be used to discover or invent missing implementation details after reconnaissance unless the source itself cannot expose the required information.
 
 The screenshot capture itself does not prove completeness.
 
@@ -536,6 +919,12 @@ source/screenshot.png
 If repeated attempts remain incomplete, report source capture as blocked.
 
 Implementation MUST NOT begin against an unvalidated source screenshot.
+
+---
+
+# 10A. MULTI-VIEWPORT SOURCE BASELINES
+
+Establish source baselines for every materially different responsive layout, including desktop, tablet/intermediate, and mobile where applicable. Record viewport dimensions, section geometry, navigation state, typography changes, grid/stacking, visibility, image behavior, spacing, and component substitutions. Use actual source breakpoints rather than framework defaults.
 
 ---
 
@@ -621,6 +1010,49 @@ Do not load Tailwind from a CDN.
 Do not use runtime Tailwind compilation.
 
 ---
+
+
+# 12A. IMPLEMENTATION FIDELITY CONSTRAINTS
+
+The implementation MUST reproduce the source rather than reinterpret it.
+
+## 12A.1 Source-content closure
+
+The implementation MUST contain the source-visible content required by the reconstruction model and MUST NOT contain additional visible source-like content without provenance.
+
+If the source contains three cards, implementation MUST NOT contain four because a fourth card seems appropriate.
+
+If the source exposes an unknown statistic, implementation MUST NOT invent its value.
+
+If source content cannot be extracted reliably, preserve the unresolved state and return to reconnaissance rather than substituting plausible content.
+
+## 12A.2 Structural closure
+
+The implementation page hierarchy MUST match the verified source hierarchy.
+
+Do not introduce:
+
+* additional sections;
+* additional nested content regions;
+* additional repeated components;
+* additional navigation structures;
+* additional footer groups;
+* additional content categories;
+
+unless they are supported by source evidence.
+
+## 12A.3 Absence is evidence
+
+When reconnaissance verifies that no additional component, section, card, or content block exists in a mapped region, implementation MUST preserve that absence.
+
+Whitespace, empty regions, sparse layouts, and intentionally minimal structures MUST NOT be treated as missing design opportunities.
+
+## 12A.4 Source traceability before coding
+
+Before writing implementation code, the agent MUST be able to map every planned major implementation element back to source evidence.
+
+If it cannot, implementation MUST pause and source reconnaissance MUST continue.
+
 
 # 13. RUNTIME RESOURCE POLICY
 
@@ -881,6 +1313,81 @@ as visual verification.
 
 Visual verification MUST identify concrete evidence.
 
+
+## 17A. SECTION-LEVEL FIDELITY VERIFICATION
+
+Visual verification MUST be performed section-by-section before assigning an iteration result.
+
+Create a verification matrix covering:
+
+* header;
+* hero;
+* every major content section;
+* repeated components/cards;
+* footer;
+* major background/decorative regions.
+
+For each region record:
+
+* source evidence used;
+* implementation state;
+* geometry deviations;
+* typography deviations;
+* asset deviations;
+* spacing deviations;
+* responsive/state deviations;
+* PASS or FAIL.
+
+A page-level impression is insufficient.
+
+A major region that is materially incorrect MUST cause the iteration to FAIL even if other regions are accurate.
+
+## 17B. HIGH-IMPACT DEVIATION PRIORITY
+
+When refining a failed iteration, correct deviations in this order:
+
+1. missing/extra sections;
+2. incorrect page/section geometry;
+3. incorrect layout structure;
+4. incorrect major imagery/assets;
+5. incorrect typography;
+6. incorrect spacing;
+7. incorrect colors/backgrounds;
+8. incorrect component details;
+9. minor decorative differences.
+
+Do not spend iteration effort polishing minor details while major structural discrepancies remain.
+
+## 17C. SOURCE-RETURN RULE
+
+If a discrepancy cannot be explained by the current reconstruction specification, the implementation MUST NOT be tuned by visual guesswork.
+
+Return to the reference website and determine which source evidence is missing.
+
+Update:
+
+```text
+source/reconnaissance.md
+source/evidence.json
+```
+
+before changing the implementation.
+
+
+---
+
+# 17D. QUANTITATIVE VISUAL COMPARISON
+
+Where image-analysis tooling is available, every iteration MUST include quantitative comparison: dimensions, page-height difference, regional geometry differences, perceptual/pixel similarity, and normalized image error where available. Record metrics in iteration metadata. Metrics support judgment but never override a major structural mismatch.
+
+# 17E. REGIONAL COMPARISON
+
+Compare corresponding regions independently for structure, geometry, typography, assets, color/background, spacing, and responsive/state behavior. Identify the largest remaining deviations.
+
+# 17F. FIDELITY SCORE
+
+Calculate a final evidence-backed fidelity score weighted: structure/section presence 25%, geometry/layout 25%, typography 15%, assets/media 15%, color/background/styling 10%, interaction/animation/state 5%, responsive fidelity 5%. The score is an audit metric, not a PASS/FAIL substitute. Record regional scores, weighting, unresolved discrepancies, and confidence.
+
 ---
 
 # 18. VISUAL FAILURE
@@ -974,6 +1481,12 @@ When diagnosing a discrepancy, determine whether it is caused by:
 If the discrepancy indicates incomplete source understanding, return to the reference website.
 
 Do not solve a source-understanding problem by guessing from the screenshot when the source can still be inspected.
+
+---
+
+# 20A. ANIMATION AND STATE BASELINES
+
+For animated or stateful interfaces, document materially relevant initial, post-load, scrolled, sticky, hover/focus, expanded/collapsed, menu, carousel/slider, modal, and scroll-triggered states. For continuous animations, record trigger, direction, duration/easing where observable, resting state, and key visual properties. Do not claim exact animation fidelity when behavior is only approximate.
 
 ---
 
@@ -1092,6 +1605,12 @@ The implementation MUST load without blocking errors.
 
 ---
 
+# 25A. RENDERING ENVIRONMENT CONTROL
+
+Record viewport, device pixel ratio where available, browser/rendering engine, zoom, font loading, reduced-motion setting where relevant, color scheme, scroll/state, and capture timing. Source and implementation SHOULD use equivalent conditions. Record environmental differences and do not automatically attribute renderer-specific differences to implementation. Required source-font loading failures are implementation failures.
+
+---
+
 # 26. RESPONSIVE VERIFICATION
 
 Verify the implementation at:
@@ -1151,8 +1670,12 @@ Before declaring completion, verify all of the following:
 
 1. Correct `REPLICATION_ID`.
 2. Correct directory structure.
-3. Source screenshot exists.
-4. Source metadata exists.
+3. Source reconstruction specification exists.
+4. Source evidence provenance exists.
+5. Source screenshot exists.
+6. Source metadata exists.
+7. Source reconstruction specification exists and passes the completeness gate.
+8. Source evidence provenance exists.
 5. Source screenshot was validated as complete.
 6. Browserless source preflight succeeded.
 7. Source reconnaissance completed.
@@ -1184,6 +1707,12 @@ Before declaring completion, verify all of the following:
 
 ---
 
+# 28A. EVIDENCE CONFIDENCE AUDIT
+
+Classify every major region HIGH, MEDIUM, or LOW confidence. HIGH means direct source evidence; MEDIUM means source-supported with limited inference; LOW means material inference or inaccessible source behavior. LOW-confidence regions materially affecting fidelity MUST prevent an unconditional PASS unless the limitation is documented as constrained.
+
+---
+
 # 29. README
 
 Create:
@@ -1201,6 +1730,8 @@ The README MUST contain:
 
 ## Source reconnaissance
 
+The README MUST reference the complete reconstruction specification in `source/reconnaissance.md` and evidence map in `source/evidence.json`.
+
 Document:
 
 * DOM/page structure;
@@ -1211,7 +1742,15 @@ Document:
 * interactions;
 * responsive behavior;
 * relevant network resources;
-* important source-specific observations.
+* important source-specific observations;
+* page geometry;
+* component geometry;
+* asset mapping;
+* typography mapping;
+* responsive mapping;
+* behavior/state mapping.
+
+Every material implementation decision MUST be traceable to source evidence or an explicitly marked inference.
 
 Clearly distinguish observed facts from assumptions.
 
@@ -1352,7 +1891,9 @@ replications/
     │
     ├── source/
     │   ├── screenshot.png
-    │   └── metadata.json
+    │   ├── metadata.json
+    │   ├── reconnaissance.md
+    │   └── evidence.json
     │
     ├── iterations/
     │   ├── 001/
@@ -1391,7 +1932,9 @@ The following rules MUST NEVER be violated:
 5. The canonical visual reference is the validated source screenshot.
 6. The reference website is the primary source for replication decisions.
 7. The source website MUST be inspected before implementation.
-8. Source reconnaissance MUST include, where accessible:
+8. Quantitative source geometry baselines MUST be established for major regions where accessible.
+8. A detailed source reconstruction specification MUST be completed before implementation.
+9. Source reconnaissance MUST include, where accessible:
 
    * DOM;
    * CSS;
@@ -1402,15 +1945,20 @@ The following rules MUST NEVER be violated:
    * interactions;
    * responsive behavior;
    * relevant network resources.
-9. Implementation decisions MUST be based primarily on source reconnaissance.
-10. The source screenshot is the canonical visual validation reference, not the primary implementation specification.
-11. Source screenshot capture MUST NOT occur before Browserless preflight.
-12. Screenshot success does not imply screenshot completeness.
-13. Source screenshot completeness MUST be explicitly validated.
-14. Lazy-loaded/scroll-triggered content MUST be triggered before accepting source capture.
-15. Implementation MUST NOT begin against an unvalidated source screenshot.
-16. Screenshot pixels MUST NOT be used to infer source implementation details when those details can be inspected directly.
-17. If visual discrepancies reveal incomplete source understanding, return to source reconnaissance.
+10. Implementation decisions MUST be based primarily on source reconnaissance.
+11. Material implementation decisions MUST have evidence provenance.
+12. Inference MUST be explicitly marked and used only when direct source evidence is unavailable.
+13. The source screenshot is the canonical visual validation reference, not the primary implementation specification.
+14. Source screenshot capture MUST NOT occur before Browserless preflight.
+15. Screenshot success does not imply screenshot completeness.
+16. Source screenshot completeness MUST be explicitly validated.
+17. Screenshot MCP is non-substitutable for required captures.
+18. Lazy-loaded/scroll-triggered content MUST be triggered before accepting source capture.
+19. Implementation MUST NOT begin until the reconstruction specification passes its completeness gate.
+20. Implementation MUST NOT begin against an unvalidated source screenshot.
+21. Screenshot pixels MUST NOT be used to infer source implementation details when those details can be inspected directly.
+22. If visual discrepancies reveal incomplete source understanding, return to source reconnaissance.
+23. If a discrepancy cannot be explained by source evidence, update the reconstruction specification before changing implementation code.
 18. Tailwind CSS is mandatory.
 19. Tailwind MUST be compiled locally.
 20. Tailwind MUST NOT be loaded from a CDN.
@@ -1419,22 +1967,24 @@ The following rules MUST NEVER be violated:
 23. The rendered implementation MUST demonstrably load and apply compiled Tailwind CSS.
 24. Every implementation iteration MUST have a screenshot.
 25. Every implementation iteration MUST have metadata.
-26. Every implementation iteration MUST be compared directly against the source screenshot.
-27. No iteration may be accepted without visual verification.
+32. Every implementation iteration MUST be compared directly against the source screenshot.
+33. Every implementation iteration MUST receive section-level fidelity verification.
+34. No iteration may be accepted without visual verification.
 28. Previous iterations are not canonical visual references.
 29. Failed iterations MUST NOT be overwritten.
 30. Significant visual deviations MUST result in FAIL.
 31. FAIL requires another implementation iteration.
-32. The final implementation screenshot MUST be freshly captured from `implementation/index.html`.
-33. The final implementation screenshot MUST be compared directly against the source screenshot.
-34. Final replication MUST NOT be declared complete unless final visual verification is PASS.
+38. The final implementation screenshot MUST be freshly captured from `implementation/index.html`.
+39. The final implementation screenshot MUST be compared directly against the source screenshot.
+40. Final replication MUST NOT be declared complete unless final visual verification is PASS.
 35. Build success MUST NOT substitute for visual verification.
 36. Deployment success MUST NOT substitute for visual verification.
 37. CSS MUST be present, loaded, parsed, and applied.
 38. JavaScript MUST be local and functional.
 39. Prohibited external runtime dependencies MUST NOT remain.
 40. The final screenshot MUST correspond to the final code.
-41. Responsive behavior MUST be verified.
+41. Responsive behavior MUST be verified against source responsive baselines.
+42. Rendering conditions MUST be recorded for source and implementation comparisons.
 42. README MUST document actual verification results.
 43. Never claim PASS without evidence.
 44. Never treat the screenshot as the sole or primary source of implementation knowledge.
@@ -1442,9 +1992,30 @@ The following rules MUST NEVER be violated:
 
 ---
 
+
+14A. Before every Screenshot MCP call, Browserless MUST be pinged/woken immediately before that call.
+14B. A failed Screenshot MCP call MUST be followed by a Browserless ping/wake and up to two Screenshot MCP retries.
+14C. Railway Sandbox MUST NOT be used anywhere in the website replication workflow.
+
+45. Every major visible implementation element MUST have source evidence or be a necessary implementation mechanism for an observed source behavior.
+46. Orphan elements are prohibited.
+47. New sections, cards, statistics, links, CTAs, content, imagery, navigation items, decorative elements, behaviors, or animations MUST NOT be invented.
+48. The reconstruction model MUST be treated as a closed evidence model, not a creative design brief.
+49. Inference MUST NOT create new source-visible facts; it may only resolve implementation details required to reproduce observed evidence.
+50. Unknown source values MUST remain UNKNOWN / REQUIRES VALIDATION until source evidence resolves them.
+51. The implementation MUST preserve verified source absences and sparse/empty regions.
+52. Before implementation and before each visual-validation iteration, a source-to-implementation trace audit MUST be performed for all major visible elements.
+
 # 33. FAILURE CONDITIONS
 
 The replication MUST be considered incomplete if any mandatory gate fails, including:
+
+* orphan implementation elements exist;
+* a major implementation element cannot be traced to source evidence;
+* implementation contains invented source-visible content;
+* implementation contains a section/component/card/statistic/link/CTA/image/navigation item/decorative element/behavior/animation that cannot be justified by source evidence;
+* unresolved UNKNOWN values were replaced with plausible fabricated values;
+* the reconstruction model is materially open-ended or incomplete;
 
 * Browserless cannot be awakened;
 * source screenshot cannot be captured;

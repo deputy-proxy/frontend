@@ -41,16 +41,18 @@
 - Completeness: validated using full-page capture metadata, source DOM, footer presence, and lazy-image evidence.
 
 ## Iterations
-- 001: implementation capture and direct source comparison pending.
+- 001: FAIL. Rendered document was 2400×32435 vs source 1920×25946; normalized MAE 0.34638.
 
 ## Final verification
-- Build: pending.
-- Tailwind: pending.
-- CSS: pending.
-- JavaScript: pending.
-- External-resource audit: pending.
+- Build: PASS.
+- Tailwind: PASS.
+- CSS: PASS.
+- JavaScript: PASS.
+- External-resource audit: PASS by implementation inspection.
 - Responsive verification: pending.
-- Source → implementation visual verification: pending.
+- Source → implementation visual verification: FAIL.
+- Iteration 002: 1920×25769 vs source 1920×25946; SSIM 0.52851; normalized MAE 0.35547.
 
 ## Deployment
-- Pending verified GitHub Pages deployment.
+- Verified deployment: https://deputy-proxy.github.io/frontend/replications/kora/implementation/index.html
+- Final replication status: FAIL. Further visual iterations are required.
