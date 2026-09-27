@@ -1,0 +1,21 @@
+{
+  "replication_id": "juristiq-wcopilot-webflow-io",
+  "kind": "iteration",
+  "iteration": 4,
+  "url": "https://deputy-proxy.github.io/frontend/replications/juristiq-wcopilot-webflow-io/implementation/index.html",
+  "captured_at": "2026-09-27T12:59:20.255Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 6067
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/juristiq-wcopilot-webflow-io/iterations/004/screenshot.png"
+  }
+}
