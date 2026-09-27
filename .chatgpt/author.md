@@ -364,7 +364,7 @@ Before coding, establish internally:
 - **Motion:** the primary animation language.
 - **Anti-repetition check:** which existing-original patterns this page intentionally avoids.
 
-Do not ask the user to provide this information as an additional required input. Infer it from the existing three-input contract and the inspiration library.
+Do not ask the user to provide this information as an additional required input. Infer it from the input contract and the inspiration library.
 
 ## 9. Responsive design
 
@@ -752,7 +752,7 @@ When the user wants a new original enterprise-quality web page, use the followin
 
 ### User input contract
 
-Accept **no more than three inputs** from the user:
+Accept **no more than four inputs** from the user:
 
 1. **Business objective + audience**
    - What the enterprise/page is for.
@@ -765,9 +765,17 @@ Accept **no more than three inputs** from the user:
    - If exact copy is not supplied, write concise, credible copy from the provided context without inventing factual claims.
 
 3. **Brand + visual direction**
-   - Brand name, colors, logo/assets if available, preferred visual mood, and any references.
+   - Brand name, colors, logo/assets if available, preferred visual mood, and any existing brand constraints.
    - If only a brand name is supplied, inspect the repository for existing brand assets and infer a restrained visual system.
    - If this input is omitted, choose a professional visual direction appropriate to the enterprise context.
+
+4. **Inspiration site**
+   - A public website URL that should inform the visual direction, composition, interaction language, typography, spacing, motion, or art direction.
+   - Treat the site as **inspiration, not a replication target**.
+   - Inspect the site's visible design language and extract transferable principles rather than copying its branding, proprietary content, assets, exact layout, or implementation.
+   - Use the inspiration site to identify useful traits such as composition, density, navigation treatment, type relationships, color strategy, surface language, motion patterns, interaction ideas, and section rhythm.
+   - Reinterpret those traits for the user's business, audience, content, repository conventions, accessibility, and performance constraints.
+   - If the URL is unavailable, inaccessible, or unsuitable, continue using the repository's inspiration library and the other inputs rather than blocking the task.
 
 Do not ask for additional design-system, framework, layout, animation, responsive, asset, or implementation inputs unless the user has explicitly made one of those areas a hard constraint. Make those decisions autonomously.
 
@@ -775,7 +783,7 @@ Do not ask for additional design-system, framework, layout, animation, responsiv
 
 For an original page request covered by this section, execute the following:
 
-> Build a complete, production-quality original web page from the three inputs above.
+> Build a complete, production-quality original web page from the four inputs above.
 >
 > First inspect the repository and determine where the new original belongs. Follow the repository's existing conventions where they do not conflict with this prompt. The deliverable must be a self-contained HTML page at the appropriate `originals/<original>/index.html` location unless the repository clearly requires an equivalent location.
 >
@@ -789,7 +797,7 @@ For an original page request covered by this section, execute the following:
 >
 > ### Design direction
 >
-> Before writing markup, choose a clear, context-specific aesthetic direction based on the business objective, audience, brand, content, and visual references.
+> Before writing markup, choose a clear, context-specific aesthetic direction based on the business objective, audience, brand, content, visual references, and the supplied inspiration site when available.
 >
 > The direction can be restrained or expressive, but it must be deliberate. Examples include editorial, refined/luxury, organic, industrial, brutalist, geometric, retro-futurist, cinematic, playful, radically minimal, or controlled maximalist. Do not mechanically reuse the same direction across unrelated enterprise pages.
 >
