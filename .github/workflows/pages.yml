@@ -39,10 +39,6 @@ jobs:
         run: |
           mkdir -p dist/replications
           cp -R replications/verdentix dist/replications/
-          mkdir -p dist/replications/thornhill
-          cp -R replications/thornhill/source dist/replications/thornhill/
-          cp -R replications/thornhill/iterations dist/replications/thornhill/ 2>/dev/null || true
-          cp replications/thornhill/README.md dist/replications/thornhill/
           mkdir -p dist/replications/investflowtemplate-webflow-io-home-pages-home-v3
           cp -R replications/investflowtemplate-webflow-io-home-pages-home-v3/source dist/replications/investflowtemplate-webflow-io-home-pages-home-v3/
           cp -R replications/investflowtemplate-webflow-io-home-pages-home-v3/iterations dist/replications/investflowtemplate-webflow-io-home-pages-home-v3/
