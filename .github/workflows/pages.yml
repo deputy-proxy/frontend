@@ -6,6 +6,7 @@ on:
     paths:
       - 'replications/**'
       - 'originals/**'
+      - '.github/workflows/pages.yml'
 
 permissions:
   contents: write
