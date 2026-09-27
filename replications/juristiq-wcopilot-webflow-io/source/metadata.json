@@ -17,5 +17,17 @@
     "fullPage": true,
     "captureBeyondViewport": true,
     "path": "replications/juristiq-wcopilot-webflow-io/source/screenshot.png"
+  },
+  "reconnaissance": {
+    "completed": true,
+    "dom_analyzed": false,
+    "computed_styles_analyzed": false,
+    "styles_analyzed": true,
+    "assets_analyzed": false,
+    "javascript_analyzed": false,
+    "responsive_behavior_analyzed": true,
+    "limitations": [
+      "direct Webflow DOM/runtime extraction unavailable"
+    ]
   }
 }
