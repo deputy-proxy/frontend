@@ -33,6 +33,10 @@ jobs:
         uses: actions/configure-pages@v6
       - name: Install dependencies
         run: npm install
+      - name: Prepare Juristiq source-derived assets
+        run: |
+          python3 -m pip install pillow
+          python3 replications/juristiq-wcopilot-webflow-io/implementation/prepare-assets.py
       - name: Build
         run: npm run build
       - name: Include replication artifacts
