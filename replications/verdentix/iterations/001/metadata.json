@@ -1,0 +1,9 @@
+{
+  "replication_id":"verdentix",
+  "kind":"iteration",
+  "iteration":1,
+  "screenshot_source":"historical same-reference capture copied from prior repository iteration 008",
+  "visual_verification":"FAIL / blocked",
+  "reason":"No fresh current Replicator capture was available; screenshot is not canonical evidence for the current implementation.",
+  "viewport":{"width":1920,"height":1080,"deviceScaleFactor":1}
+}
