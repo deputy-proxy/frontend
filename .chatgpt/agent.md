@@ -787,35 +787,61 @@ Any unresolved orphan element is a reconstruction failure and MUST prevent the i
 
 # 8. BROWSERLESS / SCREENSHOT PREFLIGHT
 
-Before every Screenshot MCP operation, determine whether Browserless may be asleep or unavailable.
+Browserless is treated as potentially sleeping between operations.
 
-Before the first source screenshot:
+Before **every single Screenshot MCP call**, immediately perform the supported Browserless ping/wake-up request and wait for a successful response. Do not rely on an earlier ping, preflight, screenshot, or other Browserless interaction.
 
-1. Perform the supported Browserless wake-up/preflight.
-2. Wait for successful response.
-3. Only then perform the source screenshot operation.
+The required sequence is always:
 
-The wake-up request is NOT screenshot evidence.
+1. Ping/wake Browserless.
+2. Wait for a successful response.
+3. Immediately call Screenshot MCP.
+4. Preserve the screenshot as evidence.
 
-If more than five minutes have elapsed since the last Browserless interaction, or Browserless appears asleep/unavailable:
+The ping/wake request is NOT screenshot evidence.
 
-1. Perform Browserless wake-up/preflight.
-2. Wait for successful response.
-3. Immediately perform the required screenshot operation.
+If a Screenshot MCP call fails:
 
-If a screenshot fails in a manner consistent with Browserless cold-start/sleep:
+1. Ping/wake Browserless again immediately.
+2. Wait for a successful response.
+3. Retry the Screenshot MCP call.
+4. If the retry fails, ping/wake Browserless again immediately.
+5. Wait for a successful response.
+6. Retry the Screenshot MCP call a second time.
+7. If that second retry fails, record the screenshot failure and stop treating the capture as successful.
 
-1. Do not immediately classify the request as invalid.
-2. Perform Browserless wake-up.
-3. Retry the screenshot once.
-4. If it fails again, record the failure.
+This permits **up to two retries after the initial Screenshot MCP failure**.
 
-If Browserless cannot be successfully awakened:
+If Browserless cannot be successfully awakened, stop the dependent screenshot operation and record the failure. Do not create false or incomplete screenshot evidence.
 
-* stop source capture;
-* do not create a false or incomplete canonical source screenshot;
-* record the blocker;
-* report the replication as blocked/incomplete.
+All screenshot operations MUST:
+
+* use the required Screenshot MCP;
+* be preceded immediately by a successful Browserless ping/wake;
+* capture the requested viewport;
+* preserve the screenshot as evidence.
+
+---
+
+# 8A. RAILWAY SANDBOX PROHIBITION
+
+The Railway Sandbox MUST NOT be used anywhere in this website replication workflow.
+
+This prohibition applies to:
+
+* source reconnaissance;
+* Browserless or screenshot preparation;
+* implementation;
+* local serving;
+* visual validation;
+* iteration capture;
+* final capture;
+* build verification;
+* deployment verification;
+* debugging;
+* temporary files or intermediate artifacts.
+
+Do not use Railway Sandbox as a substitute for repository tooling, browser tooling, Screenshot MCP, GitHub tooling, or any other required workflow tool.
 
 ---
 
@@ -1966,6 +1992,10 @@ The following rules MUST NEVER be violated:
 
 ---
 
+
+14A. Before every Screenshot MCP call, Browserless MUST be pinged/woken immediately before that call.
+14B. A failed Screenshot MCP call MUST be followed by a Browserless ping/wake and up to two Screenshot MCP retries.
+14C. Railway Sandbox MUST NOT be used anywhere in the website replication workflow.
 
 45. Every major visible implementation element MUST have source evidence or be a necessary implementation mechanism for an observed source behavior.
 46. Orphan elements are prohibited.
