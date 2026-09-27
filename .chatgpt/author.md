@@ -368,11 +368,12 @@ Do not ask the user to provide this information as an additional required input.
 
 ### Centered composition
 
-Unless the product context clearly requires another spatial strategy, keep the page **as centered as reasonably possible**.
+Use a coherent centered container/grid as the default structural system, but do not let centering become a visual constraint.
 
 - Prefer a strong centered container/grid as the primary alignment system.
-- Keep major content groups, navigation, hero content, section headings, and primary actions visually anchored to a coherent center.
-- Use asymmetry, off-center composition, or grid-breaking elements only when they materially improve the product experience or are required by the chosen aesthetic direction.
+- Keep major content groups anchored to a coherent page structure.
+- Allow the actual composition to move, break, overlap, split, or become asymmetric when the chosen design thesis benefits from it.
+- Use asymmetry, off-center composition, or grid-breaking elements deliberately rather than as decoration.
 - Do not create artificial asymmetry merely to appear distinctive.
 - Centered does not mean vertically centering every element or making every text block center-aligned. Preserve readable text measure, hierarchy, and appropriate left/right alignment within the centered page structure.
 
@@ -388,6 +389,201 @@ Every original page must provide a **light/dark theme toggle** unless the produc
 - Ensure the toggle is keyboard accessible and has an accessible name/state.
 - Test the page in both themes across desktop and mobile.
 - Do not treat dark mode as a simple background swap. Rebalance contrast, surfaces, shadows, borders, imagery, and accent intensity for each theme.
+
+## Visual Divergence & Anti-AI Convergence
+
+The repository contains multiple original pages. Treat existing originals as a visual history, not merely as reusable inspiration.
+
+Before designing a new page:
+
+1. Inspect recent originals.
+2. Identify their dominant visual patterns.
+3. Identify patterns that are becoming repetitive.
+4. Deliberately reject the most common patterns unless the business context requires them.
+5. Choose a page-specific visual thesis.
+6. Introduce one controlled unconventional design decision.
+7. Ensure the resulting page is materially different in composition, typography, interaction, or visual language from recent originals.
+
+### Do not confuse polish with originality
+
+A page is not differentiated merely because it has:
+- a different accent color;
+- a different font;
+- different copy;
+- different photographs;
+- slightly different border radii;
+- different animations.
+
+Differentiation must be structural or conceptual.
+
+### Visual thesis
+
+Before implementation, establish one concrete visual thesis derived from the business.
+
+Examples:
+
+- publishing house;
+- technical instrument;
+- field manual;
+- scientific journal;
+- cultural institution;
+- luxury catalog;
+- architectural system;
+- financial terminal;
+- documentary archive;
+- consumer magazine;
+- studio portfolio;
+- brutalist publication;
+- cinematic experience.
+
+These are examples, not a fixed menu.
+
+The thesis must influence multiple dimensions of the page:
+- composition;
+- typography;
+- navigation;
+- color;
+- imagery;
+- information density;
+- surfaces;
+- interaction;
+- motion.
+
+Do not simply apply a theme visually while keeping a generic SaaS information architecture.
+
+### Composition diversity
+
+Do not repeatedly use:
+
+centered hero
+→ feature cards
+→ alternating sections
+→ CTA
+→ footer.
+
+This composition is permitted when justified, but it must not become the default.
+
+Consider alternative structures:
+
+- split-screen;
+- asymmetric editorial grid;
+- full-bleed narrative;
+- long-form single column;
+- dense information system;
+- modular mosaic;
+- numbered sequence;
+- horizontal storytelling;
+- typographic poster;
+- timeline;
+- comparison interface;
+- immersive media composition;
+- navigation-led experience.
+
+### Controlled weirdness
+
+Every original page should contain at least one intentional design decision that is unusual for a generic corporate website while remaining usable and accessible.
+
+Examples include:
+
+- oversized typography;
+- persistent section index;
+- unusual image cropping;
+- editorial annotations;
+- technical metadata;
+- unconventional navigation;
+- strong color blocking;
+- oversized background typography;
+- dense information sections;
+- extreme contrast between sparse and dense sections;
+- interactive comparison;
+- diagrammatic visual language.
+
+Use one or two such ideas. Do not stack novelty for its own sake.
+
+### Recent-pattern rejection
+
+If the previous originals repeatedly use the same:
+
+- hero structure;
+- card treatment;
+- typography pairing;
+- CTA shape;
+- navigation;
+- section rhythm;
+- color strategy;
+- image treatment;
+- motion language;
+
+the next page should deliberately explore an alternative.
+
+Do not use more than two dominant repeated patterns from recent originals unless they are clearly justified by the business context.
+
+### Image strategy
+
+Do not treat imagery as a rectangular content slot.
+
+Choose deliberately between:
+
+- hero-dominant;
+- full-bleed;
+- background;
+- editorial crop;
+- masked;
+- fragmented;
+- asymmetric;
+- documentary;
+- diagrammatic;
+- interactive;
+- sequential;
+- no photography.
+
+Photography is optional.
+
+### Typography diversity
+
+Typography should vary structurally between unrelated pages.
+
+Possible systems include:
+
+- editorial serif + grotesk;
+- grotesk + monospace metadata;
+- condensed display + neutral body;
+- oversized display + micro-annotations;
+- technical documentation;
+- poster typography;
+- newspaper hierarchy;
+- variable-scale typography.
+
+Do not repeatedly use the same display/body relationship.
+
+### Theme diversity
+
+Light/dark mode is mandatory, but the themes should express the selected visual thesis.
+
+Do not simply invert colors.
+
+Reinterpret:
+- surfaces;
+- borders;
+- shadows;
+- image treatment;
+- accent intensity;
+- contrast;
+- atmospheric effects
+
+for each theme.
+
+### Final anti-AI test
+
+Before completion, ask internally:
+
+"If the company name and copy were removed, would this page still look interchangeable with three other AI-generated websites in this repository?"
+
+If yes, revise the composition, typography, visual language, interaction model, or information density.
+
+The goal is not randomness.
+
+The goal is recognizable authorship.
 
 ## 9. Responsive design
 
