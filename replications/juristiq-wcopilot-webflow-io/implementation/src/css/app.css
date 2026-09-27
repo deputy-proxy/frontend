@@ -11,12 +11,12 @@ body { font-family: var(--font-sans); }
 
 @media (min-width: 1024px) {
   main > section:nth-child(1) { min-height: 900px; }
-  main > section:nth-child(2) > div { padding-top: 140px !important; padding-bottom: 140px !important; }
-  main > section:nth-child(3) > div { padding-top: 148px !important; padding-bottom: 148px !important; }
-  main > section:nth-child(4) > div { padding-top: 148px !important; padding-bottom: 148px !important; }
-  main > section:nth-child(5) > div { padding-top: 140px !important; padding-bottom: 140px !important; }
-  main > section:nth-child(6) > div { padding-top: 140px !important; padding-bottom: 140px !important; }
-  main > section:nth-child(7) > div { padding-top: 132px !important; padding-bottom: 132px !important; }
-  main > section:nth-child(8) > div { padding-top: 148px !important; padding-bottom: 148px !important; }
+  main > section:nth-child(2) > div { padding-top: 184px !important; padding-bottom: 184px !important; }
+  main > section:nth-child(3) > div { padding-top: 192px !important; padding-bottom: 192px !important; }
+  main > section:nth-child(4) > div { padding-top: 192px !important; padding-bottom: 192px !important; }
+  main > section:nth-child(5) > div { padding-top: 184px !important; padding-bottom: 184px !important; }
+  main > section:nth-child(6) > div { padding-top: 184px !important; padding-bottom: 184px !important; }
+  main > section:nth-child(7) > div { padding-top: 176px !important; padding-bottom: 176px !important; }
+  main > section:nth-child(8) > div { padding-top: 192px !important; padding-bottom: 192px !important; }
   #practice .mt-20, #cases .mt-20 { margin-top: 56px !important; }
 }
