@@ -160,7 +160,147 @@ Avoid generic template aesthetics when the brief implies a distinct product iden
 
 Do not add visual complexity merely because CSS permits it. Humanity has suffered enough from gratuitous gradients.
 
-## 8. Responsive design
+## 8. Design direction and differentiation
+
+Before coding an original page, deliberately choose a **single coherent aesthetic direction** based on the business, audience, content, and brand.
+
+Treat this as a design decision, not a decoration pass.
+
+Consider directions such as:
+
+- editorial or magazine;
+- luxury/refined;
+- organic/natural;
+- industrial/utilitarian;
+- brutalist/raw;
+- art deco/geometric;
+- retro-futurist;
+- playful/toy-like;
+- soft/pastel;
+- cinematic;
+- radically minimal;
+- controlled maximalism.
+
+These are starting points, not a fixed menu. Create a direction that is appropriate to the enterprise and commit to it consistently.
+
+Define internally:
+
+1. **Purpose:** what the page must accomplish and for whom.
+2. **Tone:** what the visual language should make the audience feel or understand.
+3. **Signature:** the one memorable design idea or visual behavior that differentiates the page.
+4. **Constraints:** performance, accessibility, content, brand, and technical requirements.
+5. **Execution level:** how much visual complexity the chosen direction actually needs.
+
+Do not default to the same aesthetic across unrelated pages. Vary typography, composition, density, light/dark treatment, image strategy, and interaction language when the context supports it.
+
+### Typography
+
+Typography is a primary design element, not a finishing touch.
+
+- Prefer characterful display or editorial typefaces when appropriate.
+- Pair display typography with a highly legible body face.
+- Avoid defaulting to Arial, Roboto, Inter, or generic system fonts for the visual identity when a more distinctive choice is available and practical.
+- Do not repeatedly converge on the same fashionable font across unrelated pages.
+- Use a deliberate type scale, line length, weight contrast, and line-height system.
+- Never sacrifice readability or performance merely to use an unusual font.
+
+### Color and theme
+
+Commit to a cohesive palette.
+
+- Define color tokens/variables and reuse them consistently.
+- Prefer a deliberate dominant palette with controlled accents over evenly distributing many colors.
+- Let contrast establish hierarchy.
+- Use light/dark treatment according to the brand and concept rather than habit.
+- Avoid clichéd visual recipes, especially purple-gradient-on-white SaaS styling, unless the brief explicitly calls for it.
+
+### Spatial composition
+
+Do not assume every page needs a centered hero followed by identical full-width marketing sections.
+
+When appropriate, use:
+
+- asymmetry;
+- editorial grids;
+- intentional overlap;
+- grid-breaking elements;
+- diagonal or directional flow;
+- generous negative space;
+- controlled density;
+- unusual but usable image/text relationships.
+
+Composition must remain responsive and understandable. Novelty is useful only when it survives contact with an actual browser.
+
+### Backgrounds and visual atmosphere
+
+Use backgrounds to create context, depth, and atmosphere when they serve the chosen direction.
+
+Possible techniques include:
+
+- subtle gradients;
+- grain/noise;
+- paper or material textures;
+- geometric patterns;
+- layered transparency;
+- restrained shadows;
+- decorative rules/borders;
+- image overlays;
+- masks or controlled shapes.
+
+Do not stack effects simply to make a page look “designed.” Every effect should support hierarchy, mood, depth, or interaction.
+
+### Motion
+
+Use motion as part of the design language.
+
+Prefer a small number of high-impact sequences over animation scattered across every element.
+
+Good uses include:
+
+- one orchestrated page-load sequence;
+- staggered hero/content reveals;
+- scroll-triggered section entrances;
+- image/media reveals;
+- meaningful hover or focus transitions;
+- transitions that clarify navigation or state changes.
+
+Motion should reinforce hierarchy and atmosphere, not compensate for weak composition.
+
+Avoid:
+
+- perpetual motion without purpose;
+- excessive parallax;
+- long blocking intros;
+- animating every card or word;
+- scroll-triggering every section independently;
+- motion that makes content harder to read;
+- animation that breaks keyboard or reduced-motion use.
+
+Respect `prefers-reduced-motion` and make essential content available immediately.
+
+### Anti-generic guardrails
+
+The page must not feel like an interchangeable AI-generated template.
+
+Avoid:
+
+- predictable hero + three cards + logo strip + testimonial + CTA sequences when the content does not require them;
+- generic dashboard/SaaS component patterns;
+- excessive rounded cards with identical treatment;
+- timid, evenly distributed palettes;
+- interchangeable icon grids;
+- decorative blobs with no contextual purpose;
+- generic stock photography used as filler;
+- default font combinations;
+- excessive gradients;
+- repetitive glassmorphism;
+- visual complexity without a conceptual reason.
+
+The goal is not to maximize novelty. The goal is **specificity**.
+
+A strong page should feel like it could only reasonably belong to the organization it represents.
+
+## 9. Responsive design
 
 Responsive behavior is part of the implementation, not a later patch.
 
@@ -183,7 +323,7 @@ Do not simply shrink the desktop layout.
 
 Do not rely on accidental wrapping as a responsive strategy.
 
-## 9. Accessibility
+## 10. Accessibility
 
 Implement accessible frontend behavior by default.
 
@@ -204,7 +344,7 @@ At minimum:
 
 Do not use ARIA to compensate for incorrect native semantics when native HTML can solve the problem.
 
-## 10. Interaction states
+## 11. Interaction states
 
 Every interactive control should have intentional states where applicable:
 
@@ -223,7 +363,7 @@ Do not implement interactions that only work with a mouse if the product can rea
 
 Do not simulate functionality with visual state alone when real behavior is required.
 
-## 11. Content
+## 12. Content
 
 Use supplied copy exactly unless editing is explicitly requested.
 
@@ -240,7 +380,7 @@ Do not invent legal, medical, financial, security, or performance claims.
 
 Do not fabricate customer names, brands, statistics, certifications, or endorsements.
 
-## 12. Assets
+## 13. Assets
 
 Prefer existing repository assets when appropriate.
 
@@ -259,7 +399,7 @@ If a third-party asset remains necessary, make that dependency explicit.
 
 Do not replace meaningful product imagery with random stock imagery merely to fill space.
 
-## 13. Component architecture
+## 14. Component architecture
 
 Build around meaningful product components.
 
@@ -277,7 +417,7 @@ Keep component APIs understandable.
 
 Prefer composition over deeply nested configuration objects unless the repository already uses that pattern.
 
-## 14. State and data
+## 15. State and data
 
 Separate presentation state, interaction state, server/data state, and persistent state.
 
@@ -289,7 +429,7 @@ Do not pretend mock data is real.
 
 Handle loading, empty, error, success, retry, and stale-data states where relevant.
 
-## 15. Routing and navigation
+## 16. Routing and navigation
 
 Use the repository's existing routing approach.
 
@@ -306,27 +446,28 @@ Verify:
 
 Do not create fake navigation targets unless explicitly requested.
 
-## 16. Implementation order
+## 17. Implementation order
 
 For substantial work use this sequence:
 
 1. repository reconnaissance;
 2. requirements model;
-3. page/component architecture;
-4. design tokens;
-5. structural implementation;
-6. content;
-7. responsive behavior;
-8. interactions and state;
-9. accessibility;
-10. visual refinement;
-11. build/test verification;
-12. runtime verification;
-13. deployment verification where requested.
+3. aesthetic direction and design concept;
+4. page/component architecture;
+5. design tokens;
+6. structural implementation;
+7. content;
+8. responsive behavior;
+9. interactions and state;
+10. accessibility;
+11. visual refinement;
+12. build/test verification;
+13. runtime verification;
+14. deployment verification where requested.
 
 Do not spend excessive time polishing details before the structural hierarchy is correct.
 
-## 17. Visual validation
+## 18. Visual validation
 
 When screenshots or browser tooling are available, use them.
 
@@ -341,7 +482,8 @@ Validate:
 - overflow;
 - visual states;
 - missing assets;
-- runtime errors.
+- runtime errors;
+- whether the chosen aesthetic direction is actually visible in the rendered result.
 
 Use objective measurements where tooling provides them.
 
@@ -349,7 +491,7 @@ A screenshot is evidence of rendered output, not proof that the implementation i
 
 When a screenshot exposes a problem, fix the underlying implementation rather than adding brittle pixel hacks.
 
-## 18. Reference materials
+## 19. Reference materials
 
 If the user provides a screenshot, Figma design, visual reference, or existing site as inspiration:
 
@@ -361,7 +503,7 @@ If the user provides a screenshot, Figma design, visual reference, or existing s
 
 If the task explicitly becomes website replication, use .chatgpt/replicator.md.
 
-## 19. Code quality
+## 20. Code quality
 
 Keep implementation readable, testable, maintainable, and consistent with the repository.
 
@@ -380,7 +522,7 @@ Do not hide errors.
 
 Do not suppress warnings without understanding them.
 
-## 20. Performance
+## 21. Performance
 
 Prefer:
 
@@ -396,7 +538,7 @@ Avoid unnecessary large dependencies, repeated expensive calculations during ren
 
 Do not optimize prematurely. Measure obvious bottlenecks when tooling permits.
 
-## 21. Testing and verification
+## 22. Testing and verification
 
 At minimum verify, as applicable:
 
@@ -417,7 +559,7 @@ Use the repository's existing commands rather than inventing a parallel test sys
 
 A successful build is necessary but not sufficient.
 
-## 22. Browser verification
+## 23. Browser verification
 
 When browser tooling is available, verify the actual rendered application.
 
@@ -436,7 +578,7 @@ Check:
 
 Do not claim runtime verification when only static code inspection occurred.
 
-## 23. Deployment
+## 24. Deployment
 
 When deployment is requested:
 
@@ -453,7 +595,7 @@ Never invent a deployment URL.
 
 Deployment success does not imply product correctness.
 
-## 24. Change safety
+## 25. Change safety
 
 Before making broad changes:
 
@@ -471,7 +613,7 @@ Do not delete working behavior merely because it is inconvenient to modify.
 
 When removing functionality, verify that nothing else depends on it.
 
-## 25. Definition of done
+## 26. Definition of done
 
 A substantial frontend task is complete only when:
 
@@ -490,7 +632,7 @@ A substantial frontend task is complete only when:
 
 Do not claim completion when a known material requirement remains unfinished.
 
-## 26. Final report
+## 27. Final report
 
 For substantial tasks, provide:
 
@@ -514,7 +656,7 @@ Only report checks that were actually performed.
 
 Do not claim PASS based on assumption.
 
-## 27. Hard invariants
+## 28. Hard invariants
 
 1. Repository conventions take precedence over personal framework preferences.
 2. User requirements take precedence over aesthetic preference.
@@ -533,10 +675,12 @@ Do not claim PASS based on assumption.
 15. Use actual repository assets before introducing replacements.
 16. Preserve existing working behavior unless the task requires changing it.
 17. Treat visual polish as part of implementation quality, not as a substitute for functionality.
-18. When the task is explicitly website replication, use .chatgpt/replicator.md.
+18. Every original page must have a deliberate aesthetic direction before implementation.
+19. Do not default unrelated pages to the same typography, palette, layout, or interaction language.
+20. Avoid generic AI/template aesthetics; optimize for contextual specificity rather than novelty for its own sake.
+21. When the task is explicitly website replication, use .chatgpt/replicator.md.
 
-
-## 28. Standard Original HTML Page Prompt
+## 29. Standard Original HTML Page Prompt
 
 When the user wants a new original enterprise-quality web page, use the following operating prompt. The goal is to turn a very small brief into a complete, polished, deployable HTML page without interrogating the user for a specification.
 
@@ -577,9 +721,23 @@ For an original page request covered by this section, execute the following:
 >
 > Prefer a simple standalone HTML architecture for these original pages. Do not introduce a frontend framework or build system merely to produce one page. Keep dependencies limited to the three requested frontend libraries plus any genuinely necessary supporting asset.
 >
+> ### Design direction
+>
+> Before writing markup, choose a clear, context-specific aesthetic direction based on the business objective, audience, brand, content, and visual references.
+>
+> The direction can be restrained or expressive, but it must be deliberate. Examples include editorial, refined/luxury, organic, industrial, brutalist, geometric, retro-futurist, cinematic, playful, radically minimal, or controlled maximalist. Do not mechanically reuse the same direction across unrelated enterprise pages.
+>
+> Define a memorable design idea or signature treatment that gives the page a distinct identity. The signature can be typographic, compositional, spatial, image-based, interactive, or atmospheric.
+>
+> Match implementation complexity to the chosen direction:
+>
+> - refined/minimal concepts require precision, restraint, typography, spacing, and composition rather than decorative effects;
+> - maximal or expressive concepts may justify richer motion, layering, texture, and visual effects;
+> - neither style should add complexity without a reason.
+>
 > ### Design standard
 >
-> Produce a modern enterprise web experience suitable for a serious company, product, consultancy, technology business, professional service, or other credible enterprise. Avoid generic SaaS-template output.
+> Produce a modern enterprise web experience suitable for a serious company, product, consultancy, technology business, professional service, research organization, or other credible enterprise. Avoid generic SaaS-template output.
 >
 > Establish a deliberate visual system covering:
 >
@@ -594,11 +752,37 @@ For an original page request covered by this section, execute the following:
 > - image treatment;
 > - responsive breakpoints.
 >
-> Prioritize hierarchy, whitespace, readability, credibility, and a strong first viewport. Use visual contrast and composition rather than gratuitous decoration.
+> Typography must be treated as a core visual element. Prefer distinctive display/editorial type choices when appropriate, paired with a highly legible body face. Avoid defaulting to Arial, Roboto, Inter, or generic system fonts when a better contextual choice is practical. Do not repeatedly use the same trendy font across unrelated pages.
 >
-> The page should feel authored rather than assembled from interchangeable marketing blocks. Use distinctive but restrained details such as typography scale, editorial spacing, asymmetric composition, subtle borders, considered image crops, or controlled motion when appropriate.
+> Commit to a coherent palette. Use dominant colors and controlled accents to create hierarchy rather than distributing many colors evenly. Avoid clichéd visual formulas such as purple gradients on white unless explicitly required by the brief.
 >
-> Do not fabricate customer logos, statistics, testimonials, certifications, awards, product capabilities, performance claims, or other factual proof.
+> Use composition intentionally. When appropriate, consider asymmetry, editorial grids, overlap, directional flow, grid-breaking elements, generous negative space, or controlled density. Do not force novelty where a simpler composition better serves the content.
+>
+> Create atmosphere when useful through restrained textures, grain, gradients, patterns, transparency, shadows, borders, image treatments, or other contextual effects. Do not layer effects merely to signal visual sophistication.
+>
+> The page should feel authored rather than assembled from interchangeable marketing blocks. A strong result should feel specific to the organization it represents.
+>
+> Do not use predictable sequences merely because they are common: hero + three cards + logo strip + testimonial + CTA is not a requirement. Infer the information architecture from the actual objective and content.
+>
+> ### Anti-generic guardrails
+>
+> Never intentionally converge on generic AI/template aesthetics.
+>
+> Avoid:
+>
+> - interchangeable SaaS layouts;
+> - default font stacks and overused type choices;
+> - excessive rounded cards;
+> - repetitive icon grids;
+> - decorative blobs without contextual purpose;
+> - purple-gradient-on-white styling;
+> - generic glassmorphism;
+> - random stock imagery;
+> - animation on every element;
+> - identical section patterns repeated throughout the page;
+> - visual complexity without a conceptual reason.
+>
+> Optimize for **specificity and coherence**, not novelty for its own sake.
 >
 > ### Page composition
 >
@@ -667,6 +851,8 @@ For an original page request covered by this section, execute the following:
 > - image or media reveals;
 > - restrained hover/micro-interactions.
 >
+> Prefer one or two coherent motion systems over many unrelated animations.
+>
 > Animation must support hierarchy and atmosphere, not compensate for weak design.
 >
 > Respect `prefers-reduced-motion`. When reduced motion is requested, disable or substantially reduce non-essential GSAP movement and reveal content immediately.
@@ -711,7 +897,8 @@ For an original page request covered by this section, execute the following:
 > 5. check mobile, tablet, and desktop layouts;
 > 6. check for horizontal overflow and broken links;
 > 7. inspect the visual hierarchy and first viewport;
-> 8. fix visible problems rather than documenting them as acceptable when they are reasonably fixable.
+> 8. confirm the chosen aesthetic direction is visible in the rendered page rather than existing only in source code;
+> 9. fix visible problems rather than documenting them as acceptable when they are reasonably fixable.
 >
 > If browser tooling is unavailable, perform the strongest static/build validation available and explicitly report that runtime verification was not performed.
 >
@@ -721,6 +908,8 @@ For an original page request covered by this section, execute the following:
 >
 > - the requested `index.html` exists in the correct original directory;
 > - Tailwind CSS, Alpine.js, and GSAP are actually used appropriately;
+> - the page has a deliberate, context-specific visual direction;
+> - typography, color, composition, imagery, and motion support that direction coherently;
 > - the page is responsive;
 > - accessibility basics are implemented;
 > - relevant Pexels assets are used where appropriate;
