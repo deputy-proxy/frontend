@@ -28,7 +28,11 @@ Because direct source DOM/computed-style access was unavailable, visual fidelity
 Deployment is performed by the repository's existing GitHub Pages workflow after the Vite configuration includes this replication.
 
 ## Latest validation
-- Latest deployed implementation capture: `iterations/008/screenshot.png`.
-- Source baseline height: 7309px.
-- Latest implementation capture height: 7299px.
-- The latest capture uses source-derived crops for the hero and three visible practice-area images because the original Webflow asset URLs were not exposed by the available source inspection surface.
+- Latest fresh capture: `iterations/014/screenshot.png`.
+- Canonical final screenshot: `implementation/screenshot.png`.
+- Source baseline: 1920×7309px.
+- Final implementation capture: 1920×7269px.
+- Grayscale SSIM against the source after height-normalization: 0.6707; regional SSIM values: 0.6655 / 0.7366 / 0.6496 / 0.6350.
+- Build, Tailwind, CSS, JavaScript and deployment checks pass.
+- Strict final replication status remains **FAIL** because direct Webflow DOM/computed-style/runtime inspection and tablet/mobile source baselines were unavailable, and measurable visual differences remain.
+- Deployment path: `https://deputy-proxy.github.io/frontend/replications/juristiq-wcopilot-webflow-io/implementation/index.html`.
