@@ -39,7 +39,10 @@ jobs:
         run: |
           mkdir -p dist/replications
           cp -R replications/verdentix dist/replications/
-          cp -R replications/investflowtemplate-webflow-io-home-pages-home-v3 dist/replications/
+          mkdir -p dist/replications/investflowtemplate-webflow-io-home-pages-home-v3
+          cp -R replications/investflowtemplate-webflow-io-home-pages-home-v3/source dist/replications/investflowtemplate-webflow-io-home-pages-home-v3/
+          cp -R replications/investflowtemplate-webflow-io-home-pages-home-v3/iterations dist/replications/investflowtemplate-webflow-io-home-pages-home-v3/
+          cp replications/investflowtemplate-webflow-io-home-pages-home-v3/README.md dist/replications/investflowtemplate-webflow-io-home-pages-home-v3/
           cp -R replications/neurex dist/replications/
           mkdir -p dist/replications/kora
           cp -R replications/kora/source dist/replications/kora/
