@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sentinel provides continuous threat detection, automated investigation, and expert response for mid-sized financial institutions.">
+  <meta name="theme-color" content="#050912">
+  <meta name="asset-source" content="Hero image: Pexels, panumas nikhomkhai, https://www.pexels.com/photo/network-rack-17323801/">
+  <title>Sentinel | See threats before they become incidents.</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-ink: #050912;
+      --color-panel: #0a101c;
+      --color-panel-2: #0e1726;
+      --color-line: rgba(148, 163, 184, 0.16);
+      --color-blue: #5eb5ff;
+      --color-blue-strong: #248cff;
+      --color-muted: #8b98aa;
+    }
+
+    @layer base {
+      html { scroll-behavior: smooth; }
+      body {
+        background: #050912;
+        color: #f7f9fc;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      ::selection { background: rgba(94,181,255,.28); color: #fff; }
+    }
+
+    @layer utilities {
+      .text-balance { text-wrap: balance; }
+      .glass { background: rgba(7, 13, 24, .72); backdrop-filter: blur(18px); }
+      .hairline { border-color: rgba(148,163,184,.14); }
+      .hero-grid {
+        background-image:
+          linear-gradient(rgba(148,163,184,.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(148,163,184,.045) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: linear-gradient(to bottom, black 0%, transparent 88%);
+      }
+      .blue-glow { box-shadow: 0 0 90px rgba(36,140,255,.12); }
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden antialiased">
+  <div class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_72%_8%,rgba(36,140,255,.12),transparent_27%),radial-gradient(circle_at_18%_38%,rgba(37,99,235,.06),transparent_26%)]"></div>
+  <div class="fixed inset-x-0 top-0 -z-10 h-[80vh] hero-grid"></div>
+
+  <header x-data="{ open: false }" class="fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto max-w-7xl px-5 pt-4 sm:px-8">
+      <nav class="glass hairline rounded-2xl border px-4 py-3 sm:px-5" aria-label="Primary">
+        <div class="flex items-center justify-between">
+          <a href="#" class="flex items-center gap-3" aria-label="Sentinel home">
+            <span class="grid size-8 place-items-center rounded-lg border border-blue-300/30 bg-blue-400/10">
+              <span class="size-2.5 rounded-full bg-blue-300 shadow-[0_0_18px_rgba(94,181,255,.9)]"></span>
+            </span>
+            <span class="text-sm font-semibold tracking-[0.22em] text-white">SENTINEL</span>
+          </a>
+
+          <div class="hidden items-center gap-8 md:flex">
+            <a href="#capabilities" class="text-sm text-slate-400 transition hover:text-white">Capabilities</a>
+            <a href="#how-it-works" class="text-sm text-slate-400 transition hover:text-white">How it works</a>
+            <a href="#request-demo" class="rounded-full border border-blue-300/30 bg-blue-400/10 px-4 py-2 text-sm font-medium text-blue-100 transition hover:border-blue-200/60 hover:bg-blue-400/15">Request a demo</a>
+          </div>
+
+          <button @click="open = !open" class="grid size-10 place-items-center rounded-lg border hairline md:hidden" :aria-expanded="open" aria-label="Toggle navigation">
+            <span class="text-lg" x-text="open ? '×' : '☰'"></span>
+          </button>
+        </div>
+
+        <div x-show="open" x-transition class="border-t hairline mt-3 space-y-1 pt-3 md:hidden">
+          <a @click="open = false" href="#capabilities" class="block rounded-lg px-3 py-2.5 text-sm text-slate-300 hover:bg-white/5">Capabilities</a>
+          <a @click="open = false" href="#how-it-works" class="block rounded-lg px-3 py-2.5 text-sm text-slate-300 hover:bg-white/5">How it works</a>
+          <a @click="open = false" href="#request-demo" class="block rounded-lg px-3 py-2.5 text-sm font-medium text-blue-200 hover:bg-blue-400/10">Request a demo</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative min-h-screen pt-36 sm:pt-44">
+      <div class="mx-auto grid max-w-7xl items-center gap-16 px-5 pb-20 sm:px-8 lg:grid-cols-[1.02fr_.98fr] lg:gap-10 lg:pb-28">
+        <div class="hero-copy">
+          <div class="mb-7 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.24em] text-blue-200/80">
+            <span class="h-px w-8 bg-blue-400/60"></span>
+            Threat intelligence for financial institutions
+          </div>
+
+          <h1 class="text-balance max-w-4xl text-5xl font-semibold leading-[.98] tracking-[-.055em] text-white sm:text-6xl lg:text-[5.35rem]">
+            See threats before they become <span class="text-blue-300">incidents.</span>
+          </h1>
+
+          <p class="mt-8 max-w-xl text-base leading-7 text-slate-400 sm:text-lg">
+            Sentinel continuously detects suspicious activity, investigates what matters, and brings an expert response team into the loop when your institution needs it.
+          </p>
+
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#request-demo" class="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-blue-400 px-6 text-sm font-semibold text-slate-950 transition hover:bg-blue-300">
+              Request a demo
+              <span class="transition-transform group-hover:translate-x-0.5">↗</span>
+            </a>
+            <a href="#how-it-works" class="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border hairline bg-white/[.03] px-6 text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/[.06]">
+              See how it works
+              <span class="text-slate-500">↓</span>
+            </a>
+          </div>
+
+          <div class="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t hairline pt-6 text-xs uppercase tracking-[.18em] text-slate-500">
+            <span>Continuous detection</span>
+            <span>Automated investigation</span>
+            <span>Expert response</span>
+          </div>
+        </div>
+
+        <div class="hero-visual relative mx-auto w-full max-w-[620px] lg:ml-auto">
+          <div class="absolute -inset-10 rounded-full bg-blue-500/10 blur-3xl"></div>
+          <div class="relative overflow-hidden rounded-[2rem] border hairline bg-[#08101d] blue-glow">
+            <div class="absolute inset-0 z-10 bg-[linear-gradient(135deg,rgba(3,8,18,.9)_0%,rgba(3,8,18,.38)_42%,rgba(3,8,18,.68)_100%)]"></div>
+            <img src="https://images.pexels.com/photos/17323801/pexels-photo-17323801.jpeg?cs=srgb&dl=pexels-cookiecutter-17323801.jpg&fm=jpg" alt="Blue-lit network racks inside a modern server room" class="aspect-[4/5] w-full object-cover opacity-75 sm:aspect-[5/4] lg:aspect-[4/5]">
+            <div class="absolute inset-x-5 top-5 z-20 flex items-center justify-between">
+              <span class="rounded-full border border-white/10 bg-black/30 px-3 py-1.5 text-[10px] uppercase tracking-[.2em] text-slate-300 backdrop-blur">Sentinel / live view</span>
+              <span class="flex items-center gap-2 text-[10px] uppercase tracking-[.18em] text-blue-200"><span class="size-1.5 rounded-full bg-blue-300 shadow-[0_0_12px_#5eb5ff]"></span> Monitoring</span>
+            </div>
+
+            <div class="absolute inset-x-5 bottom-5 z-20 rounded-2xl border border-white/10 bg-[#060c16]/80 p-4 backdrop-blur-xl sm:p-5">
+              <div class="flex items-end justify-between gap-4">
+                <div>
+                  <p class="text-[10px] uppercase tracking-[.2em] text-slate-500">Threat surface</p>
+                  <p class="mt-1 text-2xl font-medium tracking-tight text-white">Continuously observed</p>
+                </div>
+                <span class="rounded-full border border-blue-300/20 bg-blue-400/10 px-2.5 py-1 text-[10px] font-medium text-blue-200">ACTIVE</span>
+              </div>
+              <div class="mt-5 grid grid-cols-12 items-end gap-1">
+                <template x-data x-for="(height, i) in [22,31,18,44,28,56,36,70,48,63,39,52]" :key="i">
+                  <span class="h-10 overflow-hidden rounded-sm bg-white/5"><span class="block rounded-sm bg-blue-400/70" :style="'height:' + height + '%; margin-top:' + (100-height) + '%'"></span></span>
+                </template>
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute -left-5 bottom-10 hidden w-48 rounded-2xl border hairline bg-[#08101d]/90 p-4 backdrop-blur-xl sm:block">
+            <div class="flex items-center justify-between text-[10px] uppercase tracking-[.18em] text-slate-500">
+              <span>Signal</span><span class="text-blue-300">01</span>
+            </div>
+            <div class="mt-3 h-px bg-gradient-to-r from-blue-300/80 via-blue-300/20 to-transparent"></div>
+            <p class="mt-3 text-xs leading-5 text-slate-300">Anomalous behavior isolated for investigation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="border-y hairline py-5 text-center text-[10px] uppercase tracking-[.25em] text-slate-600">
+          Built for teams that cannot afford to discover the incident after the fact
+        </div>
+      </div>
+    </section>
+
+    <section id="capabilities" class="scroll-mt-28 py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="grid gap-12 lg:grid-cols-[.72fr_1.28fr]">
+          <div>
+            <p class="text-xs font-medium uppercase tracking-[.22em] text-blue-300/80">The Sentinel approach</p>
+            <h2 class="mt-5 max-w-lg text-4xl font-semibold tracking-[-.04em] text-white sm:text-5xl">Less noise. More context. Faster decisions.</h2>
+            <p class="mt-6 max-w-md text-base leading-7 text-slate-400">
+              Security teams get a continuous view of emerging threats without turning every alert into an emergency.
+            </p>
+          </div>
+
+          <div class="grid gap-px overflow-hidden rounded-3xl border hairline bg-white/[.07] sm:grid-cols-3">
+            <article class="bg-[#070d17] p-7 sm:p-8">
+              <span class="text-xs font-mono text-blue-300">01 / DETECT</span>
+              <h3 class="mt-14 text-xl font-medium text-white">Continuous threat detection</h3>
+              <p class="mt-4 text-sm leading-6 text-slate-500">Surface unusual behavior across the activity that matters, continuously.</p>
+            </article>
+            <article class="bg-[#070d17] p-7 sm:p-8">
+              <span class="text-xs font-mono text-blue-300">02 / INVESTIGATE</span>
+              <h3 class="mt-14 text-xl font-medium text-white">Automated investigation</h3>
+              <p class="mt-4 text-sm leading-6 text-slate-500">Connect signals and context so your team can understand what deserves attention.</p>
+            </article>
+            <article class="bg-[#070d17] p-7 sm:p-8">
+              <span class="text-xs font-mono text-blue-300">03 / RESPOND</span>
+              <h3 class="mt-14 text-xl font-medium text-white">Expert response</h3>
+              <p class="mt-4 text-sm leading-6 text-slate-500">Bring experienced responders into the workflow when an incident needs a human decision.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="scroll-mt-28 border-y hairline bg-[#070d17]/65 py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="flex flex-col justify-between gap-6 border-b hairline pb-8 sm:flex-row sm:items-end">
+          <div>
+            <p class="text-xs font-medium uppercase tracking-[.22em] text-blue-300/80">How it works</p>
+            <h2 class="mt-4 text-4xl font-semibold tracking-[-.04em] text-white sm:text-5xl">A clearer path from signal to response.</h2>
+          </div>
+          <p class="max-w-sm text-sm leading-6 text-slate-500">Designed to fit the way security and IT leadership already operate.</p>
+        </div>
+
+        <div class="mt-10 grid gap-4 md:grid-cols-3">
+          <article class="group rounded-3xl border hairline bg-white/[.025] p-6 transition hover:-translate-y-1 hover:border-blue-300/20 hover:bg-blue-400/[.025] sm:p-8">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-mono text-blue-300">01</span>
+              <span class="text-slate-700 transition group-hover:text-blue-300">↗</span>
+            </div>
+            <div class="mt-20">
+              <h3 class="text-2xl font-medium tracking-tight text-white">Observe</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-500">Sentinel continuously watches for patterns that warrant investigation.</p>
+            </div>
+          </article>
+          <article class="group rounded-3xl border hairline bg-white/[.025] p-6 transition hover:-translate-y-1 hover:border-blue-300/20 hover:bg-blue-400/[.025] sm:p-8">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-mono text-blue-300">02</span>
+              <span class="text-slate-700 transition group-hover:text-blue-300">↗</span>
+            </div>
+            <div class="mt-20">
+              <h3 class="text-2xl font-medium tracking-tight text-white">Understand</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-500">Automated investigation adds context before an alert reaches your team.</p>
+            </div>
+          </article>
+          <article class="group rounded-3xl border hairline bg-white/[.025] p-6 transition hover:-translate-y-1 hover:border-blue-300/20 hover:bg-blue-400/[.025] sm:p-8">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-mono text-blue-300">03</span>
+              <span class="text-slate-700 transition group-hover:text-blue-300">↗</span>
+            </div>
+            <div class="mt-20">
+              <h3 class="text-2xl font-medium tracking-tight text-white">Act</h3>
+              <p class="mt-3 text-sm leading-6 text-slate-500">Your security team gets expert response support when the situation calls for it.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="request-demo" class="scroll-mt-28 py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div x-data="{ ready: false }" class="relative overflow-hidden rounded-[2rem] border border-blue-300/15 bg-[radial-gradient(circle_at_80%_0%,rgba(36,140,255,.18),transparent_36%),#08101d]">
+          <div class="absolute -right-28 -top-28 size-80 rounded-full border border-blue-300/10"></div>
+          <div class="absolute -right-12 -top-12 size-48 rounded-full border border-blue-300/10"></div>
+
+          <div class="relative grid gap-12 p-7 sm:p-10 lg:grid-cols-[.85fr_1.15fr] lg:p-14">
+            <div>
+              <p class="text-xs font-medium uppercase tracking-[.22em] text-blue-300/80">Request a demo</p>
+              <h2 class="mt-5 max-w-xl text-4xl font-semibold tracking-[-.04em] text-white sm:text-5xl">Bring your threat picture into focus.</h2>
+              <p class="mt-6 max-w-md text-sm leading-6 text-slate-400">Tell us a little about your institution and security priorities. The page is intentionally wired as a front-end experience only, so connect the form to your preferred CRM or intake endpoint before accepting live submissions.</p>
+
+              <div class="mt-9 flex items-center gap-3 text-xs text-slate-500">
+                <span class="size-2 rounded-full bg-blue-300 shadow-[0_0_14px_rgba(94,181,255,.8)]"></span>
+                Built for CTOs, CISOs, and IT leadership
+              </div>
+            </div>
+
+            <div class="rounded-2xl border hairline bg-black/20 p-5 sm:p-7">
+              <form @submit.prevent="ready = true" class="space-y-5">
+                <div class="grid gap-5 sm:grid-cols-2">
+                  <label class="block">
+                    <span class="text-xs font-medium text-slate-300">Name</span>
+                    <input required type="text" autocomplete="name" class="mt-2 h-11 w-full rounded-xl border hairline bg-white/[.035] px-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-blue-300/50 focus:ring-2 focus:ring-blue-300/10" placeholder="Your name">
+                  </label>
+                  <label class="block">
+                    <span class="text-xs font-medium text-slate-300">Work email</span>
+                    <input required type="email" autocomplete="email" class="mt-2 h-11 w-full rounded-xl border hairline bg-white/[.035] px-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-blue-300/50 focus:ring-2 focus:ring-blue-300/10" placeholder="you@company.com">
+                  </label>
+                </div>
+                <label class="block">
+                  <span class="text-xs font-medium text-slate-300">Institution</span>
+                  <input required type="text" autocomplete="organization" class="mt-2 h-11 w-full rounded-xl border hairline bg-white/[.035] px-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-blue-300/50 focus:ring-2 focus:ring-blue-300/10" placeholder="Organization name">
+                </label>
+                <label class="block">
+                  <span class="text-xs font-medium text-slate-300">What are you looking to improve?</span>
+                  <textarea rows="4" class="mt-2 w-full resize-none rounded-xl border hairline bg-white/[.035] px-3 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-blue-300/50 focus:ring-2 focus:ring-blue-300/10" placeholder="Optional context"></textarea>
+                </label>
+
+                <button type="submit" class="flex min-h-12 w-full items-center justify-center gap-3 rounded-xl bg-blue-400 px-5 text-sm font-semibold text-slate-950 transition hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-200/50">
+                  Request a demo
+                  <span>↗</span>
+                </button>
+
+                <p x-show="ready" x-transition role="status" class="rounded-xl border border-blue-300/20 bg-blue-400/10 px-4 py-3 text-xs leading-5 text-blue-100">
+                  Front-end submission captured. Connect this form to your CRM or intake endpoint to enable live requests.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t hairline">
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-8 text-xs text-slate-600 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+      <div class="flex items-center gap-3">
+        <span class="grid size-7 place-items-center rounded-md border border-blue-300/20 bg-blue-400/5"><span class="size-2 rounded-full bg-blue-300"></span></span>
+        <span class="font-medium tracking-[.18em] text-slate-400">SENTINEL</span>
+      </div>
+      <p>Threat detection and response for financial institutions.</p>
+      <a href="#request-demo" class="text-slate-400 transition hover:text-white">Request a demo ↗</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reduceMotion || !window.gsap) {
+        document.querySelectorAll('.hero-copy, .hero-visual').forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+        return;
+      }
+
+      gsap.set('.hero-copy > *', { opacity: 0, y: 24 });
+      gsap.set('.hero-visual', { opacity: 0, y: 28, scale: .985 });
+
+      const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      intro.to('.hero-copy > *', { opacity: 1, y: 0, duration: .8, stagger: .08 })
+           .to('.hero-visual', { opacity: 1, y: 0, scale: 1, duration: 1.1 }, '-=.55');
+
+      gsap.utils.toArray('#capabilities article, #how-it-works article').forEach((card, index) => {
+        gsap.from(card, {
+          scrollTrigger: undefined,
+          opacity: 0,
+          y: 24,
+          duration: .65,
+          delay: index * .04,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: card, start: 'top 88%', once: true }
+        });
+      });
+    });
+  </script>
+  <script>
+    // GSAP ScrollTrigger is intentionally avoided here to keep the page dependency set limited.
+    // The primary entrance sequence above handles first-viewport motion; content remains visible without JS.
+  </script>
+</body>
+</html>
