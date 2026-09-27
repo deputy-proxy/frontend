@@ -631,6 +631,160 @@ For every major page region, record measurable source baselines at the canonical
 
 ---
 
+
+# 7C. SOURCE TRACEABILITY AND NO-ORPHAN-ELEMENT GATE
+
+The reconstruction model MUST be a closed representation of the source, not an open-ended design brief.
+
+## 7C.1 Element-level traceability
+
+Every visible implementation element MUST be traceable to a source counterpart or to an implementation mechanism required to reproduce an observed source behavior.
+
+For every major implementation element, the agent MUST be able to identify:
+
+* the corresponding source DOM element, source structure, source asset, source content, source runtime behavior, or validated source visual region;
+* the evidence type;
+* the source location or selector where practical;
+* whether the relationship is direct or inferred.
+
+A major implementation element includes, at minimum:
+
+* page sections;
+* section headings;
+* content blocks;
+* cards;
+* statistics;
+* navigation items;
+* buttons and CTAs;
+* images;
+* logos;
+* icons;
+* decorative visual elements;
+* repeated component groups;
+* forms;
+* interactive controls;
+* overlays;
+* animations that materially affect the rendered result.
+
+The agent MUST NOT create an implementation element merely because it is conventional, visually plausible, aesthetically useful, or expected for the type of website.
+
+## 7C.2 No-orphan-elements rule
+
+A visible implementation element with no identifiable source counterpart is an ORPHAN ELEMENT.
+
+Orphan elements are prohibited.
+
+If an element cannot be traced to source evidence, the agent MUST:
+
+1. return to source reconnaissance;
+2. determine whether the element actually exists in the reference;
+3. either establish evidence for it or remove it;
+4. never preserve it merely because it improves the design.
+
+The following are specifically prohibited unless supported by source evidence:
+
+* new sections;
+* extra cards;
+* invented statistics;
+* additional navigation items;
+* additional CTAs;
+* replacement or supplemental copy;
+* invented article/news items;
+* generic feature blocks;
+* decorative shapes;
+* additional images;
+* additional icons;
+* inferred interactions;
+* inferred animations;
+* inferred page hierarchy.
+
+## 7C.3 No-design-creativity rule
+
+Replication is a transcription and reconstruction task, not a design task.
+
+The agent MUST NOT:
+
+* improve the source;
+* modernize the source;
+* redesign the source;
+* embellish the source;
+* fill perceived whitespace;
+* add conventional sections;
+* add content that would make the page feel more complete;
+* substitute semantically similar content;
+* reorganize source content for perceived usability;
+* add components because they are common for the site's industry;
+* invent content because the source appears incomplete.
+
+A coherent or aesthetically pleasing addition is still incorrect if it is not supported by source evidence.
+
+## 7C.4 Closed reconstruction model
+
+The reconstruction model MUST define both:
+
+* what exists; and
+* what has been verified not to exist between major mapped regions where that distinction matters.
+
+For every major page region, record:
+
+* source counterpart;
+* position in page order;
+* repeated instances;
+* child components;
+* content instances;
+* known omissions/absence where relevant;
+* evidence provenance.
+
+The model MUST NOT leave major page structure open to implementation-time invention.
+
+## 7C.5 Hard inference boundary
+
+Inference MAY be used only for implementation details that are necessary to reproduce an observed source result and cannot be directly exposed by source evidence.
+
+Permitted inference includes, for example:
+
+* choosing an equivalent local CSS implementation;
+* deriving an intermediate breakpoint from observed responsive states;
+* deriving a reusable component boundary from repeated source structures;
+* calculating an implementation value from measured source values;
+* selecting an equivalent animation technique when the source behavior is observable but the original implementation is inaccessible.
+
+Inference MUST NOT be used to invent:
+
+* content;
+* sections;
+* components;
+* statistics;
+* links;
+* images;
+* navigation items;
+* CTAs;
+* page hierarchy;
+* behaviors;
+* animations;
+* responsive states
+
+when their existence is not supported by source evidence.
+
+If a required value is unknown and cannot be established from source evidence, record it as UNKNOWN / REQUIRES VALIDATION rather than fabricating a plausible value.
+
+## 7C.6 Source-to-implementation trace audit
+
+Before implementation is considered ready for visual validation, perform an explicit trace audit:
+
+```
+SOURCE EVIDENCE
+      ↓
+RECONSTRUCTION CLAIM
+      ↓
+IMPLEMENTATION ELEMENT
+```
+
+Every major implementation element MUST have a complete trace.
+
+Any unresolved orphan element is a reconstruction failure and MUST prevent the iteration from being accepted.
+
+
 # 8. BROWSERLESS / SCREENSHOT PREFLIGHT
 
 Before every Screenshot MCP operation, determine whether Browserless may be asleep or unavailable.
@@ -830,6 +984,49 @@ Do not load Tailwind from a CDN.
 Do not use runtime Tailwind compilation.
 
 ---
+
+
+# 12A. IMPLEMENTATION FIDELITY CONSTRAINTS
+
+The implementation MUST reproduce the source rather than reinterpret it.
+
+## 12A.1 Source-content closure
+
+The implementation MUST contain the source-visible content required by the reconstruction model and MUST NOT contain additional visible source-like content without provenance.
+
+If the source contains three cards, implementation MUST NOT contain four because a fourth card seems appropriate.
+
+If the source exposes an unknown statistic, implementation MUST NOT invent its value.
+
+If source content cannot be extracted reliably, preserve the unresolved state and return to reconnaissance rather than substituting plausible content.
+
+## 12A.2 Structural closure
+
+The implementation page hierarchy MUST match the verified source hierarchy.
+
+Do not introduce:
+
+* additional sections;
+* additional nested content regions;
+* additional repeated components;
+* additional navigation structures;
+* additional footer groups;
+* additional content categories;
+
+unless they are supported by source evidence.
+
+## 12A.3 Absence is evidence
+
+When reconnaissance verifies that no additional component, section, card, or content block exists in a mapped region, implementation MUST preserve that absence.
+
+Whitespace, empty regions, sparse layouts, and intentionally minimal structures MUST NOT be treated as missing design opportunities.
+
+## 12A.4 Source traceability before coding
+
+Before writing implementation code, the agent MUST be able to map every planned major implementation element back to source evidence.
+
+If it cannot, implementation MUST pause and source reconnaissance MUST continue.
+
 
 # 13. RUNTIME RESOURCE POLICY
 
@@ -1769,9 +1966,26 @@ The following rules MUST NEVER be violated:
 
 ---
 
+
+45. Every major visible implementation element MUST have source evidence or be a necessary implementation mechanism for an observed source behavior.
+46. Orphan elements are prohibited.
+47. New sections, cards, statistics, links, CTAs, content, imagery, navigation items, decorative elements, behaviors, or animations MUST NOT be invented.
+48. The reconstruction model MUST be treated as a closed evidence model, not a creative design brief.
+49. Inference MUST NOT create new source-visible facts; it may only resolve implementation details required to reproduce observed evidence.
+50. Unknown source values MUST remain UNKNOWN / REQUIRES VALIDATION until source evidence resolves them.
+51. The implementation MUST preserve verified source absences and sparse/empty regions.
+52. Before implementation and before each visual-validation iteration, a source-to-implementation trace audit MUST be performed for all major visible elements.
+
 # 33. FAILURE CONDITIONS
 
 The replication MUST be considered incomplete if any mandatory gate fails, including:
+
+* orphan implementation elements exist;
+* a major implementation element cannot be traced to source evidence;
+* implementation contains invented source-visible content;
+* implementation contains a section/component/card/statistic/link/CTA/image/navigation item/decorative element/behavior/animation that cannot be justified by source evidence;
+* unresolved UNKNOWN values were replaced with plausible fabricated values;
+* the reconstruction model is materially open-ended or incomplete;
 
 * Browserless cannot be awakened;
 * source screenshot cannot be captured;
