@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Juristiq — Where strategy meets results</title>
+  <meta name="description" content="Juristiq legal services website replication.">
+  <link rel="stylesheet" href="./src/css/app.css">
+</head>
+<body class="bg-[#151a1b] text-[#f5f3ee] antialiased">
+<div x-data="siteState()" class="min-h-screen overflow-x-hidden">
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#151a1b]/90 backdrop-blur-md transition-all duration-300" :class="scrolled ? 'py-2' : 'py-4'">
+    <div class="mx-auto flex max-w-[1780px] items-center justify-between px-6 md:px-10 lg:px-16">
+      <a href="#home" class="font-serif text-xl tracking-tight md:text-2xl">juristiq<span class="text-white/45">®</span></a>
+      <nav class="hidden items-center gap-7 text-[11px] uppercase tracking-[0.18em] text-white/75 lg:flex">
+        <a class="transition hover:text-white" href="#home">Home</a>
+        <a class="transition hover:text-white" href="#about">About Us</a>
+        <a class="transition hover:text-white" href="#practice">Practice Areas</a>
+        <a class="transition hover:text-white" href="#cases">Cases</a>
+        <button @click="pages=!pages" class="flex items-center gap-2 transition hover:text-white">All Pages <span class="text-xs">⌄</span></button>
+      </nav>
+      <div class="hidden lg:block">
+        <a href="#contact" class="inline-flex items-center gap-3 bg-white px-5 py-3 text-[11px] font-medium uppercase tracking-[0.16em] text-[#151a1b] transition hover:bg-[#d9d6cf]">Contact Us <span>↗</span></a>
+      </div>
+      <button class="flex h-10 w-10 items-center justify-center border border-white/20 lg:hidden" @click="menu=!menu" aria-label="Toggle navigation">
+        <span class="relative block h-3.5 w-5"><i class="absolute left-0 top-0 h-px w-full bg-white"></i><i class="absolute bottom-0 left-0 h-px w-full bg-white"></i></span>
+      </button>
+    </div>
+    <div x-show="pages" x-transition.opacity class="absolute right-10 top-full hidden w-52 border border-white/10 bg-[#151a1b] p-4 lg:block">
+      <a class="block py-2 text-xs uppercase tracking-widest text-white/70 hover:text-white" href="#about">About</a>
+      <a class="block py-2 text-xs uppercase tracking-widest text-white/70 hover:text-white" href="#team">Attorneys</a>
+      <a class="block py-2 text-xs uppercase tracking-widest text-white/70 hover:text-white" href="#insights">Insights</a>
+      <a class="block py-2 text-xs uppercase tracking-widest text-white/70 hover:text-white" href="#contact">Contact</a>
+    </div>
+    <div x-show="menu" x-transition class="border-t border-white/10 bg-[#151a1b] px-6 py-6 lg:hidden">
+      <div class="flex flex-col gap-5 text-sm uppercase tracking-[0.15em] text-white/80">
+        <a @click="menu=false" href="#home">Home</a>
+        <a @click="menu=false" href="#about">About Us</a>
+        <a @click="menu=false" href="#practice">Practice Areas</a>
+        <a @click="menu=false" href="#cases">Cases</a>
+        <a @click="menu=false" href="#team">Attorneys</a>
+        <a @click="menu=false" href="#insights">Insights</a>
+        <a @click="menu=false" href="#contact">Contact Us ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="relative min-h-[850px] overflow-hidden bg-[#151a1b] pt-28 lg:min-h-[940px] lg:pt-32">
+      <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=2200&q=85" alt="" class="absolute inset-0 h-full w-full object-cover object-center opacity-70">
+      <div class="absolute inset-0 bg-gradient-to-r from-[#101516] via-[#101516]/80 to-[#101516]/25"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#151a1b] via-transparent to-[#151a1b]/10"></div>
+      <div class="relative mx-auto flex min-h-[720px] max-w-[1780px] items-end px-6 pb-24 md:px-10 lg:min-h-[790px] lg:px-16 lg:pb-28">
+        <div class="grid w-full items-end gap-12 lg:grid-cols-[1.05fr_.95fr]">
+          <div class="max-w-[830px]">
+            <p class="mb-8 text-[10px] uppercase tracking-[0.26em] text-white/55">Law firm · Counsel · Results</p>
+            <h1 class="font-serif text-[clamp(4rem,8vw,8.6rem)] leading-[0.82] tracking-[-0.045em] text-white">Where strategy<br>meets results</h1>
+            <div class="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center">
+              <a href="#contact" class="inline-flex w-fit items-center gap-4 bg-white px-6 py-4 text-[11px] uppercase tracking-[0.16em] text-[#151a1b] transition hover:bg-[#d9d6cf]">Free Consultation <span>↗</span></a>
+              <a href="#practice" class="inline-flex w-fit items-center gap-3 border border-white/30 px-6 py-4 text-[11px] uppercase tracking-[0.16em] text-white transition hover:border-white">Our Services <span>→</span></a>
+            </div>
+          </div>
+          <div class="ml-auto grid max-w-[560px] gap-5 sm:grid-cols-2">
+            <div class="border-t border-white/25 pt-5">
+              <p class="text-xs font-medium uppercase tracking-[0.16em]">Client Focused</p>
+              <p class="mt-3 max-w-[220px] text-sm leading-6 text-white/55">Practical counsel built around the matter, not the hierarchy.</p>
+            </div>
+            <div class="border-t border-white/25 pt-5">
+              <p class="text-xs font-medium uppercase tracking-[0.16em]">Proven Excellence</p>
+              <p class="mt-3 max-w-[220px] text-sm leading-6 text-white/55">Strategic legal support for complex personal and business decisions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="practice" class="bg-[#f1efe9] text-[#171b1c]">
+      <div class="mx-auto max-w-[1780px] px-6 py-24 md:px-10 lg:px-16 lg:py-32">
+        <div class="max-w-[880px]">
+          <p class="mb-7 text-[10px] uppercase tracking-[0.26em] text-black/45">Practice areas</p>
+          <h2 class="font-serif text-[clamp(3rem,5vw,5.6rem)] leading-[0.9] tracking-[-0.035em]">Legal services for individuals,<br class="hidden md:block"> families, and businesses.</h2>
+        </div>
+        <div class="mt-20 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <article class="group flex min-h-[390px] flex-col justify-between overflow-hidden border border-black/10 bg-white">
+            <div class="p-7">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-black/40">01</span>
+              <h3 class="mt-12 font-serif text-4xl tracking-tight">Business Law</h3>
+              <p class="mt-5 max-w-[260px] text-sm leading-6 text-black/55">Legal guidance for business decisions, agreements and growth.</p>
+              <a href="#contact" class="mt-7 inline-flex text-[10px] uppercase tracking-[0.2em]">Learn more ↗</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=82" alt="" class="h-44 w-full object-cover grayscale-[20%] transition duration-700 group-hover:scale-105">
+          </article>
+          <article class="group flex min-h-[390px] flex-col justify-between overflow-hidden border border-black/10 bg-white">
+            <div class="p-7">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-black/40">02</span>
+              <h3 class="mt-12 font-serif text-4xl tracking-tight">Family Law</h3>
+              <p class="mt-5 max-w-[260px] text-sm leading-6 text-black/55">Clear counsel through personal matters that demand care and judgment.</p>
+              <a href="#contact" class="mt-7 inline-flex text-[10px] uppercase tracking-[0.2em]">Learn more ↗</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=82" alt="" class="h-44 w-full object-cover grayscale-[20%] transition duration-700 group-hover:scale-105">
+          </article>
+          <article class="flex min-h-[390px] flex-col items-center justify-center border border-black/10 bg-[#ebe8e0] p-8 text-center">
+            <span class="grid h-12 w-12 place-items-center border border-black/15 text-sm">✦</span>
+            <p class="mt-7 text-[10px] uppercase tracking-[0.2em] text-black/45">Our approach</p>
+            <h3 class="mt-4 max-w-[250px] font-serif text-4xl leading-none">Comprehensive Legal Services</h3>
+            <a href="#contact" class="mt-8 bg-[#171b1c] px-5 py-3 text-[10px] uppercase tracking-[0.18em] text-white">Discover more ↗</a>
+          </article>
+          <article class="group flex min-h-[390px] flex-col justify-between overflow-hidden border border-black/10 bg-white">
+            <div class="p-7">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-black/40">03</span>
+              <h3 class="mt-12 font-serif text-4xl tracking-tight">Litigation</h3>
+              <p class="mt-5 max-w-[260px] text-sm leading-6 text-black/55">Focused representation when disputes require preparation and resolve.</p>
+              <a href="#contact" class="mt-7 inline-flex text-[10px] uppercase tracking-[0.2em]">Learn more ↗</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1000&q=82" alt="" class="h-44 w-full object-cover grayscale-[20%] transition duration-700 group-hover:scale-105">
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="bg-[#151a1b]">
+      <div class="mx-auto grid max-w-[1780px] gap-16 px-6 py-28 md:px-10 lg:grid-cols-[.8fr_1.2fr] lg:px-16 lg:py-36">
+        <div><p class="text-[10px] uppercase tracking-[0.26em] text-white/40">About Juristiq</p></div>
+        <div>
+          <h2 class="font-serif text-[clamp(3rem,5vw,6rem)] leading-[0.9] tracking-[-0.04em]">Counsel built around<br>what matters.</h2>
+          <p class="mt-10 max-w-[780px] text-lg leading-8 text-white/55">Juristiq brings legal expertise, practical strategy and a client-first approach to the moments that matter most. We work across business, family and litigation matters with clarity, preparation and direct communication.</p>
+          <div class="mt-14 grid gap-8 border-t border-white/10 pt-8 sm:grid-cols-3">
+            <div><p class="font-serif text-5xl">20+</p><p class="mt-2 text-[10px] uppercase tracking-[0.18em] text-white/40">Years experience</p></div>
+            <div><p class="font-serif text-5xl">3</p><p class="mt-2 text-[10px] uppercase tracking-[0.18em] text-white/40">Core practices</p></div>
+            <div><p class="font-serif text-5xl">1</p><p class="mt-2 text-[10px] uppercase tracking-[0.18em] text-white/40">Client focus</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases" class="bg-[#e8e6df] text-[#171b1c]">
+      <div class="mx-auto max-w-[1780px] px-6 py-24 md:px-10 lg:px-16 lg:py-32">
+        <div class="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+          <div><p class="text-[10px] uppercase tracking-[0.26em] text-black/45">Selected work</p><h2 class="mt-5 font-serif text-[clamp(3rem,5vw,5.7rem)] leading-[0.9] tracking-[-0.04em]">Cases &amp; results</h2></div>
+          <a href="#contact" class="text-[10px] uppercase tracking-[0.2em]">View all cases ↗</a>
+        </div>
+        <div class="mt-20 grid gap-6 lg:grid-cols-2">
+          <article class="group grid overflow-hidden border border-black/10 bg-white md:grid-cols-2">
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1000&q=82" alt="" class="h-full min-h-[320px] w-full object-cover transition duration-700 group-hover:scale-105">
+            <div class="flex flex-col justify-between p-8"><div><span class="text-[10px] uppercase tracking-[0.2em] text-black/40">Business Law</span><h3 class="mt-8 font-serif text-4xl leading-none">Strategic counsel for consequential decisions.</h3></div><a class="mt-12 text-[10px] uppercase tracking-[0.2em]" href="#contact">Read case study ↗</a></div>
+          </article>
+          <article class="group grid overflow-hidden border border-black/10 bg-white md:grid-cols-2">
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=82" alt="" class="h-full min-h-[320px] w-full object-cover transition duration-700 group-hover:scale-105">
+            <div class="flex flex-col justify-between p-8"><div><span class="text-[10px] uppercase tracking-[0.2em] text-black/40">Litigation</span><h3 class="mt-8 font-serif text-4xl leading-none">Preparation that turns complexity into clarity.</h3></div><a class="mt-12 text-[10px] uppercase tracking-[0.2em]" href="#contact">Read case study ↗</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="bg-[#f1efe9] text-[#171b1c]">
+      <div class="mx-auto max-w-[1780px] px-6 py-24 md:px-10 lg:px-16 lg:py-32">
+        <div class="grid gap-10 lg:grid-cols-[.7fr_1.3fr]">
+          <div><p class="text-[10px] uppercase tracking-[0.26em] text-black/45">Our people</p><h2 class="mt-5 font-serif text-[clamp(3rem,5vw,5.6rem)] leading-[0.9] tracking-[-0.04em]">People behind<br>the strategy.</h2></div>
+          <div class="grid gap-5 sm:grid-cols-3">
+            <div><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=82" alt="" class="aspect-[.78] w-full object-cover grayscale"><p class="mt-4 font-serif text-2xl">Managing Partner</p><p class="mt-1 text-[10px] uppercase tracking-[0.18em] text-black/45">Business Law</p></div>
+            <div><img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=800&q=82" alt="" class="aspect-[.78] w-full object-cover grayscale"><p class="mt-4 font-serif text-2xl">Senior Counsel</p><p class="mt-1 text-[10px] uppercase tracking-[0.18em] text-black/45">Family Law</p></div>
+            <div><img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=800&q=82" alt="" class="aspect-[.78] w-full object-cover grayscale"><p class="mt-4 font-serif text-2xl">Partner</p><p class="mt-1 text-[10px] uppercase tracking-[0.18em] text-black/45">Litigation</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[#151a1b]">
+      <div class="mx-auto grid max-w-[1780px] gap-12 px-6 py-28 md:px-10 lg:grid-cols-[.55fr_1.45fr] lg:px-16 lg:py-36">
+        <p class="text-[10px] uppercase tracking-[0.26em] text-white/40">What clients say</p>
+        <div><p class="font-serif text-[clamp(2.5rem,4.5vw,5.3rem)] leading-[0.95] tracking-[-0.035em]">“Clear advice, careful preparation and a team that understands the bigger picture.”</p><div class="mt-10 border-t border-white/10 pt-6 text-[10px] uppercase tracking-[0.18em] text-white/45">Client testimonial · Business matter</div></div>
+      </div>
+    </section>
+
+    <section id="insights" class="bg-[#f1efe9] text-[#171b1c]">
+      <div class="mx-auto max-w-[1780px] px-6 py-24 md:px-10 lg:px-16 lg:py-32">
+        <div class="flex items-end justify-between gap-6"><div><p class="text-[10px] uppercase tracking-[0.26em] text-black/45">Insights</p><h2 class="mt-5 font-serif text-[clamp(3rem,5vw,5.6rem)] leading-[0.9] tracking-[-0.04em]">News &amp; perspectives</h2></div><a href="#contact" class="hidden text-[10px] uppercase tracking-[0.2em] sm:block">View all ↗</a></div>
+        <div class="mt-16 divide-y divide-black/10 border-y border-black/10">
+          <a href="#contact" class="grid gap-5 py-8 transition hover:pl-2 md:grid-cols-[160px_1fr_80px]"><span class="text-[10px] uppercase tracking-[0.18em] text-black/45">Insight · 01</span><h3 class="font-serif text-3xl">Strategy, preparation and the decisions behind strong outcomes.</h3><span class="text-[10px] uppercase tracking-[0.18em]">Read ↗</span></a>
+          <a href="#contact" class="grid gap-5 py-8 transition hover:pl-2 md:grid-cols-[160px_1fr_80px]"><span class="text-[10px] uppercase tracking-[0.18em] text-black/45">Insight · 02</span><h3 class="font-serif text-3xl">What businesses should consider before the next major agreement.</h3><span class="text-[10px] uppercase tracking-[0.18em]">Read ↗</span></a>
+          <a href="#contact" class="grid gap-5 py-8 transition hover:pl-2 md:grid-cols-[160px_1fr_80px]"><span class="text-[10px] uppercase tracking-[0.18em] text-black/45">Insight · 03</span><h3 class="font-serif text-3xl">Navigating complex disputes with clarity and purpose.</h3><span class="text-[10px] uppercase tracking-[0.18em]">Read ↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="relative overflow-hidden bg-[#111516]">
+      <div class="mx-auto max-w-[1780px] px-6 py-32 md:px-10 lg:px-16 lg:py-44">
+        <div class="max-w-[1120px]"><p class="text-[10px] uppercase tracking-[0.26em] text-white/40">Start a conversation</p><h2 class="mt-6 font-serif text-[clamp(4rem,8vw,9rem)] leading-[0.82] tracking-[-0.045em]">Let's discuss<br>what matters.</h2><a href="mailto:hello@juristiq.com" class="mt-12 inline-flex items-center gap-4 bg-white px-7 py-4 text-[11px] uppercase tracking-[0.18em] text-[#151a1b]">Contact Us <span>↗</span></a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-[#151a1b]">
+    <div class="mx-auto grid max-w-[1780px] gap-14 px-6 py-16 md:px-10 lg:grid-cols-[1fr_1.3fr] lg:px-16">
+      <div><a href="#home" class="font-serif text-3xl">juristiq<span class="text-white/40">®</span></a><p class="mt-6 max-w-[320px] text-sm leading-6 text-white/45">Strategic legal counsel for individuals, families and businesses.</p></div>
+      <div class="grid grid-cols-2 gap-10 sm:grid-cols-4">
+        <div><p class="text-[10px] uppercase tracking-[0.18em] text-white/35">Explore</p><div class="mt-5 flex flex-col gap-3 text-sm text-white/65"><a href="#about">About</a><a href="#practice">Practice Areas</a><a href="#cases">Cases</a><a href="#team">Attorneys</a></div></div>
+        <div><p class="text-[10px] uppercase tracking-[0.18em] text-white/35">Insights</p><div class="mt-5 flex flex-col gap-3 text-sm text-white/65"><a href="#insights">News</a><a href="#insights">Articles</a><a href="#contact">Contact</a></div></div>
+        <div><p class="text-[10px] uppercase tracking-[0.18em] text-white/35">Social</p><div class="mt-5 flex flex-col gap-3 text-sm text-white/65"><a href="#contact">LinkedIn</a><a href="#contact">Instagram</a></div></div>
+        <div><p class="text-[10px] uppercase tracking-[0.18em] text-white/35">Legal</p><div class="mt-5 flex flex-col gap-3 text-sm text-white/65"><a href="#contact">Privacy</a><a href="#contact">Terms</a></div></div>
+      </div>
+    </div>
+    <div class="border-t border-white/10 px-6 py-5 md:px-10 lg:px-16"><div class="mx-auto flex max-w-[1780px] flex-col justify-between gap-2 text-[9px] uppercase tracking-[0.18em] text-white/30 sm:flex-row"><span>© 2026 Juristiq</span><span>Legal services · Strategy · Results</span></div></div>
+  </footer>
+</div>
+<script type="module" src="./src/js/app.js"></script>
+</body>
+</html>
