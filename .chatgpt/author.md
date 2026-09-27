@@ -534,3 +534,198 @@ Do not claim PASS based on assumption.
 16. Preserve existing working behavior unless the task requires changing it.
 17. Treat visual polish as part of implementation quality, not as a substitute for functionality.
 18. When the task is explicitly website replication, use .chatgpt/replicator.md.
+
+
+## 28. Standard Original HTML Page Prompt
+
+When the user wants a new original enterprise-quality web page, use the following operating prompt. The goal is to turn a very small brief into a complete, polished, deployable HTML page without interrogating the user for a specification.
+
+### User input contract
+
+Accept **no more than three inputs** from the user:
+
+1. **Business objective + audience**
+   - What the enterprise/page is for.
+   - Who the page is for.
+   - Any important business outcome the page should support.
+
+2. **Content + primary action**
+   - Required headline, copy, sections, facts, links, or content themes.
+   - The single most important CTA or user action.
+   - If exact copy is not supplied, write concise, credible copy from the provided context without inventing factual claims.
+
+3. **Brand + visual direction**
+   - Brand name, colors, logo/assets if available, preferred visual mood, and any references.
+   - If only a brand name is supplied, inspect the repository for existing brand assets and infer a restrained visual system.
+   - If this input is omitted, choose a professional visual direction appropriate to the enterprise context.
+
+Do not ask for additional design-system, framework, layout, animation, responsive, asset, or implementation inputs unless the user has explicitly made one of those areas a hard constraint. Make those decisions autonomously.
+
+### Execution prompt
+
+For an original page request covered by this section, execute the following:
+
+> Build a complete, production-quality original web page from the three inputs above.
+>
+> First inspect the repository and determine where the new original belongs. Follow the repository's existing conventions where they do not conflict with this prompt. The deliverable must be a self-contained HTML page at the appropriate `originals/<original>/index.html` location unless the repository clearly requires an equivalent location.
+>
+> The page must use:
+>
+> - **Tailwind CSS** for styling;
+> - **Alpine.js** for lightweight UI state and interaction;
+> - **GSAP** for purposeful animation and motion.
+>
+> Prefer a simple standalone HTML architecture for these original pages. Do not introduce a frontend framework or build system merely to produce one page. Keep dependencies limited to the three requested frontend libraries plus any genuinely necessary supporting asset.
+>
+> ### Design standard
+>
+> Produce a modern enterprise web experience suitable for a serious company, product, consultancy, technology business, professional service, or other credible enterprise. Avoid generic SaaS-template output.
+>
+> Establish a deliberate visual system covering:
+>
+> - typography;
+> - color palette;
+> - spacing;
+> - container widths;
+> - borders and radii;
+> - shadows;
+> - buttons;
+> - section rhythm;
+> - image treatment;
+> - responsive breakpoints.
+>
+> Prioritize hierarchy, whitespace, readability, credibility, and a strong first viewport. Use visual contrast and composition rather than gratuitous decoration.
+>
+> The page should feel authored rather than assembled from interchangeable marketing blocks. Use distinctive but restrained details such as typography scale, editorial spacing, asymmetric composition, subtle borders, considered image crops, or controlled motion when appropriate.
+>
+> Do not fabricate customer logos, statistics, testimonials, certifications, awards, product capabilities, performance claims, or other factual proof.
+>
+> ### Page composition
+>
+> Infer the appropriate information architecture from the supplied objective and content. A typical page may include:
+>
+> - navigation/header;
+> - hero;
+> - supporting value proposition;
+> - product/service/content sections;
+> - proof or credibility content when actually supplied;
+> - CTA;
+> - footer.
+>
+> Do not force every section into every page. Omit sections that do not serve the stated objective.
+>
+> Give the primary CTA obvious visual priority and make the page's hierarchy understandable without animation.
+>
+> ### Assets and Pexels
+>
+> Use relevant, high-quality **Pexels** imagery or video when the brief calls for visual media and no suitable repository asset exists.
+>
+> Search for assets that genuinely support the page's subject, audience, and composition. Do not use random stock imagery as filler.
+>
+> Prefer downloading selected Pexels assets into the original's asset directory so the deployed page does not depend unnecessarily on third-party hotlinks. Preserve the source Pexels URL in a small asset/source note when appropriate.
+>
+> For video:
+>
+> - use it only when it materially improves the experience;
+> - keep it muted and unobtrusive when autoplaying;
+> - provide a poster/fallback image;
+> - respect reduced-motion preferences;
+> - avoid making essential content dependent on video playback.
+>
+> Use meaningful alt text for informative images and empty alt text for purely decorative imagery.
+>
+> ### Tailwind CSS
+>
+> Use Tailwind utility classes for the page's styling. Keep custom CSS minimal and limited to cases where Tailwind utilities are genuinely insufficient, such as specialized effects or third-party integration.
+>
+> Do not use a Tailwind configuration or large custom stylesheet for a one-page original unless the repository already has an established Tailwind build pipeline that should be reused.
+>
+> Keep the resulting HTML readable. Group repeated utility patterns into semantic components only when that improves maintainability.
+>
+> ### Alpine.js
+>
+> Use Alpine.js for interactions that benefit from local declarative state, such as:
+>
+> - mobile navigation;
+> - accordions;
+> - tabs;
+> - disclosure panels;
+> - lightweight menus;
+> - simple interactive filters.
+>
+> Do not add Alpine state merely to demonstrate that Alpine exists. Static content should remain static.
+>
+> Ensure keyboard and screen-reader behavior remains sensible for interactive components.
+>
+> ### GSAP
+>
+> Use GSAP to create a small number of intentional motion sequences, such as:
+>
+> - hero entrance;
+> - staggered content reveals;
+> - subtle section transitions;
+> - image or media reveals;
+> - restrained hover/micro-interactions.
+>
+> Animation must support hierarchy and atmosphere, not compensate for weak design.
+>
+> Respect `prefers-reduced-motion`. When reduced motion is requested, disable or substantially reduce non-essential GSAP movement and reveal content immediately.
+>
+> Avoid excessive scroll-trigger effects, perpetual motion, long blocking intro animations, and animation on every element. Humanity does not need a parallax effect on its footer.
+>
+> ### Responsive behavior
+>
+> Design mobile-first and verify at minimum:
+>
+> - mobile: approximately 390px wide;
+> - tablet: approximately 768px to 1024px;
+> - desktop: approximately 1440px.
+>
+> Do not simply scale the desktop composition down. Intentionally redesign navigation, grids, typography, spacing, media crops, and CTA placement for smaller screens.
+>
+> Prevent horizontal overflow and ensure touch targets are usable.
+>
+> ### Accessibility
+>
+> Use semantic HTML and implement:
+>
+> - proper heading hierarchy;
+> - keyboard-accessible navigation and controls;
+> - visible focus states;
+> - accessible names for icon-only controls;
+> - sufficient color contrast;
+> - meaningful image alt text;
+> - reduced-motion behavior;
+> - appropriate link/button semantics.
+>
+> Never make essential content available only through animation or hover.
+>
+> ### Quality and verification
+>
+> After implementation:
+>
+> 1. open the actual HTML in the available browser/runtime tooling;
+> 2. verify the page renders without console errors;
+> 3. verify Tailwind, Alpine.js, GSAP, images, and video resources load;
+> 4. test navigation and all interactive controls;
+> 5. check mobile, tablet, and desktop layouts;
+> 6. check for horizontal overflow and broken links;
+> 7. inspect the visual hierarchy and first viewport;
+> 8. fix visible problems rather than documenting them as acceptable when they are reasonably fixable.
+>
+> If browser tooling is unavailable, perform the strongest static/build validation available and explicitly report that runtime verification was not performed.
+>
+> ### Completion requirements
+>
+> The result is not complete until:
+>
+> - the requested `index.html` exists in the correct original directory;
+> - Tailwind CSS, Alpine.js, and GSAP are actually used appropriately;
+> - the page is responsive;
+> - accessibility basics are implemented;
+> - relevant Pexels assets are used where appropriate;
+> - there are no fabricated factual claims;
+> - the page has been visually and functionally checked to the extent tooling permits;
+> - the implementation is ready for the repository's GitHub Pages deployment workflow.
+>
+> Do not create a `deployment.md` manually. The repository's Pages workflow creates that file after a successful deployment.
