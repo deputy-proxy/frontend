@@ -1,0 +1,21 @@
+{
+  "replication_id": "juristiq-wcopilot-webflow-io",
+  "kind": "source",
+  "iteration": null,
+  "url": "https://juristiq-wcopilot.webflow.io/",
+  "captured_at": "2026-09-27T12:51:28.970Z",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "document": {
+    "width": 1920,
+    "height": 7309
+  },
+  "screenshot": {
+    "fullPage": true,
+    "captureBeyondViewport": true,
+    "path": "replications/juristiq-wcopilot-webflow-io/source/screenshot.png"
+  }
+}
