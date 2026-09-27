@@ -51,6 +51,11 @@ jobs:
           cp -R replications/kora/source dist/replications/kora/
           cp -R replications/kora/iterations dist/replications/kora/
           cp replications/kora/README.md dist/replications/kora/
+          mkdir -p dist/replications/juristiq-wcopilot-webflow-io
+          cp -R replications/juristiq-wcopilot-webflow-io/source dist/replications/juristiq-wcopilot-webflow-io/
+          cp -R replications/juristiq-wcopilot-webflow-io/iterations dist/replications/juristiq-wcopilot-webflow-io/ || true
+          cp -R replications/juristiq-wcopilot-webflow-io/implementation dist/replications/juristiq-wcopilot-webflow-io/
+          cp replications/juristiq-wcopilot-webflow-io/README.md dist/replications/juristiq-wcopilot-webflow-io/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
