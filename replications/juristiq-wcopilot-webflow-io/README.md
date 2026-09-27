@@ -19,10 +19,16 @@ Direct Webflow DOM/computed-style extraction was not exposed by the available ru
 - No iframe, remote CSS, remote JavaScript, API, source-site runtime, or remote widget is used.
 
 ## Iterations
-The first iteration is captured under `iterations/001/`.
+Iterations 001–008 are preserved under `iterations/`; 008 is the latest fresh capture from the deployed implementation.
 
 ## Verification
 Because direct source DOM/computed-style access was unavailable, visual fidelity is constrained to the available source screenshot and corroborating public template evidence. Any unresolved source-specific values are documented rather than presented as observed facts.
 
 ## Deployment
 Deployment is performed by the repository's existing GitHub Pages workflow after the Vite configuration includes this replication.
+
+## Latest validation
+- Latest deployed implementation capture: `iterations/008/screenshot.png`.
+- Source baseline height: 7309px.
+- Latest implementation capture height: 7299px.
+- The latest capture uses source-derived crops for the hero and three visible practice-area images because the original Webflow asset URLs were not exposed by the available source inspection surface.
