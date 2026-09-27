@@ -17,5 +17,16 @@
     "fullPage": true,
     "captureBeyondViewport": true,
     "path": "replications/juristiq-wcopilot-webflow-io/iterations/014/screenshot.png"
+  },
+  "visual_verification": {
+    "result": "FAIL",
+    "source_document_height": 7309,
+    "implementation_document_height": 7269,
+    "grayscale_ssim": 0.6707,
+    "concrete_deviations": [
+      "Hero image crop/composition differs from source.",
+      "Section spacing and typography differ in multiple regions.",
+      "Exact responsive behavior was not validated."
+    ]
   }
 }
