@@ -9,7 +9,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         'replications/kora/implementation/index': resolve(__dirname, 'replications/kora/implementation/index.html'),
-        'replications/thornhill/implementation/index': resolve(__dirname, 'replications/thornhill/implementation/index.html'),
       },
     },
   },
