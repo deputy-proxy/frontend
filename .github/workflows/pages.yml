@@ -1,17 +1,15 @@
-name: Deploy frontend to GitHub Pages
+name: Deploy frontend projects to GitHub Pages
 
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - 'replications/**/source/**'
-      - 'replications/**/iterations/**'
-      - 'replications/**/README.md'
-  pull_request:
+    paths:
+      - 'replications/**'
+      - 'originals/**'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -20,58 +18,158 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  discover:
+    name: Discover deployable projects
+    runs-on: ubuntu-latest
+    outputs:
+      has_projects: ${{ steps.discover.outputs.has_projects }}
+      projects: ${{ steps.discover.outputs.projects }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Discover projects with index.html
+        id: discover
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          projects=()
+
+          while IFS= read -r index; do
+            [ -z "$index" ] && continue
+            project_dir="${index%/index.html}"
+            projects+=("$project_dir")
+          done < <(find replications -mindepth 3 -maxdepth 3 -type f -path 'replications/*/implementation/index.html' -print 2>/dev/null | sort)
+
+          if [ -d originals ]; then
+            while IFS= read -r index; do
+              [ -z "$index" ] && continue
+              project_dir="${index%/index.html}"
+              projects+=("$project_dir")
+            done < <(find originals -mindepth 2 -maxdepth 2 -type f -path 'originals/*/index.html' -print | sort)
+          fi
+
+          if [ "${#projects[@]}" -eq 0 ]; then
+            echo "No deployable projects found."
+            echo "has_projects=false" >> "$GITHUB_OUTPUT"
+            echo 'projects<<EOF' >> "$GITHUB_OUTPUT"
+            echo 'EOF' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          printf 'Deployable projects:\n'
+          printf ' - %s\n' "${projects[@]}"
+
+          {
+            echo "has_projects=true"
+            echo "projects<<EOF"
+            printf '%s\n' "${projects[@]}"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
   build:
+    name: Build Pages artifact
+    needs: discover
+    if: needs.discover.outputs.has_projects == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-      - name: Setup Node
-        uses: actions/setup-node@v7
-        with:
-          node-version: 24
+
       - name: Setup Pages
         uses: actions/configure-pages@v6
-      - name: Install dependencies
-        run: npm install
-      - name: Prepare Juristiq source-derived assets
+
+      - name: Assemble deployable projects
+        env:
+          PROJECTS: ${{ needs.discover.outputs.projects }}
+        shell: bash
         run: |
-          python3 -m pip install pillow
-          python3 replications/juristiq-wcopilot-webflow-io/implementation/prepare-assets.py
-      - name: Build
-        run: npm run build
-      - name: Include replication artifacts
-        run: |
-          mkdir -p dist/replications
-          cp -R replications/verdentix dist/replications/
-          mkdir -p dist/replications/thornhill
-          cp -R replications/thornhill/source dist/replications/thornhill/
-          cp replications/thornhill/README.md dist/replications/thornhill/
-          mkdir -p dist/replications/investflowtemplate-webflow-io-home-pages-home-v3
-          cp -R replications/investflowtemplate-webflow-io-home-pages-home-v3/source dist/replications/investflowtemplate-webflow-io-home-pages-home-v3/
-          cp -R replications/investflowtemplate-webflow-io-home-pages-home-v3/iterations dist/replications/investflowtemplate-webflow-io-home-pages-home-v3/
-          cp replications/investflowtemplate-webflow-io-home-pages-home-v3/README.md dist/replications/investflowtemplate-webflow-io-home-pages-home-v3/
-          cp -R replications/neurex dist/replications/
-          mkdir -p dist/replications/kora
-          cp -R replications/kora/source dist/replications/kora/
-          cp -R replications/kora/iterations dist/replications/kora/
-          cp replications/kora/README.md dist/replications/kora/
-          mkdir -p dist/replications/juristiq-wcopilot-webflow-io
-          cp -R replications/juristiq-wcopilot-webflow-io/source dist/replications/juristiq-wcopilot-webflow-io/
-          cp -R replications/juristiq-wcopilot-webflow-io/iterations dist/replications/juristiq-wcopilot-webflow-io/ || true
-          cp replications/juristiq-wcopilot-webflow-io/README.md dist/replications/juristiq-wcopilot-webflow-io/
+          set -euo pipefail
+          rm -rf dist
+          mkdir -p dist
+
+          while IFS= read -r project_dir; do
+            [ -z "$project_dir" ] && continue
+
+            destination="dist/$project_dir"
+            mkdir -p "$(dirname "$destination")"
+
+            if [[ "$project_dir" == replications/* ]]; then
+              source_dir="$project_dir/implementation"
+            else
+              source_dir="$project_dir"
+            fi
+
+            echo "Including $source_dir -> $destination"
+            cp -R "$source_dir/." "$destination/"
+
+            # deployment.md is repository metadata, not part of the deployed site.
+            rm -f "$destination/deployment.md"
+          done <<< "$PROJECTS"
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
           path: ./dist
 
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    name: Deploy to GitHub Pages
+    needs: [discover, build]
+    if: needs.discover.outputs.has_projects == 'true'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+      - name: Checkout repository for deployment metadata
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+
+      - name: Write deployment.md files
+        env:
+          PROJECTS: ${{ needs.discover.outputs.projects }}
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          base="${PAGE_URL%/}"
+
+          while IFS= read -r project_dir; do
+            [ -z "$project_dir" ] && continue
+
+            project_url="$base/$project_dir/"
+            cat > "$project_dir/deployment.md" <<EOF
+          # Deployment
+
+          Live site:
+
+          $project_url
+          EOF
+
+            echo "Updated $project_dir/deployment.md -> $project_url"
+          done <<< "$PROJECTS"
+
+      - name: Commit deployment metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add 'replications/**/deployment.md' 'originals/**/deployment.md'
+
+          if git diff --cached --quiet; then
+            echo "No deployment metadata changes."
+            exit 0
+          fi
+
+          git commit -m "chore: update GitHub Pages deployment links"
+          git push
