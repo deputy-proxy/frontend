@@ -9,6 +9,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         'replications/kora/implementation/index': resolve(__dirname, 'replications/kora/implementation/index.html'),
+        'replications/investflowtemplate-webflow-io-home-pages-home-v3/implementation/index': resolve(__dirname, 'replications/investflowtemplate-webflow-io-home-pages-home-v3/implementation/index.html'),
       },
     },
   },
