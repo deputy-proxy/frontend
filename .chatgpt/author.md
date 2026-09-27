@@ -300,6 +300,72 @@ The goal is not to maximize novelty. The goal is **specificity**.
 
 A strong page should feel like it could only reasonably belong to the organization it represents.
 
+## 9. Inspiration library and design differentiation
+
+Before implementing a new original page, inspect `.chatgpt/inspiration/` and use its design-direction files as a source of visual principles.
+
+The inspiration library is **not** a template library and must not be treated as a collection of layouts to copy.
+
+For every new original page:
+
+1. Read `.chatgpt/inspiration/README.md`.
+2. Read the available inspiration descriptions relevant to the business context.
+3. Select one or two compatible design directions internally.
+4. Combine or reinterpret their principles to create a coherent page-specific direction.
+5. Inspect existing `originals/` pages and identify dominant patterns already used.
+6. Deliberately avoid repeating those dominant patterns unless the business context genuinely requires them.
+7. Ensure the final rendered page expresses the selected direction through multiple independent design dimensions.
+
+Vary the following dimensions when appropriate:
+
+- overall page composition;
+- hero structure;
+- typography pairing and hierarchy;
+- color strategy;
+- navigation treatment;
+- image/art direction;
+- section rhythm;
+- grid and alignment system;
+- card and surface treatment;
+- borders, texture, and decorative language;
+- CTA treatment;
+- motion language.
+
+Changing only the color palette or font does **not** count as meaningful differentiation.
+
+Do not repeatedly default to:
+
+- centered oversized hero + image;
+- serif headline + neutral sans body;
+- warm editorial palette;
+- three-column card grids;
+- alternating image/text sections;
+- rounded bordered cards;
+- pill-shaped CTAs;
+- generic gradients;
+- identical section ordering.
+
+These are examples of repetition risks, not forbidden components. Use them when they are justified by the selected direction and business context.
+
+The inspiration files should influence **design reasoning**, not product requirements. The business objective, audience, supplied content, repository conventions, accessibility, and performance requirements always take precedence.
+
+If no inspiration files are available, still choose a deliberate direction and compare the result against existing originals to avoid unnecessary visual convergence.
+
+### Design-direction declaration
+
+Before coding, establish internally:
+
+- **Direction:** the selected inspiration direction(s).
+- **Signature:** the memorable visual or interaction idea.
+- **Composition:** the primary spatial strategy.
+- **Typography:** the intended type relationship.
+- **Color:** the dominant palette strategy.
+- **Imagery:** the visual/media treatment.
+- **Motion:** the primary animation language.
+- **Anti-repetition check:** which existing-original patterns this page intentionally avoids.
+
+Do not ask the user to provide this information as an additional required input. Infer it from the existing three-input contract and the inspiration library.
+
 ## 9. Responsive design
 
 Responsive behavior is part of the implementation, not a later patch.
