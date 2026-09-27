@@ -10,6 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 
   <style type="text/tailwindcss">
     @theme {
@@ -309,7 +310,7 @@
                 <span class="text-lg sm:text-xl" x-text="item.q"></span>
                 <span class="mono text-lg" x-text="openFaq===i?'−':'+'"></span>
               </button>
-              <div x-show="openFaq===i" x-collapse class="max-w-3xl pb-6 pr-10 text-sm leading-7 text-[var(--color-muted)]" x-text="item.a"></div>
+              <div x-show="openFaq===i" x-transition.opacity class="max-w-3xl pb-6 pr-10 text-sm leading-7 text-[var(--color-muted)]" x-text="item.a"></div>
             </div>
           </template>
         </div>
@@ -378,21 +379,10 @@
       gsap.from('.hero-copy p', { y: 20, opacity: 0, duration: .7, delay: .35, ease: 'power2.out' });
       gsap.from('.verify-console', { y: 34, opacity: 0, duration: .9, delay: .2, ease: 'power3.out' });
 
-      gsap.utils.toArray('.method-row, .usecase').forEach((el) => {
-        gsap.from(el, {
-          y: 22,
-          opacity: 0,
-          duration: .65,
-          ease: 'power2.out',
-          scrollTrigger: undefined,
-          delay: 0
-        });
-      });
-
       if (window.ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
         gsap.utils.toArray('.method-row, .usecase').forEach((el) => {
-          gsap.fromTo(el, { y: 20, opacity: .25 }, {
+          gsap.fromTo(el, { y: 20, opacity: .2 }, {
             y: 0, opacity: 1, duration: .7, ease: 'power2.out',
             scrollTrigger: { trigger: el, start: 'top 86%', once: true }
           });
