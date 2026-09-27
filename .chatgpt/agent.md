@@ -189,7 +189,7 @@ Before touching the implementation:
 2. Identify the existing project structure.
 3. Identify the build system.
 4. Identify the deployment system.
-5. Identify available browser/screenshot tooling (@replication-screenshot).
+5. Identify available browser/screenshot tooling (@replicator-mcp).
 6. Identify available GitHub tooling.
 7. Identify existing replication infrastructure.
 8. Identify CSS/JavaScript conventions.
@@ -200,6 +200,142 @@ Do not implement during this phase.
 ---
 
 # 6. MANDATORY SOURCE RECONNAISSANCE
+
+# 6A. REPLICATOR MCP SOURCE EVIDENCE
+
+The reference-site reconnaissance MUST use **@replicator-mcp** as the primary rendered-source capture mechanism.
+
+@replicator-mcp runs the Website Replication Capture workflow through Puppeteer + Browserless and returns a structured replication capture. Treat that capture as the machine-readable source evidence package, not merely as a screenshot service.
+
+The current capture provides three source viewports:
+
+* desktop: 1440×900;
+* tablet: 1024×768;
+* mobile: 390×844.
+
+The structured capture includes:
+
+* rendered DOM tree;
+* element attributes, classes, IDs and text;
+* exact element bounding rectangles;
+* computed visual styles;
+* pseudo-element styles for `::before` and `::after`;
+* document and viewport dimensions;
+* interactive elements and geometry;
+* image URLs, `srcset`, natural dimensions and rendered geometry;
+* video sources, posters and geometry;
+* inline SVG outerHTML and geometry;
+* CSS background-image references;
+* loaded font faces and font status;
+* stylesheet URLs, media information and accessible CSS rules;
+* Framer-specific elements and attributes;
+* metadata and links;
+* responsive screenshots;
+* a replication manifest containing capture metadata and artifact paths.
+
+## 6A.1 Mandatory use of structured capture
+
+When @replicator-mcp data is available, consume it BEFORE manually inspecting or inferring the same information from screenshots.
+
+Use structured capture as the primary evidence for:
+
+1. DOM hierarchy and component boundaries;
+2. element geometry;
+3. computed styles;
+4. typography;
+5. images and media;
+6. backgrounds;
+7. SVGs;
+8. fonts;
+9. stylesheets/CSS rules;
+10. interactive elements;
+11. Framer-specific structure;
+12. responsive differences.
+
+Use screenshots primarily to validate rendered composition and effects not completely represented by structured data.
+
+## 6A.2 Replicator artifact contract
+
+Source capture artifacts are expected under:
+
+```
+replications/[REPLICATION_ID]/source/
+├── replication.json
+├── desktop.png
+├── tablet.png
+└── mobile.png
+```
+
+Iteration captures are expected under:
+
+```
+replications/[REPLICATION_ID]/iterations/[NNN]/
+├── replication.json
+├── desktop.png
+├── tablet.png
+└── mobile.png
+```
+
+Do not assume `screenshot.png` is the only source artifact.
+
+## 6A.3 Evidence-first reconstruction
+
+Before writing `source/reconnaissance.md` or `source/evidence.json`, normalize the Replicator capture into the reconstruction model.
+
+At minimum extract:
+
+* page and section hierarchy;
+* major-region bounding boxes;
+* container widths and alignment;
+* spacing and gaps;
+* typography tokens;
+* colors, backgrounds, borders and shadows;
+* image and SVG inventory;
+* font inventory and loading status;
+* stylesheet/CSS evidence;
+* interactive-element inventory;
+* Framer-specific structure;
+* desktop/tablet/mobile differences;
+* document height and viewport dimensions.
+
+Where structured data directly provides a value, use that value instead of estimating it from pixels.
+
+## 6A.4 Evidence provenance
+
+Every normalized fact MUST retain provenance. Preferred categories:
+
+```
+SOURCE_REPLICATOR_DOM
+SOURCE_REPLICATOR_GEOMETRY
+SOURCE_REPLICATOR_COMPUTED_STYLE
+SOURCE_REPLICATOR_ASSET
+SOURCE_REPLICATOR_FONT
+SOURCE_REPLICATOR_CSS
+SOURCE_REPLICATOR_RUNTIME
+SOURCE_REPLICATOR_SCREENSHOT
+INFERENCE
+```
+
+Do not downgrade structured evidence to screenshot-derived evidence merely because screenshots are easier to inspect.
+
+## 6A.5 Capture completeness
+
+A Replicator capture is structurally complete only when:
+
+* all three viewports are captured;
+* document dimensions are present;
+* the DOM snapshot exists;
+* geometry is present for visible elements;
+* computed styles are present;
+* assets/media are inventoried;
+* fonts are inventoried;
+* stylesheet evidence is present where accessible;
+* lazy/scroll-triggered content has been exercised;
+* the replication manifest is present.
+
+If material evidence is missing, investigate the source again.
+
+---
 
 Inspect the actual reference website before implementing anything.
 
@@ -789,34 +925,34 @@ Any unresolved orphan element is a reconstruction failure and MUST prevent the i
 
 Browserless is treated as potentially sleeping between operations.
 
-Before **every single Screenshot MCP call**, immediately perform the supported Browserless ping/wake-up request and wait for a successful response. Do not rely on an earlier ping, preflight, screenshot, or other Browserless interaction.
+Before **every single Replicator MCP call**, immediately perform the supported Browserless ping/wake-up request and wait for a successful response. Do not rely on an earlier ping, preflight, screenshot, or other Browserless interaction.
 
 The required sequence is always:
 
 1. Ping/wake Browserless.
 2. Wait for a successful response.
-3. Immediately call Screenshot MCP.
+3. Immediately call Replicator MCP.
 4. Preserve the screenshot as evidence.
 
 The ping/wake request is NOT screenshot evidence.
 
-If a Screenshot MCP call fails:
+If a Replicator MCP call fails:
 
 1. Ping/wake Browserless again immediately.
 2. Wait for a successful response.
-3. Retry the Screenshot MCP call.
+3. Retry the Replicator MCP call.
 4. If the retry fails, ping/wake Browserless again immediately.
 5. Wait for a successful response.
-6. Retry the Screenshot MCP call a second time.
+6. Retry the Replicator MCP call a second time.
 7. If that second retry fails, record the screenshot failure and stop treating the capture as successful.
 
-This permits **up to two retries after the initial Screenshot MCP failure**.
+This permits **up to two retries after the initial Replicator MCP failure**.
 
 If Browserless cannot be successfully awakened, stop the dependent screenshot operation and record the failure. Do not create false or incomplete screenshot evidence.
 
 All screenshot operations MUST:
 
-* use the required Screenshot MCP;
+* use the required Replicator MCP;
 * be preceded immediately by a successful Browserless ping/wake;
 * capture the requested viewport;
 * preserve the screenshot as evidence.
@@ -841,41 +977,42 @@ This prohibition applies to:
 * debugging;
 * temporary files or intermediate artifacts.
 
-Do not use Railway Sandbox as a substitute for repository tooling, browser tooling, Screenshot MCP, GitHub tooling, or any other required workflow tool.
+Do not use Railway Sandbox as a substitute for repository tooling, browser tooling, Replicator MCP, GitHub tooling, or any other required workflow tool.
 
 ---
 
-# 9. SOURCE SCREENSHOT CAPTURE
+# 9. SOURCE CAPTURE VIA REPLICATOR MCP
 
-Capture the reference website using the Screenshot MCP.
+Capture the reference website using **@replicator-mcp**.
+
+Treat the result as a complete evidence package containing structured rendered-source data plus visual references.
 
 The source capture MUST:
 
-* represent the complete page;
-* capture the full page;
-* preserve actual proportions;
 * use `REFERENCE_URL`;
-* occur after successful Browserless preflight;
-* occur after the page has had sufficient time to render.
+* capture desktop, tablet and mobile;
+* preserve DOM/style/asset/font evidence;
+* trigger lazy-loaded and scroll-dependent content;
+* preserve the replication manifest;
+* preserve all viewport screenshots;
+* record actual capture metadata.
 
-Save:
+Preserve:
 
 ```text
-source/screenshot.png
-source/metadata.json
-source/reconnaissance.md
-source/evidence.json
+source/replication.json
+source/desktop.png
+source/tablet.png
+source/mobile.png
 ```
 
-The source screenshot MUST NOT be used to discover or invent missing implementation details after reconnaissance unless the source itself cannot expose the required information.
+The structured `replication.json` is the primary source reconnaissance artifact. Screenshots are canonical visual evidence for their corresponding viewport, not the sole source of implementation knowledge.
 
-The screenshot capture itself does not prove completeness.
+Do not reconstruct the page primarily from screenshots when Replicator data exposes the required information directly.
 
----
+# 10. SOURCE CAPTURE COMPLETENESS
 
-# 10. SOURCE SCREENSHOT COMPLETENESS
-
-Validate the source screenshot explicitly.
+Validate the complete Replicator MCP source capture explicitly.
 
 Check:
 
@@ -913,7 +1050,7 @@ Do not accept a source screenshot captured before scroll-triggered content has h
 Only a validated complete source capture may become:
 
 ```text
-source/screenshot.png
+source/desktop.png (plus tablet.png and mobile.png)
 ```
 
 If repeated attempts remain incomplete, report source capture as blocked.
@@ -1193,7 +1330,7 @@ Every iteration is an auditable checkpoint.
 Every implementation iteration MUST be directly compared against:
 
 ```text
-source/screenshot.png
+source/desktop.png (plus tablet.png and mobile.png)
 ```
 
 The comparison MUST NOT be skipped.
@@ -1536,7 +1673,7 @@ After all final implementation changes are complete:
 3. Save:
 
 ```text
-implementation/screenshot.png
+implementation/desktop.png (plus tablet.png and mobile.png)
 implementation/metadata.json
 ```
 
@@ -1557,9 +1694,9 @@ If final code changes occur after the last iteration screenshot, a new final scr
 Perform the definitive comparison:
 
 ```text
-source/screenshot.png
+source/desktop.png (plus tablet.png and mobile.png)
         VS
-implementation/screenshot.png
+implementation/desktop.png (plus tablet.png and mobile.png)
 ```
 
 The final visual verification MUST be:
@@ -1815,6 +1952,14 @@ Never invent a deployment URL.
 ---
 
 # 30. METADATA
+# 30A. REPLICATOR MANIFEST REQUIREMENTS
+
+When @replicator-mcp is used, preserve the complete `replication.json` rather than extracting a few fields and discarding the snapshot.
+
+The structured manifest MUST remain available so later iterations can re-check source geometry, computed styles, assets, fonts, CSS and responsive states without relying on memory or screenshot interpretation.
+
+---
+
 
 ## Source metadata
 
@@ -1906,6 +2051,10 @@ replications/
     │
     └── implementation/
         ├── index.html
+        ├── replication.json
+        ├── desktop.png
+        ├── tablet.png
+        ├── mobile.png
         ├── src/
         │   ├── css/
         │   ├── js/
@@ -1952,7 +2101,7 @@ The following rules MUST NEVER be violated:
 14. Source screenshot capture MUST NOT occur before Browserless preflight.
 15. Screenshot success does not imply screenshot completeness.
 16. Source screenshot completeness MUST be explicitly validated.
-17. Screenshot MCP is non-substitutable for required captures.
+17. Replicator MCP is the required capture mechanism for source and implementation evidence.
 18. Lazy-loaded/scroll-triggered content MUST be triggered before accepting source capture.
 19. Implementation MUST NOT begin until the reconstruction specification passes its completeness gate.
 20. Implementation MUST NOT begin against an unvalidated source screenshot.
@@ -1990,11 +2139,16 @@ The following rules MUST NEVER be violated:
 44. Never treat the screenshot as the sole or primary source of implementation knowledge.
 45. Never treat visual similarity as proof that underlying source behavior was correctly replicated.
 
+46. @replicator-mcp is the primary structured source-capture mechanism.
+47. Replicator DOM, geometry, computed-style, asset, font, CSS and responsive evidence MUST be consumed before screenshot-based inference.
+48. Source and implementation visual validation MUST use matching Replicator viewport captures.
+49. The structured replication manifest MUST be preserved as evidence and MUST NOT be discarded after reconnaissance.
+
 ---
 
 
-14A. Before every Screenshot MCP call, Browserless MUST be pinged/woken immediately before that call.
-14B. A failed Screenshot MCP call MUST be followed by a Browserless ping/wake and up to two Screenshot MCP retries.
+14A. The agent MUST NOT perform a separate Browserless preflight before @replicator-mcp unless the MCP explicitly requires it; the Replicator workflow owns the Browserless/Puppeteer capture sequence.
+14B. If @replicator-mcp fails, retry according to the MCP's supported retry behavior and record the failure if the capture remains incomplete.
 14C. Railway Sandbox MUST NOT be used anywhere in the website replication workflow.
 
 45. Every major visible implementation element MUST have source evidence or be a necessary implementation mechanism for an observed source behavior.
@@ -2166,9 +2320,9 @@ Do not infer visual correctness from:
 The final authority for visual correctness is:
 
 ```text
-source/screenshot.png
+source/desktop.png (plus tablet.png and mobile.png)
         ↓
-implementation/screenshot.png
+implementation/desktop.png (plus tablet.png and mobile.png)
 ```
 
 The final authority for replication decisions is:
