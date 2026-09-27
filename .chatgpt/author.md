@@ -984,3 +984,120 @@ For an original page request covered by this section, execute the following:
 > - the implementation is ready for the repository's GitHub Pages deployment workflow.
 >
 > Do not create a `deployment.md` manually. The repository's Pages workflow creates that file after a successful deployment.
+
+
+## 30. React Bits pattern intelligence
+
+The repository now includes a local React Bits reference at `.chatgpt/reactbits/`.
+
+Before creating an original enterprise page, use it as a **pattern-selection layer**:
+
+- `.chatgpt/reactbits/components.md` for 150 animated primitives across Text, Backgrounds, 3D & Shaders, Cursor Effects, and UI & Cards.
+- `.chatgpt/reactbits/blocks.md` for 280 marketing/page blocks across 22 section families.
+- `.chatgpt/reactbits/app-ui.md` for 300 Application UI blocks across 38 product-interface families.
+- `.chatgpt/reactbits/templates.md` for 15 whole-page design/composition references.
+- `.chatgpt/reactbits/agent-kit.md` for the separation of design skills, vertical prompts, and page recipes.
+- `.chatgpt/reactbits/playbook.md` for the operational selection and harmonization rules.
+
+### React Bits composition workflow
+
+Treat React Bits as a **design grammar**, not a shopping list.
+
+Before coding:
+
+1. Identify the page's primary decision path.
+2. Determine which information jobs actually need sections.
+3. Select the smallest useful set of block families.
+4. Choose one design skill/direction that fits the enterprise.
+5. Choose one signature interaction or visual behavior.
+6. Add only the component-level effects that support that signature.
+7. Define a motion budget before adding GSAP.
+8. Harmonize type, spacing, palette, surfaces, borders, media, and motion.
+9. Validate the resulting page against mobile, accessibility, reduced motion, and performance constraints.
+
+### Pattern hierarchy
+
+Use this hierarchy deliberately:
+
+- **Component** = focused visual/interaction primitive.
+- **Block** = complete page section.
+- **Application UI** = product/workflow surface.
+- **Template** = complete page reference.
+- **Recipe** = ordered page assembly strategy.
+- **Design Skill** = visual system.
+- **Vertical Prompt** = content/information architecture.
+
+The Author agent should not confuse these levels.
+
+### React Bits in the current HTML contract
+
+The current original-page contract remains **HTML + Tailwind CSS + Alpine.js + GSAP**.
+
+React Bits Pro is a React/Next.js/shadcn ecosystem, so translate patterns rather than introducing React solely for imitation.
+
+Use:
+
+- semantic HTML for component structure;
+- Tailwind utilities for styling;
+- Alpine.js for local state such as menus, tabs, accordions, filters, and disclosures;
+- GSAP for deliberate entrance, scroll, and micro-interaction motion;
+- CSS variables/data attributes for small variant systems;
+- lightweight canvas/WebGL only when the visual concept materially requires it and performance remains acceptable.
+
+If the repository area is already a legitimate React/Next.js application and React Bits registry access is configured, prefer the real registry item when it genuinely fits. Do not install a React Bits item merely because a similar effect can be achieved with existing HTML/CSS/GSAP.
+
+### React Bits anti-generic requirement
+
+For every original page, explicitly answer internally:
+
+- Which React Bits pattern family is helping the information architecture?
+- Which design skill is informing the visual system?
+- What is the single signature interaction/visual treatment?
+- Which catalog patterns are intentionally rejected because they would make the page generic?
+- How will the page remain coherent after all selected patterns are translated into the repository's stack?
+
+Never assemble a page as a visible collage of unrelated blocks.
+
+### Live registry awareness
+
+React Bits documents a shadcn-compatible registry and MCP workflow. When a legitimate registry is available in the project, the agent may search and install by semantic request instead of guessing slugs.
+
+The documented namespaces are:
+
+- `@reactbits-starter` for components;
+- `@reactbits-pro` for marketing blocks, Application UI, and Agent Kit.
+
+Components have `-tw` and `-css` variants. Marketing/Application UI items use category-number slugs.
+
+Do not assume a specific variant is superior because of its number. Treat the catalog as a set of alternatives and select based on the business objective and design direction.
+
+### Required React Bits harmonization pass
+
+After the structural page is working, perform a dedicated harmonization pass:
+
+1. normalize typography;
+2. normalize spacing rhythm;
+3. normalize container widths;
+4. normalize radius and border language;
+5. normalize surface/shadow treatment;
+6. normalize accent usage;
+7. normalize media cropping;
+8. normalize animation timing/easing;
+9. normalize scroll behavior;
+10. normalize responsive transformations.
+
+A page assembled from strong individual patterns is still a bad page if those patterns look like they came from ten different websites.
+
+### React Bits implementation invariant
+
+Do not add a React Bits-inspired effect when:
+
+- it does not support the business goal;
+- it reduces readability;
+- it harms mobile usability;
+- it creates an unnecessary dependency;
+- it conflicts with accessibility;
+- it duplicates an existing repository component;
+- or it exists only to make the implementation look technically impressive.
+
+The repository's existing architecture and the user's requirements remain authoritative.
