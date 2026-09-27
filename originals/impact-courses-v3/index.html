@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Impact Courses — practical education for ambitious professionals and entrepreneurs.">
+<title>Impact Courses — The practical curriculum</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{
+display:['"Archivo Narrow"','Arial Narrow','sans-serif'],
+body:['"Source Sans 3"','ui-sans-serif','system-ui'],
+serif:['"Newsreader"','Georgia','serif']
+}}}};
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2efe8;--fg:#121212;--muted:#67645d;--line:rgba(18,18,18,.18);--surface:#e6e1d7;--accent:#e6462e;--accent-soft:#f1c6bc}
+.dark{--bg:#11100f;--fg:#f2efe8;--muted:#a9a49b;--line:rgba(242,239,232,.2);--surface:#1c1a18;--accent:#ff6047;--accent-soft:#51251e}
+html,body{background:var(--bg);color:var(--fg)}body{font-family:"Source Sans 3",sans-serif;transition:background-color .3s,color .3s}
+.display{font-family:"Archivo Narrow",sans-serif;letter-spacing:-.035em}.serif{font-family:"Newsreader",Georgia,serif}.line{border-color:var(--line)}.muted{color:var(--muted)}
+::selection{background:var(--accent);color:#fff}.focus:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.marquee{overflow:hidden}.marquee-track{display:flex;width:max-content;animation:marquee 28s linear infinite}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.rule-title:before{content:"";display:inline-block;width:34px;height:1px;background:var(--accent);margin:0 10px 3px 0}
+.course-row{transition:background-color .25s,color .25s}.course-row:hover{background:var(--fg);color:var(--bg)}
+.course-row:hover .muted,.course-row:hover .row-meta{color:color-mix(in srgb,var(--bg) 68%,transparent)}
+.course-row:hover .row-no{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ink-button{transition:transform .2s,background-color .2s,color .2s}.ink-button:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body x-data="app()" x-init="initTheme()" class="min-h-screen antialiased">
+
+<header class="border-b line">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
+<a href="#" class="focus flex items-center gap-3" aria-label="Impact Courses home">
+<span class="grid h-9 w-9 place-items-center bg-[var(--fg)] text-[10px] font-bold text-[var(--bg)]">IC</span>
+<span class="display text-lg font-semibold uppercase tracking-tight">Impact Courses</span>
+</a>
+<nav class="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+<a href="#curriculum" class="focus text-xs font-semibold uppercase tracking-[.12em] hover:text-[var(--accent)]">Curriculum</a>
+<a href="#method" class="focus text-xs font-semibold uppercase tracking-[.12em] hover:text-[var(--accent)]">Method</a>
+<a href="#faculty" class="focus text-xs font-semibold uppercase tracking-[.12em] hover:text-[var(--accent)]">Faculty</a>
+<a href="#faq" class="focus text-xs font-semibold uppercase tracking-[.12em] hover:text-[var(--accent)]">FAQ</a>
+</nav>
+<div class="flex items-center gap-2">
+<button @click="toggleTheme()" class="focus grid h-9 w-9 place-items-center border line text-sm" :aria-label="theme==='dark'?'Switch to light theme':'Switch to dark theme'" :aria-pressed="theme==='dark'"><span x-text="theme==='dark'?'☼':'◐'"></span></button>
+<a href="#curriculum" class="ink-button focus hidden bg-[var(--accent)] px-5 py-2.5 text-[10px] font-bold uppercase tracking-[.14em] text-white sm:block">Start learning</a>
+<button @click="menu=!menu" class="focus grid h-9 w-9 place-items-center border line md:hidden" :aria-expanded="menu" aria-controls="mobile-nav"><span x-text="menu?'×':'☰'"></span></button>
+</div>
+</div>
+<div x-show="menu" x-transition id="mobile-nav" class="border-t line md:hidden">
+<nav class="mx-auto grid max-w-7xl gap-1 px-5 py-4 sm:px-8" aria-label="Mobile navigation">
+<a @click="menu=false" class="focus py-3 text-lg" href="#curriculum">Curriculum</a>
+<a @click="menu=false" class="focus py-3 text-lg" href="#method">Method</a>
+<a @click="menu=false" class="focus py-3 text-lg" href="#faculty">Faculty</a>
+<a @click="menu=false" class="focus py-3 text-lg" href="#faq">FAQ</a>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="border-b line">
+<div class="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+<div class="flex flex-col items-center text-center">
+<p class="hero display text-xs font-bold uppercase tracking-[.22em] text-[var(--accent)]">Independent curriculum / 2026 edition</p>
+<h1 class="hero display mt-6 max-w-6xl text-[clamp(4.5rem,12vw,11rem)] font-bold uppercase leading-[.76]">Learn.<br><span class="text-[var(--accent)]">Apply.</span><br>Advance.</h1>
+<p class="hero serif mt-8 max-w-2xl text-xl leading-7 sm:text-2xl">Practical courses for people who need to make better decisions, build useful systems, and move real work forward.</p>
+<div class="hero mt-9 flex flex-col items-center gap-3 sm:flex-row">
+<a href="#curriculum" class="ink-button focus inline-flex items-center gap-8 bg-[var(--fg)] px-7 py-4 text-[10px] font-bold uppercase tracking-[.16em] text-[var(--bg)]">View curriculum <span class="text-[var(--accent)]">↓</span></a>
+<a href="#method" class="focus inline-flex items-center gap-3 border line px-7 py-4 text-[10px] font-bold uppercase tracking-[.16em] hover:border-[var(--accent)]">Our method <span>↘</span></a>
+</div>
+</div>
+<div class="mt-16 border-y line">
+<div class="grid md:grid-cols-3">
+<div class="border-b line p-5 text-center md:border-b-0 md:border-r"><p class="display text-4xl font-bold">01</p><p class="mt-1 text-[10px] uppercase tracking-[.18em] muted">Learn the model</p></div>
+<div class="border-b line p-5 text-center md:border-b-0 md:border-r"><p class="display text-4xl font-bold">02</p><p class="mt-1 text-[10px] uppercase tracking-[.18em] muted">Use it on real work</p></div>
+<div class="p-5 text-center"><p class="display text-4xl font-bold">03</p><p class="mt-1 text-[10px] uppercase tracking-[.18em] muted">Keep the output</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="border-b line bg-[var(--fg)] py-3 text-[var(--bg)]" aria-label="Course themes">
+<div class="marquee"><div class="marquee-track display text-sm font-bold uppercase tracking-[.2em]"><span class="px-6">Strategy</span><span class="text-[var(--accent)]">✳</span><span class="px-6">AI & Systems</span><span class="text-[var(--accent)]">✳</span><span class="px-6">Leadership</span><span class="text-[var(--accent)]">✳</span><span class="px-6">Business</span><span class="text-[var(--accent)]">✳</span><span class="px-6">Communication</span><span class="text-[var(--accent)]">✳</span><span class="px-6">Strategy</span><span class="text-[var(--accent)]">✳</span><span class="px-6">AI & Systems</span><span class="text-[var(--accent)]">✳</span><span class="px-6">Leadership</span><span class="text-[var(--accent)]">✳</span><span class="px-6">Business</span><span class="text-[var(--accent)]">✳</span><span class="px-6">Communication</span><span class="text-[var(--accent)]">✳</span></div></div>
+</section>
+
+<section id="curriculum" class="scroll-mt-8 border-b line">
+<div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+<div class="grid gap-10 lg:grid-cols-[.7fr_2fr]">
+<div>
+<p class="rule-title text-[10px] font-bold uppercase tracking-[.2em] text-[var(--accent)]">The curriculum</p>
+<h2 class="display mt-5 text-6xl font-bold uppercase leading-[.82] sm:text-8xl">Choose<br>your<br>next<br>skill.</h2>
+<p class="mt-7 max-w-sm text-sm leading-6 muted">Eight focused courses. Each one is built around a practical capability and a tangible piece of work you can keep using after the lesson ends.</p>
+<div class="mt-8 border-t line pt-5">
+<label for="search" class="text-[9px] font-bold uppercase tracking-[.18em] muted">Search the index</label>
+<div class="mt-2 flex border-b-2 border-[var(--fg)]">
+<input id="search" x-model="query" class="focus min-w-0 flex-1 bg-transparent py-3 font-serif text-lg outline-none placeholder:text-[var(--muted)]" placeholder="strategy, AI, leadership..." aria-label="Search courses">
+<button @click="query=''" x-show="query" class="focus px-2 text-lg" aria-label="Clear search">×</button>
+</div>
+</div>
+<div class="mt-6 flex flex-wrap gap-2">
+<template x-for="c in categories" :key="c"><button @click="category=c" class="filter focus border line px-3 py-2 text-[9px] font-bold uppercase tracking-[.12em]" :class="category===c?'bg-[var(--fg)] text-[var(--bg)]':''" :aria-pressed="category===c" x-text="c"></button></template>
+</div>
+</div>
+<div>
+<div class="mb-2 hidden grid grid-cols-[48px_1.1fr_.7fr_.6fr_30px] gap-4 px-4 text-[8px] font-bold uppercase tracking-[.18em] muted sm:grid"><span>No.</span><span>Course</span><span>Capability</span><span>Format</span><span></span></div>
+<div class="border-t line">
+<template x-for="(c,i) in filtered()" :key="c.title">
+<article class="course-row border-b line px-3 py-5 sm:grid sm:grid-cols-[48px_1.1fr_.7fr_.6fr_30px] sm:items-center sm:gap-4 sm:px-4">
+<div class="row-no mb-3 grid h-8 w-8 place-items-center border line font-mono text-[9px] font-bold sm:mb-0" x-text="String(i+1).padStart(2,'0')"></div>
+<div><div class="flex items-start justify-between gap-4"><h3 class="display text-3xl font-bold uppercase leading-[.9]" x-text="c.title"></h3><span class="sm:hidden text-[9px] font-mono muted" x-text="c.duration"></span></div><p class="mt-2 max-w-lg text-sm leading-5 muted" x-text="c.description"></p><div class="mt-3 flex gap-4 text-[8px] font-bold uppercase tracking-[.14em] row-meta muted sm:hidden"><span x-text="c.instructor"></span><span x-text="c.level"></span></div></div>
+<div class="mt-4 hidden sm:block"><p class="text-[9px] font-bold uppercase tracking-[.14em] text-[var(--accent)]" x-text="c.category"></p><p class="mt-1 text-xs row-meta muted" x-text="c.outcome"></p></div>
+<div class="mt-3 hidden text-xs sm:block" x-text="c.format"></div>
+<button class="focus mt-4 grid h-8 w-8 place-items-center border line text-sm sm:mt-0" :aria-label="'View '+c.title">↗</button>
+</article>
+</template>
+</div>
+<div x-show="filtered().length===0" class="border-b line py-16 text-center"><p class="serif text-2xl">No course matches the current search.</p><button @click="query='';category='All'" class="focus mt-4 text-[9px] font-bold uppercase tracking-[.16em] text-[var(--accent)]">Reset index</button></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="method" class="scroll-mt-8 border-b line">
+<div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+<div class="mx-auto max-w-4xl text-center">
+<p class="rule-title text-[10px] font-bold uppercase tracking-[.2em] text-[var(--accent)]">The learning method</p>
+<h2 class="display mt-5 text-6xl font-bold uppercase leading-[.8] sm:text-8xl">Less content.<br>More consequence.</h2>
+<p class="serif mx-auto mt-7 max-w-2xl text-xl leading-7 muted">The course is not the product. The useful thing you can do differently afterwards is.</p>
+</div>
+<div class="mx-auto mt-16 max-w-5xl border-t line">
+<div class="grid border-b line md:grid-cols-[120px_1fr_1fr]">
+<div class="border-b line p-6 font-mono text-xs md:border-b-0 md:border-r">01</div><div class="border-b line p-6 md:border-b-0 md:border-r"><h3 class="display text-3xl font-bold uppercase">Model</h3><p class="mt-3 text-sm leading-6 muted">A compact framework that turns a vague problem into a sequence of decisions.</p></div><div class="p-6"><p class="text-[9px] font-bold uppercase tracking-[.16em] text-[var(--accent)]">Takeaway</p><p class="mt-2 text-sm">A model you can explain to another person.</p></div>
+</div>
+<div class="grid border-b line md:grid-cols-[120px_1fr_1fr]">
+<div class="border-b line p-6 font-mono text-xs md:border-b-0 md:border-r">02</div><div class="border-b line p-6 md:border-b-0 md:border-r"><h3 class="display text-3xl font-bold uppercase">Practice</h3><p class="mt-3 text-sm leading-6 muted">Apply the framework to a real decision, project, workflow, or conversation.</p></div><div class="p-6"><p class="text-[9px] font-bold uppercase tracking-[.16em] text-[var(--accent)]">Takeaway</p><p class="mt-2 text-sm">A piece of work shaped by the method.</p></div>
+</div>
+<div class="grid md:grid-cols-[120px_1fr_1fr]">
+<div class="border-b line p-6 font-mono text-xs md:border-b-0 md:border-r">03</div><div class="border-b line p-6 md:border-b-0 md:border-r"><h3 class="display text-3xl font-bold uppercase">Transfer</h3><p class="mt-3 text-sm leading-6 muted">Turn the lesson into a repeatable habit, template, or decision rule.</p></div><div class="p-6"><p class="text-[9px] font-bold uppercase tracking-[.16em] text-[var(--accent)]">Takeaway</p><p class="mt-2 text-sm">Something that still works when the course tab is closed.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="faculty" class="scroll-mt-8 border-b line">
+<div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+<div class="flex flex-col items-center text-center">
+<p class="rule-title text-[10px] font-bold uppercase tracking-[.2em] text-[var(--accent)]">Faculty</p>
+<h2 class="display mt-5 text-6xl font-bold uppercase leading-[.8] sm:text-8xl">People who<br>do the work.</h2>
+<p class="mt-6 max-w-xl text-sm leading-6 muted">Courses are taught by practitioners who work with the problems they teach. No academic theater required.</p>
+</div>
+<div class="mx-auto mt-14 grid max-w-5xl border-t line md:grid-cols-3">
+<template x-for="(m,i) in mentors" :key="m.name">
+<article class="border-b line p-6 text-center md:border-r md:last:border-r-0">
+<div class="mx-auto grid h-20 w-20 place-items-center border-2 border-[var(--fg)] bg-[var(--surface)] display text-3xl font-bold" :style="'transform:rotate('+(i%2?'3':'-3')+'deg)'"><span x-text="m.initials"></span></div>
+<p class="mt-6 text-[9px] font-bold uppercase tracking-[.18em] text-[var(--accent)]" x-text="m.focus"></p>
+<h3 class="display mt-2 text-3xl font-bold uppercase" x-text="m.name"></h3>
+<p class="mt-3 text-sm leading-5 muted" x-text="m.bio"></p>
+</article>
+</template>
+</div>
+</div>
+</section>
+
+<section class="border-b line">
+<div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-24">
+<div class="grid gap-10 lg:grid-cols-2 lg:items-end">
+<div><p class="rule-title text-[10px] font-bold uppercase tracking-[.2em] text-[var(--accent)]">What you leave with</p><h2 class="display mt-5 text-6xl font-bold uppercase leading-[.8] sm:text-8xl">Work,<br>not<br>notes.</h2></div>
+<div><p class="serif text-2xl leading-8">A decision memo. A workflow map. A working brief. A better conversation. The output depends on the course, but the principle stays the same.</p><div class="mt-8 flex flex-wrap gap-2"><span class="border line px-3 py-2 text-[9px] font-bold uppercase tracking-[.12em]">Decision memo</span><span class="border line px-3 py-2 text-[9px] font-bold uppercase tracking-[.12em]">Workflow map</span><span class="border line px-3 py-2 text-[9px] font-bold uppercase tracking-[.12em]">Working brief</span><span class="border line px-3 py-2 text-[9px] font-bold uppercase tracking-[.12em]">Decision cadence</span></div></div>
+</div>
+</div>
+</section>
+
+<section id="faq" class="scroll-mt-8 border-b line">
+<div class="mx-auto max-w-4xl px-5 py-20 sm:px-8 lg:py-28">
+<div class="text-center"><p class="rule-title text-[10px] font-bold uppercase tracking-[.2em] text-[var(--accent)]">FAQ</p><h2 class="display mt-5 text-6xl font-bold uppercase leading-[.8] sm:text-8xl">Before you<br>enroll.</h2></div>
+<div class="mt-14 border-t line">
+<template x-for="(item,i) in faqs" :key="item.q">
+<div class="border-b line">
+<button @click="openFaq=openFaq===i?-1:i" class="focus flex w-full items-center justify-between gap-6 py-6 text-left" :aria-expanded="openFaq===i" :aria-controls="'faq-'+i">
+<span class="display text-2xl font-bold uppercase" x-text="item.q"></span><span class="text-2xl text-[var(--accent)]" x-text="openFaq===i?'−':'+'"></span>
+</button>
+<div x-show="openFaq===i" x-collapse :id="'faq-'+i" class="pb-6 pr-10 text-sm leading-6 muted"><p x-text="item.a"></p></div>
+</div>
+</template>
+</div>
+</div>
+</section>
+
+<section class="border-b line">
+<div class="mx-auto max-w-5xl px-5 py-24 text-center sm:px-8 lg:py-32">
+<p class="hero text-[10px] font-bold uppercase tracking-[.2em] text-[var(--accent)]">The next useful skill is closer than it looks.</p>
+<h2 class="hero display mx-auto mt-5 max-w-4xl text-6xl font-bold uppercase leading-[.78] sm:text-8xl">Make the next move count.</h2>
+<p class="hero serif mx-auto mt-7 max-w-xl text-xl leading-7 muted">Choose a capability. Practice it on something real. Leave with work you can use.</p>
+<a href="#curriculum" class="hero ink-button focus mt-9 inline-flex items-center gap-10 bg-[var(--accent)] px-8 py-4 text-[10px] font-bold uppercase tracking-[.16em] text-white">Browse the curriculum <span>↗</span></a>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-10 sm:px-8 md:flex-row md:items-end md:justify-between lg:px-10">
+<div><p class="display text-xl font-bold uppercase">Impact Courses</p><p class="mt-2 text-xs muted">Practical education for ambitious people.</p></div>
+<div class="flex gap-6 text-[9px] font-bold uppercase tracking-[.16em]"><a class="focus hover:text-[var(--accent)]" href="#curriculum">Curriculum</a><a class="focus hover:text-[var(--accent)]" href="#method">Method</a><a class="focus hover:text-[var(--accent)]" href="#faq">FAQ</a></div>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+<script>
+function app(){
+return{
+theme:'light',menu:false,query:'',category:'All',openFaq:-1,
+categories:['All','Strategy','AI & Systems','Leadership','Business','Communication'],
+courses:[
+{title:'Strategic Thinking',category:'Strategy',instructor:'Maya Chen',level:'Intermediate',duration:'4 weeks',format:'Workshop',outcome:'Decision framework',description:'Turn complex choices into a clear set of trade-offs, assumptions, and next actions.'},
+{title:'AI for Real Work',category:'AI & Systems',instructor:'Jonas Reed',level:'Practical',duration:'3 weeks',format:'Studio',outcome:'Working workflow',description:'Design useful AI workflows around the work you already do instead of collecting another pile of prompts.'},
+{title:'Leading Through Change',category:'Leadership',instructor:'Imani Cole',level:'Intermediate',duration:'4 weeks',format:'Seminar',outcome:'Change plan',description:'Make change legible, communicate decisions clearly, and keep teams moving when the plan shifts.'},
+{title:'Business Model Design',category:'Business',instructor:'Maya Chen',level:'Intermediate',duration:'5 weeks',format:'Workshop',outcome:'Model canvas',description:'Map how an offer creates value, reaches customers, and earns the right to exist.'},
+{title:'Clearer Communication',category:'Communication',instructor:'Imani Cole',level:'Foundational',duration:'3 weeks',format:'Studio',outcome:'Working brief',description:'Structure complex ideas so other people can understand the point and act on it.'},
+{title:'Systems for Focus',category:'AI & Systems',instructor:'Jonas Reed',level:'Foundational',duration:'2 weeks',format:'Lab',outcome:'Personal system',description:'Build a lightweight operating system for priorities, attention, and repeatable work.'},
+{title:'Better Strategic Meetings',category:'Leadership',instructor:'Imani Cole',level:'Practical',duration:'2 weeks',format:'Lab',outcome:'Meeting cadence',description:'Replace status theater with meetings designed around decisions, ownership, and useful preparation.'},
+{title:'From Idea to Offer',category:'Business',instructor:'Maya Chen',level:'Foundational',duration:'3 weeks',format:'Studio',outcome:'Offer brief',description:'Turn a promising idea into a specific offer with a clear audience, promise, and next test.'}
+],
+mentors:[
+{name:'Maya Chen',initials:'MC',focus:'Strategy + Business',bio:'Works with founders and teams on positioning, decisions, and practical operating models.'},
+{name:'Jonas Reed',initials:'JR',focus:'AI + Systems',bio:'Builds human-centered automation and AI workflows for knowledge-heavy teams.'},
+{name:'Imani Cole',initials:'IC',focus:'Leadership + Communication',bio:'Helps leaders make change, expectations, and difficult decisions easier to act on.'}
+],
+faqs:[
+{q:'Who are these courses for?',a:'They are designed for professionals, founders, freelancers, and career switchers who want practical capability rather than passive content consumption.'},
+{q:'Are these live or self-paced?',a:'Formats vary by course. Each course listing identifies whether it is a workshop, studio, seminar, or lab so you can choose the learning mode that fits the work.'},
+{q:'Do I need prior experience?',a:'Some courses are foundational and others are intermediate or practical. The curriculum makes the expected level explicit rather than hiding it behind vague labels.'},
+{q:'What do I actually finish?',a:'Every course is designed around a useful output. Depending on the course, that may be a decision memo, workflow, brief, operating system, or meeting cadence.'},
+{q:'How long are the courses?',a:'Most courses run between two and five weeks. The specific duration is shown in the curriculum index.'}
+],
+initTheme(){
+const saved=localStorage.getItem('impact-theme-v3');
+this.theme=saved||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+document.documentElement.classList.toggle('dark',this.theme==='dark');
+},
+toggleTheme(){
+this.theme=this.theme==='dark'?'light':'dark';
+localStorage.setItem('impact-theme-v3',this.theme);
+document.documentElement.classList.toggle('dark',this.theme==='dark');
+},
+filtered(){
+const q=this.query.trim().toLowerCase();
+return this.courses.filter(c=>(this.category==='All'||c.category===this.category)&&(!q||[c.title,c.category,c.instructor,c.description,c.outcome].join(' ').toLowerCase().includes(q)));
+}
+}
+}
+document.addEventListener('DOMContentLoaded',()=>{
+if(!window.gsap)return;
+gsap.registerPlugin(ScrollTrigger);
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce)return;
+gsap.from('.hero',{opacity:0,y:24,duration:.8,stagger:.08,ease:'power3.out',clearProps:'all'});
+gsap.utils.toArray('section:not(:first-of-type) .display').forEach(el=>{
+gsap.from(el,{scrollTrigger:{trigger:el,start:'top 88%'},opacity:0,y:22,duration:.7,ease:'power2.out'});
+});
+gsap.utils.toArray('.course-row').forEach((el,i)=>{
+gsap.from(el,{scrollTrigger:{trigger:el,start:'top 92%'},opacity:0,x:18,duration:.5,delay:(i%4)*.04,ease:'power2.out'});
+});
+});
+</script>
+</body>
+</html>
