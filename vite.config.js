@@ -11,6 +11,7 @@ export default defineConfig({
         'replications/kora/implementation/index': resolve(__dirname, 'replications/kora/implementation/index.html'),
         'replications/investflowtemplate-webflow-io-home-pages-home-v3/implementation/index': resolve(__dirname, 'replications/investflowtemplate-webflow-io-home-pages-home-v3/implementation/index.html'),
         'replications/juristiq-wcopilot-webflow-io/implementation/index': resolve(__dirname, 'replications/juristiq-wcopilot-webflow-io/implementation/index.html'),
+        'replications/verdentix/implementation/index': resolve(__dirname, 'replications/verdentix/implementation/index.html'),
       },
     },
   },
