@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mulțumesc.org este un spațiu pentru recunoștință, povești și gesturi care merită observate.">
+  <meta name="theme-color" content="#f5f1e8">
+  <title>Mulțumesc.org — Spune ce contează</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-canvas:#f5f1e8;
+      --color-paper:#fffdf8;
+      --color-ink:#171916;
+      --color-muted:#676a61;
+      --color-red:#d94b38;
+      --color-red-deep:#a93327;
+      --color-yellow:#e8bd42;
+      --color-green:#385b4b;
+      --color-line:rgba(23,25,22,.18);
+    }
+    @layer base {
+      html{scroll-behavior:smooth}
+      body{background:#f5f1e8;color:#171916;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+      ::selection{background:#d94b38;color:#fff}
+    }
+    @layer utilities {
+      .display{font-family:Georgia,"Times New Roman",serif}
+      .mono{font-family:"Courier New",monospace}
+      .line{border-color:rgba(23,25,22,.18)}
+      .focus-ring:focus-visible{outline:2px solid #d94b38;outline-offset:4px}
+      .vertical{writing-mode:vertical-rl;text-orientation:mixed}
+      .dot-grid{background-image:radial-gradient(rgba(23,25,22,.17) .8px,transparent .8px);background-size:16px 16px}
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden antialiased" x-data="{menu:false, sent:false}">
+  <header class="relative z-50 border-b line bg-canvas">
+    <nav class="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-4 sm:px-8 lg:px-12" aria-label="Navigație principală">
+      <a href="#" class="focus-ring flex items-baseline gap-2 text-sm font-bold tracking-tight">
+        <span class="text-lg">mulțumesc</span><span class="text-red">/</span><span class="mono text-[10px] font-normal">org</span>
+      </a>
+      <div class="hidden items-center gap-7 text-[12px] font-semibold uppercase tracking-[.12em] md:flex">
+        <a href="#povesti" class="focus-ring transition hover:text-red">Povești</a>
+        <a href="#gesturi" class="focus-ring transition hover:text-red">Gesturi</a>
+        <a href="#despre" class="focus-ring transition hover:text-red">De ce?</a>
+        <a href="#scrie" class="focus-ring border-b-2 border-red pb-1 transition hover:text-red">Spune mulțumesc</a>
+      </div>
+      <button @click="menu=!menu" :aria-expanded="menu" aria-controls="mobile-nav" aria-label="Deschide meniul" class="focus-ring border line px-3 py-2 text-[11px] font-bold uppercase tracking-[.12em] md:hidden">
+        <span x-text="menu?'Închide':'Meniu'"></span>
+      </button>
+    </nav>
+    <div id="mobile-nav" x-show="menu" x-transition class="border-t line bg-paper md:hidden">
+      <div class="grid text-sm font-semibold">
+        <a @click="menu=false" href="#povesti" class="border-b line px-5 py-4">Povești</a>
+        <a @click="menu=false" href="#gesturi" class="border-b line px-5 py-4">Gesturi</a>
+        <a @click="menu=false" href="#despre" class="border-b line px-5 py-4">De ce?</a>
+        <a @click="menu=false" href="#scrie" class="bg-ink px-5 py-4 text-white">Spune mulțumesc ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative border-b line">
+      <div class="absolute inset-0 dot-grid opacity-30" aria-hidden="true"></div>
+      <div class="relative mx-auto grid max-w-[1500px] gap-12 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-[96px_1fr_330px] lg:px-12 lg:py-24">
+        <div class="hidden lg:block">
+          <div class="vertical mono text-[10px] uppercase tracking-[.2em] text-muted">un gest mic / poate rămâne mult timp</div>
+        </div>
+        <div>
+          <div class="hero-item mb-7 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[.22em]">
+            <span class="size-2 rounded-full bg-red"></span> arhiva lucrurilor bune
+          </div>
+          <h1 class="hero-item max-w-5xl text-[4.2rem] font-black leading-[.82] tracking-[-.07em] sm:text-7xl md:text-[7.8rem] lg:text-[9.5rem]">
+            Spune<br><span class="text-red">mulțumesc.</span>
+          </h1>
+          <p class="hero-item mt-8 max-w-xl text-base leading-7 text-muted sm:text-lg">
+            Pentru cineva care te-a ajutat. Pentru cineva care a rămas. Pentru o zi care a ieșit bine. Pentru lucrurile mici pe care le observăm prea rar.
+          </p>
+          <div class="hero-item mt-9 flex flex-wrap gap-3">
+            <a href="#scrie" class="focus-ring inline-flex min-h-12 items-center bg-red px-6 text-sm font-bold text-white transition hover:bg-red-deep">Scrie un mulțumesc ↗</a>
+            <a href="#povesti" class="focus-ring inline-flex min-h-12 items-center border line px-6 text-sm font-bold transition hover:border-red hover:text-red">Vezi poveștile ↓</a>
+          </div>
+        </div>
+        <div class="hero-item relative flex min-h-[280px] items-end lg:min-h-[430px]">
+          <div class="absolute right-0 top-0 hidden size-28 rounded-full border-[14px] border-yellow sm:block"></div>
+          <div class="relative w-full border-y-2 border-ink py-7">
+            <div class="mono text-[10px] uppercase tracking-[.18em] text-muted">notă de serviciu</div>
+            <p class="display mt-4 text-4xl leading-[.95] tracking-[-.04em]">Recunoștința nu trebuie să fie perfect formulată.</p>
+            <div class="mt-7 flex items-center justify-between border-t line pt-4 text-[10px] uppercase tracking-[.15em]">
+              <span>doar sinceră</span><span>01 / 05</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="scrie" class="border-b line bg-ink text-white">
+      <div class="mx-auto grid max-w-[1500px] gap-14 px-5 py-20 sm:px-8 lg:grid-cols-[.7fr_1.3fr] lg:px-12 lg:py-28">
+        <div class="reveal">
+          <p class="mono text-[10px] uppercase tracking-[.2em] text-white/50">01 — pune-l în cuvinte</p>
+          <h2 class="display mt-7 max-w-lg text-5xl leading-[.92] tracking-[-.05em] sm:text-6xl">Un mesaj bun nu are nevoie de discurs.</h2>
+          <p class="mt-6 max-w-md text-sm leading-6 text-white/65">Scrie exact atât cât simți. Mesajul tău rămâne simplu și poate deveni o poveste care îi inspiră și pe alții.</p>
+        </div>
+        <form class="reveal border-t border-white/20 pt-7" @submit.prevent="sent=true">
+          <div class="grid gap-8 sm:grid-cols-2">
+            <label class="block">
+              <span class="mono text-[10px] uppercase tracking-[.18em] text-white/45">Pentru</span>
+              <input required type="text" placeholder="Cine merită un mulțumesc?" class="mt-3 w-full border-b border-white/30 bg-transparent px-0 py-3 text-xl outline-none placeholder:text-white/30 focus:border-white">
+            </label>
+            <label class="block">
+              <span class="mono text-[10px] uppercase tracking-[.18em] text-white/45">Din partea</span>
+              <input required type="text" placeholder="Numele tău" class="mt-3 w-full border-b border-white/30 bg-transparent px-0 py-3 text-xl outline-none placeholder:text-white/30 focus:border-white">
+            </label>
+          </div>
+          <label class="mt-9 block">
+            <span class="mono text-[10px] uppercase tracking-[.18em] text-white/45">Mesajul tău</span>
+            <textarea required rows="4" placeholder="Îți mulțumesc pentru..." class="mt-3 w-full resize-y border-b border-white/30 bg-transparent px-0 py-3 text-2xl leading-tight outline-none placeholder:text-white/30 focus:border-white"></textarea>
+          </label>
+          <div class="mt-8 flex flex-wrap items-center justify-between gap-5">
+            <p x-show="!sent" class="max-w-sm text-xs leading-5 text-white/45">Un mesaj sincer poate fi suficient. Nu trebuie să sune ca o felicitare cumpărată de la benzinărie.</p>
+            <p x-show="sent" x-cloak class="text-sm font-semibold text-yellow">Mulțumesc. Mesajul tău este gata de trimis.</p>
+            <button type="submit" class="focus-ring inline-flex min-h-12 items-center bg-white px-6 text-sm font-bold text-ink transition hover:bg-yellow">Păstrează mesajul ↗</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="povesti" class="border-b line">
+      <div class="mx-auto max-w-[1500px] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div class="mb-14 grid gap-6 lg:grid-cols-[1fr_2fr]">
+          <p class="mono text-[10px] font-bold uppercase tracking-[.2em] text-muted">02 — povești</p>
+          <div>
+            <h2 class="max-w-4xl text-5xl font-black leading-[.88] tracking-[-.06em] sm:text-7xl">Lucruri mici.<br><span class="text-red">Urme mari.</span></h2>
+            <p class="mt-6 max-w-xl text-sm leading-6 text-muted">Câteva feluri în care oamenii au ales să observe binele, fără ceremonie și fără discursuri pompoase.</p>
+          </div>
+        </div>
+        <div class="border-t-2 border-ink">
+          <article class="story-row group grid gap-5 border-b line py-7 sm:grid-cols-[70px_1fr_260px] sm:items-center">
+            <span class="mono text-[10px] text-muted">01</span>
+            <div><h3 class="text-2xl font-bold tracking-tight transition group-hover:text-red">„Pentru că ai răspuns când aveam nevoie.”</h3><p class="mt-2 text-sm text-muted">Un mulțumesc pentru omul care nu a cerut explicații.</p></div>
+            <div class="mono text-[10px] uppercase tracking-[.15em] text-muted sm:text-right">răbdare / apropiere</div>
+          </article>
+          <article class="story-row group grid gap-5 border-b line py-7 sm:grid-cols-[70px_1fr_260px] sm:items-center">
+            <span class="mono text-[10px] text-muted">02</span>
+            <div><h3 class="text-2xl font-bold tracking-tight transition group-hover:text-red">„Pentru cafeaua lăsată pe birou.”</h3><p class="mt-2 text-sm text-muted">Uneori grija încape într-un gest de două minute.</p></div>
+            <div class="mono text-[10px] uppercase tracking-[.15em] text-muted sm:text-right">atenție / cotidian</div>
+          </article>
+          <article class="story-row group grid gap-5 border-b line py-7 sm:grid-cols-[70px_1fr_260px] sm:items-center">
+            <span class="mono text-[10px] text-muted">03</span>
+            <div><h3 class="text-2xl font-bold tracking-tight transition group-hover:text-red">„Pentru că ai avut răbdare cu mine.”</h3><p class="mt-2 text-sm text-muted">Un mesaj pentru cineva care a știut să nu grăbească lucrurile.</p></div>
+            <div class="mono text-[10px] uppercase tracking-[.15em] text-muted sm:text-right">timp / încredere</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gesturi" class="border-b line bg-yellow">
+      <div class="mx-auto grid max-w-[1500px] gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_1.5fr] lg:px-12 lg:py-24">
+        <div>
+          <p class="mono text-[10px] font-bold uppercase tracking-[.2em]">03 — inspirație</p>
+          <h2 class="mt-6 max-w-lg text-5xl font-black leading-[.86] tracking-[-.06em] sm:text-7xl">Nu știi ce să spui?<br><span class="display font-normal italic">Începe de aici.</span></h2>
+        </div>
+        <div class="grid border-t-2 border-ink sm:grid-cols-2">
+          <button class="prompt focus-ring border-b line py-7 pr-5 text-left transition hover:pl-3" type="button" @click="window.scrollTo({top:document.querySelector('#scrie').offsetTop-20,behavior:'smooth'})"><span class="mono text-[10px]">A / 01</span><span class="mt-3 block text-xl font-bold">Mulțumesc că ai fost acolo.</span></button>
+          <button class="prompt focus-ring border-b line py-7 pl-0 sm:pl-5 text-left transition hover:pl-3" type="button" @click="window.scrollTo({top:document.querySelector('#scrie').offsetTop-20,behavior:'smooth'})"><span class="mono text-[10px]">B / 02</span><span class="mt-3 block text-xl font-bold">Mulțumesc pentru răbdare.</span></button>
+          <button class="prompt focus-ring border-b line py-7 pr-5 text-left transition hover:pl-3" type="button" @click="window.scrollTo({top:document.querySelector('#scrie').offsetTop-20,behavior:'smooth'})"><span class="mono text-[10px]">C / 03</span><span class="mt-3 block text-xl font-bold">Mulțumesc că m-ai făcut să râd.</span></button>
+          <button class="prompt focus-ring border-b line py-7 pl-0 sm:pl-5 text-left transition hover:pl-3" type="button" @click="window.scrollTo({top:document.querySelector('#scrie').offsetTop-20,behavior:'smooth'})"><span class="mono text-[10px]">D / 04</span><span class="mt-3 block text-xl font-bold">Mulțumesc pentru lucrurile mici.</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="despre" class="border-b line">
+      <div class="mx-auto grid max-w-[1500px] gap-14 px-5 py-20 sm:px-8 lg:grid-cols-[96px_1.2fr_.8fr] lg:px-12 lg:py-28">
+        <div class="hidden lg:block"><div class="vertical mono text-[10px] uppercase tracking-[.2em] text-muted">de ce există locul acesta</div></div>
+        <div>
+          <p class="mono text-[10px] font-bold uppercase tracking-[.2em] text-muted">04 — despre</p>
+          <h2 class="mt-7 max-w-4xl text-5xl font-black leading-[.9] tracking-[-.06em] sm:text-7xl">Să observăm binele înainte să treacă pe lângă noi.</h2>
+        </div>
+        <div class="self-end text-sm leading-7 text-muted">
+          <p>Mulțumesc.org adună mesaje, povești și idei despre recunoștință și bunătate de zi cu zi.</p>
+          <p class="mt-5">Nu promite să repare lumea. Încearcă ceva mai simplu: să facă loc pentru un gest bun și să-l lase să circule.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="overflow-hidden bg-green text-white">
+      <div class="mx-auto max-w-[1500px] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div class="flex flex-col justify-between gap-10 sm:flex-row sm:items-end">
+          <div>
+            <p class="mono text-[10px] uppercase tracking-[.2em] text-white/50">05 — următorul pas</p>
+            <h2 class="mt-6 max-w-5xl text-[4.3rem] font-black leading-[.8] tracking-[-.07em] sm:text-7xl lg:text-[8.5rem]">Spune-l<br><span class="text-yellow">acum.</span></h2>
+          </div>
+          <a href="#scrie" class="focus-ring inline-flex min-h-12 shrink-0 items-center justify-center bg-yellow px-7 text-sm font-black text-ink transition hover:bg-white">Scrie un mesaj ↗</a>
+        </div>
+        <div class="mt-20 flex items-center justify-between border-t border-white/20 pt-5 text-[10px] uppercase tracking-[.18em] text-white/45">
+          <span>mulțumesc.org</span><span>gesturile mici contează</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-ink text-white">
+    <div class="mx-auto grid max-w-[1500px] gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[1fr_auto] lg:px-12">
+      <div><p class="text-lg font-bold">mulțumesc<span class="text-red">/</span><span class="mono text-[10px] font-normal">org</span></p><p class="mt-3 max-w-sm text-xs leading-5 text-white/45">Un spațiu pentru recunoștință, povești și gesturi care merită observate.</p></div>
+      <div class="flex flex-wrap gap-x-7 gap-y-3 text-[10px] uppercase tracking-[.16em] text-white/60"><a href="#povesti" class="focus-ring hover:text-white">Povești</a><a href="#gesturi" class="focus-ring hover:text-white">Gesturi</a><a href="#despre" class="focus-ring hover:text-white">Despre</a><a href="#scrie" class="focus-ring hover:text-white">Spune mulțumesc</a></div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || !window.gsap) return;
+      gsap.from('.hero-item', {y: 28, opacity: 0, duration: .75, stagger: .09, ease: 'power3.out'});
+      gsap.from('.hero-item + *', {opacity: 0, duration: .6, delay: .35, ease: 'power2.out'});
+      if (window.IntersectionObserver) {
+        const io = new IntersectionObserver(entries => entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          gsap.from(entry.target, {y: 24, opacity: 0, duration: .65, ease: 'power2.out'});
+          io.unobserve(entry.target);
+        }), {threshold:.12});
+        document.querySelectorAll('.reveal, .story-row').forEach(el => io.observe(el));
+      }
+    });
+  </script>
+</body>
+</html>
