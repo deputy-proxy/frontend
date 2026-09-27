@@ -324,22 +324,20 @@
       intro.to('.hero-copy > *', { opacity: 1, y: 0, duration: .8, stagger: .08 })
            .to('.hero-visual', { opacity: 1, y: 0, scale: 1, duration: 1.1 }, '-=.55');
 
-      gsap.utils.toArray('#capabilities article, #how-it-works article').forEach((card, index) => {
-        gsap.from(card, {
-          scrollTrigger: undefined,
-          opacity: 0,
-          y: 24,
-          duration: .65,
-          delay: index * .04,
-          ease: 'power2.out',
-          scrollTrigger: { trigger: card, start: 'top 88%', once: true }
+      const cards = gsap.utils.toArray('#capabilities article, #how-it-works article');
+      gsap.set(cards, { opacity: 0, y: 24 });
+
+      const reveal = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          gsap.to(entry.target, { opacity: 1, y: 0, duration: .65, ease: 'power2.out' });
+          observer.unobserve(entry.target);
         });
+      }, { threshold: .15, rootMargin: '0px 0px -8% 0px' });
+
+      cards.forEach(card => reveal.observe(card));
       });
     });
-  </script>
-  <script>
-    // GSAP ScrollTrigger is intentionally avoided here to keep the page dependency set limited.
-    // The primary entrance sequence above handles first-viewport motion; content remains visible without JS.
   </script>
 </body>
 </html>
