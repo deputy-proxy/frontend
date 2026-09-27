@@ -194,7 +194,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add 'replications/**/deployment.md' 'originals/**/deployment.md'
+          if [ -d originals ]; then
+            git add 'originals/**/deployment.md'
+          fi
 
           if git diff --cached --quiet; then
             echo "No deployment metadata changes."
