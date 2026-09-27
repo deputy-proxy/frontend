@@ -366,6 +366,29 @@ Before coding, establish internally:
 
 Do not ask the user to provide this information as an additional required input. Infer it from the input contract and the inspiration library.
 
+### Centered composition
+
+Unless the product context clearly requires another spatial strategy, keep the page **as centered as reasonably possible**.
+
+- Prefer a strong centered container/grid as the primary alignment system.
+- Keep major content groups, navigation, hero content, section headings, and primary actions visually anchored to a coherent center.
+- Use asymmetry, off-center composition, or grid-breaking elements only when they materially improve the product experience or are required by the chosen aesthetic direction.
+- Do not create artificial asymmetry merely to appear distinctive.
+- Centered does not mean vertically centering every element or making every text block center-aligned. Preserve readable text measure, hierarchy, and appropriate left/right alignment within the centered page structure.
+
+### Light/dark theme
+
+Every original page must provide a **light/dark theme toggle** unless the product explicitly requires a single immutable theme.
+
+- Implement the toggle as a real interactive control, not a decorative icon.
+- Persist the user's selected theme when practical, such as with localStorage.
+- Respect the user's prefers-color-scheme preference when no explicit theme has been selected.
+- Define light and dark tokens for backgrounds, surfaces, text, borders, accents, controls, and media treatments rather than relying on accidental color inversion.
+- Ensure both themes maintain sufficient contrast, clear hierarchy, visible focus states, and readable disabled/error/success states.
+- Ensure the toggle is keyboard accessible and has an accessible name/state.
+- Test the page in both themes across desktop and mobile.
+- Do not treat dark mode as a simple background swap. Rebalance contrast, surfaces, shadows, borders, imagery, and accent intensity for each theme.
+
 ## 9. Responsive design
 
 Responsive behavior is part of the implementation, not a later patch.
