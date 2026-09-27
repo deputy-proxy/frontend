@@ -15,9 +15,9 @@ crops = {
     "julian-source.jpg": (1240, 2380, 1745, 2850),
     "approach-source.jpg": (0, 3200, 1920, 4100),
     "testimonial-source.jpg": (1180, 4120, 1840, 4700),
-    "insight-main-source.jpg": (180, 4800, 980, 5520),
-    "insight-law-source.jpg": (1010, 4800, 1355, 5400),
-    "insight-family-source.jpg": (1390, 4800, 1745, 5400),
+    "insight-main-source.jpg": (180, 5110, 980, 5660),
+    "insight-law-source.jpg": (1010, 5110, 1355, 5520),
+    "insight-family-source.jpg": (1390, 5110, 1745, 5520),
     "cta-source.jpg": (0, 5900, 1920, 6650),
 }
 for name, box in crops.items():
