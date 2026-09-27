@@ -69,7 +69,7 @@ No prohibited external runtime resources remain. Images, fonts, CSS, JavaScript,
 - Final metadata: `implementation/metadata.json`
 
 ## Deployment
-Verified deployment:
-https://frontend-production-4f1b.up.railway.app/replications/investflowtemplate-webflow-io-home-pages-home-v3/implementation/
+Verified GitHub Pages deployment:
+https://deputy-proxy.github.io/frontend/replications/investflowtemplate-webflow-io-home-pages-home-v3/implementation/
 
 The deployment serves the final implementation and returned HTTP 200 during verification.
