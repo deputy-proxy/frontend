@@ -1,0 +1,71 @@
+{
+  "replication_id": "juristiq-wcopilot-webflow-io",
+  "reference_url": "https://juristiq-wcopilot.webflow.io/",
+  "evidence": [
+    {
+      "id": "hero-title",
+      "type": "SOURCE_SCREENSHOT",
+      "value": "Where strategy meets results"
+    },
+    {
+      "id": "practice-title",
+      "type": "SOURCE_SCREENSHOT",
+      "value": "Legal services for individuals, families, and businesses."
+    },
+    {
+      "id": "practice-cards",
+      "type": "SOURCE_SCREENSHOT",
+      "value": [
+        "Business Law",
+        "Family Law",
+        "Comprehensive Legal Services",
+        "Litigation"
+      ]
+    },
+    {
+      "id": "template-features",
+      "type": "SOURCE_NETWORK",
+      "value": [
+        "CMS",
+        "CSS Grid",
+        "Components",
+        "Forms",
+        "GSAP",
+        "Interactions",
+        "Responsive design",
+        "Responsive navigation",
+        "Web fonts"
+      ]
+    },
+    {
+      "id": "template-structure",
+      "type": "SOURCE_NETWORK",
+      "value": [
+        "practice areas",
+        "case studies",
+        "attorney biographies",
+        "testimonials",
+        "blog"
+      ]
+    }
+  ],
+  "baselines": {
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1
+    },
+    "document": {
+      "width": 1920,
+      "height": 7309
+    },
+    "source_capture": "complete_full_page"
+  },
+  "unknowns": [
+    "DOM selectors",
+    "computed font family",
+    "exact breakpoints",
+    "exact asset URLs",
+    "exact animation timings"
+  ]
+}
