@@ -1,0 +1,26 @@
+{
+  "replication_id": "juristiq-wcopilot-webflow-io",
+  "implementation_path": "replications/juristiq-wcopilot-webflow-io/implementation/index.html",
+  "latest_capture": "replications/juristiq-wcopilot-webflow-io/iterations/008/screenshot.png",
+  "capture_viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "latest_capture_document": {
+    "width": 1920,
+    "height": 7299
+  },
+  "source_reference": "replications/juristiq-wcopilot-webflow-io/source/screenshot.png",
+  "source_document": {
+    "width": 1920,
+    "height": 7309
+  },
+  "build_verification": "PASS",
+  "tailwind_verification": "PASS",
+  "css_verification": "PASS",
+  "js_verification": "PASS",
+  "external_resource_audit": "PASS_WITH_EXTERNAL_IMAGES_DISABLED_FOR_TOP_SOURCE_DERIVED_ASSETS",
+  "responsive_verification": "PENDING_DESKTOP_BASELINE_VERIFIED",
+  "final_visual_comparison": "SOURCE_HEIGHT_MATCH_WITHIN_10PX; SECTION-LEVEL PIXEL COMPARISON LIMITED_BY_UNEXPOSED_DOM/ASSET_SOURCE"
+}
