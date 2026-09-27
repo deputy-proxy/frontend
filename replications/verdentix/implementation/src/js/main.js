@@ -1,0 +1,13 @@
+document.documentElement.classList.add('js');
+const header=document.querySelector('[data-header]');
+const toggle=document.querySelector('.menu-toggle');
+const mobile=document.querySelector('#mobile-nav');
+const updateHeader=()=>header.classList.toggle('scrolled',window.scrollY>24);
+window.addEventListener('scroll',updateHeader,{passive:true});updateHeader();
+toggle?.addEventListener('click',()=>{const open=mobile.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));});
+mobile?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobile.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));
+const items=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+items.forEach(el=>observer.observe(el));
+document.querySelectorAll('img').forEach(img=>img.addEventListener('error',()=>img.classList.add('asset-error')));
+document.querySelector('#newsletter')?.addEventListener('submit',e=>{e.preventDefault();document.querySelector('.form-status').textContent='Great! Your submission has been received. We’ll make sure to reach out quickly!';e.currentTarget.reset();});
