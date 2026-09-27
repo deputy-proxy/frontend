@@ -1,9 +1,0 @@
-@import "tailwindcss";
-
-@font-face{font-family:ThornhillSans;src:url("https://framerusercontent.com/assets/UjlFhCnUjxhNfep4oYBPqnEssyo.woff2") format("woff2");font-weight:400 700;font-style:normal;font-display:swap}
-:root{font-family:ThornhillSans,Inter,Arial,sans-serif;background:#11110f;color:#f5f2ea}
-html{scroll-behavior:smooth}html,body{max-width:100%;overflow-x:hidden}body{margin:0}
-.font-serif{font-family:Georgia,"Times New Roman",serif}
-::selection{background:#f2efe7;color:#11110f}
-a,button{transition:opacity .2s ease,background-color .2s ease,border-color .2s ease,color .2s ease,transform .2s ease}button{cursor:pointer}
-[x-cloak]{display:none!important}
