@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ro" x-data="site()" :class="{ 'dark': dark }">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Afacere Online. Construiește ceva care îți aparține. Cunoaștere practică pentru construirea unei afaceri online.">
+  <title>Afacere Online — Construiește ceva care îți aparține.</title>
+
+  <script>
+    (() => {
+      const saved = localStorage.getItem('afacere-theme');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if ((saved === 'dark') || (!saved && systemDark)) document.documentElement.classList.add('dark');
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            paper: '#f1eee6',
+            ink: '#171714',
+            signal: '#c63b28',
+            night: '#151513',
+            bone: '#e8e4d9'
+          },
+          fontFamily: {
+            display: ['Baskerville', 'Georgia', 'Times New Roman', 'serif'],
+            sans: ['Arial Narrow', 'Aptos Narrow', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+
+  <style>
+    :root {
+      --paper: #f1eee6;
+      --ink: #171714;
+      --muted: #66645e;
+      --line: #bdb9ae;
+      --signal: #c63b28;
+      --soft: #e4e0d5;
+    }
+    .dark {
+      --paper: #151513;
+      --ink: #eee9de;
+      --muted: #aaa69c;
+      --line: #4b4943;
+      --signal: #ee614b;
+      --soft: #23221f;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      transition: background-color .35s ease, color .35s ease;
+    }
+    ::selection { background: var(--signal); color: #fff; }
+    .hairline { border-color: var(--line); }
+    .display { font-family: Baskerville, Georgia, "Times New Roman", serif; }
+    .narrow { font-family: "Arial Narrow", "Aptos Narrow", "Helvetica Neue", Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .signal { color: var(--signal); }
+    .ink { color: var(--ink); }
+    .muted { color: var(--muted); }
+    .bg-soft { background: var(--soft); }
+    .hero-word { letter-spacing: -0.065em; line-height: .79; }
+    .chapter-title { letter-spacing: -.055em; line-height: .86; }
+    .reveal { opacity: 0; transform: translateY(22px); }
+    .rule-label::before {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--signal);
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    @media (max-width: 767px) {
+      .hero-word { letter-spacing: -0.055em; line-height: .86; }
+      .chapter-title { letter-spacing: -.045em; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="min-h-screen overflow-x-hidden">
+    <header class="mx-auto max-w-[1380px] px-5 sm:px-8 lg:px-12 pt-5">
+      <div class="flex items-center justify-between border-b hairline pb-4">
+        <a href="#top" class="narrow text-sm font-bold tracking-[.12em] uppercase" aria-label="Afacere Online, începutul paginii">
+          Afacere Online<span class="signal">.</span>
+        </a>
+
+        <div class="flex items-center gap-5">
+          <nav class="hidden md:flex items-center gap-7 narrow text-[11px] font-bold tracking-[.13em] uppercase" aria-label="Navigație principală">
+            <a class="hover:text-[var(--signal)] transition-colors" href="#directii">Direcții</a>
+            <a class="hover:text-[var(--signal)] transition-colors" href="#principii">Principii</a>
+            <a class="hover:text-[var(--signal)] transition-colors" href="#resurse">Resurse</a>
+          </nav>
+
+          <button
+            @click="toggleTheme()"
+            class="narrow border hairline px-3 py-2 text-[10px] font-bold tracking-[.12em] uppercase hover:border-[var(--signal)] hover:text-[var(--signal)] transition-colors"
+            :aria-label="dark ? 'Activează tema luminoasă' : 'Activează tema întunecată'"
+            :aria-pressed="dark.toString()">
+            <span x-text="dark ? 'Light' : 'Dark'"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top" class="mx-auto max-w-[1380px] px-5 sm:px-8 lg:px-12">
+      <section class="grid lg:grid-cols-[150px_minmax(0,1fr)_220px] gap-x-10 lg:min-h-[calc(100vh-86px)] items-center py-14 lg:py-20">
+        <aside class="hidden lg:block self-start pt-5 reveal">
+          <div class="mono text-[10px] leading-5 uppercase tracking-[.12em] muted">
+            <p>Manual 01</p>
+            <p>România / Online</p>
+            <p>2026 →</p>
+          </div>
+          <div class="mt-8 border-l-2 border-[var(--signal)] pl-4 narrow text-[11px] leading-5 uppercase font-bold">
+            Nu căuta<br>o rețetă.<br><span class="signal">Construiește<br>sistemul.</span>
+          </div>
+        </aside>
+
+        <div class="relative">
+          <p class="mono reveal text-[10px] sm:text-xs uppercase tracking-[.16em] mb-7 signal">Construiește ceva care îți aparține.</p>
+          <h1 class="display hero-word reveal text-[clamp(4.5rem,11.6vw,11.5rem)] max-w-[1100px]">
+            Construiește<br>
+            ceva care<br>
+            îți aparține<span class="signal">.</span>
+          </h1>
+          <div class="mt-10 grid sm:grid-cols-[1fr_260px] gap-8 items-end reveal">
+            <p class="narrow max-w-[620px] text-lg sm:text-xl leading-[1.18] font-medium">
+              Practical knowledge for building an online business, from the first idea to consistent revenue.
+            </p>
+            <a href="#resurse" class="group inline-flex items-center justify-between border-t-2 border-[var(--ink)] pt-3 narrow text-xs font-bold tracking-[.12em] uppercase">
+              Explorează resursele
+              <span class="signal text-xl leading-none transition-transform group-hover:translate-x-2" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <aside class="hidden lg:flex self-end pb-8 flex-col gap-4 reveal">
+          <div class="mono text-[9px] leading-4 uppercase tracking-[.12em] muted">
+            <p>O publicație</p>
+            <p>Un sistem de lucru</p>
+            <p>O idee simplă</p>
+          </div>
+          <div class="border-t hairline pt-3 narrow text-xs leading-5">
+            Afacere Online nu este un marketplace de cursuri. Este o bibliotecă de decizii utile pentru oameni care vor să construiască.
+          </div>
+        </aside>
+      </section>
+
+      <section id="directii" class="border-t hairline py-16 sm:py-20 scroll-mt-10">
+        <div class="grid lg:grid-cols-[150px_minmax(0,1fr)] gap-x-10">
+          <div class="mono text-[10px] uppercase tracking-[.14em] muted mb-10 lg:mb-0">01 / Direcții</div>
+
+          <div>
+            <div class="grid md:grid-cols-[1.05fr_.95fr] gap-x-16 gap-y-12 items-end">
+              <div>
+                <p class="rule-label mono text-[10px] uppercase tracking-[.14em] mb-5 signal">Harta de lucru</p>
+                <h2 class="display chapter-title text-[clamp(3.6rem,7.2vw,7rem)]">Șase zone.<br>Un singur business.</h2>
+              </div>
+              <p class="narrow max-w-md text-base leading-6 muted">
+                Idei bune devin afaceri doar când sunt legate de strategie, distribuție, vânzări și sisteme care pot susține creșterea.
+              </p>
+            </div>
+
+            <div class="mt-16 border-y hairline">
+              <template x-for="(item, index) in areas" :key="item">
+                <a href="#resurse" class="group grid grid-cols-[54px_1fr_auto] sm:grid-cols-[80px_1fr_auto] items-center gap-4 py-5 sm:py-6 border-b hairline last:border-b-0">
+                  <span class="mono text-[10px] muted" x-text="String(index + 1).padStart(2, '0')"></span>
+                  <span class="display text-3xl sm:text-4xl group-hover:text-[var(--signal)] transition-colors" x-text="item"></span>
+                  <span class="narrow text-[10px] uppercase tracking-[.14em] muted group-hover:text-[var(--ink)] transition-colors">Explorează →</span>
+                </a>
+              </template>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="principii" class="py-16 sm:py-24 scroll-mt-10">
+        <div class="grid lg:grid-cols-[150px_minmax(0,1fr)] gap-x-10">
+          <div class="mono text-[10px] uppercase tracking-[.14em] muted mb-10 lg:mb-0">02 / Principii</div>
+
+          <div class="grid md:grid-cols-[1fr_1.15fr] gap-12 lg:gap-20">
+            <div>
+              <p class="rule-label mono text-[10px] uppercase tracking-[.14em] mb-5 signal">De la idee la execuție</p>
+              <h2 class="display chapter-title text-[clamp(3.4rem,6.5vw,6.5rem)]">Mai puțin zgomot.<br>Mai multă muncă bună.</h2>
+            </div>
+
+            <div class="space-y-0 border-t hairline">
+              <article class="grid sm:grid-cols-[110px_1fr] gap-5 py-7 border-b hairline reveal">
+                <span class="mono text-[10px] uppercase tracking-[.12em] signal">01 / Practic</span>
+                <div>
+                  <h3 class="display text-2xl mb-2">Cunoaștere care se poate folosi.</h3>
+                  <p class="narrow text-sm leading-6 muted">Idei traduse în decizii, pași, sisteme și instrumente. Fără ambalaj de curs dacă nu ajută problema.</p>
+                </div>
+              </article>
+              <article class="grid sm:grid-cols-[110px_1fr] gap-5 py-7 border-b hairline reveal">
+                <span class="mono text-[10px] uppercase tracking-[.12em] signal">02 / Independență</span>
+                <div>
+                  <h3 class="display text-2xl mb-2">Construiește ceva care îți aparține.</h3>
+                  <p class="narrow text-sm leading-6 muted">Obiectivul este capacitatea de a lua decizii și de a construi active, nu dependența de încă un canal sau încă o tactică.</p>
+                </div>
+              </article>
+              <article class="grid sm:grid-cols-[110px_1fr] gap-5 py-7 border-b hairline reveal">
+                <span class="mono text-[10px] uppercase tracking-[.12em] signal">03 / Momentum</span>
+                <div>
+                  <h3 class="display text-2xl mb-2">Învață. Aplică. Ajustează.</h3>
+                  <p class="narrow text-sm leading-6 muted">Un business online este un sistem viu. Resursele bune trebuie să ducă la următoarea acțiune, nu la încă un tab deschis.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resurse" class="border-t hairline py-16 sm:py-20 scroll-mt-10">
+        <div class="grid lg:grid-cols-[150px_minmax(0,1fr)] gap-x-10">
+          <div class="mono text-[10px] uppercase tracking-[.14em] muted mb-10 lg:mb-0">03 / Resurse</div>
+
+          <div>
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-7 border-b-2 border-[var(--ink)] pb-5">
+              <div>
+                <p class="rule-label mono text-[10px] uppercase tracking-[.14em] mb-4 signal">Începe de aici</p>
+                <h2 class="display text-[clamp(3.5rem,7vw,7rem)] leading-[.82] tracking-[-.055em]">Lucruri utile,<br>în ordine.</h2>
+              </div>
+              <p class="mono text-[10px] uppercase tracking-[.12em] muted max-w-[230px]">Alege problema. Găsește instrumentul. Pune-l la lucru.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 border-b hairline">
+              <a href="#directii" class="group py-8 md:pr-8 md:border-r hairline">
+                <span class="mono text-[10px] signal">01</span>
+                <h3 class="display text-3xl mt-10 mb-4 group-hover:text-[var(--signal)] transition-colors">Idei & strategie</h3>
+                <p class="narrow text-sm leading-6 muted">Clarifică ce construiești și de ce ar conta pentru cineva.</p>
+              </a>
+              <a href="#directii" class="group py-8 md:px-8 md:border-r hairline">
+                <span class="mono text-[10px] signal">02</span>
+                <h3 class="display text-3xl mt-10 mb-4 group-hover:text-[var(--signal)] transition-colors">Marketing & vânzări</h3>
+                <p class="narrow text-sm leading-6 muted">Transformă atenția în distribuție, conversații și venit.</p>
+              </a>
+              <a href="#directii" class="group py-8 md:pl-8">
+                <span class="mono text-[10px] signal">03</span>
+                <h3 class="display text-3xl mt-10 mb-4 group-hover:text-[var(--signal)] transition-colors">Sisteme & finanțe</h3>
+                <p class="narrow text-sm leading-6 muted">Construiește infrastructura care face creșterea sustenabilă.</p>
+              </a>
+            </div>
+
+            <div class="pt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+              <p class="narrow text-base">Afacere Online este pentru oameni care vor să treacă de la „aș putea” la „am construit”.</p>
+              <a href="#top" class="self-start sm:self-auto border-b-2 border-[var(--signal)] pb-1 narrow text-xs font-bold uppercase tracking-[.13em] hover:text-[var(--signal)] transition-colors">Înapoi sus ↑</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t hairline">
+      <div class="mx-auto max-w-[1380px] px-5 sm:px-8 lg:px-12 py-7 flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
+        <div class="narrow text-[11px] uppercase tracking-[.12em] font-bold">Afacere Online<span class="signal">.</span></div>
+        <div class="mono text-[9px] uppercase tracking-[.12em] muted">Construiește ceva care îți aparține.</div>
+        <div class="mono text-[9px] uppercase tracking-[.12em] muted">© 2026</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function site() {
+      return {
+        dark: document.documentElement.classList.contains('dark'),
+        areas: ['Idei', 'Strategie', 'Marketing', 'Vânzări', 'Sisteme', 'Finanțe'],
+        toggleTheme() {
+          this.dark = !this.dark;
+          document.documentElement.classList.toggle('dark', this.dark);
+          localStorage.setItem('afacere-theme', this.dark ? 'dark' : 'light');
+        }
+      };
+    }
+
+    window.addEventListener('load', () => {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced || typeof gsap === 'undefined') {
+        document.querySelectorAll('.reveal').forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+        return;
+      }
+
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .to('.reveal', {
+          opacity: 1,
+          y: 0,
+          duration: .72,
+          stagger: .07,
+          clearProps: 'transform'
+        });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          gsap.to(entry.target, {
+            opacity: 1,
+            y: 0,
+            duration: .65,
+            ease: 'power2.out',
+            overwrite: true
+          });
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: .12 });
+
+      document.querySelectorAll('section .reveal').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
