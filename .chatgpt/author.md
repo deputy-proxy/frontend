@@ -1781,23 +1781,3 @@ The repository must never accumulate exploratory variants merely because the aut
 16. Never claim a proof level or verification state that has not been reached.
 17. Accessibility and responsive behavior are production requirements, not polish passes.
 18. If a new direction is requested later, replace the existing single page rather than adding variants.
-### 31.22 Hard creative invariants
-
-1. Human judgement is final.
-2. One author is used throughout creative development.
-3. No contemporary visual-reference browsing during invention.
-4. Form is derived from subject evidence, not borrowed appearance.
-5. A through J are genuinely independent.
-6. Round 1 is typography, flat color and whitespace only.
-7. No SVG at any phase.
-8. No rendering-based self-judgement of Round 1.
-9. Concept capsules exist but remain hidden until after first visual reaction.
-10. Explicit lock is required before Round 2.
-11. Locked language governs production.
-12. Existing frontend implementation constraints remain active after lock.
-13. Do not invent factual claims, fake content, or unsupported product requirements.
-14. Do not claim a proof level that has not been reached.
-15. If all ten directions fail, learn from the rejection and create another ten only when the human requests it.
-16. Specificity beats novelty, and subject-derived specificity beats contemporary trend imitation.
-17. Never normalize a locked direction into a generic component system.
-18. Never use visual complexity to compensate for weak conceptual grounding.
