@@ -4,6 +4,7 @@
 
 - Deployable page: `originals/afacere-online-v3/index.html`
 - Deployment metadata: `originals/afacere-online-v3/deployment.md`
+- GitHub Pages URL: https://deputy-proxy.github.io/frontend/originals/afacere-online-v3/
 - Deployment workflow: existing `.github/workflows/pages.yml`
 - No workflow changes required.
 
