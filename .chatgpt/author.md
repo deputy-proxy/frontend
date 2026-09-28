@@ -1391,347 +1391,223 @@ Do not request final copy, every channel and dimension, quantities, budgets, sch
 
 ### 31.5 Private state tracking
 
-Privately track the furthest state explicitly approved by the human:
+Privately track the furthest state reached during the current request:
 
 1. minimum evidence available;
-2. ten typography-led HTML directions created;
-3. first visual judgement received;
-4. one direction shortlisted or selected;
-5. one direction explicitly locked;
-6. Round 2 artifacts or production system built;
-7. requested artifact set rebuilt with real copy;
-8. rebuilt artifacts accepted and generation rules frozen;
-9. HTML style guide built and linked;
-10. Round 2 verification completed.
+2. temporary visual directions explored;
+3. strongest direction selected internally;
+4. single production `index.html` built;
+5. `deployment.md` written with the selected-direction rationale;
+6. production verification completed.
 
-Continue from the furthest approved state. Do not restart when the human has already approved a premise or direction.
+Do not create repository artifacts for exploratory variants. Exploration is an internal design activity unless the user explicitly asks to expose variants.
 
-Do not announce phases, steps remaining, or estimated time.
+The repository output contract is strict:
 
-### 31.6 Round 1: ten independent typography-led HTML directions
+- one project directory;
+- exactly one deployable `index.html` at its root;
+- exactly one `deployment.md` at its root;
+- no A/B/C files;
+- no variant folders;
+- no Round 1 index;
+- no auxiliary HTML files;
+- no style guide unless explicitly requested or required by an already-approved workflow.
 
-When the user asks for an original visual direction and the brief supports discovery, create **A through J** as ten genuinely independent professional directions.
+The existing Pages workflow is authoritative. Never change it merely to accommodate the authoring process.
 
-Round 1 uses dependency-free **HTML + CSS only**.
+### 31.6 Visual exploration without multi-file output
 
-Create:
+When the brief benefits from visual exploration, generate multiple candidate directions **temporarily/internally** rather than committing them to the repository.
 
-- `A.html`
-- `B.html`
-- `C.html`
-- `D.html`
-- `E.html`
-- `F.html`
-- `G.html`
-- `H.html`
-- `I.html`
-- `J.html`
-- a neutral `index.html` linking to the ten directions.
+The candidates may be A through J or another reasonable number when that produces meaningful diversity. They are working material, not project deliverables.
 
-Round 1 is not a production implementation. It is visual evidence for human judgement.
+Use the candidates to explore genuinely different:
 
-The ten directions may share only:
+- composition;
+- typography;
+- reading path;
+- density;
+- color strategy;
+- navigation treatment;
+- section rhythm;
+- image strategy;
+- interaction language;
+- controlled unconventionality.
 
-- the real supplied working copy;
-- essential legibility/functional constraints;
-- the subject evidence;
-- neutral structural necessities.
+Do not mechanically rotate parameters. Each candidate should begin from a subject-derived premise.
 
-They must **not** share a layout skeleton, font combination, size scale, case strategy, palette, alignment logic, reading path, or whitespace rhythm.
+After exploration, select **one strongest direction** for implementation.
 
-Each direction begins from its own subject-derived premise and a blank HTML file.
+The user does not need to explicitly lock a candidate when the request asks for a finished page and authorizes the agent to choose among generated variants. In that case, the author is responsible for selecting the strongest candidate based on the brief, repository context, accessibility, responsive behavior, production constraints, and visual specificity.
 
-### 31.7 Round 1 visual ingredients
+If the user explicitly asks to see variants, expose them only in a way that does not violate the repository's one-`index.html` deployment contract. Prefer temporary/local previews or another non-repository presentation mechanism.
 
-Round 1 is deliberately constrained to:
+### 31.7 Candidate design boundary
 
-- words and letterforms;
-- font sizes;
-- font combinations;
-- case;
-- weight;
-- width;
-- grade;
-- optical size;
-- italic/slant;
-- genuine variable-font axes;
-- letter spacing;
-- word spacing;
-- line height;
-- line length;
-- kerning;
-- ligatures;
-- hyphenation;
-- punctuation;
+During visual invention, candidate directions may use the same creative restrictions previously applied to Round 1 when those restrictions improve originality:
+
+- typography;
+- flat or restrained color;
+- whitespace;
 - alignment;
-- line breaks;
-- flat background colors;
-- text colors;
-- whitespace.
+- scale;
+- rhythm;
+- subject-derived composition.
 
-Do **not** use:
+Candidates may be expanded into richer prototypes when necessary to judge the actual page direction, but do not introduce production dependencies or assets merely to make a candidate appear impressive.
 
-- shapes;
-- lines;
-- borders;
-- rules;
-- panels;
-- boxes;
-- bands;
-- circles;
-- blobs;
-- pseudo-elements;
-- gradients;
-- shadows;
-- filters;
-- masks;
-- clipping paths;
-- textures;
-- patterns;
-- icons;
-- logos;
-- photography;
-- illustration;
-- generated imagery;
-- animation;
-- HTML `<canvas>`;
-- decorative punctuation geometry;
-- SVG in any form.
+Never create SVG.
 
-Typography may overlap, crop, or run vertically only when it remains readable and professionally typeset.
-
-Do not stretch, warp, skew, or distort letterforms artificially.
+Do not let exploratory variants become a hidden component library or a collection of interchangeable templates.
 
 ### 31.8 Direction independence
 
-A through J must be complete design directions, not ten parameter mutations.
+Candidate directions must be meaningfully independent.
 
-Each direction independently determines:
+Each candidate should make deliberate decisions about:
 
 - composition and hierarchy;
 - font choice or combination;
 - display/supporting/small-text relationship;
 - size scale;
 - case behavior;
-- weight, width, grade, optical size, italic/slant;
-- letter and word spacing;
-- line height and measure;
-- kerning, ligatures, hyphenation and punctuation;
-- line-break behavior;
-- numeral, diacritic, abbreviation, multilingual and caption treatment where applicable;
-- flat canvas and text-color system;
-- margins, padding, gaps, gutters, columns and text-block widths;
-- indents, alignment, baseline relationships, cropping and edge relationships;
-- density, symmetry/asymmetry, repetition and whitespace;
-- reading path and sequencing;
-- emotional and cultural posture;
-- one memorable typographic relationship that can survive into later artifacts.
-
-Do not use a divergence matrix, numeric quotas, dice, style menus, or mechanical parameter rotation to manufacture diversity.
-
-### 31.9 Color coverage
-
-Across A through J, include at least one credible:
-
-- one-color text system;
-- two-color text system;
-- three-color text system;
-- four-color text system.
-
-Count active **letterform colors**, not the flat canvas background.
-
-Where multiple text colors are used, each role must visibly govern meaningful supplied text and affect hierarchy, rhythm, language behavior, or reading order.
-
-Do not add swatches, dummy text, labels, or arbitrary highlighted words to prove that a color exists.
-
-Color depth is set-level coverage, not a mechanical assignment. The remaining directions may use any color depth when their subject-derived premise justifies it.
-
-### 31.10 Concept capsules
-
-Create a concise written concept capsule alongside every direction, but keep these capsules hidden from the human during the first visual encounter.
-
-Each capsule records:
-
-- subject-derived premise in neutral language;
-- exact font or font combination;
-- font source and license status;
-- fallback status;
-- size scale;
-- case;
-- weight;
-- width;
 - spacing;
+- line height and measure;
 - alignment;
-- line-break rules;
-- margins;
-- padding;
-- gaps;
-- whitespace rules;
-- flat canvas value;
-- every active text-color value and semantic role;
-- approximate color proportions;
-- signature typographic relationship;
-- invariants for future continuation;
-- provisional assumptions;
-- unresolved risks;
-- concise instructions for translating the direction into Round 2 without normalizing it.
+- multilingual and Romanian diacritic behavior;
+- density and whitespace;
+- reading path;
+- emotional and cultural posture;
+- one memorable typographic or compositional relationship.
 
-The capsule is operational context, not sales copy.
+Do not manufacture diversity through superficial color swaps, font swaps, or small spacing changes.
 
-Do not give directions prestige-oriented style names, unsupported meanings, confident marketing rationales, or reference lists.
+A candidate should be rejected if it:
 
-### 31.11 Direction rejection rules
+- could accept another brand name without meaningful change;
+- resembles a familiar AI/SaaS template;
+- relies on generic cards, gradients, glassmorphism, decorative blobs, or dashboard patterns without business justification;
+- repeats a dominant pattern from recent originals without a reason;
+- creates novelty without a relationship to the subject;
+- sacrifices readability or accessibility for visual effect.
 
-Reject and rebuild any direction that:
+### 31.9 Candidate evaluation and selection
 
-- could accept a different brand name without meaningful change;
-- resembles a familiar SaaS, luxury, editorial, brutalist, wellness, or tech formula without subject-specific evidence;
-- contains anything outside the Round 1 ingredient boundary;
-- depends on illustration, geometry, imagery, effects, texture, or motion for character;
-- is merely a font, palette, density, or layout swap of another direction;
-- hides its typographic hierarchy or whitespace logic;
-- uses a claimed color role only in CSS or on insignificant fragments;
-- introduces novelty without a traceable relationship to the evidence;
-- would remain visually interchangeable with several unrelated pages in the repository.
+The author may evaluate exploratory candidates internally because the user has authorized the author to choose the strongest result.
 
-### 31.12 Human-first visual judgement
+Evaluate candidates against:
 
-After creating A through J, **do not render or inspect them for visual judgement yourself**.
+1. business objective and audience fit;
+2. specificity to the subject and Romanian context;
+3. visual distinctiveness;
+4. typography and hierarchy;
+5. centered structural coherence;
+6. responsive viability;
+7. accessibility and readability;
+8. interaction clarity;
+9. compatibility with the repository's existing visual history;
+10. production simplicity and maintainability.
 
-Do not use:
+Do not use numeric scores, rankings, tiers, or prestige labels in user-facing output.
 
-- browser automation;
-- Chrome or Claude in Chrome;
-- Computer Use;
-- Playwright;
-- Puppeteer;
-- screenshots;
-- image analysis;
-- visual comparison tools;
-- any other rendering or inspection tool.
+The selected direction is the one that best satisfies the complete brief without requiring the user to arbitrate between internal variants.
 
-Source-level validation is allowed. Visual judgement belongs to the human.
+If candidates are genuinely tied, prefer the direction with the clearest subject-derived identity and the lowest unnecessary implementation complexity.
 
-Do not claim that composition, typography, optical balance, legibility, or visual independence “passed” visual inspection.
+### 31.10 Selection record
 
-The first human encounter must be visual.
+Do not expose internal candidate files.
 
-Do not reveal before that first reaction:
+Record the final selection rationale in the project's `deployment.md`.
 
-- source code;
-- concept capsules;
-- style labels;
-- font names;
-- references;
-- persuasive rationales;
-- design-system explanations.
+The rationale should state, concisely:
 
-Link the actual HTML files instead.
+- what visual direction was selected;
+- which subject-derived characteristics drove the selection;
+- which important alternatives were explored, described generically rather than as separate artifacts;
+- why the selected direction better fit the brief;
+- which deliberate anti-generic decisions were retained;
+- any material implementation trade-offs.
 
-Ask for the human's immediate visual response in neutral terms:
+This is documentation of the production decision, not a marketing description.
 
-- which direction stays in memory;
-- what feels alive;
-- what feels false;
-- whether one deserves continuation.
+### 31.11 Production artifact contract
 
-Make clear that rejecting all ten is valid. There is no fixed number of Round 1 batches.
+For every original frontend project, the final repository output must be:
 
-### 31.13 Selection, refinement and lock
+`originals/<project>/index.html`
 
-The human may:
+and:
 
-- select a direction for consideration;
-- compare its capsule;
-- request bounded typography-only refinement;
-- reject all ten and request another ten;
-- explicitly lock one direction.
+`originals/<project>/deployment.md`
 
-Interest or praise is not a lock.
+Nothing else is required for the page itself unless the repository already contains an established project-specific asset or implementation structure.
 
-Once a direction is explicitly locked:
+Do not create:
 
-- terminate the other nine directions;
-- preserve the locked HTML;
-- preserve its capsule;
-- copy the capsule into `ROUND-2-CONTEXT.md`;
-- record human corrections without rewriting the original premise;
-- treat locked typography, palette, spacing and whitespace as authority for Round 2;
-- stop proposing alternative directions.
+- `A.html`, `B.html`, etc.;
+- `round-1/`;
+- `variants/`;
+- `concept-capsules/`;
+- `STYLEGUIDE.html`;
+- `ROUND-2-CONTEXT.md`;
 
-### 31.14 Round 2 production
+unless the user explicitly asks for those artifacts.
 
-Only after an explicit lock may production complexity enter.
+If temporary candidate files are created during development, remove them before completion.
 
-Round 2 creates the actual artifacts required by the project. Do not invent a new artifact set.
+### 31.12 Production implementation
 
-Round 2 may introduce shapes, lines, imagery, icons, material effects, motion, interaction, and other visual devices **only when the artifact requires them or the human has approved their use**.
+Once the strongest direction is selected, build the actual page directly as the single `index.html`.
 
-Derive those additions from the locked typography and concept capsule. Do not import a new aesthetic.
+The final page must:
 
-For interfaces:
+- use the repository's established frontend stack;
+- use Tailwind CSS for styling where applicable;
+- use Alpine.js for lightweight state and interaction;
+- use GSAP for purposeful animation;
+- preserve semantic HTML;
+- implement responsive desktop/tablet/mobile behavior;
+- include visible keyboard focus;
+- support reduced motion;
+- include meaningful accessible labels;
+- maintain sufficient contrast;
+- use real supplied copy;
+- avoid fabricated claims, metrics, testimonials, logos, or product functionality.
 
-- use real components;
-- implement real states;
-- use real content;
-- support responsive behavior;
-- provide keyboard access;
-- provide visible focus;
-- preserve recoverability;
-- do not build a decorative component sheet instead of a working interface.
+Do not preserve exploratory variants in the repository.
 
-For graphic artifacts:
+### 31.13 Existing frontend stack
 
-- use real format constraints;
-- preserve intended medium and size;
-- keep HTML/CSS as editable source where practical;
-- export PNG/WebP/JPEG for digital use and PDF for print when appropriate.
-
-**Never create SVG.** Do not author, generate, edit, trace, convert to, export to, or recommend SVG. An existing user-supplied/licensed SVG may only be treated as an immutable input after lock and explicit human approval, and must not be altered, traced, inlined, or presented as newly created work.
-
-### 31.15 Existing frontend stack in Round 2
-
-The repository's existing original-page contract remains authoritative after lock:
+The repository's existing original-page contract remains authoritative:
 
 - Tailwind CSS for styling;
 - Alpine.js for lightweight state and interaction;
 - GSAP for purposeful animation;
 - existing repository architecture where applicable;
 - existing assets before replacements;
-- existing React Bits patterns only where they genuinely support the locked system.
+- existing React Bits patterns only where they genuinely support the selected direction.
 
 Do not introduce a framework, component library, icon family, font, or production dependency without approval.
 
-React Bits is a production implementation resource, not a source for Round 1 visual invention.
+Never use SVG.
 
-### 31.16 Typography and font isolation
+### 31.14 Typography and font isolation
 
-If a font is necessary for Round 1:
+Typography is a primary design material.
 
-1. derive formal and language requirements from the subject first;
-2. do not browse type catalogues for inspiration;
-3. use only the controlled font exception allowed by the project;
-4. record source, license and fallback status in the capsule.
+Before choosing a font:
 
-Typography is a primary design material, but novelty does not justify poor readability, licensing problems, missing diacritics, or bad multilingual behavior.
+1. derive formal and language requirements from the subject;
+2. prioritize Romanian diacritics and readability;
+3. avoid unnecessary external font dependencies;
+4. record relevant font/fallback information in `deployment.md` when it materially affects the implementation.
 
-### 31.17 Responsive, accessibility and recoverability boundaries
+Do not browse contemporary type catalogues merely to imitate current design trends.
 
-Accessibility and recoverability are fixed boundaries, not optional aesthetic decisions.
+### 31.15 Responsive, accessibility and recoverability boundaries
 
-Contextually determine:
-
-- grids;
-- type ratios;
-- spacing rhythms;
-- responsive transformations;
-- component shapes;
-- motion character;
-- interaction behavior.
-
-Never make essential content dependent on animation, hover, or visual effects.
-
-In Round 2, maintain:
+Maintain:
 
 - semantic HTML;
 - keyboard access;
@@ -1743,85 +1619,114 @@ In Round 2, maintain:
 - readable text measures;
 - recoverable interaction states.
 
-### 31.18 Artifact acceptance and freeze
+Never make essential content dependent on animation, hover, or visual effects.
 
-After rebuilding the requested artifacts with real copy, ask whether the locked direction's character survived.
+The centered composition requirement means the page should use a coherent centered container/grid as its structural anchor. Individual sections may deliberately break symmetry when that improves hierarchy or tension.
 
-Do not claim human acceptance or freeze the system until the human explicitly approves the rebuilt artifacts.
+### 31.16 Light/dark theme
 
-Once approved:
+Every original page must provide a real light/dark theme toggle unless the product explicitly requires a single immutable theme.
 
-- freeze the approved files;
-- freeze generation rules;
-- record invariants;
-- record allowed variation;
-- record prohibited normalization;
-- record what requires an explicit reopening decision.
+- Make it keyboard accessible.
+- Give it an accessible name and state.
+- Respect `prefers-color-scheme` when no explicit preference exists.
+- Persist the selected theme when practical.
+- Define intentional tokens for both themes.
+- Rebalance borders, surfaces, imagery, contrast, and accent intensity rather than simply inverting colors.
+- Verify that both themes remain readable and coherent on desktop and mobile.
 
-Then create and link a self-contained `STYLEGUIDE.html` rendered in the locked visual language.
+The theme toggle is part of the product interface, not a decorative afterthought.
 
-The style guide must cover, as applicable:
+### 31.17 Motion
 
-- premise;
-- source boundary;
-- typography and licensing;
-- color;
-- hierarchy;
-- composition;
-- spacing;
-- margins;
-- padding;
-- gaps;
-- gutters;
-- columns;
-- alignment;
-- density;
-- rhythm;
-- whitespace;
-- language behavior;
-- responsive/contextual variation;
-- shapes;
-- lines;
-- material;
-- imagery;
-- icons;
-- motion;
-- interaction;
-- accessibility;
-- recoverability;
-- invariants;
-- allowed variation;
-- prohibited normalization;
-- asset and license status;
-- generation rules;
-- proof status;
-- open issues;
-- reopening conditions.
+Use GSAP only where motion reinforces hierarchy or interaction.
 
-Include copyable continuation prompts for:
+Prefer:
 
-- requesting another artifact;
-- adapting an approved artifact;
-- revising without reopening the direction;
-- continuing in a new thread using `ROUND-2-CONTEXT.md` and `STYLEGUIDE.html`.
+- one coordinated page-load sequence;
+- restrained section reveals;
+- meaningful hover/focus transitions;
+- navigation state transitions;
+- subtle scroll-linked behavior when it genuinely clarifies content.
 
-Do not create additional artifacts until requested.
+Avoid:
 
-### 31.19 Proof-level language
+- perpetual motion;
+- excessive parallax;
+- blocking intros;
+- animating every element;
+- motion that makes content harder to read.
 
-Use precise status language:
+Respect `prefers-reduced-motion`.
 
-- **Typography-led HTML design direction selected** = the human identified a direction worth considering after visual judgement.
-- **Direction locked** = the human explicitly chose one capsule as the Round 2 authority.
-- **Round 2 artifact system available** = the requested concrete artifacts, reusable rules, assets, licenses, implementation, and verification exist.
+### 31.18 Inspiration and anti-convergence
 
-Never call a Round 1 direction production-ready.
+The inspiration library and supplied inspiration site are evidence, not templates.
 
-Never claim verification that was not performed.
+During invention:
 
-### 31.20 Reopening conditions
+- derive the first candidate concepts from the business brief;
+- do not reproduce the supplied site;
+- do not copy its section ordering, proportions, copy, imagery, or distinctive implementation;
+- use inspiration only to understand transferable principles;
+- compare against recent originals to avoid visual convergence.
 
-Reopen a locked direction only for:
+The final page should feel specific to the enterprise rather than like a renamed reference site.
+
+### 31.19 Deployment documentation
+
+At the end of every original-page implementation, create:
+
+`originals/<project>/deployment.md`
+
+The file must document:
+
+- project name;
+- final deployable path;
+- implementation status;
+- selected visual direction;
+- concise selection rationale;
+- alternatives explored internally, without linking to or preserving variant files;
+- major design decisions;
+- asset sources and licensing notes where relevant;
+- accessibility/responsive notes;
+- verification performed;
+- known limitations or unresolved issues.
+
+Do not claim visual verification, browser verification, CI success, or deployment success unless it was actually performed.
+
+The file is repository metadata and must remain alongside the single `index.html`.
+
+### 31.20 Verification
+
+Before completion:
+
+1. inspect the final `index.html`;
+2. confirm no exploratory variant files remain;
+3. confirm the project contains only the intended deployable artifact plus `deployment.md`;
+4. validate semantic structure and obvious accessibility issues at source level;
+5. run the repository's available build/test commands when the environment permits;
+6. inspect CI/workflow configuration for compatibility;
+7. confirm the final page does not require a change to `.github/workflows/pages.yml`;
+8. document any verification limitations in `deployment.md`.
+
+Never claim a check was performed when it was not.
+
+### 31.21 Output and proof language
+
+Use precise status language.
+
+For a normal completed authoring request:
+
+- **Production page available** = the single `index.html` exists at the expected project root.
+- **Deployment metadata available** = `deployment.md` exists and documents the implementation and selection rationale.
+- **Verified** = only the specific checks that were actually performed.
+
+Do not expose internal candidate count, ranking, or scoring unless the user explicitly asks for the creative process.
+
+### 31.22 Reopening conditions
+
+Reopen the visual direction only for:
 
 - new evidence;
 - cultural harm;
@@ -1832,29 +1737,50 @@ Reopen a locked direction only for:
 
 Do not reopen because another contemporary design looks fashionable.
 
-A project-local creative ledger may be offered, but create it only with human approval.
+If the user requests a new direction, replace the single production page rather than accumulating variant folders.
 
-### 31.21 Integration with the existing four-input original-page contract
+### 31.23 Integration with the four-input original-page contract
 
-The existing original-page input contract remains compact:
+The original-page input contract remains:
 
 1. Business objective + audience.
 2. Content + primary action.
 3. Brand + visual direction.
 4. Optional inspiration site.
 
-However, for the Innovative UX workflow:
+For creative exploration:
 
-- Inputs 1 and 2 are the primary creative evidence.
+- Inputs 1 and 2 are the primary evidence.
 - Input 3 establishes factual brand constraints.
-- Input 4 is contextual evidence only and must not seed Round 1 invention.
-- Do not ask for additional aesthetic, layout, animation, responsive, asset, or implementation questionnaires.
-- If a brief is sufficient, begin with reversible assumptions.
+- Input 4 is contextual evidence only.
+- Do not request additional design questionnaires when the brief is sufficient.
 
-The output contract is therefore **not** “one aesthetic direction immediately implemented.” For a genuinely original visual-design task, the workflow is:
+The output contract is now:
 
-**brief → subject-derived evidence → ten independent typography-led HTML directions → human visual judgement → explicit lock → Round 2 production → human approval → frozen production language.**
+**brief → internal visual exploration → internal candidate selection → one production `index.html` → `deployment.md` documenting the selection → verification.**
 
+The repository must never accumulate exploratory variants merely because the author used them to make the final decision.
+
+### 31.24 Hard creative invariants
+
+1. Human intent is the source of truth.
+2. The author may explore multiple directions internally when useful.
+3. Internal exploration must not become repository artifacts.
+4. The final project contains one deployable `index.html`.
+5. The final project contains one `deployment.md`.
+6. Existing `.github/workflows/pages.yml` remains unchanged unless the user explicitly requests a deployment change.
+7. Form is derived from the subject and brief, not borrowed from contemporary references.
+8. Specificity beats novelty.
+9. Centered structural coherence remains the default, with deliberate exceptions.
+10. Light/dark mode is mandatory unless explicitly exempted by the product.
+11. Tailwind, Alpine.js, and GSAP remain the production stack where applicable.
+12. Never create SVG.
+13. Never invent factual claims, fake content, or unsupported product requirements.
+14. Do not preserve discarded variants.
+15. Document the final design-selection rationale in `deployment.md`.
+16. Never claim a proof level or verification state that has not been reached.
+17. Accessibility and responsive behavior are production requirements, not polish passes.
+18. If a new direction is requested later, replace the existing single page rather than adding variants.
 ### 31.22 Hard creative invariants
 
 1. Human judgement is final.
