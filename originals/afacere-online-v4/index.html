@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ro" x-data="site()" x-init="init()" :class="{dark: theme === 'dark'}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Afacere Online. Construiește ceva care îți aparține. Idei, strategie, marketing, vânzări, sisteme și finanțe pentru afaceri online.">
+  <meta name="author" content="Afacere Online">
+  <meta name="theme-color" content="#f5f4ef">
+  <title>Afacere Online — Construiește ceva care îți aparține.</title>
+
+  <script>
+    (() => {
+      const saved = localStorage.getItem('afacere-theme');
+      const dark = saved === 'dark' || (!saved && matchMedia('(prefers-color-scheme: dark)').matches);
+      if (dark) document.documentElement.classList.add('dark');
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+            body: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+  <style>
+    :root {
+      --bg:#f5f4ef;
+      --fg:#151513;
+      --muted:#6c6b65;
+      --line:rgba(21,21,19,.14);
+      --surface:#e9e8e2;
+      --signal:#d8ff38;
+      --signal-ink:#11120c;
+      --dark:#171815;
+      --dark-muted:#9d9e95;
+    }
+    .dark {
+      --bg:#121310;
+      --fg:#f1f1e9;
+      --muted:#9d9e95;
+      --line:rgba(241,241,233,.15);
+      --surface:#1d1e19;
+      --signal:#d8ff38;
+      --signal-ink:#11120c;
+      --dark:#f1f1e9;
+      --dark-muted:#686961;
+    }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      background:var(--bg);
+      color:var(--fg);
+      font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+      transition:background-color .3s ease,color .3s ease;
+    }
+    ::selection { background:var(--signal); color:var(--signal-ink); }
+    .line { border-color:var(--line); }
+    .muted { color:var(--muted); }
+    .surface { background:var(--surface); }
+    .focus-ring:focus-visible { outline:2px solid var(--signal); outline-offset:4px; }
+    .display { font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; letter-spacing:-.065em; }
+    .mono { font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace; }
+    .hero-title { font-size:clamp(4.4rem,12vw,11.5rem); line-height:.79; }
+    .section-title { font-size:clamp(3.5rem,7vw,7.2rem); line-height:.82; }
+    .reveal { opacity:0; transform:translateY(24px); }
+    .signal-fill { background:var(--signal); color:var(--signal-ink); }
+    .signal-line { border-color:var(--signal); }
+    .business-map-row { transition:background-color .25s ease,color .25s ease,border-color .25s ease; }
+    .business-map-row:hover { background:var(--fg); color:var(--bg); }
+    .business-map-row:hover .muted { color:color-mix(in srgb,var(--bg) 62%,transparent); }
+    .business-map-row:hover .signal-number { background:var(--signal); color:var(--signal-ink); border-color:var(--signal); }
+    .orbit { animation:orbit 18s linear infinite; transform-origin:center; }
+    .orbit-reverse { animation:orbit 26s linear infinite reverse; transform-origin:center; }
+    @keyframes orbit { to { transform:rotate(360deg); } }
+    @media (max-width:767px) {
+      .hero-title { font-size:clamp(4rem,18vw,7rem); line-height:.84; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      .orbit,.orbit-reverse { animation:none; }
+      .reveal { opacity:1; transform:none; }
+      *,*:before,*:after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen antialiased overflow-x-hidden">
+  <header class="sticky top-0 z-50 border-b line bg-[color-mix(in_srgb,var(--bg)_92%,transparent)] backdrop-blur-md">
+    <div class="mx-auto flex max-w-[1440px] items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
+      <a href="#top" class="focus-ring flex items-center gap-2" aria-label="Afacere Online, începutul paginii">
+        <span class="display text-base font-bold tracking-[-.04em]">Afacere Online</span>
+        <span class="signal-fill grid size-2.5 place-items-center rounded-full" aria-hidden="true"></span>
+      </a>
+
+      <nav class="hidden items-center gap-8 md:flex" aria-label="Navigație principală">
+        <a href="#sistem" class="focus-ring text-[11px] font-semibold uppercase tracking-[.14em] transition hover:text-[var(--signal)]">Sistem</a>
+        <a href="#directii" class="focus-ring text-[11px] font-semibold uppercase tracking-[.14em] transition hover:text-[var(--signal)]">Direcții</a>
+        <a href="#resurse" class="focus-ring text-[11px] font-semibold uppercase tracking-[.14em] transition hover:text-[var(--signal)]">Resurse</a>
+        <a href="#incepe" class="focus-ring text-[11px] font-semibold uppercase tracking-[.14em] transition hover:text-[var(--signal)]">Începe</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button @click="toggleTheme()" class="focus-ring grid size-9 place-items-center border line text-xs font-semibold" :aria-label="theme === 'dark' ? 'Activează tema luminoasă' : 'Activează tema întunecată'" :aria-pressed="(theme === 'dark').toString()">
+          <span x-text="theme === 'dark' ? '☼' : '◐'"></span>
+        </button>
+        <a href="#incepe" class="focus-ring hidden signal-fill px-5 py-2.5 text-[10px] font-bold uppercase tracking-[.14em] transition hover:brightness-90 sm:block">Începe de aici</a>
+        <button @click="menu=!menu" class="focus-ring grid size-9 place-items-center border line text-xs md:hidden" :aria-expanded="menu" aria-controls="mobile-nav" aria-label="Meniu">
+          <span x-text="menu ? '×' : '≡'"></span>
+        </button>
+      </div>
+    </div>
+
+    <div x-show="menu" x-transition id="mobile-nav" class="border-t line bg-[var(--bg)] md:hidden">
+      <nav class="mx-auto grid max-w-[1440px] px-5 sm:px-8" aria-label="Navigație mobilă">
+        <a @click="menu=false" href="#sistem" class="focus-ring border-b line py-4 text-sm font-semibold">Sistem</a>
+        <a @click="menu=false" href="#directii" class="focus-ring border-b line py-4 text-sm font-semibold">Direcții</a>
+        <a @click="menu=false" href="#resurse" class="focus-ring border-b line py-4 text-sm font-semibold">Resurse</a>
+        <a @click="menu=false" href="#incepe" class="focus-ring py-4 text-sm font-semibold">Începe de aici ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="border-b line">
+      <div class="mx-auto max-w-[1440px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+        <div class="grid items-end gap-10 lg:grid-cols-[1fr_290px]">
+          <div>
+            <p class="hero reveal mono text-[10px] font-bold uppercase tracking-[.2em] text-[var(--signal)]">Cunoaștere practică / România / 2026</p>
+            <h1 class="hero reveal display mt-7 max-w-[1200px] font-black uppercase hero-title">Construiește.<br>Testează.<br><span class="text-[var(--signal)]">Crește.</span></h1>
+          </div>
+          <div class="hero reveal border-t-2 border-[var(--fg)] pt-5 lg:mb-2">
+            <p class="text-base leading-6">Un sistem practic pentru oameni care vor să transforme o idee, o abilitate sau un business existent într-un activ care le aparține.</p>
+            <a href="#sistem" class="focus-ring mt-7 inline-flex items-center gap-8 bg-[var(--fg)] px-6 py-3.5 text-[10px] font-bold uppercase tracking-[.15em] text-[var(--bg)] transition hover:bg-[var(--signal)] hover:text-[var(--signal-ink)]">Vezi cum funcționează <span>↓</span></a>
+          </div>
+        </div>
+
+        <div class="mt-16 grid gap-0 border-y line md:grid-cols-3">
+          <div class="border-b line p-5 md:border-b-0 md:border-r">
+            <p class="mono text-[9px] uppercase tracking-[.18em] muted">01 / Clarifică</p>
+            <p class="mt-3 display text-3xl font-bold">Ce construiești?</p>
+          </div>
+          <div class="border-b line p-5 md:border-b-0 md:border-r">
+            <p class="mono text-[9px] uppercase tracking-[.18em] muted">02 / Construiește</p>
+            <p class="mt-3 display text-3xl font-bold">Cum ajunge la oameni?</p>
+          </div>
+          <div class="p-5">
+            <p class="mono text-[9px] uppercase tracking-[.18em] muted">03 / Optimizează</p>
+            <p class="mt-3 display text-3xl font-bold">Ce merită păstrat?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sistem" class="border-b line bg-[var(--fg)] text-[var(--bg)]">
+      <div class="mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div class="grid gap-14 lg:grid-cols-[.75fr_1.25fr]">
+          <div class="reveal">
+            <p class="mono text-[10px] uppercase tracking-[.2em] text-[color-mix(in_srgb,var(--bg)_50%,transparent)]">01 — Sistemul</p>
+            <h2 class="display mt-7 max-w-xl section-title font-black">Nu încă un curs.<br><span class="text-[var(--signal)]">Un mod de lucru.</span></h2>
+          </div>
+          <div class="reveal lg:pt-2">
+            <p class="max-w-2xl text-xl leading-8 sm:text-2xl">Afacere Online adună cunoașterea în jurul deciziilor pe care trebuie să le iei: idee, strategie, distribuție, vânzări, sisteme și bani.</p>
+            <div class="mt-14 grid gap-0 border-t border-[color-mix(in_srgb,var(--bg)_18%,transparent)] sm:grid-cols-3">
+              <div class="border-b border-[color-mix(in_srgb,var(--bg)_18%,transparent)] py-6 sm:border-b-0 sm:border-r sm:pr-6">
+                <p class="mono text-[9px] uppercase tracking-[.18em] text-[color-mix(in_srgb,var(--bg)_45%,transparent)]">Input</p>
+                <p class="mt-3 display text-3xl font-bold">O problemă</p>
+              </div>
+              <div class="border-b border-[color-mix(in_srgb,var(--bg)_18%,transparent)] py-6 sm:border-b-0 sm:border-r sm:px-6">
+                <p class="mono text-[9px] uppercase tracking-[.18em] text-[color-mix(in_srgb,var(--bg)_45%,transparent)]">Proces</p>
+                <p class="mt-3 display text-3xl font-bold">O decizie</p>
+              </div>
+              <div class="py-6 sm:pl-6">
+                <p class="mono text-[9px] uppercase tracking-[.18em] text-[color-mix(in_srgb,var(--bg)_45%,transparent)]">Output</p>
+                <p class="mt-3 display text-3xl font-bold">O acțiune</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-20 grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+          <div class="reveal">
+            <p class="mono text-[9px] uppercase tracking-[.2em] text-[color-mix(in_srgb,var(--bg)_45%,transparent)]">The business map / live model</p>
+            <div class="mt-7 relative mx-auto aspect-square max-w-[420px]">
+              <div class="absolute inset-[16%] rounded-full border border-[color-mix(in_srgb,var(--bg)_18%,transparent)]"></div>
+              <div class="absolute inset-[28%] rounded-full border border-[color-mix(in_srgb,var(--bg)_25%,transparent)]"></div>
+              <div class="orbit absolute inset-[9%] rounded-full border border-[var(--signal)] border-dashed opacity-70"></div>
+              <div class="orbit-reverse absolute inset-[22%] rounded-full border border-[color-mix(in_srgb,var(--bg)_32%,transparent)] border-dashed"></div>
+              <div class="absolute inset-0 grid place-items-center">
+                <div class="signal-fill grid size-28 place-items-center rounded-full text-center sm:size-36">
+                  <span class="display text-2xl font-black leading-none">BUSINESS<br>SYSTEM</span>
+                </div>
+              </div>
+              <span class="absolute left-0 top-1/2 -translate-y-1/2 mono text-[9px] uppercase tracking-[.15em]">idee</span>
+              <span class="absolute right-0 top-1/2 -translate-y-1/2 mono text-[9px] uppercase tracking-[.15em]">piață</span>
+              <span class="absolute left-1/2 top-0 -translate-x-1/2 mono text-[9px] uppercase tracking-[.15em]">ofertă</span>
+              <span class="absolute bottom-0 left-1/2 -translate-x-1/2 mono text-[9px] uppercase tracking-[.15em]">cash</span>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <div class="border-t border-[color-mix(in_srgb,var(--bg)_20%,transparent)]">
+              <article class="grid grid-cols-[80px_1fr] gap-5 border-b border-[color-mix(in_srgb,var(--bg)_20%,transparent)] py-6">
+                <span class="mono text-[9px] uppercase tracking-[.16em] text-[color-mix(in_srgb,var(--bg)_45%,transparent)]">01</span>
+                <div><h3 class="display text-3xl font-bold">Claritate</h3><p class="mt-2 max-w-lg text-sm leading-6 text-[color-mix(in_srgb,var(--bg)_62%,transparent)]">Separă ideea bună de ideea care doar sună bine. Definește cui servește și de ce ar plăti cineva.</p></div>
+              </article>
+              <article class="grid grid-cols-[80px_1fr] gap-5 border-b border-[color-mix(in_srgb,var(--bg)_20%,transparent)] py-6">
+                <span class="mono text-[9px] uppercase tracking-[.16em] text-[color-mix(in_srgb,var(--bg)_45%,transparent)]">02</span>
+                <div><h3 class="display text-3xl font-bold">Distribuție</h3><p class="mt-2 max-w-lg text-sm leading-6 text-[color-mix(in_srgb,var(--bg)_62%,transparent)]">Alege canalele care pot aduce atenție repetabilă, nu doar un vârf de trafic.</p></div>
+              </article>
+              <article class="grid grid-cols-[80px_1fr] gap-5 border-b border-[color-mix(in_srgb,var(--bg)_20%,transparent)] py-6">
+                <span class="mono text-[9px] uppercase tracking-[.16em] text-[color-mix(in_srgb,var(--bg)_45%,transparent)]">03</span>
+                <div><h3 class="display text-3xl font-bold">Economics</h3><p class="mt-2 max-w-lg text-sm leading-6 text-[color-mix(in_srgb,var(--bg)_62%,transparent)]">Înțelege ce intră, ce costă și ce trebuie să fie adevărat pentru ca modelul să reziste.</p></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="directii" class="border-b line">
+      <div class="mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div class="grid gap-12 lg:grid-cols-[.65fr_1.35fr]">
+          <div class="reveal">
+            <p class="mono text-[10px] font-bold uppercase tracking-[.2em] text-[var(--signal)]">02 — Direcții</p>
+            <h2 class="display mt-6 section-title font-black">Șase zone.<br>O afacere.</h2>
+            <p class="mt-7 max-w-sm text-sm leading-6 muted">Nu trebuie să le rezolvi pe toate în aceeași zi. Trebuie să știi care dintre ele îți blochează următorul pas.</p>
+          </div>
+
+          <div class="reveal border-t-2 border-[var(--fg)]">
+            <template x-for="(item,index) in areas" :key="item.name">
+              <a href="#resurse" class="focus-ring business-map-row grid grid-cols-[54px_1fr_auto] items-center gap-4 border-b line py-6 sm:grid-cols-[74px_1fr_170px_auto] sm:py-7">
+                <span class="signal-number mono grid size-8 place-items-center border line text-[9px] font-bold transition" x-text="String(index+1).padStart(2,'0')"></span>
+                <span class="display text-3xl font-bold tracking-[-.04em] sm:text-4xl" x-text="item.name"></span>
+                <span class="hidden text-xs muted sm:block" x-text="item.detail"></span>
+                <span class="text-xl" aria-hidden="true">↗</span>
+              </a>
+            </template>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resurse" class="border-b line bg-[var(--surface)]">
+      <div class="mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div class="grid gap-12 lg:grid-cols-[.7fr_1.3fr]">
+          <div class="reveal">
+            <p class="mono text-[10px] font-bold uppercase tracking-[.2em] muted">03 — Resurse</p>
+            <h2 class="display mt-6 section-title font-black">Începe cu<br>problema.</h2>
+            <p class="mt-7 max-w-sm text-sm leading-6 muted">Ghiduri, instrumente și idei organizate după ceea ce vrei să faci, nu după ce produs vrem să-ți vindem.</p>
+            <a href="#incepe" class="focus-ring mt-8 inline-flex items-center gap-6 border-2 border-[var(--fg)] px-6 py-3.5 text-[10px] font-bold uppercase tracking-[.15em] transition hover:bg-[var(--fg)] hover:text-[var(--bg)]">Explorează biblioteca <span>→</span></a>
+          </div>
+
+          <div class="reveal grid gap-0 border-t-2 border-[var(--fg)]">
+            <article class="grid gap-6 border-b line py-7 sm:grid-cols-[1fr_190px]">
+              <div><p class="mono text-[9px] uppercase tracking-[.18em] text-[var(--signal)]">Idei / început</p><h3 class="display mt-3 text-3xl font-bold">Cum alegi o idee care merită testată</h3><p class="mt-3 max-w-xl text-sm leading-6 muted">Un cadru simplu pentru a trece de la „ar fi interesant” la o problemă reală, un client real și un prim test.</p></div>
+              <div class="mono self-end text-[9px] uppercase tracking-[.15em] muted">Ghid · 12 min</div>
+            </article>
+            <article class="grid gap-6 border-b line py-7 sm:grid-cols-[1fr_190px]">
+              <div><p class="mono text-[9px] uppercase tracking-[.18em] text-[var(--signal)]">Marketing / distribuție</p><h3 class="display mt-3 text-3xl font-bold">Construiește un canal, nu doar o campanie</h3><p class="mt-3 max-w-xl text-sm leading-6 muted">Cum gândești distribuția ca sistem repetabil, de la primul contact până la revenirea clientului.</p></div>
+              <div class="mono self-end text-[9px] uppercase tracking-[.15em] muted">Playbook · 18 min</div>
+            </article>
+            <article class="grid gap-6 border-b line py-7 sm:grid-cols-[1fr_190px]">
+              <div><p class="mono text-[9px] uppercase tracking-[.18em] text-[var(--signal)]">Finanțe / control</p><h3 class="display mt-3 text-3xl font-bold">Ce trebuie să știi despre economia businessului tău</h3><p class="mt-3 max-w-xl text-sm leading-6 muted">Venit, cost, marjă, cash și câteva numere care merită urmărite înainte să te convingă un dashboard colorat că totul merge.</p></div>
+              <div class="mono self-end text-[9px] uppercase tracking-[.15em] muted">Ghid · 15 min</div>
+            </article>
+            <article class="grid gap-6 py-7 sm:grid-cols-[1fr_190px]">
+              <div><p class="mono text-[9px] uppercase tracking-[.18em] text-[var(--signal)]">Sisteme / execuție</p><h3 class="display mt-3 text-3xl font-bold">Transformă munca repetitivă într-un sistem</h3><p class="mt-3 max-w-xl text-sm leading-6 muted">Documentează, automatizează și delegă doar după ce ai înțeles ce merită repetat.</p></div>
+              <div class="mono self-end text-[9px] uppercase tracking-[.15em] muted">Framework · 10 min</div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="incepe" class="border-b line">
+      <div class="mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+        <div class="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-end">
+          <div class="reveal">
+            <p class="mono text-[10px] font-bold uppercase tracking-[.2em] text-[var(--signal)]">04 — Primul pas</p>
+            <h2 class="display mt-6 section-title font-black">O idee nu devine business pentru că ai mai citit despre ea.</h2>
+          </div>
+          <div class="reveal lg:pb-2">
+            <p class="max-w-xl text-xl leading-8">Alege problema pe care încerci să o rezolvi. Începe de acolo și folosește restul sistemului doar când devine relevant.</p>
+            <div class="mt-9 flex flex-wrap gap-3">
+              <a href="#resurse" class="focus-ring signal-fill inline-flex items-center gap-7 px-6 py-4 text-[10px] font-bold uppercase tracking-[.15em] transition hover:brightness-90">Explorează resursele <span>↗</span></a>
+              <a href="#directii" class="focus-ring inline-flex items-center gap-7 border line px-6 py-4 text-[10px] font-bold uppercase tracking-[.15em] transition hover:border-[var(--fg)]">Vezi direcțiile <span>↓</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[var(--fg)] text-[var(--bg)]">
+    <div class="mx-auto max-w-[1440px] px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+      <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div>
+          <div class="display text-2xl font-bold tracking-[-.05em]">Afacere Online<span class="text-[var(--signal)]">.</span></div>
+          <p class="mt-5 max-w-sm text-sm leading-6 text-[color-mix(in_srgb,var(--bg)_58%,transparent)]">Construiește ceva care îți aparține.</p>
+        </div>
+        <nav class="grid gap-3 text-[10px] font-bold uppercase tracking-[.15em]" aria-label="Navigație footer">
+          <a class="focus-ring hover:text-[var(--signal)]" href="#sistem">Sistem</a>
+          <a class="focus-ring hover:text-[var(--signal)]" href="#directii">Direcții</a>
+          <a class="focus-ring hover:text-[var(--signal)]" href="#resurse">Resurse</a>
+        </nav>
+        <div class="text-[10px] uppercase tracking-[.15em] text-[color-mix(in_srgb,var(--bg)_45%,transparent)]">
+          <p>România / Online</p>
+          <p class="mt-2">© 2026 Afacere Online</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function site() {
+      return {
+        theme: 'light',
+        menu: false,
+        areas: [
+          {name:'Idei',detail:'Probleme, oportunități, validare'},
+          {name:'Strategie',detail:'Poziționare, model, priorități'},
+          {name:'Marketing',detail:'Atenție, distribuție, retenție'},
+          {name:'Vânzări',detail:'Ofertă, proces, conversie'},
+          {name:'Sisteme',detail:'Procese, automatizare, delegare'},
+          {name:'Finanțe',detail:'Cash, costuri, economie'}
+        ],
+        init() {
+          const saved = localStorage.getItem('afacere-theme');
+          this.theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          this.$nextTick(() => {
+            if (window.gsap && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              gsap.to('.hero', {opacity:1,y:0,duration:.75,stagger:.08,ease:'power3.out',delay:.08});
+              gsap.utils.toArray('.reveal').forEach((el,i) => {
+                if (el.classList.contains('hero')) return;
+                gsap.to(el,{opacity:1,y:0,duration:.7,ease:'power3.out',delay:.12 + i*.025,scrollTrigger:undefined});
+              });
+            } else {
+              document.querySelectorAll('.reveal').forEach(el => {el.style.opacity=1;el.style.transform='none';});
+            }
+          });
+        },
+        toggleTheme() {
+          this.theme = this.theme === 'dark' ? 'light' : 'dark';
+          localStorage.setItem('afacere-theme', this.theme);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
